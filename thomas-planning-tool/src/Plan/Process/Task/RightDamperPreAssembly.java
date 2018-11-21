@@ -1,12 +1,13 @@
 package Plan.Process.Task;
 
-import Plan.Spring;
 import java.util.Vector;
-import Plan.Cap;
-import Plan.DustCover;
-import Plan.SpringSeat;
-import Plan.AlignmentRod;
-import Plan.Stopper;
+
+import Elements.Parts.AlignmentRod;
+import Elements.Parts.Cap;
+import Elements.Parts.DustCover;
+import Elements.Parts.Spring;
+import Elements.Parts.SpringSeat;
+import Elements.Parts.Stopper;
 
 public class RightDamperPreAssembly {
 

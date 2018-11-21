@@ -1,10 +1,12 @@
 package Plan.Process.Task.Operations;
 
 import Plan.WorkingArea;
-import Plan.Parts;
+
 import java.util.ArrayList;
+
+import Elements.Elements;
+import Elements.Parts.Parts;
 import Plan.Process.Task.Operations.Actions.*;
-import Plan.Elements;
 
 public class Operations {
 

@@ -6,9 +6,10 @@ import Plan.Process.Task.Operations.Actions.Move;
 
 import java.util.ArrayList;
 import java.util.Vector;
+
+import Elements.Tools.Gripper;
 import Plan.Process.Task.Operations.Actions.Navigate;
 import Plan.Process.Task.Operations.Actions.Approach;
-import Plan.Gripper;
 import Plan.Process.Task.Operations.Actions.Grasp;
 import Plan.Process.Task.Operations.Actions.Detect;
 import Plan.Process.Task.Operations.Actions.Retract;

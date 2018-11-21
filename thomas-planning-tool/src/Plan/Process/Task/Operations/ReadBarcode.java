@@ -4,9 +4,10 @@ import Plan.Process.Task.Operations.Actions.Move;
 
 import java.util.ArrayList;
 import java.util.Vector;
+
+import Elements.Tools.BarcodeScanner;
+import Elements.Tools.Gripper;
 import Plan.Process.Task.Operations.Actions.ScanBarcode;
-import Plan.BarcodeScanner;
-import Plan.Gripper;
 import Plan.Process.Task.Operations.Actions.Actions;
 import Plan.Process.Task.Operations.Actions.Detect;
 

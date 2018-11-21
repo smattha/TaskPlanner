@@ -1,12 +1,13 @@
 package Plan.Process.Task;
 
 import java.util.Vector;
-import Plan.Cap;
-import Plan.PressMachine;
+
+import Elements.Parts.AlignmentRod;
+import Elements.Parts.Cap;
+import Elements.Tools.Nuts;
+import Elements.resources.PressMachine;
 import Plan.Process.Task.Operations.Alignment;
-import Plan.AlignmentRod;
 import Plan.Process.Task.Operations.ReadBarcode;
-import Plan.Nuts;
 
 public class LeftDamperCompression {
 

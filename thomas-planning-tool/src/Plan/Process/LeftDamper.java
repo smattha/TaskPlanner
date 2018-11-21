@@ -3,9 +3,10 @@ package Plan.Process;
 import Plan.Process.Task.Operations.Insert;
 import Plan.Process.Task.Operations.Pick;
 import java.util.Vector;
-import Plan.Human;
-import Plan.Damper;
-import Plan.MRP;
+
+import Elements.Parts.Damper;
+import Elements.resources.Human;
+import Elements.resources.MRP;
 
 public class LeftDamper {
 

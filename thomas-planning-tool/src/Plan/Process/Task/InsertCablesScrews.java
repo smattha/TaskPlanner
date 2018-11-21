@@ -1,10 +1,11 @@
 package Plan.Process.Task;
 
-import Plan.Cables;
-import Plan.MPP;
 import java.util.Vector;
-import Plan.Screws;
-import Plan.Disk;
+
+import Elements.Parts.Cables;
+import Elements.Parts.Disk;
+import Elements.Tools.Screws;
+import Elements.resources.MPP;
 import Plan.Process.Task.Operations.Tighten;
 
 public class InsertCablesScrews {

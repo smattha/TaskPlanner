@@ -1,7 +1,8 @@
 package Plan.Process.Task;
 
-import Plan.MPP;
 import java.util.Vector;
+
+import Elements.resources.MPP;
 
 public class LoadCompressedLeftDamperOnMPP {
 

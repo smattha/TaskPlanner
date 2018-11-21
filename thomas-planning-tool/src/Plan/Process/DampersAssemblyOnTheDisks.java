@@ -1,11 +1,12 @@
 package Plan.Process;
 
-import Plan.MPP;
 import java.util.Vector;
-import Plan.Human;
-import Plan.Damper;
-import Plan.Disk;
-import Plan.MRP;
+
+import Elements.Parts.Damper;
+import Elements.Parts.Disk;
+import Elements.resources.Human;
+import Elements.resources.MPP;
+import Elements.resources.MRP;
 
 public class DampersAssemblyOnTheDisks {
 
