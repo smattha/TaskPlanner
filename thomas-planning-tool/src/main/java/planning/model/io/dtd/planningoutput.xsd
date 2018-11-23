@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+	<xs:element name="PLANNINGOUTPUT">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="1" ref="ASSIGNMENTS" />
+			</xs:sequence>
+			<xs:attribute name="id" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="STARTDATE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DAY" />
+				<xs:element ref="MONTH" />
+				<xs:element ref="YEAR" />
+				<xs:element minOccurs="0" ref="HOUR" />
+				<xs:element minOccurs="0" ref="MINUTES" />
+				<xs:element minOccurs="0" ref="SECONDS" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ENDDATE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DAY" />
+				<xs:element ref="MONTH" />
+				<xs:element ref="YEAR" />
+				<xs:element minOccurs="0" ref="HOUR" />
+				<xs:element minOccurs="0" ref="MINUTES" />
+				<xs:element minOccurs="0" ref="SECONDS" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIME_OF_DISPATCH">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DAY" />
+				<xs:element ref="MONTH" />
+				<xs:element ref="YEAR" />
+				<xs:element minOccurs="0" ref="HOUR" />
+				<xs:element minOccurs="0" ref="MINUTES" />
+				<xs:element minOccurs="0" ref="SECONDS" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DAY" type="xs:int" />
+	<xs:element name="MONTH" type="xs:int" />
+	<xs:element name="YEAR" type="xs:int" />
+	<xs:element name="HOUR" type="xs:int" />
+	<xs:element name="MINUTES" type="xs:int" />
+	<xs:element name="SECONDS" type="xs:int" />
+	<xs:element name="DURATION_IN_MILLISECONDS" type="xs:long" />
+	<xs:element name="ASSIGNMENTS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" minOccurs="0" ref="ASSIGNMENT" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ASSIGNMENT">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TASK" />
+				<xs:element ref="RESOURCE" />
+				<xs:element ref="TIME_OF_DISPATCH" />
+				<xs:element ref="DURATION_IN_MILLISECONDS" />
+				<xs:element ref="PROPERTIES" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="locked" type="xs:boolean" use="optional" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RESOURCE">
+		<xs:complexType>
+			<xs:attribute name="id" use="required" type="xs:ID" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TASK">
+		<xs:complexType>
+			<xs:attribute name="id" use="required" type="xs:ID" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PROPERTIES">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PROPERTY" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PROPERTY">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="NAME" />
+				<xs:element ref="VALUE" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="NAME" type="xs:string"/>
+	<xs:element name="VALUE" type="xs:string"/>
+</xs:schema>

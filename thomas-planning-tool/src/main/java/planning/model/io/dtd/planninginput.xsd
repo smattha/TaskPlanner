@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="DAY" type="xs:int"/>
+	<xs:element name="MONTH" type="xs:int"/>
+	<xs:element name="YEAR" type="xs:int"/>
+	<xs:element name="HOUR" type="xs:int"/>
+	<xs:element name="MINUTE" type="xs:int"/>
+	<xs:element name="SECOND" type="xs:int"/>
+	
+	<xs:element name="NAME" type="xs:string"/>
+	<xs:element name="VALUE" type="xs:string"/>
+	<xs:element name="DESCRIPTION" type="xs:string"/>
+
+	<xs:element name="PLANNING_INPUT">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="WORKCENTERS" />
+				<xs:element ref="RESOURCES" />
+				<xs:element ref="JOBS" />
+				<xs:element ref="TASKS" />
+				<xs:element ref="TASK_SUITABLE_RESOURCES" />
+				<xs:element ref="TASK_PRECEDENCE_CONSTRAINTS" />
+				<xs:element ref="SET_UP_MATRICES" />
+			</xs:sequence>
+			<xs:attribute name="continueAssignmentsAfterPlanEndDate"/>
+			<xs:attribute name="id"/>
+			<xs:attribute name="planEndDate_day"/>
+			<xs:attribute name="planEndDate_month"/>
+			<xs:attribute name="planEndDate_year"/>
+			<xs:attribute name="planStartDate_day"/>
+			<xs:attribute name="planStartDate_month"/>
+			<xs:attribute name="planStartDate_year"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="DATE">
+		<xs:sequence>
+			<xs:element ref="DAY" />
+			<xs:element ref="MONTH" />
+			<xs:element ref="YEAR" />
+			<xs:element ref="HOUR" />
+			<xs:element ref="MINUTE" />
+			<xs:element ref="SECOND" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="TASKS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="TASK" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="TASK">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="NAME" />
+				<xs:element ref="DESCRIPTION" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="RESOURCES">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="RESOURCE" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="RESOURCE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="NAME" />
+				<xs:element ref="DESCRIPTION" />
+				<xs:element ref="SET_UP_MATRIX_REFERENCE" minOccurs="0"/>
+				<xs:element ref="RESOURCE_AVAILABILITY" />
+				<xs:element ref="PROPERTIES" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PROPERTIES">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PROPERTY" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PROPERTY">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="NAME"/>
+				<xs:element ref="VALUE"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="SET_UP_MATRIX_REFERENCE">
+		<xs:complexType>
+			<xs:attribute name="refid" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="RESOURCE_AVAILABILITY">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="NON_WORKING_PERIODS" />
+				<xs:element ref="FORCED_WORKING_PERIODS" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="NON_WORKING_PERIODS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="PERIOD" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="FORCED_WORKING_PERIODS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="PERIOD" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PERIOD">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="FROM_DATE" />
+				<xs:element ref="TO_DATE" />
+				<xs:element ref="REOCCURANCE" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="FROM_DATE" type="DATE"/>
+	<xs:element name="TO_DATE" type="DATE"/>
+
+	<xs:element name="YEARS" type="xs:int"/>
+	<xs:element name="MONTHS" type="xs:int"/>
+	<xs:element name="WEEKS" type="xs:int"/>
+	<xs:element name="DAYS" type="xs:int"/>
+	<xs:element name="HOURS" type="xs:int"/>
+	<xs:element name="MINUTES" type="xs:int"/>
+	<xs:element name="SECONDS" type="xs:int"/>
+
+	<xs:element name="REOCCURANCE">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="YEARS"/>
+				<xs:element ref="MONTHS"/>
+				<xs:element ref="WEEKS"/>
+				<xs:element ref="DAYS"/>
+				<xs:sequence>
+					<xs:element ref="HOURS" />
+					<xs:element ref="MINUTES" />
+					<xs:element ref="SECONDS" />
+				</xs:sequence>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="TASK_SUITABLE_RESOURCES">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="TASK_SUITABLE_RESOURCE" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="OPERATION_TIME_PER_BATCH_IN_SECONDS" type="xs:int"/>
+
+	<xs:element name="TASK_SUITABLE_RESOURCE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RESOURCE_REFERENCE" />
+				<xs:element ref="TASK_REFERENCE" />
+				<xs:element ref="OPERATION_TIME_PER_BATCH_IN_SECONDS" />
+				<xs:element ref="SET_UP_CODE" />
+				<xs:element ref="PROPERTIES" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="SET_UP_CODE" type="xs:string" />
+	
+	<xs:element name="RESOURCE_REFERENCE">
+		<xs:complexType>
+			<xs:attribute name="refid" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="TASK_REFERENCE">
+		<xs:complexType>
+			<xs:attribute name="refid" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="TASK_PRECEDENCE_CONSTRAINTS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="TASK_PRECEDENCE_CONSTRAINT" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="TASK_PRECEDENCE_CONSTRAINT">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PRECONDITION_TASK_REFERENCE" />
+				<xs:element ref="POSTCONDITION_TASK_REFERENCE" />
+                <xs:element ref="NEXT_TASK_IN_CHAIN" />
+                <xs:element ref="RESOURCE_UNAVAILABLE_UNTIL_NEXT_TASK" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+    <xs:element name="NEXT_TASK_IN_CHAIN" type="xs:boolean" />
+    <xs:element name="RESOURCE_UNAVAILABLE_UNTIL_NEXT_TASK" type="xs:boolean" />
+
+	<xs:element name="PRECONDITION_TASK_REFERENCE">
+		<xs:complexType>
+			<xs:attribute name="refid" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="POSTCONDITION_TASK_REFERENCE">
+		<xs:complexType>
+			<xs:attribute name="refid" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="WORKCENTERS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="WORKCENTER" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="WORKCENTER">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="NAME" />
+				<xs:element ref="DESCRIPTION" />
+				<xs:element ref="ALGORITHM" />
+				<xs:element maxOccurs="unbounded" ref="WORKCENTER_RESOURCE_REFERENCE" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="ALGORITHM">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="FIFO" />
+				<xs:enumeration value="SPT" />
+				<xs:enumeration value="EDD" />
+				<xs:enumeration value="MULTICRITERIA" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="WORKCENTER_RESOURCE_REFERENCE">
+		<xs:complexType>
+			<xs:attribute name="refid" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="JOBS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="JOB" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="ARRIVAL_DATE" type="DATE"/>
+	<xs:element name="DUE_DATE" type="DATE"/>
+	<xs:element name="JOB">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="NAME" />
+				<xs:element ref="DESCRIPTION" />
+				<xs:element ref="ARRIVAL_DATE" />
+				<xs:element ref="DUE_DATE" />
+				<xs:element maxOccurs="unbounded" ref="JOB_TASK_REFERENCE" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="JOB_TASK_REFERENCE">
+		<xs:complexType>
+			<xs:attribute name="refid" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="SET_UP_MATRICES">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="SET_UP_MATRIX" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="SET_UP_MATRIX">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="SET_UP" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="FROM_CODE" type="xs:string"/>
+	<xs:element name="TO_CODE" type="xs:string"/>
+	<xs:element name="TIME_IN_SECONDS" type="xs:int"/>
+	<xs:element name="SET_UP">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="FROM_CODE" />
+				<xs:element ref="TO_CODE" />
+				<xs:element ref="TIME_IN_SECONDS" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+
