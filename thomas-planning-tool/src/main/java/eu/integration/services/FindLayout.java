@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
 
 public class FindLayout extends JFrame {
 
-	/**
+	/**\\
 	 * @author user
 	 * 
 	 *         this class extends jframe in order the user knows when the impact

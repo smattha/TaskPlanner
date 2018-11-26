@@ -226,15 +226,19 @@ public class MainPlanningTool {
         
         
         tool.simulate();
-        if (autosaveOutput) {
-            MainDataModelControler mainDataModelControler = new MainDataModelControler(tool.datamodel.getPlanningInputDataModel(), tool.datamodel.getPlanningOutputDataModel(), inputsource.getOutputSource());
+        int i=0;
+
+            //MainDataModelControler mainDataModelControler = new MainDataModelControler(tool.datamodel.getPlanningInputDataModel(), tool.datamodel.getPlanningOutputDataModel(), inputsource.getOutputSource());
             Vector<AssignmentDataModel> assignments = tool.getAssignmentDataModelVector();
-            for (AssignmentDataModel assignmentDataModel : assignments) {
-                mainDataModelControler.addAssignmentDataModel(assignmentDataModel);
+            //int i=0;
+            for (int ii=0;i<10;i++) {
+                //mainDataModelControler.addAssignmentDataModel(assignmentDataModel);
+            	
+            	System.out.println(assignments.get(ii).getTaskDataModel().getTaskName()+ "   "+assignments.get(ii++).getResourceDataModel().getResourceName());
+           
             }
-            mainDataModelControler.savePlanningOutputDataModel();
-          
-        }
+            //mainDataModelControler.savePlanningOutputDataModel();
+ 
         System.out.println("DONE PROPERLY");
     }
 }

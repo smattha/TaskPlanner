@@ -13,11 +13,12 @@ import Plan.Process.Task.Operations.Actions.Approach;
 import Plan.Process.Task.Operations.Actions.Grasp;
 import Plan.Process.Task.Operations.Actions.Detect;
 import Plan.Process.Task.Operations.Actions.Retract;
+import eu.robopartner.ps.planner.planninginputmodel.TASK;
 
 public class Pick extends Operations{
 
   
-  Pick()
+ public Pick()
   {
    actions=new ArrayList<Actions>();
    
@@ -30,5 +31,14 @@ public class Pick extends Operations{
    actions.add(new Retract());
    	  
   }
+ 
+ public Pick(TASK t) {
+	 
+	 this.description=t.getDESCRIPTION();
+	 this.id=t.getId();
+	 this.name=t.getNAME();
+	 this.properties=t.getPROPERTIES();
+	 
+ }
 
 }

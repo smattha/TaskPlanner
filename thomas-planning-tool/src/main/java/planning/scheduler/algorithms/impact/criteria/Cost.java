@@ -1,6 +1,7 @@
 package planning.scheduler.algorithms.impact.criteria;
 
 import java.util.Calendar;
+import java.util.Random;
 import java.util.Vector;
 
 import javax.swing.tree.TreeNode;
@@ -18,7 +19,12 @@ public class Cost extends AbstractCriterion {
 	@Override
 	public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
 		// INITIALIZE A NEW PLAN IN ORDER TO MAKE THE ASSIGNMENTS
-
+		Random rand = new Random();
+		if (1==1)
+		{
+			double num=rand.nextDouble();
+		return num ;
+		}
 		int sr = paths.size();
 		double costSum = 0;
 		// DEBUG INFO ...

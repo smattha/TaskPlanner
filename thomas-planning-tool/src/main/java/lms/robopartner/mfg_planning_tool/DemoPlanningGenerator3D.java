@@ -32,6 +32,8 @@ import eu.robopartner.ps.planner.planninginputmodel.TASKSUITABLERESOURCE;
 import eu.robopartner.ps.planner.planninginputmodel.TASKSUITABLERESOURCES;
 import planning.scheduler.algorithms.AbstractAlgorithm;
 
+
+import  Plan.Process.Task.Operations.Pick;
 /**
  * The purpose of this class is to dynamically prepare the input for the use of the {@link LayoutScheduler} For a demo
  * run.
@@ -352,10 +354,15 @@ public class DemoPlanningGenerator3D {
 
 			id1 = IDGenerator.getNewID();
 			newId = "t_" + id1;
-			TASK jTask = MapToResourcesAndTasks.getTask("Axle_Table_Assembly " + newId, "Axle_Table_Assembly " + newId, newId
+			
+		   TASK t1 = (TASK) MapToResourcesAndTasks.getTask("THOMAS PICK" + newId, "THOMAS PICK " + newId, newId
 					+ "", (int) Math.ceil(900 / DISCRETIZATION), (int) Math.ceil(1400 / DISCRETIZATION), (int) Math.ceil(1200 / 500), 1.0, false, 1, MapToResourcesAndTasks.SHAPE_REACTANGLE);
 
-			tasks.getTASK().add(aTask);
+		   Pick p1=new Pick(t1);
+		   //p1=(TASK)t1;
+			
+		     
+		    tasks.getTASK().add(aTask);
 			tasks.getTASK().add(bTask);
 			tasks.getTASK().add(cTask);
 			tasks.getTASK().add(dTask);
@@ -364,7 +371,8 @@ public class DemoPlanningGenerator3D {
 			tasks.getTASK().add(gTask);
 			tasks.getTASK().add(hTask);
 			tasks.getTASK().add(iTask);
-			tasks.getTASK().add(jTask);
+			//tasks.getTASK().add(jTask);
+			tasks.getTASK().add(t1);
 			LOGGER.trace(msg + "Created theTasks");
 
 			LayoutPlanningInputGenerator.addTaskPrecedenceConstraints(aPlanninginput, tasks);
@@ -434,10 +442,23 @@ public class DemoPlanningGenerator3D {
 			itasksuitableresource.setPROPERTIES(iTask.getPROPERTIES());
 			tasksuitableresources.getTASKSUITABLERESOURCE().add(itasksuitableresource);
 			// jtask-resource 1
-			TASKSUITABLERESOURCE jtasksuitableresource = MapToResourcesAndTasks.getTaskSuitableResource(aResource2, jTask, LayoutPlanningInputGenerator.SETUP_CODE, LayoutPlanningInputGenerator.OPERATION_TIME_PER_BATCH_SECONDS);
-			jtasksuitableresource.setPROPERTIES(jTask.getPROPERTIES());
+			TASKSUITABLERESOURCE jtasksuitableresource = MapToResourcesAndTasks.getTaskSuitableResource(aResource2, t1, LayoutPlanningInputGenerator.SETUP_CODE, LayoutPlanningInputGenerator.OPERATION_TIME_PER_BATCH_SECONDS);
+			jtasksuitableresource.setPROPERTIES(t1.getPROPERTIES());
 			tasksuitableresources.getTASKSUITABLERESOURCE().add(jtasksuitableresource);
+			
 
+			
+			
+			TASKSUITABLERESOURCE itasksuitableresource1 = MapToResourcesAndTasks.getTaskSuitableResource(aResource1, iTask, LayoutPlanningInputGenerator.SETUP_CODE, LayoutPlanningInputGenerator.OPERATION_TIME_PER_BATCH_SECONDS);
+			itasksuitableresource1.setPROPERTIES(iTask.getPROPERTIES());
+			tasksuitableresources.getTASKSUITABLERESOURCE().add(itasksuitableresource1);
+			// jtask-resource 1
+			TASKSUITABLERESOURCE jtasksuitableresource1 = MapToResourcesAndTasks.getTaskSuitableResource(aResource1, t1, LayoutPlanningInputGenerator.SETUP_CODE, LayoutPlanningInputGenerator.OPERATION_TIME_PER_BATCH_SECONDS);
+			jtasksuitableresource1.setPROPERTIES(t1.getPROPERTIES());
+			tasksuitableresources.getTASKSUITABLERESOURCE().add(jtasksuitableresource1);
+			
+			
+			
 			LOGGER.trace(msg + "Created setTASKSUITABLERESOURCES");
 			aPlanninginput.setTASKSUITABLERESOURCES(tasksuitableresources);
 			LayoutPlanningInputGenerator.addWorkcenters(aPlanninginput, resources, AbstractAlgorithm.MULTICRITERIA);
