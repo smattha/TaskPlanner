@@ -10,16 +10,16 @@ import Elements.resources.MRP;
 
 public class RightDamper {
 
-  private Damper part1;
+	private Damper part1;
 
-  private Human resource1;
+	private Human resource1;
 
-  private MRP resource2;
+	private MRP resource2;
 
-  private Pick operation1;
+	private Pick operation1;
 
-  private Insert operation2;
+	private Insert operation2;
 
-    public Vector  myFrontAxleAssembly;
-        
+	public Vector myFrontAxleAssembly;
+
 }

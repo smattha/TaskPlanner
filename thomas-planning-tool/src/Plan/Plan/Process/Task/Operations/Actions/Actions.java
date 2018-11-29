@@ -4,8 +4,9 @@ import Plan.Process.Task.Operations.Actions.Parameters.Parameters;
 
 public class Actions {
 
-protected Parameters parameter;
+	protected Parameters parameter;
 
-Actions(){}
-                        
+	Actions() {
+	}
+
 }

@@ -6,8 +6,8 @@ import Elements.Sensors.Sensors;
 
 public class AssemblyTable extends Stationary {
 
-  private Sensors sensor;
+	private Sensors sensor;
 
-    public Vector  myStationary;
+	public Vector myStationary;
 
 }

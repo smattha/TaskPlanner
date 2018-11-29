@@ -20,10 +20,9 @@ public class Cost extends AbstractCriterion {
 	public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
 		// INITIALIZE A NEW PLAN IN ORDER TO MAKE THE ASSIGNMENTS
 		Random rand = new Random();
-		if (1==1)
-		{
-			double num=rand.nextDouble();
-		return num ;
+		if (1 == 1) {
+			double num = rand.nextDouble();
+			return num;
 		}
 		int sr = paths.size();
 		double costSum = 0;
@@ -63,13 +62,17 @@ public class Cost extends AbstractCriterion {
 					Assignment assignment = assignments.get(k);
 					TaskSimulator taskSimulator = assignment.getTask();
 					ResourceSimulator resourceSimulator = assignment.getResource();
-					double partialCost = manualHelper.getSetUpTimeInMillisecondsForTaskOnResource(taskSimulator, resourceSimulator, currentTime, assignments)
-						+ manualHelper.getOperationTimeInMillisecondsForTaskOnResource(taskSimulator, resourceSimulator, timeNow, assignments)
-						+ manualHelper.getResourceDownTimeInMillisecondsForTaskOnResource(taskSimulator, resourceSimulator, currentTime, assignments);
+					double partialCost = manualHelper.getSetUpTimeInMillisecondsForTaskOnResource(taskSimulator,
+							resourceSimulator, currentTime, assignments)
+							+ manualHelper.getOperationTimeInMillisecondsForTaskOnResource(taskSimulator,
+									resourceSimulator, timeNow, assignments)
+							+ manualHelper.getResourceDownTimeInMillisecondsForTaskOnResource(taskSimulator,
+									resourceSimulator, currentTime, assignments);
 
 					Calendar assignmentTime = Calendar.getInstance();
 					assignmentTime.setTimeInMillis(currentTime.getTimeInMillis());
-					manualHelper.addManualAssignment(new AssignmentDataModel(taskSimulator.getTaskDataModel(), resourceSimulator.getResourceDataModel(), assignmentTime, (long) partialCost, false, null));
+					manualHelper.addManualAssignment(new AssignmentDataModel(taskSimulator.getTaskDataModel(),
+							resourceSimulator.getResourceDataModel(), assignmentTime, (long) partialCost, false, null));
 
 					currentTime.setTimeInMillis(currentTime.getTimeInMillis() + (long) partialCost);
 					manualHelper.setManualTimeNow(currentTime);

@@ -6,8 +6,8 @@ import Elements.resources.MPP;
 
 public class LoadCompressedRightDamperOnMPP {
 
-  public MPP resource3;
+	public MPP resource3;
 
-    public Vector  myRightDamper;
+	public Vector myRightDamper;
 
 }

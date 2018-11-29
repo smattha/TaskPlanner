@@ -9,6 +9,7 @@ import planning.scheduler.simulation.interfaces.PlanHelperInterface;
 
 public interface DecisionPointAssignmentsConsumerInterface {
 
-    public Vector<AssignmentDataModel> consumeDecisionPointAssignments(Calendar timeNow, PlanHelperInterface helper, Vector<Assignment> decisionPointAssignments, double[] criteriaValues);
+	public Vector<AssignmentDataModel> consumeDecisionPointAssignments(Calendar timeNow, PlanHelperInterface helper,
+			Vector<Assignment> decisionPointAssignments, double[] criteriaValues);
 
 }

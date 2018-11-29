@@ -4,6 +4,6 @@ import java.util.Vector;
 
 public class Gripper {
 
-    public Vector  myTools;
+	public Vector myTools;
 
 }

@@ -15,31 +15,31 @@ import javax.swing.JFrame;
 
 public class SolutionPainter extends Component implements ActionListener {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = -4040407711760257149L;
-    int width, height;
-    private Vector<Rectangle> taskRectangles;
-    private Vector<Rectangle> reachabilityRectangles;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4040407711760257149L;
+	int width, height;
+	private Vector<Rectangle> taskRectangles;
+	private Vector<Rectangle> reachabilityRectangles;
 
-    public SolutionPainter(Dimension aDimension, Vector<Rectangle> taskRectangles,Vector<Rectangle> reachabilityRectangles) {
-	this.width = aDimension.width;
-	this.height = aDimension.height;
-	this.taskRectangles = taskRectangles;
-	this.reachabilityRectangles = reachabilityRectangles;
+	public SolutionPainter(Dimension aDimension, Vector<Rectangle> taskRectangles,
+			Vector<Rectangle> reachabilityRectangles) {
+		this.width = aDimension.width;
+		this.height = aDimension.height;
+		this.taskRectangles = taskRectangles;
+		this.reachabilityRectangles = reachabilityRectangles;
 
-    }
+	}
 
-    public Dimension getPreferredSize() {
-	return new Dimension(width, height);
-    }
+	public Dimension getPreferredSize() {
+		return new Dimension(width, height);
+	}
 
-    public void paint(Graphics graphics) {
-	graphics.setColor(Color.WHITE);
-	graphics.fillRect(0, 0, this.width, this.height);
+	public void paint(Graphics graphics) {
+		graphics.setColor(Color.WHITE);
+		graphics.fillRect(0, 0, this.width, this.height);
 
-	
 //	//PAINT SHAPES
 //	for (Rectangle aRectangle : this.reachabilityRectangles) {
 //
@@ -47,80 +47,74 @@ public class SolutionPainter extends Component implements ActionListener {
 //	    graphics.fillRect(aRectangle.x, aRectangle.y, aRectangle.width,
 //		    aRectangle.height);
 //	}
-	
 
-	
-	for (Rectangle aRectangle : this.taskRectangles) {
+		for (Rectangle aRectangle : this.taskRectangles) {
 
-	    graphics.setColor(Color.GREEN);
-	    graphics.fillRect(aRectangle.x, aRectangle.y, aRectangle.width,
-		    aRectangle.height);
-	}
-	
-	//DRAW LINES
-	for (Rectangle aRectangle : this.reachabilityRectangles) {
+			graphics.setColor(Color.GREEN);
+			graphics.fillRect(aRectangle.x, aRectangle.y, aRectangle.width, aRectangle.height);
+		}
 
-	    graphics.setColor(Color.BLUE);
-	    graphics.drawRect(aRectangle.x, aRectangle.y, aRectangle.width,
-		    aRectangle.height);
+		// DRAW LINES
+		for (Rectangle aRectangle : this.reachabilityRectangles) {
 
-	}
-	
-	for (Rectangle aRectangle : this.taskRectangles) {
+			graphics.setColor(Color.BLUE);
+			graphics.drawRect(aRectangle.x, aRectangle.y, aRectangle.width, aRectangle.height);
 
-	    graphics.setColor(Color.BLACK);
-	    graphics.drawRect(aRectangle.x, aRectangle.y, aRectangle.width,
-		    aRectangle.height);
+		}
+
+		for (Rectangle aRectangle : this.taskRectangles) {
+
+			graphics.setColor(Color.BLACK);
+			graphics.drawRect(aRectangle.x, aRectangle.y, aRectangle.width, aRectangle.height);
+
+		}
 
 	}
-	
 
-    }
+	public void actionPerformed(ActionEvent e) {
 
-    public void actionPerformed(ActionEvent e) {
+		repaint();
 
-	repaint();
+	};
 
-    };
+	/**
+	 * @param s
+	 * @author Spyros Koukas
+	 */
+	public static void main(String stringInput[]) {
+		JFrame frame = new JFrame("Solution");
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
 
-    /**
-     * @param s
-     * @author Spyros Koukas
-     */
-    public static void main(String stringInput[]) {
-	JFrame frame = new JFrame("Solution");
-	frame.addWindowListener(new WindowAdapter() {
-	    public void windowClosing(WindowEvent e) {
-		System.exit(0);
-	    }
-	});
+		Dimension mapDimension = new Dimension(50, 50);
+		Vector<Rectangle> theRectangles = new Vector<Rectangle>();
+		theRectangles.add(new Rectangle(1, 2, 3, 4));
+		Vector<Rectangle> theReachabilityRectangles = new Vector<Rectangle>();
+		theRectangles.add(new Rectangle(1, 2, 5, 6));
+		SolutionPainter si = new SolutionPainter(mapDimension, theRectangles, theReachabilityRectangles);
+		frame.add("Center", si);
 
-	Dimension mapDimension = new Dimension(50, 50);
-	Vector<Rectangle> theRectangles = new Vector<Rectangle>();
-	theRectangles.add(new Rectangle(1, 2, 3, 4));
-	Vector<Rectangle> theReachabilityRectangles = new Vector<Rectangle>();
-	theRectangles.add(new Rectangle(1, 2, 5, 6));
-	SolutionPainter si = new SolutionPainter(mapDimension, theRectangles,theReachabilityRectangles);
-	frame.add("Center", si);
+		frame.pack();
+		frame.setVisible(true);
+	}
 
-	frame.pack();
-	frame.setVisible(true);
-    }
+	public static void drawSolution(Dimension mapDimension, Vector<Rectangle> theTaskRectangles,
+			Vector<Rectangle> theReachabilityRectangles) {
+		JFrame frame = new JFrame("Solution");
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
 
-    public static void drawSolution(Dimension mapDimension,
-	    Vector<Rectangle> theTaskRectangles, Vector<Rectangle> theReachabilityRectangles) {
-	JFrame frame = new JFrame("Solution");
-	frame.addWindowListener(new WindowAdapter() {
-	    public void windowClosing(WindowEvent e) {
-		System.exit(0);
-	    }
-	});
+		SolutionPainter si = new SolutionPainter(mapDimension, theTaskRectangles, theReachabilityRectangles);
+		frame.add("Center", si);
 
-	SolutionPainter si = new SolutionPainter(mapDimension, theTaskRectangles,theReachabilityRectangles);
-	frame.add("Center", si);
-
-	frame.pack();
-	frame.setVisible(true);
-    }
+		frame.pack();
+		frame.setVisible(true);
+	}
 
 }

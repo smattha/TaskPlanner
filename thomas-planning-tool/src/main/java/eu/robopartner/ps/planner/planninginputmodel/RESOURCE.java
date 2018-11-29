@@ -5,7 +5,6 @@
 // Generated on: 2015.10.12 at 02:45:59 PM EEST 
 //
 
-
 package eu.robopartner.ps.planner.planninginputmodel;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,11 +14,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -42,198 +43,164 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "name",
-    "description",
-    "setupmatrixreference",
-    "resourceavailability",
-    "properties",
-    "endeffectors"
-})
+@XmlType(name = "", propOrder = { "name", "description", "setupmatrixreference", "resourceavailability", "properties",
+		"endeffectors" })
 @XmlRootElement(name = "RESOURCE")
 public class RESOURCE {
 
-    @XmlElement(name = "NAME", required = true)
-    protected String name;
-    @XmlElement(name = "DESCRIPTION")
-    protected String description;
-    @XmlElement(name = "SET_UP_MATRIX_REFERENCE")
-    protected SETUPMATRIXREFERENCE setupmatrixreference;
-    @XmlElement(name = "RESOURCE_AVAILABILITY")
-    protected RESOURCEAVAILABILITY resourceavailability;
-    @XmlElement(name = "PROPERTIES")
-    protected PROPERTIES properties;
-    @XmlElement(name = "END_EFFECTORS")
-    protected TOOLPLACEMENT endeffectors;
-    @XmlAttribute(name = "id", required = true)
-    protected String id;
+	@XmlElement(name = "NAME", required = true)
+	protected String name;
+	@XmlElement(name = "DESCRIPTION")
+	protected String description;
+	@XmlElement(name = "SET_UP_MATRIX_REFERENCE")
+	protected SETUPMATRIXREFERENCE setupmatrixreference;
+	@XmlElement(name = "RESOURCE_AVAILABILITY")
+	protected RESOURCEAVAILABILITY resourceavailability;
+	@XmlElement(name = "PROPERTIES")
+	protected PROPERTIES properties;
+	@XmlElement(name = "END_EFFECTORS")
+	protected TOOLPLACEMENT endeffectors;
+	@XmlAttribute(name = "id", required = true)
+	protected String id;
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNAME() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getNAME() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNAME(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setNAME(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDESCRIPTION() {
-        return description;
-    }
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDESCRIPTION() {
+		return description;
+	}
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDESCRIPTION(String value) {
-        this.description = value;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setDESCRIPTION(String value) {
+		this.description = value;
+	}
 
-    /**
-     * Gets the value of the setupmatrixreference property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SETUPMATRIXREFERENCE }
-     *     
-     */
-    public SETUPMATRIXREFERENCE getSETUPMATRIXREFERENCE() {
-        return setupmatrixreference;
-    }
+	/**
+	 * Gets the value of the setupmatrixreference property.
+	 * 
+	 * @return possible object is {@link SETUPMATRIXREFERENCE }
+	 * 
+	 */
+	public SETUPMATRIXREFERENCE getSETUPMATRIXREFERENCE() {
+		return setupmatrixreference;
+	}
 
-    /**
-     * Sets the value of the setupmatrixreference property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SETUPMATRIXREFERENCE }
-     *     
-     */
-    public void setSETUPMATRIXREFERENCE(SETUPMATRIXREFERENCE value) {
-        this.setupmatrixreference = value;
-    }
+	/**
+	 * Sets the value of the setupmatrixreference property.
+	 * 
+	 * @param value allowed object is {@link SETUPMATRIXREFERENCE }
+	 * 
+	 */
+	public void setSETUPMATRIXREFERENCE(SETUPMATRIXREFERENCE value) {
+		this.setupmatrixreference = value;
+	}
 
-    /**
-     * Gets the value of the resourceavailability property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RESOURCEAVAILABILITY }
-     *     
-     */
-    public RESOURCEAVAILABILITY getRESOURCEAVAILABILITY() {
-        return resourceavailability;
-    }
+	/**
+	 * Gets the value of the resourceavailability property.
+	 * 
+	 * @return possible object is {@link RESOURCEAVAILABILITY }
+	 * 
+	 */
+	public RESOURCEAVAILABILITY getRESOURCEAVAILABILITY() {
+		return resourceavailability;
+	}
 
-    /**
-     * Sets the value of the resourceavailability property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RESOURCEAVAILABILITY }
-     *     
-     */
-    public void setRESOURCEAVAILABILITY(RESOURCEAVAILABILITY value) {
-        this.resourceavailability = value;
-    }
+	/**
+	 * Sets the value of the resourceavailability property.
+	 * 
+	 * @param value allowed object is {@link RESOURCEAVAILABILITY }
+	 * 
+	 */
+	public void setRESOURCEAVAILABILITY(RESOURCEAVAILABILITY value) {
+		this.resourceavailability = value;
+	}
 
-    /**
-     * Gets the value of the properties property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link PROPERTIES }
-     *     
-     */
-    public PROPERTIES getPROPERTIES() {
-        return properties;
-    }
+	/**
+	 * Gets the value of the properties property.
+	 * 
+	 * @return possible object is {@link PROPERTIES }
+	 * 
+	 */
+	public PROPERTIES getPROPERTIES() {
+		return properties;
+	}
 
-    /**
-     * Sets the value of the properties property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link PROPERTIES }
-     *     
-     */
-    public void setPROPERTIES(PROPERTIES value) {
-        this.properties = value;
-    }
+	/**
+	 * Sets the value of the properties property.
+	 * 
+	 * @param value allowed object is {@link PROPERTIES }
+	 * 
+	 */
+	public void setPROPERTIES(PROPERTIES value) {
+		this.properties = value;
+	}
 
-    /**
-     * Gets the value of the endeffectors property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TOOLPLACEMENT }
-     *     
-     */
-    public TOOLPLACEMENT getENDEFFECTORS() {
-        return endeffectors;
-    }
+	/**
+	 * Gets the value of the endeffectors property.
+	 * 
+	 * @return possible object is {@link TOOLPLACEMENT }
+	 * 
+	 */
+	public TOOLPLACEMENT getENDEFFECTORS() {
+		return endeffectors;
+	}
 
-    /**
-     * Sets the value of the endeffectors property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TOOLPLACEMENT }
-     *     
-     */
-    public void setENDEFFECTORS(TOOLPLACEMENT value) {
-        this.endeffectors = value;
-    }
+	/**
+	 * Sets the value of the endeffectors property.
+	 * 
+	 * @param value allowed object is {@link TOOLPLACEMENT }
+	 * 
+	 */
+	public void setENDEFFECTORS(TOOLPLACEMENT value) {
+		this.endeffectors = value;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
 }

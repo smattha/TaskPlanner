@@ -17,22 +17,19 @@ import Plan.Process.Task.Operations.Actions.Retract;
 
 public class Tighten extends Operations {
 
+	private Screwdriver tool1;
 
-  private Screwdriver tool1;
+	Tighten() {
+		actions = new ArrayList<Actions>();
 
+		actions.add(new Navigate());
+		actions.add(new Move());
+		actions.add(new Detect());
+		actions.add(new Approach());
+		actions.add(new Attach());
+		actions.add(new Screwing());
+		actions.add(new Detach());
+		actions.add(new Retract());
+	}
 
-  Tighten()
-  {
-	  actions=new ArrayList<Actions>();
-	  
-	  actions.add(new Navigate());
-	  actions.add(new Move());
-	  actions.add(new Detect());
-	  actions.add(new Approach());
-	  actions.add(new Attach());
-	  actions.add(new Screwing());
-	  actions.add(new Detach());
-	  actions.add(new Retract());
-  }
-  
 }

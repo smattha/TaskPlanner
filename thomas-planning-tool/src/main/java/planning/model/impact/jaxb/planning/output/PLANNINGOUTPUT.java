@@ -5,7 +5,6 @@
 // Generated on: 2017.05.02 at 01:40:46 PM EEST 
 //
 
-
 package planning.model.impact.jaxb.planning.output;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -16,11 +15,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -38,64 +39,54 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "assignments"
-})
+@XmlType(name = "", propOrder = { "assignments" })
 @XmlRootElement(name = "PLANNING_OUTPUT")
 public class PLANNINGOUTPUT {
-    @XmlAttribute(name = "id")
-    @XmlSchemaType(name = "anySimpleType")
-    protected String id;
+	@XmlAttribute(name = "id")
+	@XmlSchemaType(name = "anySimpleType")
+	protected String id;
 
-    @XmlElement(name = "ASSIGNMENTS", required = true)
-    protected ASSIGNMENTS assignments;
+	@XmlElement(name = "ASSIGNMENTS", required = true)
+	protected ASSIGNMENTS assignments;
 
-    /**
-     * Gets the value of the assignments property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ASSIGNMENTS }
-     *     
-     */
-    public ASSIGNMENTS getASSIGNMENTS() {
-        return assignments;
-    }
+	/**
+	 * Gets the value of the assignments property.
+	 * 
+	 * @return possible object is {@link ASSIGNMENTS }
+	 * 
+	 */
+	public ASSIGNMENTS getASSIGNMENTS() {
+		return assignments;
+	}
 
-    /**
-     * Sets the value of the assignments property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ASSIGNMENTS }
-     *     
-     */
-    public void setASSIGNMENTS(ASSIGNMENTS value) {
-        this.assignments = value;
-    }
+	/**
+	 * Sets the value of the assignments property.
+	 * 
+	 * @param value allowed object is {@link ASSIGNMENTS }
+	 * 
+	 */
+	public void setASSIGNMENTS(ASSIGNMENTS value) {
+		this.assignments = value;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
 }

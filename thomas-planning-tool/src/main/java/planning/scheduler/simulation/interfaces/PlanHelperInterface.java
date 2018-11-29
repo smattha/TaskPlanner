@@ -17,50 +17,107 @@ import planning.scheduler.simulation.ResourceSimulator;
 import planning.scheduler.simulation.TaskSimulator;
 
 public interface PlanHelperInterface {
-    public boolean isTaskSuitableForResource(TaskSimulator taskSimulator, ResourceSimulator resourceSimulator);// Checks for suitability
+	public boolean isTaskSuitableForResource(TaskSimulator taskSimulator, ResourceSimulator resourceSimulator);// Checks
+																												// for
+																												// suitability
 
-    public boolean areAnyPendingPresendenceConstraintsForTaskOnResource(ResourceSimulator resourceSimulator, TaskSimulator taskSimulator, Calendar timeNow);// Checks for constrains
+	public boolean areAnyPendingPresendenceConstraintsForTaskOnResource(ResourceSimulator resourceSimulator,
+			TaskSimulator taskSimulator, Calendar timeNow);// Checks for constrains
 
-    public Vector<TaskPrecedenceConstraintDataModel> getTaskPendingPresendenceConstraints(TaskSimulator taskSimulator, Calendar timeNow);// Returns the task constrains
+	public Vector<TaskPrecedenceConstraintDataModel> getTaskPendingPresendenceConstraints(TaskSimulator taskSimulator,
+			Calendar timeNow);// Returns the task constrains
 
-    public boolean canResourceFullfilTheTaskUniterrupted(ResourceSimulator resourceSimulator, TaskSimulator taskSimulator, Calendar time);// Checks for locked tasks
+	public boolean canResourceFullfilTheTaskUniterrupted(ResourceSimulator resourceSimulator,
+			TaskSimulator taskSimulator, Calendar time);// Checks for locked tasks
 
-    public long getOperationTimeInMillisecondsForTaskOnResource(TaskSimulator taskSimulator, ResourceSimulator resourceSimulator, Calendar timeNow, Vector<Assignment> currentLevelAssignments);// Returns the pure operation time of this assignment
+	public long getOperationTimeInMillisecondsForTaskOnResource(TaskSimulator taskSimulator,
+			ResourceSimulator resourceSimulator, Calendar timeNow, Vector<Assignment> currentLevelAssignments);// Returns
+																												// the
+																												// pure
+																												// operation
+																												// time
+																												// of
+																												// this
+																												// assignment
 
-    public String getSetUpCodeForTaskOnResource(TaskSimulator taskSimulator, ResourceSimulator resourceSimulator);// Returns the set up code of this assignment
+	public String getSetUpCodeForTaskOnResource(TaskSimulator taskSimulator, ResourceSimulator resourceSimulator);// Returns
+																													// the
+																													// set
+																													// up
+																													// code
+																													// of
+																													// this
+																													// assignment
 
-    public long getSetUpTimeInMillisecondsForTaskOnResource(TaskSimulator taskSimulator, ResourceSimulator resourceSimulator, Calendar timeNow, Vector<Assignment> currentLevelAssignments);// Returns the set up time of this assignment
+	public long getSetUpTimeInMillisecondsForTaskOnResource(TaskSimulator taskSimulator,
+			ResourceSimulator resourceSimulator, Calendar timeNow, Vector<Assignment> currentLevelAssignments);// Returns
+																												// the
+																												// set
+																												// up
+																												// time
+																												// of
+																												// this
+																												// assignment
 
-    @Deprecated
-    public long getSetUpTimeInMillisecondsFromSetUpCodeToSetUpCodeOnResource(String fromSetUpCode, String toSetUpCode, ResourceSimulator resourceSimulator);// Returns the set up time of this assignment
+	@Deprecated
+	public long getSetUpTimeInMillisecondsFromSetUpCodeToSetUpCodeOnResource(String fromSetUpCode, String toSetUpCode,
+			ResourceSimulator resourceSimulator);// Returns the set up time of this assignment
 
-    public long getResourceDownTimeInMillisecondsForTaskOnResource(TaskSimulator taskSimulator, ResourceSimulator resourceSimulator, Calendar timeNow, Vector<Assignment> currentLevelAssignments);// Returns the down time of the resource during the period of execution of this assignment (operation time + set up time)
+	public long getResourceDownTimeInMillisecondsForTaskOnResource(TaskSimulator taskSimulator,
+			ResourceSimulator resourceSimulator, Calendar timeNow, Vector<Assignment> currentLevelAssignments);// Returns
+																												// the
+																												// down
+																												// time
+																												// of
+																												// the
+																												// resource
+																												// during
+																												// the
+																												// period
+																												// of
+																												// execution
+																												// of
+																												// this
+																												// assignment
+																												// (operation
+																												// time
+																												// + set
+																												// up
+																												// time)
 
-    public Vector<ResourceSimulator> getSuitableResourcesSimulatorForTask(TaskSimulator taskSimulator);// Returns all suitable resources for a given task
+	public Vector<ResourceSimulator> getSuitableResourcesSimulatorForTask(TaskSimulator taskSimulator);// Returns all
+																										// suitable
+																										// resources for
+																										// a given task
 
-    public Vector<TaskSimulator> getSuitableTasksSimulatorForResource(ResourceSimulator resourceSimulator);// Returns all suitable tasks for a given resource
+	public Vector<TaskSimulator> getSuitableTasksSimulatorForResource(ResourceSimulator resourceSimulator);// Returns
+																											// all
+																											// suitable
+																											// tasks for
+																											// a given
+																											// resource
 
-    public Vector<TaskSuitableResourceDataModel> getAllSuitabilities();// Returns all suitabilities
+	public Vector<TaskSuitableResourceDataModel> getAllSuitabilities();// Returns all suitabilities
 
-    public ManualPlanHelperInterface getManualPlanningHelperInterface();
+	public ManualPlanHelperInterface getManualPlanningHelperInterface();
 
-    public WorkcenterDataModel locateResource(ResourceDataModel resourceDataModel);
+	public WorkcenterDataModel locateResource(ResourceDataModel resourceDataModel);
 
-    public AbstractDataModel locateTool(ToolDataModel toolDataModel);
+	public AbstractDataModel locateTool(ToolDataModel toolDataModel);
 
-    public JobDataModel getJobDataModelForTaskSimulator(TaskSimulator taskSimulator);
+	public JobDataModel getJobDataModelForTaskSimulator(TaskSimulator taskSimulator);
 
-    public AssignmentDataModel getAssignmentOfTaskDataModel(TaskDataModel endEffectorSelection);
+	public AssignmentDataModel getAssignmentOfTaskDataModel(TaskDataModel endEffectorSelection);
 
-    public Vector<WorkcenterDataModel> getAllWorkcentrers();
+	public Vector<WorkcenterDataModel> getAllWorkcentrers();
 
-    public Vector<AssignmentDataModel> getAssignments();
-  
-    public Vector<JobDataModel>  getJobs();
+	public Vector<AssignmentDataModel> getAssignments();
 
-    public Vector<TaskPrecedenceConstraintDataModel>  getTaskPrecedenceConstraints();
+	public Vector<JobDataModel> getJobs();
 
-    public TaskSimulator getTaskSimulatorFromTaskDataModel(TaskDataModel taskDataModel);
+	public Vector<TaskPrecedenceConstraintDataModel> getTaskPrecedenceConstraints();
 
-    public ResourceSimulator getResourceSimulatorFromResourceDataModel(ResourceDataModel resourceDataModel);
+	public TaskSimulator getTaskSimulatorFromTaskDataModel(TaskDataModel taskDataModel);
+
+	public ResourceSimulator getResourceSimulatorFromResourceDataModel(ResourceDataModel resourceDataModel);
 }

@@ -14,7 +14,7 @@ public class IDGenerator {
 	/**
 	 * Internal storage of last given id start from lowest possible
 	 */
-	private static BigInteger	lastId	= BigInteger.ZERO;
+	private static BigInteger lastId = BigInteger.ZERO;
 
 	/**
 	 * @return a new ID

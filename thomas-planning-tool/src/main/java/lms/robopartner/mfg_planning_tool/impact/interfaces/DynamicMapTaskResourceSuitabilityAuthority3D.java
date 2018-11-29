@@ -42,17 +42,18 @@ import eu.integration.services.FindLayout;
 // TODO now is in 2D it should be in 3D.
 public class DynamicMapTaskResourceSuitabilityAuthority3D implements DynamicResourceTaskSuitabilityAuthorityInterface {
 
-	private static org.slf4j.Logger	LOGGER	= LoggerFactory.getLogger(DynamicMapTaskResourceSuitabilityAuthority3D.class);
-	private PLANNINGINPUT			startingPlanningInput;
-	private LayoutEvaluator3D		layoutEvaluator3D;
+	private static org.slf4j.Logger LOGGER = LoggerFactory
+			.getLogger(DynamicMapTaskResourceSuitabilityAuthority3D.class);
+	private PLANNINGINPUT startingPlanningInput;
+	private LayoutEvaluator3D layoutEvaluator3D;
 
 	public void setStartingPlanningInput(PLANNINGINPUT startingPlanningInput) {
 		this.startingPlanningInput = startingPlanningInput;
 	}
 
 	/**
-	 * Initialize, works only with DH=1. This means {@link IMPACT#getDH() should
-	 * be equals to 1} Also utilizes the {@link MapParameters}
+	 * Initialize, works only with DH=1. This means {@link IMPACT#getDH() should be
+	 * equals to 1} Also utilizes the {@link MapParameters}
 	 */
 	public DynamicMapTaskResourceSuitabilityAuthority3D() {
 		layoutEvaluator3D = new LayoutEvaluator3D();
@@ -60,62 +61,80 @@ public class DynamicMapTaskResourceSuitabilityAuthority3D implements DynamicReso
 
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see lms.robopartner.mfg_planning_tool.impact.interfaces.
 	 * DynamicResourceTaskSuitabilityAuthorityInterface
 	 * #isSuitabilityValid(lms.robopartner
 	 * .planning.scheduler.simulation.ResourceSimulator,
 	 * lms.robopartner.planning.scheduler.simulation.TaskSimulator,
-	 * java.util.Calendar,
-	 * lms.robopartner.planning.scheduler.simulation.interfaces
+	 * java.util.Calendar, lms.robopartner.planning.scheduler.simulation.interfaces
 	 * .PlanHelperInterface)
 	 */
 
 	/**
-     * 
-     */
-	public boolean isSuitabilityValid(ResourceSimulator resource, TaskSimulator task, Calendar timeNow, PlanHelperInterface planHelperInterface) {
+	 * 
+	 */
+	public boolean isSuitabilityValid(ResourceSimulator resource, TaskSimulator task, Calendar timeNow,
+			PlanHelperInterface planHelperInterface) {
 		String msg = ".isSuitabilityValid(): taskId: " + task.getTaskId() + " resourceId: " + resource.getResourceId();
 		Vector<AssignmentDataModel> existingAssignements = planHelperInterface.getAssignments();
 		FindLayout.sizeOfExistingAss = Math.max(existingAssignements.size(), FindLayout.sizeOfExistingAss);
-		boolean isSuitable = layoutEvaluator3D.isSuitabilityValid3D(resource, task, existingAssignements, this.startingPlanningInput);
+		boolean isSuitable = layoutEvaluator3D.isSuitabilityValid3D(resource, task, existingAssignements,
+				this.startingPlanningInput);
 		// LOGGER.debug(msg + " isSuitable = " + isSuitable);
-		@SuppressWarnings ("unchecked")
+		@SuppressWarnings("unchecked")
 		Vector<AssignmentDataModel> checkVector = (Vector<AssignmentDataModel>) existingAssignements.clone();
-		AssignmentDataModel tempAssign = new AssignmentDataModel(task.getTaskDataModel(), resource.getResourceDataModel(), timeNow, 0, false, null);
+		AssignmentDataModel tempAssign = new AssignmentDataModel(task.getTaskDataModel(),
+				resource.getResourceDataModel(), timeNow, 0, false, null);
 		checkVector.add(tempAssign);
-		@SuppressWarnings ("unused")
+		@SuppressWarnings("unused")
 		boolean notIntersecting = testIntersectionOfFinalAssignments(checkVector); // used for conditional breakpoint
 																					// only
 		return isSuitable;
 	}
 
 	private boolean testIntersectionOfFinalAssignments(Vector<AssignmentDataModel> assignments) {
-		for ( AssignmentDataModel aAssignment : assignments ) {
+		for (AssignmentDataModel aAssignment : assignments) {
 			TaskDataModel aTaskDataModel = aAssignment.getTaskDataModel();
 			ResourceDataModel aResourceDataModel = aAssignment.getResourceDataModel();
-			Shape aRectangle = DataModelToAWTHelper.createShape(aTaskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME), aTaskDataModel, aResourceDataModel);
-			String angle = aAssignment.getResourceDataModel().getProperty(MapToResourcesAndTasks.ROTATION_Z_PROPERTY_NAME);
+			Shape aRectangle = DataModelToAWTHelper.createShape(
+					aTaskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME), aTaskDataModel,
+					aResourceDataModel);
+			String angle = aAssignment.getResourceDataModel()
+					.getProperty(MapToResourcesAndTasks.ROTATION_Z_PROPERTY_NAME);
 			Point resourcePoint = DataModelToAWTHelper.getPointFromResource(aResourceDataModel);
-			if ( !angle.equals("180") && !angle.equals("360") && !angle.equals("0") ) {
-				aRectangle = DataModelToAWTHelper.rotateShape(Integer.parseInt(angle), aRectangle, resourcePoint.x, resourcePoint.y, aTaskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME));
+			if (!angle.equals("180") && !angle.equals("360") && !angle.equals("0")) {
+				aRectangle = DataModelToAWTHelper.rotateShape(Integer.parseInt(angle), aRectangle, resourcePoint.x,
+						resourcePoint.y, aTaskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME));
 				// LOGGER.debug(resourcePoint.x + " " + resourcePoint.y);
 			}
-			for ( AssignmentDataModel bAssignment : assignments ) {
+			for (AssignmentDataModel bAssignment : assignments) {
 				TaskDataModel bTaskDataModel = bAssignment.getTaskDataModel();
-				if ( aTaskDataModel.getTaskId().equals(bTaskDataModel.getTaskId()) ) continue;
+				if (aTaskDataModel.getTaskId().equals(bTaskDataModel.getTaskId()))
+					continue;
 				ResourceDataModel bResourceDataModel = bAssignment.getResourceDataModel();
-				Shape bRectangle = DataModelToAWTHelper.createShape(bTaskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME), bTaskDataModel, bResourceDataModel);
+				Shape bRectangle = DataModelToAWTHelper.createShape(
+						bTaskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME), bTaskDataModel,
+						bResourceDataModel);
 				angle = bAssignment.getResourceDataModel().getProperty(MapToResourcesAndTasks.ROTATION_Z_PROPERTY_NAME);
 				resourcePoint = DataModelToAWTHelper.getPointFromResource(bResourceDataModel);
-				if ( !angle.equals("180") && !angle.equals("360") && !angle.equals("0") )
-					bRectangle = DataModelToAWTHelper.rotateShape(Integer.parseInt(angle), bRectangle, resourcePoint.x, resourcePoint.y, bTaskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME));
-				if ( aRectangle.intersects(bRectangle.getBounds()) ) {
-					LOGGER.debug(".testIntersectionOfFinalAssignments():\n\t\t\t\t atask: {} aresource: {}\n\t\t\t\t btask: {} bresource: {}", aTaskDataModel.getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME)
-							+ " " + aTaskDataModel.getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME), aResourceDataModel.getResourceId(), bTaskDataModel.getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME)
-							+ " " + bTaskDataModel.getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME), bResourceDataModel.getResourceId());
-					LOGGER.debug("\naRectangle: \n\t\tx: {} \n\t\tw: {} \nbRectangle: \n\t\tx: {} \n\t\tw: {}", aRectangle.getBounds().x + " y: "
-							+ aRectangle.getBounds().y, aRectangle.getBounds().width + " h: " + aRectangle.getBounds().height, bRectangle.getBounds().x
-							+ " y: " + bRectangle.getBounds().y, bRectangle.getBounds().width + " h: " + bRectangle.getBounds().height);
+				if (!angle.equals("180") && !angle.equals("360") && !angle.equals("0"))
+					bRectangle = DataModelToAWTHelper.rotateShape(Integer.parseInt(angle), bRectangle, resourcePoint.x,
+							resourcePoint.y, bTaskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME));
+				if (aRectangle.intersects(bRectangle.getBounds())) {
+					LOGGER.debug(
+							".testIntersectionOfFinalAssignments():\n\t\t\t\t atask: {} aresource: {}\n\t\t\t\t btask: {} bresource: {}",
+							aTaskDataModel.getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME) + " "
+									+ aTaskDataModel.getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME),
+							aResourceDataModel.getResourceId(),
+							bTaskDataModel.getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME) + " "
+									+ bTaskDataModel.getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME),
+							bResourceDataModel.getResourceId());
+					LOGGER.debug("\naRectangle: \n\t\tx: {} \n\t\tw: {} \nbRectangle: \n\t\tx: {} \n\t\tw: {}",
+							aRectangle.getBounds().x + " y: " + aRectangle.getBounds().y,
+							aRectangle.getBounds().width + " h: " + aRectangle.getBounds().height,
+							bRectangle.getBounds().x + " y: " + bRectangle.getBounds().y,
+							bRectangle.getBounds().width + " h: " + bRectangle.getBounds().height);
 					return false;
 
 				}

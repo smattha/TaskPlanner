@@ -5,7 +5,6 @@
 // Generated on: 2015.10.12 at 02:45:59 PM EEST 
 //
 
-
 package eu.robopartner.ps.planner.planninginputmodel;
 
 import java.util.ArrayList;
@@ -17,11 +16,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -44,203 +45,174 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "name",
-    "description",
-    "algorithm",
-    "workcenterresourcereference",
-    "toolrepository",
-    "dockingstations"
-})
+@XmlType(name = "", propOrder = { "name", "description", "algorithm", "workcenterresourcereference", "toolrepository",
+		"dockingstations" })
 @XmlRootElement(name = "WORKCENTER")
 public class WORKCENTER {
 
-    @XmlElement(name = "NAME", required = true)
-    protected String name;
-    @XmlElement(name = "DESCRIPTION")
-    protected String description;
-    @XmlElement(name = "ALGORITHM", required = true)
-    protected String algorithm;
-    @XmlElement(name = "WORKCENTER_RESOURCE_REFERENCE", required = true)
-    protected List<WORKCENTERRESOURCEREFERENCE> workcenterresourcereference;
-    @XmlElement(name = "TOOL_REPOSITORY")
-    protected TOOLPLACEMENT toolrepository;
-    @XmlElement(name = "DOCKING_STATIONS")
-    protected DOCKINGSTATIONS dockingstations;
-    @XmlAttribute(name = "id", required = true)
-    protected String id;
+	@XmlElement(name = "NAME", required = true)
+	protected String name;
+	@XmlElement(name = "DESCRIPTION")
+	protected String description;
+	@XmlElement(name = "ALGORITHM", required = true)
+	protected String algorithm;
+	@XmlElement(name = "WORKCENTER_RESOURCE_REFERENCE", required = true)
+	protected List<WORKCENTERRESOURCEREFERENCE> workcenterresourcereference;
+	@XmlElement(name = "TOOL_REPOSITORY")
+	protected TOOLPLACEMENT toolrepository;
+	@XmlElement(name = "DOCKING_STATIONS")
+	protected DOCKINGSTATIONS dockingstations;
+	@XmlAttribute(name = "id", required = true)
+	protected String id;
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNAME() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getNAME() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNAME(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setNAME(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDESCRIPTION() {
-        return description;
-    }
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDESCRIPTION() {
+		return description;
+	}
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDESCRIPTION(String value) {
-        this.description = value;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setDESCRIPTION(String value) {
+		this.description = value;
+	}
 
-    /**
-     * Gets the value of the algorithm property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getALGORITHM() {
-        return algorithm;
-    }
+	/**
+	 * Gets the value of the algorithm property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getALGORITHM() {
+		return algorithm;
+	}
 
-    /**
-     * Sets the value of the algorithm property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setALGORITHM(String value) {
-        this.algorithm = value;
-    }
+	/**
+	 * Sets the value of the algorithm property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setALGORITHM(String value) {
+		this.algorithm = value;
+	}
 
-    /**
-     * Gets the value of the workcenterresourcereference property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the workcenterresourcereference property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getWORKCENTERRESOURCEREFERENCE().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link WORKCENTERRESOURCEREFERENCE }
-     * 
-     * 
-     */
-    public List<WORKCENTERRESOURCEREFERENCE> getWORKCENTERRESOURCEREFERENCE() {
-        if (workcenterresourcereference == null) {
-            workcenterresourcereference = new ArrayList<WORKCENTERRESOURCEREFERENCE>();
-        }
-        return this.workcenterresourcereference;
-    }
+	/**
+	 * Gets the value of the workcenterresourcereference property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the workcenterresourcereference property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getWORKCENTERRESOURCEREFERENCE().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link WORKCENTERRESOURCEREFERENCE }
+	 * 
+	 * 
+	 */
+	public List<WORKCENTERRESOURCEREFERENCE> getWORKCENTERRESOURCEREFERENCE() {
+		if (workcenterresourcereference == null) {
+			workcenterresourcereference = new ArrayList<WORKCENTERRESOURCEREFERENCE>();
+		}
+		return this.workcenterresourcereference;
+	}
 
-    /**
-     * Gets the value of the toolrepository property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TOOLPLACEMENT }
-     *     
-     */
-    public TOOLPLACEMENT getTOOLREPOSITORY() {
-        return toolrepository;
-    }
+	/**
+	 * Gets the value of the toolrepository property.
+	 * 
+	 * @return possible object is {@link TOOLPLACEMENT }
+	 * 
+	 */
+	public TOOLPLACEMENT getTOOLREPOSITORY() {
+		return toolrepository;
+	}
 
-    /**
-     * Sets the value of the toolrepository property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TOOLPLACEMENT }
-     *     
-     */
-    public void setTOOLREPOSITORY(TOOLPLACEMENT value) {
-        this.toolrepository = value;
-    }
+	/**
+	 * Sets the value of the toolrepository property.
+	 * 
+	 * @param value allowed object is {@link TOOLPLACEMENT }
+	 * 
+	 */
+	public void setTOOLREPOSITORY(TOOLPLACEMENT value) {
+		this.toolrepository = value;
+	}
 
-    /**
-     * Gets the value of the dockingstations property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DOCKINGSTATIONS }
-     *     
-     */
-    public DOCKINGSTATIONS getDOCKINGSTATIONS() {
-        return dockingstations;
-    }
+	/**
+	 * Gets the value of the dockingstations property.
+	 * 
+	 * @return possible object is {@link DOCKINGSTATIONS }
+	 * 
+	 */
+	public DOCKINGSTATIONS getDOCKINGSTATIONS() {
+		return dockingstations;
+	}
 
-    /**
-     * Sets the value of the dockingstations property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DOCKINGSTATIONS }
-     *     
-     */
-    public void setDOCKINGSTATIONS(DOCKINGSTATIONS value) {
-        this.dockingstations = value;
-    }
+	/**
+	 * Sets the value of the dockingstations property.
+	 * 
+	 * @param value allowed object is {@link DOCKINGSTATIONS }
+	 * 
+	 */
+	public void setDOCKINGSTATIONS(DOCKINGSTATIONS value) {
+		this.dockingstations = value;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
 
 }
