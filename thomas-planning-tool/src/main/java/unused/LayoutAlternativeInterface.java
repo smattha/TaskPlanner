@@ -11,17 +11,17 @@ import java.util.Map;
  */
 public interface LayoutAlternativeInterface {
 
-	/**
-	 * Returns the
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public Point getLocationForID(String id);
+    /**
+     * Returns the
+     * 
+     * @param id
+     * @return
+     */
+    public Point getLocationForID(String id);
 
-	/**
-	 * @return all available locations
-	 */
-	public Map<String, Point> getLocations();
+    /**
+     * @return all available locations
+     */
+    public Map<String, Point> getLocations();
 
 }

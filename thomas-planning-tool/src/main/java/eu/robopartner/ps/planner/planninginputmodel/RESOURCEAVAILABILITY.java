@@ -5,6 +5,7 @@
 // Generated on: 2015.10.12 at 02:45:59 PM EEST 
 //
 
+
 package eu.robopartner.ps.planner.planninginputmodel;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,13 +14,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -37,53 +36,64 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "nonworkingperiods", "forcedworkingperiods" })
+@XmlType(name = "", propOrder = {
+    "nonworkingperiods",
+    "forcedworkingperiods"
+})
 @XmlRootElement(name = "RESOURCE_AVAILABILITY")
 public class RESOURCEAVAILABILITY {
 
-	@XmlElement(name = "NON_WORKING_PERIODS", required = true)
-	protected NONWORKINGPERIODS nonworkingperiods;
-	@XmlElement(name = "FORCED_WORKING_PERIODS", required = true)
-	protected FORCEDWORKINGPERIODS forcedworkingperiods;
+    @XmlElement(name = "NON_WORKING_PERIODS", required = true)
+    protected NONWORKINGPERIODS nonworkingperiods;
+    @XmlElement(name = "FORCED_WORKING_PERIODS", required = true)
+    protected FORCEDWORKINGPERIODS forcedworkingperiods;
 
-	/**
-	 * Gets the value of the nonworkingperiods property.
-	 * 
-	 * @return possible object is {@link NONWORKINGPERIODS }
-	 * 
-	 */
-	public NONWORKINGPERIODS getNONWORKINGPERIODS() {
-		return nonworkingperiods;
-	}
+    /**
+     * Gets the value of the nonworkingperiods property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link NONWORKINGPERIODS }
+     *     
+     */
+    public NONWORKINGPERIODS getNONWORKINGPERIODS() {
+        return nonworkingperiods;
+    }
 
-	/**
-	 * Sets the value of the nonworkingperiods property.
-	 * 
-	 * @param value allowed object is {@link NONWORKINGPERIODS }
-	 * 
-	 */
-	public void setNONWORKINGPERIODS(NONWORKINGPERIODS value) {
-		this.nonworkingperiods = value;
-	}
+    /**
+     * Sets the value of the nonworkingperiods property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link NONWORKINGPERIODS }
+     *     
+     */
+    public void setNONWORKINGPERIODS(NONWORKINGPERIODS value) {
+        this.nonworkingperiods = value;
+    }
 
-	/**
-	 * Gets the value of the forcedworkingperiods property.
-	 * 
-	 * @return possible object is {@link FORCEDWORKINGPERIODS }
-	 * 
-	 */
-	public FORCEDWORKINGPERIODS getFORCEDWORKINGPERIODS() {
-		return forcedworkingperiods;
-	}
+    /**
+     * Gets the value of the forcedworkingperiods property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FORCEDWORKINGPERIODS }
+     *     
+     */
+    public FORCEDWORKINGPERIODS getFORCEDWORKINGPERIODS() {
+        return forcedworkingperiods;
+    }
 
-	/**
-	 * Sets the value of the forcedworkingperiods property.
-	 * 
-	 * @param value allowed object is {@link FORCEDWORKINGPERIODS }
-	 * 
-	 */
-	public void setFORCEDWORKINGPERIODS(FORCEDWORKINGPERIODS value) {
-		this.forcedworkingperiods = value;
-	}
+    /**
+     * Sets the value of the forcedworkingperiods property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FORCEDWORKINGPERIODS }
+     *     
+     */
+    public void setFORCEDWORKINGPERIODS(FORCEDWORKINGPERIODS value) {
+        this.forcedworkingperiods = value;
+    }
 
 }

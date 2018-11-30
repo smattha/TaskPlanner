@@ -18,34 +18,34 @@ import Plan.Process.Task.Operations.Actions.*;
 
 public class Operations extends TASK {
 
-	private Parts basepart;
+  private Parts basepart;
 
-	private Parts matingpart;
+  private Parts matingpart;
+  
+  protected ThomasTool tool;
+  
+  public ThomasTool getTool() {return tool;};
 
-	protected ThomasTool tool;
+  public WorkingArea workingplace;
 
-	public ThomasTool getTool() {
-		return tool;
-	};
+  public String  description;
+  public String name="Pick";
+  
+  
+  ArrayList<Actions> actions;
+  
+ public Boolean genImpactTask()
+ {
+	BigInteger id1 = IDGenerator.getNewID();
+    String newId = "thomas_" + id1;
+	properties =new PROPERTIES();
+	setDESCRIPTION("description");
+	setId(newId);
+	setNAME(name);
+	setPROPERTIES(properties);
+ 		 
+ 	properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("Testing",  "I workedddddddddddddddddddddddd"));
 
-	public WorkingArea workingplace;
-
-	public String description;
-	public String name = "Pick";
-
-	ArrayList<Actions> actions;
-
-	public Boolean genImpactTask() {
-		BigInteger id1 = IDGenerator.getNewID();
-		String newId = "thomas_" + id1;
-		properties = new PROPERTIES();
-		setDESCRIPTION("description");
-		setId(newId);
-		setNAME(name);
-		setPROPERTIES(properties);
-
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("Testing", "I workedddddddddddddddddddddddd"));
-
-		return true;
-	}
+	return true;
+ }            
 }

@@ -197,13 +197,13 @@ public class DemoPlanningGenerator3D {
 
 		Place aTask = new Place("place 1", screw5);
 		Place bTask = new Place("place 2", screw5);
-		Place cTask = new Place("place 3", screw10);
+		Place cTask = new Place("place 3", screw5);
 		Place dTask = new Place("place 4", screw5);
 		Place eTask = new Place("place 5", screw5);
 		Place fTask = new Place("place 6", screw5);
-		Place gTask = new Place("place 7", screw10);
-		Place hTask = new Place("place 8", screw10);
-		Place iTask = new Place("place 9", screw10);
+		Place gTask = new Place("place 7", screw5);
+		Place hTask = new Place("place 8", screw5);
+		Place iTask = new Place("place 9", screw5);
 		Place t1 = new Place("place 10", screw10);
 
 		aTask.genImpactTask();
@@ -257,11 +257,12 @@ public class DemoPlanningGenerator3D {
 
 		aResource1.addCompatibleTool(screw5);
 
-		aResource1.addCompatibleTool(screw5);
+		//aResource1.addCompatibleTool(screw5);
+		
 		aResource2.addCompatibleTool(screw10);
 
-		aResource1.gererateResource();
-		aResource2.gererateResource();
+		//aResource1.gererateResource();
+		//aResource2.gererateResource();
 
 		resources.getRESOURCE().add(aResource1);
 		resources.getRESOURCE().add(aResource2);

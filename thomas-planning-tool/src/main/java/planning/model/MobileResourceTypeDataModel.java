@@ -5,26 +5,26 @@ import org.w3c.dom.Node;
 
 public class MobileResourceTypeDataModel extends AbstractDataModel {
 
-	private String id;
+    private String id;
 
-	private String type = null;
+    private String type = null;
 
-	public String getType() {
-		return this.type;
-	}
+    public String getType() {
+        return this.type;
+    }
 
-	public MobileResourceTypeDataModel(String id, String type) {
-		this.id = id;
-		this.type = type;
-	}
+    public MobileResourceTypeDataModel(String id, String type) {
+        this.id = id;
+        this.type = type;
+    }
 
-	@Override
-	public Node toXMLNode(Document document) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Node toXMLNode(Document document) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public String getId() {
-		return this.id;
-	}
+    public String getId() {
+        return this.id;
+    }
 }

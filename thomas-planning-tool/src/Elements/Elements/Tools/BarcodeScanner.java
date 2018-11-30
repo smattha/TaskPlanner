@@ -1,11 +1,12 @@
 package Elements.Tools;
 
+
 import java.util.Vector;
 
 public class BarcodeScanner {
 
-	private Integer weight;
+  private Integer weight;
 
-	public Vector myTools;
+    public Vector  myTools;
 
 }

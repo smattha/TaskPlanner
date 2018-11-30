@@ -28,6 +28,7 @@ import planning.scheduler.simulation.PlanEndRule;
 import planning.scheduler.simulation.PlanSimulator;
 import planning.scheduler.simulation.WorkloadAllocationUntilDateEndRule;
 import planning.scheduler.simulation.interfaces.OperationTimeCalculatorInterface;
+import testingDemo.criteria.cost;
 
 public class MainPlanningTool {
 

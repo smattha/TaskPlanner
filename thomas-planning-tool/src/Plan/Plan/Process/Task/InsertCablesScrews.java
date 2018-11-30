@@ -10,16 +10,16 @@ import Plan.Process.Task.Operations.Tighten;
 
 public class InsertCablesScrews {
 
-	private Cables part2;
+  private Cables part2;
 
-	private Disk part3;
+  private Disk part3;
 
-	private Screws tool1;
+  private Screws tool1;
 
-	private Tighten operation3;
+  private Tighten operation3;
 
-	public MPP resource3;
+  public MPP resource3;
 
-	public Vector myRightDamper;
+    public Vector  myRightDamper;
 
 }

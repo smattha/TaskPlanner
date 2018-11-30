@@ -2,8 +2,8 @@ package Elements.resources;
 
 import java.util.Vector;
 
-public class Stationary extends ThomasResource {
+public class Stationary extends Resources{
 
-	public Vector myResources;
-
+    public Vector  myResources;
+    
 }

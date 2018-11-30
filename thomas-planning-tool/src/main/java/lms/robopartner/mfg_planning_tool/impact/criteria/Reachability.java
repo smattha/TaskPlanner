@@ -31,24 +31,24 @@ import planning.scheduler.simulation.interfaces.PlanHelperInterface;
 
 public class Reachability extends AbstractCriterion {
 
-	private PLANNINGINPUT aPlanninginput;
-	private FileWriter fileWriter;
-	private int alternativeCounter = 0;
+	private PLANNINGINPUT	aPlanninginput;
+	private FileWriter		fileWriter;
+	private int				alternativeCounter	= 0;
 
-	public Reachability() {
-	}
+	public Reachability() {}
 
 	public Reachability(PLANNINGINPUT aPlanninginput) {
 		this.aPlanninginput = aPlanninginput;
 		try {
 			fileWriter = new FileWriter("C:\\Reachability.doc");
-		} catch (IOException e) {
-			// LOGGER.error(ExceptionUtils.getStackTrace(e));
+		}
+		catch ( IOException e ) {
+			//LOGGER.error(ExceptionUtils.getStackTrace(e));
 		}
 	}
 
-	private static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Reachability.class);
-	private static final String CRITERION_NAME = "REACHABILITY";
+	private static org.slf4j.Logger	LOGGER			= LoggerFactory.getLogger(Reachability.class);
+	private static final String		CRITERION_NAME	= "REACHABILITY";
 
 	@Override
 	public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
@@ -56,63 +56,53 @@ public class Reachability extends AbstractCriterion {
 		double result = 0;
 		double reachabilitySum = 0;
 		String alternative = "[ ";
-		for (TreeNode[] path : paths) {
+		for ( TreeNode[] path : paths ) {
 			Map<String, String> activeResourceReachability = new HashMap<String, String>();
 			HashMap<String, Shape> activeResourceRectangles = new HashMap<String, Shape>();
 			HashMap<String, Shape> passiveResourceRectangles = new HashMap<String, Shape>();
-			for (TreeNode treeNode : path) {
+			for ( TreeNode treeNode : path ) {
 				LayerNode layerNode = (LayerNode) treeNode;
-				for (Assignment assignment : layerNode.getNodeAssignments()) {
+				for ( Assignment assignment : layerNode.getNodeAssignments() ) {
 					TaskDataModel taskDataModel = assignment.getTask().getTaskDataModel();
 					ResourceDataModel resourceDataModel = assignment.getResource().getResourceDataModel();
 					alternative += taskDataModel.getTaskId() + " X: "
 							+ resourceDataModel.getProperty(MapToResourcesAndTasks.LOCATION_X_PROPERTY_NAME) + " Y: "
 							+ resourceDataModel.getProperty(MapToResourcesAndTasks.LOCATION_Y_PROPERTY_NAME);
-					if (taskDataModel.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME)
-							.equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_TASK)) {
+					if ( taskDataModel.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME).equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_TASK) ) {
 						Shape rectangle = DataModelToAWTHelper.createRectangle(resourceDataModel, taskDataModel);
 						String angle = resourceDataModel.getProperty(MapToResourcesAndTasks.ROTATION_Z_PROPERTY_NAME);
 						Point resourcePoint = DataModelToAWTHelper.getPointFromResource(resourceDataModel);
-						if (!angle.equals("180") && !angle.equals("360") && !angle.equals("0"))
-							rectangle = DataModelToAWTHelper.rotateShape(Integer.parseInt(angle), rectangle,
-									resourcePoint.x, resourcePoint.y,
-									taskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME));
+						if ( !angle.equals("180") && !angle.equals("360") && !angle.equals("0") )
+							rectangle = DataModelToAWTHelper.rotateShape(Integer.parseInt(angle), rectangle, resourcePoint.x, resourcePoint.y, taskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME));
 						passiveResourceRectangles.put(taskDataModel.getTaskId(), rectangle);
 					}
 				}
 			}
 
-			for (AssignmentDataModel anAssignment : helper.getAssignments()) {
+			for ( AssignmentDataModel anAssignment : helper.getAssignments() ) {
 				TaskDataModel taskDataModel = anAssignment.getTaskDataModel();
 				ResourceDataModel resourceDataModel = anAssignment.getResourceDataModel();
-				if ((taskDataModel.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME)
-						.equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_ROBOT)
-						|| taskDataModel.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME)
-								.equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_HUMAN))
-						&& !activeResourceRectangles.containsKey(taskDataModel.getTaskId())) {
+				if ( (taskDataModel.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME).equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_ROBOT) || taskDataModel.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME).equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_HUMAN))
+						&& !activeResourceRectangles.containsKey(taskDataModel.getTaskId()) ) {
 					String angle = resourceDataModel.getProperty(MapToResourcesAndTasks.ROTATION_Z_PROPERTY_NAME);
 					Point resourcePoint = DataModelToAWTHelper.getPointFromResource(resourceDataModel);
 					Shape rectangle = DataModelToAWTHelper.createRectangle(resourceDataModel, taskDataModel);
-					if (!angle.equals("180") && !angle.equals("360") && !angle.equals("0"))
-						rectangle = DataModelToAWTHelper.rotateShape(Integer.parseInt(angle), rectangle,
-								resourcePoint.x, resourcePoint.y,
-								taskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME));
+					if ( !angle.equals("180") && !angle.equals("360") && !angle.equals("0") )
+						rectangle = DataModelToAWTHelper.rotateShape(Integer.parseInt(angle), rectangle, resourcePoint.x, resourcePoint.y, taskDataModel.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME));
 					// LOGGER.debug(msg + "{}", taskDataModel.getTaskId());
 					activeResourceRectangles.put(taskDataModel.getTaskId(), rectangle);
-					activeResourceReachability.put(taskDataModel.getTaskId(),
-							taskDataModel.getProperty(MapToResourcesAndTasks.REACHABILTY_PROPERTY_NAME));
+					activeResourceReachability.put(taskDataModel.getTaskId(), taskDataModel.getProperty(MapToResourcesAndTasks.REACHABILTY_PROPERTY_NAME));
 				}
 			}
 
-			if (!activeResourceRectangles.isEmpty()) {
+			if ( !activeResourceRectangles.isEmpty() ) {
 				String resourceId = "";
-				for (Map.Entry<String, Shape> passiveResourceEntry : passiveResourceRectangles.entrySet()) {
-					for (int i = 0; i < aPlanninginput.getTASKS().getTASK().size(); i++) {
-						if (passiveResourceEntry.getKey().equals(aPlanninginput.getTASKS().getTASK().get(i).getId()))
-							resourceId = aPlanninginput.getTASKSUITABLERESOURCES().getTASKSUITABLERESOURCE().get(i)
-									.getRESOURCEREFERENCE().getRefid();
+				for ( Map.Entry<String, Shape> passiveResourceEntry : passiveResourceRectangles.entrySet() ) {
+					for ( int i = 0; i < aPlanninginput.getTASKS().getTASK().size(); i++ ) {
+						if ( passiveResourceEntry.getKey().equals(aPlanninginput.getTASKS().getTASK().get(i).getId()) )
+							resourceId = aPlanninginput.getTASKSUITABLERESOURCES().getTASKSUITABLERESOURCE().get(i).getRESOURCEREFERENCE().getRefid();
 					}
-					if (activeResourceRectangles.containsKey(resourceId)) {
+					if ( activeResourceRectangles.containsKey(resourceId) ) {
 						Shape activeResource = activeResourceRectangles.get(resourceId);
 						Shape passiveResource = passiveResourceEntry.getValue();
 						int reachability = Integer.parseInt(activeResourceReachability.get(resourceId));
@@ -121,13 +111,11 @@ public class Reachability extends AbstractCriterion {
 						// LOGGER.debug(msg + "init_x: {} init_y: ", aPoint.x, aPoint.y);
 						int resourceReachabilityWidthDif = reachability - aDimension.width;
 						int resourceReachabilityHeigntDif = reachability - aDimension.height;
-						Dimension reachabilityDimension = new Dimension(2 * reachability + aDimension.width,
-								2 * reachability + aDimension.height);
-						Point reachabilityPoint = new Point(aPoint.x - resourceReachabilityHeigntDif,
-								aPoint.y - resourceReachabilityWidthDif);
+						Dimension reachabilityDimension = new Dimension(2 * reachability + aDimension.width, 2 * reachability + aDimension.height);
+						Point reachabilityPoint = new Point(aPoint.x - resourceReachabilityHeigntDif, aPoint.y - resourceReachabilityWidthDif);
 						Rectangle reachabilityRectangle = new Rectangle(reachabilityPoint, reachabilityDimension);
-						reachabilitySum += (passiveResource.getBounds().intersects(reachabilityRectangle)
-								&& !passiveResource.intersects(activeResource.getBounds())) ? 1 : 0;
+						reachabilitySum += (passiveResource.getBounds().intersects(reachabilityRectangle) && !passiveResource.intersects(activeResource.getBounds())) ? 1
+								: 0;
 					}
 				}
 			}
@@ -136,10 +124,10 @@ public class Reachability extends AbstractCriterion {
 		// result = (double) reachabilitySumTotal/*/ (double) sr*/;
 		LOGGER.trace("{} criterion: {} result: {}", msg, CRITERION_NAME, result);
 		try {
-			fileWriter.append(
-					"Alternative " + alternativeCounter + ":\n\t" + alternative + " ]\n\t\tScore: " + result + "\n\n");
-		} catch (IOException e) {
-			// LOGGER.error(ExceptionUtils.getStackTrace(e));
+			fileWriter.append("Alternative " + alternativeCounter + ":\n\t" + alternative + " ]\n\t\tScore: " + result + "\n\n");
+		}
+		catch ( IOException e ) {
+			//LOGGER.error(ExceptionUtils.getStackTrace(e));
 		}
 		alternativeCounter++;
 		return result;

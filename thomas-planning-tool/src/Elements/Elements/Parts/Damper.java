@@ -4,6 +4,6 @@ import java.util.Vector;
 
 public class Damper extends Parts {
 
-	public Vector myParts;
+    public Vector  myParts;
 
 }

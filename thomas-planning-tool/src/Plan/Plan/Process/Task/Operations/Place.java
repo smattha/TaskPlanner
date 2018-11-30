@@ -11,20 +11,24 @@ import Elements.Tools.ThomasTool;
 import Plan.Process.Task.Operations.Actions.Navigate;
 import Plan.Process.Task.Operations.Actions.Retract;
 
-public class Place extends Operations {
+public class Place extends Operations{
 
-	private Gripper tool1;
 
-	public Place(String name, ThomasTool tool) {
-		this.tool = tool;
-		this.name = name;
-		actions = new ArrayList<Actions>();
+  private Gripper tool1;
 
-		actions.add(new Navigate());
-		actions.add(new Move());
-		actions.add(new Release());
-		actions.add(new Retract());
-
-	}
+    
+    
+    public Place(String name,ThomasTool tool )
+    {
+    	this.tool=tool;
+    	this.name=name;
+    	actions=new ArrayList<Actions>();
+    	
+    	actions.add(new Navigate());
+    	actions.add(new Move());
+    	actions.add(new Release());
+    	actions.add(new Retract());
+    	
+    }
 
 }

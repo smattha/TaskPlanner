@@ -21,25 +21,24 @@ import planning.scheduler.algorithms.impact.criteria.AbstractCriterion;
 import planning.scheduler.simulation.interfaces.PlanHelperInterface;
 
 /**
- * It expresses a value indicative of the percentage of the overall Floor Space
- * that is occupied by the components. This is done by accepting that the limits
- * of the floor space that is occupied can be derived by the objects that are
- * placed the farthest to the +x and -x axis and to the +y and -y axis
+ * It expresses a value indicative of the percentage of the overall Floor Space that is occupied by the components.
+ * This is done by accepting that the limits of the floor space that is occupied can be derived by the objects that are
+ * placed the farthest
+ * to the +x and -x axis and to the +y and -y axis
  * 
  * @author Jason
  *
  */
 public class FloorSpace extends AbstractCriterion {
 
-	private static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(FloorSpace.class);
-	private static final String CRITERION_NAME = "FLOOR SPACE";
-	private Map<String, Point> resourcesAndPartsMapingForSR;
+	private static org.slf4j.Logger	LOGGER			= LoggerFactory.getLogger(FloorSpace.class);
+	private static final String		CRITERION_NAME	= "FLOOR SPACE";
+	private Map<String, Point>		resourcesAndPartsMapingForSR;
 
 	/**
 	 * Hide constructor
 	 */
-	public FloorSpace() {
-	}
+	public FloorSpace() {}
 
 	/**
 	 * @param resourcesAndPartsMapingForSR
@@ -56,10 +55,10 @@ public class FloorSpace extends AbstractCriterion {
 		double floorSpaceSum = 0;
 		double partialFloorSpace = 0;
 
-		for (TreeNode[] path : paths) {
-			for (TreeNode treeNode : path) {
+		for ( TreeNode[] path : paths ) {
+			for ( TreeNode treeNode : path ) {
 				LayerNode node = (LayerNode) treeNode;
-				for (Assignment assignment : node.getNodeAssignments()) {
+				for ( Assignment assignment : node.getNodeAssignments() ) {
 					String taskId = assignment.getTask().getTaskId();
 					String resourceId = assignment.getResource().getResourceId();
 
@@ -80,31 +79,20 @@ public class FloorSpace extends AbstractCriterion {
 					double xResource = resourcePoint.getX();
 					double yResource = resourcePoint.getY();
 
-					double widthTask = Convert.getDouble(assignment.getTask().getTaskDataModel()
-							.getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME));
-					double heightTask = Convert.getDouble(assignment.getTask().getTaskDataModel()
-							.getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME));
-					double widthResource = Convert.getDouble(assignment.getResource().getResourceDataModel()
-							.getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME));
-					double heightResource = Convert.getDouble(assignment.getResource().getResourceDataModel()
-							.getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME));
+					double widthTask = Convert.getDouble(assignment.getTask().getTaskDataModel().getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME));
+					double heightTask = Convert.getDouble(assignment.getTask().getTaskDataModel().getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME));
+					double widthResource = Convert.getDouble(assignment.getResource().getResourceDataModel().getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME));
+					double heightResource = Convert.getDouble(assignment.getResource().getResourceDataModel().getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME));
 
 					minxFloor = ((xTask < xResource) ? xTask : xResource);
 					minyFloor = ((yTask < yResource) ? yTask : yResource);
-					maxxFloor = (((xTask + widthTask) > (xResource + widthResource)) ? (xTask + widthTask)
-							: (xResource + widthResource));
-					maxyFloor = (((yTask + heightTask) > (yResource + heightResource)) ? (yTask + heightTask)
-							: (yResource + heightResource));
+					maxxFloor = (((xTask + widthTask) > (xResource + widthResource)) ? (xTask + widthTask) : (xResource + widthResource));
+					maxyFloor = (((yTask + heightTask) > (yResource + heightResource)) ? (yTask + heightTask) : (yResource + heightResource));
 
-					partialFloorSpaceTemp = (((MapParameters.MAP_HEIGHT * MapParameters.MAP_WIDTH)
-							- ((maxxFloor - minxFloor) * (maxyFloor - minyFloor)))
-							/ ((MapParameters.MAP_HEIGHT * MapParameters.MAP_WIDTH)
-									- (DemoPlanningGenerator3D.MIN_RESOURCE_FLOOR_SPACE
-											+ DemoPlanningGenerator3D.MIN_FLOORSPACE_TASKS)));
+					partialFloorSpaceTemp = (((MapParameters.MAP_HEIGHT * MapParameters.MAP_WIDTH) - ((maxxFloor - minxFloor) * (maxyFloor - minyFloor))) / ((MapParameters.MAP_HEIGHT * MapParameters.MAP_WIDTH) - (DemoPlanningGenerator3D.MIN_RESOURCE_FLOOR_SPACE + DemoPlanningGenerator3D.MIN_FLOORSPACE_TASKS)));
 					partialFloorSpace += partialFloorSpaceTemp;
 
-					LOGGER.trace(msg + " taskId=" + taskId + " resourceId=" + resourceId + FloorSpace.CRITERION_NAME
-							+ "=" + partialFloorSpace);
+					LOGGER.trace(msg + " taskId=" + taskId + " resourceId=" + resourceId + FloorSpace.CRITERION_NAME + "=" + partialFloorSpace);
 				}
 				partialFloorSpace = partialFloorSpace / path.length;
 				floorSpaceSum += partialFloorSpace;

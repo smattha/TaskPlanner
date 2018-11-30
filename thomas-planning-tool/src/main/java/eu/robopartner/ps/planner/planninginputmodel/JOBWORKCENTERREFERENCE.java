@@ -5,6 +5,7 @@
 // Generated on: 2015.10.12 at 02:45:59 PM EEST 
 //
 
+
 package eu.robopartner.ps.planner.planninginputmodel;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,13 +14,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -38,27 +37,31 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "JOB_WORKCENTER_REFERENCE")
 public class JOBWORKCENTERREFERENCE {
 
-	@XmlAttribute(name = "refid", required = true)
-	protected String refid;
+    @XmlAttribute(name = "refid", required = true)
+    protected String refid;
 
-	/**
-	 * Gets the value of the refid property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getRefid() {
-		return refid;
-	}
+    /**
+     * Gets the value of the refid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRefid() {
+        return refid;
+    }
 
-	/**
-	 * Sets the value of the refid property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setRefid(String value) {
-		this.refid = value;
-	}
+    /**
+     * Sets the value of the refid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRefid(String value) {
+        this.refid = value;
+    }
 
 }

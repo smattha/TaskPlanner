@@ -10,13 +10,15 @@ import java.awt.Dimension;
  */
 public abstract class LayoutsAndHumanRobotPlanningEvaluator {
 
-	/**
-	 * @param shopfloorDimension need to generate layouts
-	 * @param theLayoutInput     needed to generate layouts
-	 */
-	public LayoutsAndHumanRobotPlanningEvaluator(Dimension shopfloorDimension,
-			LayoutGenerationInputInterface theLayoutInput) {
+    /**
+     * @param shopfloorDimension
+     *            need to generate layouts
+     * @param theLayoutInput
+     *            needed to generate layouts
+     */
+    public LayoutsAndHumanRobotPlanningEvaluator(Dimension shopfloorDimension,
+	    LayoutGenerationInputInterface theLayoutInput) {
 
-	}
+    }
 
 }

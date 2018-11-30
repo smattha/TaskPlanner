@@ -25,7 +25,7 @@ import planning.scheduler.simulation.TaskSimulator;
 /**
  * @author Spyros Helper class to provide conversion functionality
  */
-@SuppressWarnings("restriction")
+@SuppressWarnings ("restriction")
 public abstract class DataModelToAWTHelper {
 
 	/**
@@ -33,7 +33,7 @@ public abstract class DataModelToAWTHelper {
 	 * @param simulator
 	 * @return
 	 */
-	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(DataModelToAWTHelper.class);
+	private static final org.slf4j.Logger	LOGGER	= LoggerFactory.getLogger(DataModelToAWTHelper.class);
 
 	public final static Rectangle createRectangle(ResourceSimulator resource, TaskSimulator task) {
 		Dimension aDimension = DataModelToAWTHelper.getDimensionFromTask(task);
@@ -97,19 +97,19 @@ public abstract class DataModelToAWTHelper {
 		Point point = DataModelToAWTHelper.getPointFromResource(resource);
 		double x = point.x;
 		double y = point.y;
-		switch (shape) {
-		case MapToResourcesAndTasks.SHAPE_CIRCLE:
-			createdShape = new Ellipse2D.Double(x, y, width, width);
-			break;
-		case MapToResourcesAndTasks.SHAPE_OVAL:
-			createdShape = new Ellipse2D.Double(x, y, width, height);
-			break;
-		case MapToResourcesAndTasks.SHAPE_REACTANGLE:
-			createdShape = new Rectangle((int) x, (int) y, width, height);
-			break;
-		default:
-			RuntimeException runtimeException = new RuntimeException(msg + "shape not determined");
-			// DataModelToAWTHelper.LOGGER.error(ExceptionUtils.getStackTrace(runtimeException));
+		switch ( shape ) {
+			case MapToResourcesAndTasks.SHAPE_CIRCLE:
+				createdShape = new Ellipse2D.Double(x, y, width, width);
+				break;
+			case MapToResourcesAndTasks.SHAPE_OVAL:
+				createdShape = new Ellipse2D.Double(x, y, width, height);
+				break;
+			case MapToResourcesAndTasks.SHAPE_REACTANGLE:
+				createdShape = new Rectangle((int) x, (int) y, width, height);
+				break;
+			default:
+				RuntimeException runtimeException = new RuntimeException(msg + "shape not determined");
+				//DataModelToAWTHelper.LOGGER.error(ExceptionUtils.getStackTrace(runtimeException));
 		}
 		return createdShape;
 	}
@@ -117,19 +117,19 @@ public abstract class DataModelToAWTHelper {
 	public final static Shape createShape(String shape, int x, int y, int width, int height) {
 		String msg = ".createShape(): ";
 		Shape createdShape = null;
-		switch (shape) {
-		case MapToResourcesAndTasks.SHAPE_CIRCLE:
-			createdShape = new Ellipse2D.Double(x, y, width, width);
-			break;
-		case MapToResourcesAndTasks.SHAPE_OVAL:
-			createdShape = new Ellipse2D.Double(x, y, width, height);
-			break;
-		case MapToResourcesAndTasks.SHAPE_REACTANGLE:
-			createdShape = new Rectangle((int) x, (int) y, width, height);
-			break;
-		default:
-			RuntimeException runtimeException = new RuntimeException(msg + "shape not determined");
-			// DataModelToAWTHelper.LOGGER.error(ExceptionUtils.getStackTrace(runtimeException));
+		switch ( shape ) {
+			case MapToResourcesAndTasks.SHAPE_CIRCLE:
+				createdShape = new Ellipse2D.Double(x, y, width, width);
+				break;
+			case MapToResourcesAndTasks.SHAPE_OVAL:
+				createdShape = new Ellipse2D.Double(x, y, width, height);
+				break;
+			case MapToResourcesAndTasks.SHAPE_REACTANGLE:
+				createdShape = new Rectangle((int) x, (int) y, width, height);
+				break;
+			default:
+				RuntimeException runtimeException = new RuntimeException(msg + "shape not determined");
+				//DataModelToAWTHelper.LOGGER.error(ExceptionUtils.getStackTrace(runtimeException));
 		}
 		return createdShape;
 	}
@@ -149,19 +149,19 @@ public abstract class DataModelToAWTHelper {
 		double y = point.y;
 		int width = Integer.parseInt(task.getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME));
 		int height = Integer.parseInt(task.getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME));
-		switch (shape) {
-		case MapToResourcesAndTasks.SHAPE_CIRCLE:
-			createdShape = new Ellipse2D.Double(x, y, width, width);
-			break;
-		case MapToResourcesAndTasks.SHAPE_OVAL:
-			createdShape = new Ellipse2D.Double(x, y, width, height);
-			break;
-		case MapToResourcesAndTasks.SHAPE_REACTANGLE:
-			createdShape = new Rectangle((int) x, (int) y, width, height);
-			break;
-		default:
-			RuntimeException runtimeException = new RuntimeException(msg + "shape not determined");
-			// DataModelToAWTHelper.LOGGER.error(ExceptionUtils.getStackTrace(runtimeException));
+		switch ( shape ) {
+			case MapToResourcesAndTasks.SHAPE_CIRCLE:
+				createdShape = new Ellipse2D.Double(x, y, width, width);
+				break;
+			case MapToResourcesAndTasks.SHAPE_OVAL:
+				createdShape = new Ellipse2D.Double(x, y, width, height);
+				break;
+			case MapToResourcesAndTasks.SHAPE_REACTANGLE:
+				createdShape = new Rectangle((int) x, (int) y, width, height);
+				break;
+			default:
+				RuntimeException runtimeException = new RuntimeException(msg + "shape not determined");
+				//DataModelToAWTHelper.LOGGER.error(ExceptionUtils.getStackTrace(runtimeException));
 		}
 		return createdShape;
 	}
@@ -183,19 +183,19 @@ public abstract class DataModelToAWTHelper {
 		double y = point.y;
 		int width = Integer.parseInt(task.getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME));
 		int height = Integer.parseInt(task.getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME));
-		switch (shape) {
-		case MapToResourcesAndTasks.SHAPE_CIRCLE:
-			createdShape = new Ellipse2D.Double(x, y, width, width);
-			break;
-		case MapToResourcesAndTasks.SHAPE_OVAL:
-			createdShape = new Ellipse2D.Double(x, y, width, height);
-			break;
-		case MapToResourcesAndTasks.SHAPE_REACTANGLE:
-			createdShape = new Rectangle((int) x, (int) y, width, height);
-			break;
-		default:
-			RuntimeException runtimeException = new RuntimeException(msg + "shape not determined");
-			// DataModelToAWTHelper.LOGGER.error(ExceptionUtils.getStackTrace(runtimeException));
+		switch ( shape ) {
+			case MapToResourcesAndTasks.SHAPE_CIRCLE:
+				createdShape = new Ellipse2D.Double(x, y, width, width);
+				break;
+			case MapToResourcesAndTasks.SHAPE_OVAL:
+				createdShape = new Ellipse2D.Double(x, y, width, height);
+				break;
+			case MapToResourcesAndTasks.SHAPE_REACTANGLE:
+				createdShape = new Rectangle((int) x, (int) y, width, height);
+				break;
+			default:
+				RuntimeException runtimeException = new RuntimeException(msg + "shape not determined");
+				//DataModelToAWTHelper.LOGGER.error(ExceptionUtils.getStackTrace(runtimeException));
 		}
 		return createdShape;
 	}
@@ -214,19 +214,19 @@ public abstract class DataModelToAWTHelper {
 		double y = point.y;
 		int width = dimension.width;
 		int height = dimension.height;
-		switch (shape) {
-		case MapToResourcesAndTasks.SHAPE_CIRCLE:
-			createdShape = new Ellipse2D.Double(x, y, width, width);
-			break;
-		case MapToResourcesAndTasks.SHAPE_OVAL:
-			createdShape = new Ellipse2D.Double(x, y, width, height);
-			break;
-		case MapToResourcesAndTasks.SHAPE_REACTANGLE:
-			createdShape = new Rectangle((int) x, (int) y, width, height);
-			break;
-		default:
-			RuntimeException runtimeException = new RuntimeException(msg + "shape not determined");
-			// DataModelToAWTHelper.LOGGER.error(ExceptionUtils.getStackTrace(runtimeException));
+		switch ( shape ) {
+			case MapToResourcesAndTasks.SHAPE_CIRCLE:
+				createdShape = new Ellipse2D.Double(x, y, width, width);
+				break;
+			case MapToResourcesAndTasks.SHAPE_OVAL:
+				createdShape = new Ellipse2D.Double(x, y, width, height);
+				break;
+			case MapToResourcesAndTasks.SHAPE_REACTANGLE:
+				createdShape = new Rectangle((int) x, (int) y, width, height);
+				break;
+			default:
+				RuntimeException runtimeException = new RuntimeException(msg + "shape not determined");
+				//DataModelToAWTHelper.LOGGER.error(ExceptionUtils.getStackTrace(runtimeException));
 		}
 		return createdShape;
 	}
@@ -237,15 +237,14 @@ public abstract class DataModelToAWTHelper {
 		int initialY = (int) y;
 		AffineTransform rotate = AffineTransform.getRotateInstance(deegreToRadians, x, y);
 		Shape tempRotatedShape = rotate.createTransformedShape(shape);
-		Shape rotatedShape = DataModelToAWTHelper.createShape(kindOfShape, initialX, initialY,
-				tempRotatedShape.getBounds().width, tempRotatedShape.getBounds().height);
+		Shape rotatedShape = DataModelToAWTHelper.createShape(kindOfShape, initialX, initialY, tempRotatedShape.getBounds().width, tempRotatedShape.getBounds().height);
 		LOGGER.debug("\nx: {} y: {} newX: {} newY:{}", x, y, rotatedShape.getBounds().x, rotatedShape.getBounds().y);
 		return rotatedShape;
 	}
 
 	/**
-	 * Does not return correct box dimensions TODO find how to fix the return
-	 * argument of the second called method
+	 * Does not return correct box dimensions
+	 * TODO find how to fix the return argument of the second called method
 	 * 
 	 * @param task
 	 * @return

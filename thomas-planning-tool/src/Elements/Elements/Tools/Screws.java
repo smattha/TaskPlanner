@@ -2,20 +2,21 @@ package Elements.Tools;
 
 import java.util.Vector;
 
-public class Screws extends ThomasTool {
 
-	private Integer diameter;
+public class Screws {
 
-	private Integer length;
+  private Integer diameter;
 
-	private Integer pitch;
+  private Integer length;
 
-	private String material;
+  private Integer pitch;
 
-	private String thread;
+  private String material;
 
-	private String headType;
+  private String thread;
 
-	public Vector myTools;
+  private String headType;
+
+    public Vector  myTools;
 
 }

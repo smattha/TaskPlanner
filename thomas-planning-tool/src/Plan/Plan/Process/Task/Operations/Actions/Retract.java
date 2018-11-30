@@ -2,18 +2,17 @@ package Plan.Process.Task.Operations.Actions;
 
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
 
-public class Retract extends Actions {
+public class Retract extends Actions{
 
-	Retract(Position pose) {
-		this.parameter = pose;
-	}
+ Retract(Position pose )
+ {
+	  this.parameter = pose;
+ }
+ 
+ public Retract() {
+	// TODO Auto-generated constructor stub
+}
 
-	public Retract() {
-		// TODO Auto-generated constructor stub
-	}
-
-	Position getPose() {
-		return (Position) parameter;
-	};
+Position getPose() {return (Position) parameter;};
 
 }

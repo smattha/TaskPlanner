@@ -5,6 +5,7 @@
 // Generated on: 2015.10.12 at 02:45:59 PM EEST 
 //
 
+
 package eu.robopartner.ps.planner.planninginputmodel;
 
 import java.util.ArrayList;
@@ -15,13 +16,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -38,40 +37,42 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "tooltype" })
+@XmlType(name = "", propOrder = {
+    "tooltype"
+})
 @XmlRootElement(name = "TOOL_TYPES")
 public class TOOLTYPES {
 
-	@XmlElement(name = "TOOL_TYPE", required = true)
-	protected List<TOOLTYPE> tooltype;
+    @XmlElement(name = "TOOL_TYPE", required = true)
+    protected List<TOOLTYPE> tooltype;
 
-	/**
-	 * Gets the value of the tooltype property.
-	 * 
-	 * <p>
-	 * This accessor method returns a reference to the live list, not a snapshot.
-	 * Therefore any modification you make to the returned list will be present
-	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-	 * for the tooltype property.
-	 * 
-	 * <p>
-	 * For example, to add a new item, do as follows:
-	 * 
-	 * <pre>
-	 * getTOOLTYPE().add(newItem);
-	 * </pre>
-	 * 
-	 * 
-	 * <p>
-	 * Objects of the following type(s) are allowed in the list {@link TOOLTYPE }
-	 * 
-	 * 
-	 */
-	public List<TOOLTYPE> getTOOLTYPE() {
-		if (tooltype == null) {
-			tooltype = new ArrayList<TOOLTYPE>();
-		}
-		return this.tooltype;
-	}
+    /**
+     * Gets the value of the tooltype property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the tooltype property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getTOOLTYPE().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TOOLTYPE }
+     * 
+     * 
+     */
+    public List<TOOLTYPE> getTOOLTYPE() {
+        if (tooltype == null) {
+            tooltype = new ArrayList<TOOLTYPE>();
+        }
+        return this.tooltype;
+    }
 
 }

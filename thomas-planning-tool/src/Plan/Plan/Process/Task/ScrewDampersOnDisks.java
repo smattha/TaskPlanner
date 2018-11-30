@@ -5,8 +5,8 @@ import java.util.Vector;
 
 public class ScrewDampersOnDisks {
 
-	private Screw operation1;
+  private Screw operation1;
 
-	public Vector myDampersAssemblyOnTheDisks;
+    public Vector  myDampersAssemblyOnTheDisks;
 
 }

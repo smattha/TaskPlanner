@@ -17,27 +17,27 @@ import planning.model.ResourceDataModel;
  */
 public class MapParameters {
 
-	private static final String RESOURCE_ID_PREFIX = "R";
-	private static final String RESOURCE_ID_XY_SEPERATOR = "_";
-	private static final String RESOURCE_ID_YZ_SEPERATOR = "!";
-	private static final String RESOURCE_ID_YRZ_SEPERATOR = "#";
-	public static final double AXIS_Z_DISCRETIZATION = 0.5;
+	private static final String	RESOURCE_ID_PREFIX			= "R";
+	private static final String	RESOURCE_ID_XY_SEPERATOR	= "_";
+	private static final String	RESOURCE_ID_YZ_SEPERATOR	= "!";
+	private static final String	RESOURCE_ID_YRZ_SEPERATOR	= "#";
+	public static final double	AXIS_Z_DISCRETIZATION		= 0.5;
 
 	// TODO the below commented line(s) are the 3D criteria changes
 	// public static int MAP_Z = (int) Math.ceil(2000/500);
 	// TODO could be inserted in the workcenter if properties in workcenters are
 	// implemented.
 
-	public static int MAP_HEIGHT = (int) Math.ceil(5000 / 500);
+	public static int			MAP_HEIGHT					= (int) Math.ceil(5000 / 500);
 	// TODO could be inserted in the workcenter if properties in workcenters are
 	// implemented.
-	public static int MAP_LENGTH = (int) Math.ceil(5000 / 500);
+	public static int			MAP_LENGTH					= (int) Math.ceil(5000 / 500);
 
-	public static int MAP_WIDTH = (int) Math.ceil(5000 / 500);
+	public static int			MAP_WIDTH					= (int) Math.ceil(5000 / 500);
 	// TODO could be inserted in the workcenter if properties in workcenters are
 	// implemented.
 
-	public static int speed = 250; // (mm/s)
+	public static int			speed						= 250;							// (mm/s)
 
 	public static final String getIDfromLocation(Point point) {
 		return MapParameters.getIDfromLocation(point.x, point.y);
@@ -49,8 +49,7 @@ public class MapParameters {
 	 * @return
 	 */
 	public static final String getIDfromLocation(int x, int y) {
-		return MapParameters.RESOURCE_ID_PREFIX + x + MapParameters.RESOURCE_ID_XY_SEPERATOR + y
-				+ MapParameters.RESOURCE_ID_YZ_SEPERATOR + 0;
+		return MapParameters.RESOURCE_ID_PREFIX + x + MapParameters.RESOURCE_ID_XY_SEPERATOR + y + MapParameters.RESOURCE_ID_YZ_SEPERATOR + 0;
 	}
 
 	public static final String getIDFromLocation(double z) {
@@ -72,8 +71,7 @@ public class MapParameters {
 	 * @return
 	 */
 	public static final String getIDfromLocation(double x, double y, double z) {
-		return MapParameters.RESOURCE_ID_PREFIX + x + MapParameters.RESOURCE_ID_XY_SEPERATOR + y
-				+ MapParameters.RESOURCE_ID_YZ_SEPERATOR + z;
+		return MapParameters.RESOURCE_ID_PREFIX + x + MapParameters.RESOURCE_ID_XY_SEPERATOR + y + MapParameters.RESOURCE_ID_YZ_SEPERATOR + z;
 	}
 
 	/**
@@ -84,8 +82,7 @@ public class MapParameters {
 	 * @return
 	 */
 	public static final String getIDfromLocationAndRotation(double x, double y, double rZ) {
-		return MapParameters.RESOURCE_ID_PREFIX + x + MapParameters.RESOURCE_ID_XY_SEPERATOR + y
-				+ MapParameters.RESOURCE_ID_YRZ_SEPERATOR + rZ;
+		return MapParameters.RESOURCE_ID_PREFIX + x + MapParameters.RESOURCE_ID_XY_SEPERATOR + y + MapParameters.RESOURCE_ID_YRZ_SEPERATOR + rZ;
 	}
 
 	/**
@@ -94,12 +91,9 @@ public class MapParameters {
 	 */
 	public static final Point3D getLocationFromID(String resourceId) {
 
-		String xSubstring = resourceId.substring(MapParameters.RESOURCE_ID_PREFIX.length(),
-				resourceId.indexOf(MapParameters.RESOURCE_ID_XY_SEPERATOR));
-		String ySubstring = resourceId.substring(
-				MapParameters.RESOURCE_ID_XY_SEPERATOR.length()
-						+ resourceId.indexOf(MapParameters.RESOURCE_ID_XY_SEPERATOR),
-				resourceId.indexOf(MapParameters.RESOURCE_ID_YZ_SEPERATOR));
+		String xSubstring = resourceId.substring(MapParameters.RESOURCE_ID_PREFIX.length(), resourceId.indexOf(MapParameters.RESOURCE_ID_XY_SEPERATOR));
+		String ySubstring = resourceId.substring(MapParameters.RESOURCE_ID_XY_SEPERATOR.length()
+				+ resourceId.indexOf(MapParameters.RESOURCE_ID_XY_SEPERATOR), resourceId.indexOf(MapParameters.RESOURCE_ID_YZ_SEPERATOR));
 		String zSubstring = resourceId.substring(MapParameters.RESOURCE_ID_YZ_SEPERATOR.length()
 				+ resourceId.indexOf(MapParameters.RESOURCE_ID_YZ_SEPERATOR));
 		int x = (int) Double.parseDouble(xSubstring);

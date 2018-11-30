@@ -5,6 +5,7 @@
 // Generated on: 2017.05.02 at 01:40:46 PM EEST 
 //
 
+
 package planning.model.impact.jaxb.planning.output;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,13 +14,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -41,129 +40,148 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "day", "month", "year", "hour", "minutes", "seconds" })
+@XmlType(name = "", propOrder = {
+    "day",
+    "month",
+    "year",
+    "hour",
+    "minutes",
+    "seconds"
+})
 @XmlRootElement(name = "STARTDATE")
 public class STARTDATE {
 
-	@XmlElement(name = "DAY")
-	protected int day;
-	@XmlElement(name = "MONTH")
-	protected int month;
-	@XmlElement(name = "YEAR")
-	protected int year;
-	@XmlElement(name = "HOUR")
-	protected Integer hour;
-	@XmlElement(name = "MINUTES")
-	protected Integer minutes;
-	@XmlElement(name = "SECONDS")
-	protected Integer seconds;
+    @XmlElement(name = "DAY")
+    protected int day;
+    @XmlElement(name = "MONTH")
+    protected int month;
+    @XmlElement(name = "YEAR")
+    protected int year;
+    @XmlElement(name = "HOUR")
+    protected Integer hour;
+    @XmlElement(name = "MINUTES")
+    protected Integer minutes;
+    @XmlElement(name = "SECONDS")
+    protected Integer seconds;
 
-	/**
-	 * Gets the value of the day property.
-	 * 
-	 */
-	public int getDAY() {
-		return day;
-	}
+    /**
+     * Gets the value of the day property.
+     * 
+     */
+    public int getDAY() {
+        return day;
+    }
 
-	/**
-	 * Sets the value of the day property.
-	 * 
-	 */
-	public void setDAY(int value) {
-		this.day = value;
-	}
+    /**
+     * Sets the value of the day property.
+     * 
+     */
+    public void setDAY(int value) {
+        this.day = value;
+    }
 
-	/**
-	 * Gets the value of the month property.
-	 * 
-	 */
-	public int getMONTH() {
-		return month;
-	}
+    /**
+     * Gets the value of the month property.
+     * 
+     */
+    public int getMONTH() {
+        return month;
+    }
 
-	/**
-	 * Sets the value of the month property.
-	 * 
-	 */
-	public void setMONTH(int value) {
-		this.month = value;
-	}
+    /**
+     * Sets the value of the month property.
+     * 
+     */
+    public void setMONTH(int value) {
+        this.month = value;
+    }
 
-	/**
-	 * Gets the value of the year property.
-	 * 
-	 */
-	public int getYEAR() {
-		return year;
-	}
+    /**
+     * Gets the value of the year property.
+     * 
+     */
+    public int getYEAR() {
+        return year;
+    }
 
-	/**
-	 * Sets the value of the year property.
-	 * 
-	 */
-	public void setYEAR(int value) {
-		this.year = value;
-	}
+    /**
+     * Sets the value of the year property.
+     * 
+     */
+    public void setYEAR(int value) {
+        this.year = value;
+    }
 
-	/**
-	 * Gets the value of the hour property.
-	 * 
-	 * @return possible object is {@link Integer }
-	 * 
-	 */
-	public Integer getHOUR() {
-		return hour;
-	}
+    /**
+     * Gets the value of the hour property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getHOUR() {
+        return hour;
+    }
 
-	/**
-	 * Sets the value of the hour property.
-	 * 
-	 * @param value allowed object is {@link Integer }
-	 * 
-	 */
-	public void setHOUR(Integer value) {
-		this.hour = value;
-	}
+    /**
+     * Sets the value of the hour property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setHOUR(Integer value) {
+        this.hour = value;
+    }
 
-	/**
-	 * Gets the value of the minutes property.
-	 * 
-	 * @return possible object is {@link Integer }
-	 * 
-	 */
-	public Integer getMINUTES() {
-		return minutes;
-	}
+    /**
+     * Gets the value of the minutes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getMINUTES() {
+        return minutes;
+    }
 
-	/**
-	 * Sets the value of the minutes property.
-	 * 
-	 * @param value allowed object is {@link Integer }
-	 * 
-	 */
-	public void setMINUTES(Integer value) {
-		this.minutes = value;
-	}
+    /**
+     * Sets the value of the minutes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setMINUTES(Integer value) {
+        this.minutes = value;
+    }
 
-	/**
-	 * Gets the value of the seconds property.
-	 * 
-	 * @return possible object is {@link Integer }
-	 * 
-	 */
-	public Integer getSECONDS() {
-		return seconds;
-	}
+    /**
+     * Gets the value of the seconds property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getSECONDS() {
+        return seconds;
+    }
 
-	/**
-	 * Sets the value of the seconds property.
-	 * 
-	 * @param value allowed object is {@link Integer }
-	 * 
-	 */
-	public void setSECONDS(Integer value) {
-		this.seconds = value;
-	}
+    /**
+     * Sets the value of the seconds property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setSECONDS(Integer value) {
+        this.seconds = value;
+    }
 
 }

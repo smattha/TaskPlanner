@@ -22,27 +22,34 @@ import lms.robopartner.task_planner.LayoutPlanningInputGenerator;
 
 public class ThomasResource extends RESOURCE {
 
-	private Integer resourceID;
+	private BigInteger resourceID;
 
 	private String status;
-
 	private Position location;
-
 	public Vector myElements;
 
 	public String description;
 	public String name = "Robot";
+	public String type;
 
 	protected Vector<ThomasTool> compatibleToolList = new Vector<ThomasTool>();
 
 	public Boolean addCompatibleTool(ThomasTool t) {
 		compatibleToolList.add(t);
 		return true;
-
 	}
 
 	public ThomasResource(String name) {
+		
 		this.name = name;
+		properties = new PROPERTIES();
+		
+		properties.getPROPERTY()
+		.add(MapToResourcesAndTasks.getProperty("Robot Property", "I workedddddddddddddddddddddddd"));
+		
+
+		
+		gererateResource();
 	}
 
 	public ThomasResource() {
@@ -51,8 +58,9 @@ public class ThomasResource extends RESOURCE {
 
 	public Boolean gererateResource() {
 		BigInteger id = IDGenerator.getNewID();
+		resourceID=id;
 
-		properties = new PROPERTIES();
+		
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		RESOURCEAVAILABILITY resourceavailability = myObjectFactory.createRESOURCEAVAILABILITY();
 		NONWORKINGPERIODS nonworkingperiods = myObjectFactory.createNONWORKINGPERIODS();
@@ -65,8 +73,7 @@ public class ThomasResource extends RESOURCE {
 		setPROPERTIES(properties);
 		myObjectFactory = null;
 
-		properties.getPROPERTY()
-				.add(MapToResourcesAndTasks.getProperty("Robot Property", "I workedddddddddddddddddddddddd"));
+
 
 		return true;
 	}
@@ -91,7 +98,7 @@ public class ThomasResource extends RESOURCE {
 	public Boolean suitableForTask(Operations t1) {
 		for (ThomasTool t : compatibleToolList) {
 			if (t.ToolType == t1.getTool().ToolType) {
-				boolean flag = ((Operations) t1).getTool().isCompatible(t);
+				boolean flag = t.isCompatible(((Operations) t1).getTool());
 				if (flag == true) {
 					return true;
 				}

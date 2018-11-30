@@ -1,4 +1,4 @@
-package testingDemo;
+package testingDemo.criteria;
 
 import java.util.Calendar;
 import java.util.Random;
@@ -27,26 +27,7 @@ public class cost extends AbstractCriterion {
 		}
 		int sr = paths.size();
 		double costSum = 0;
-		// DEBUG INFO ...
-		// System.out.print("\tFOR ALTERNATIVE : ");
-		// TreeNode[] tmppath = paths.get(0);
-		// if(tmppath!=null && tmppath.length>=IMPACT.getDH())
-		// {
-		// for (int j = 0; j < IMPACT.getDH()+1; j++)
-		// {
-		// LayerNode node = (LayerNode)tmppath[j];
-		// if(node.getUserObject()==null)
-		// continue;
-		// Vector<Assignment> assignments = node.getNodeAssignments();
-		// for (int k = 0; k < assignments.size(); k++)
-		// {
-		// Assignment assignment = assignments.get(k);
-		// TaskSimulator taskSimulator = assignment.getTask();
-		// System.out.print(" "+taskSimulator.getTaskDataModel().getTaskId());
-		// }
-		// }
-		// }
-		// System.out.println();
+
 
 		ManualPlanHelperInterface manualHelper = helper.getManualPlanningHelperInterface();
 		for (int i = 0; i < sr; i++) {

@@ -11,18 +11,18 @@ import Plan.Process.Task.Operations.ReadBarcode;
 
 public class RightDamperCompression {
 
-	private AlignmentRod part2;
+  private AlignmentRod part2;
 
-	private Cap part3;
+  private Cap part3;
 
-	private Nuts tool1;
+  private Nuts tool1;
 
-	private PressMachine resource3;
+  private PressMachine resource3;
 
-	private ReadBarcode operation3;
+  private ReadBarcode operation3;
 
-	private Alignment operation4;
+  private Alignment operation4;
 
-	public Vector myRightDamper;
+    public Vector  myRightDamper;
 
 }

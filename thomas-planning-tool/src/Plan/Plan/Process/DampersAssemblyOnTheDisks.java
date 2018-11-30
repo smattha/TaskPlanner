@@ -10,16 +10,16 @@ import Elements.resources.MRP;
 
 public class DampersAssemblyOnTheDisks {
 
-	private Damper part1;
+  private Damper part1;
 
-	private Disk part2;
+  private Disk part2;
 
-	private Human resource1;
+  private Human resource1;
 
-	private MRP resource2;
+  private MRP resource2;
 
-	public MPP resource3;
+  public MPP resource3;
 
-	public Vector myFrontAxleAssembly;
-
+    public Vector  myFrontAxleAssembly;
+    
 }

@@ -2,18 +2,18 @@ package Plan.Process.Task.Operations.Actions;
 
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
 
-public class Move extends Actions {
+public class Move  extends Actions{
 
-	Move(Position pose) {
-		this.parameter = pose;
-	}
-
-	public Move() {
+	  
+	  Move(Position pose )
+	  {
+		  this.parameter = pose;
+	  }
+	  
+	  public Move() {
 		// TODO Auto-generated constructor stub
 	}
 
-	Position getPose() {
-		return (Position) parameter;
-	};
-
+	Position getPose() {return (Position) parameter;};
+  
 }

@@ -1,17 +1,19 @@
 package Elements.Sensors;
 
+
 import java.util.Vector;
 
 import Elements.Elements;
 
+
 public class Sensors extends Elements {
 
-	private Integer sensorID;
+  private Integer sensorID;
 
-	private String category;
+  private String category;
 
-	private String description;
+  private String description;
 
-	public Vector myElements;
+    public Vector  myElements;
 
 }

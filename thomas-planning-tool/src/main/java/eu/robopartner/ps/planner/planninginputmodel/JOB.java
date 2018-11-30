@@ -5,6 +5,7 @@
 // Generated on: 2015.10.12 at 02:45:59 PM EEST 
 //
 
+
 package eu.robopartner.ps.planner.planninginputmodel;
 
 import java.util.ArrayList;
@@ -16,13 +17,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -45,174 +44,203 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "name", "description", "arrivaldate", "duedate", "jobtaskreference",
-		"jobworkcenterreference" })
+@XmlType(name = "", propOrder = {
+    "name",
+    "description",
+    "arrivaldate",
+    "duedate",
+    "jobtaskreference",
+    "jobworkcenterreference"
+})
 @XmlRootElement(name = "JOB")
 public class JOB {
 
-	@XmlElement(name = "NAME", required = true)
-	protected String name;
-	@XmlElement(name = "DESCRIPTION", required = true)
-	protected String description;
-	@XmlElement(name = "ARRIVAL_DATE", required = true)
-	protected DATE arrivaldate;
-	@XmlElement(name = "DUE_DATE", required = true)
-	protected DATE duedate;
-	@XmlElement(name = "JOB_TASK_REFERENCE", required = true)
-	protected List<JOBTASKREFERENCE> jobtaskreference;
-	@XmlElement(name = "JOB_WORKCENTER_REFERENCE")
-	protected JOBWORKCENTERREFERENCE jobworkcenterreference;
-	@XmlAttribute(name = "id", required = true)
-	protected String id;
+    @XmlElement(name = "NAME", required = true)
+    protected String name;
+    @XmlElement(name = "DESCRIPTION", required = true)
+    protected String description;
+    @XmlElement(name = "ARRIVAL_DATE", required = true)
+    protected DATE arrivaldate;
+    @XmlElement(name = "DUE_DATE", required = true)
+    protected DATE duedate;
+    @XmlElement(name = "JOB_TASK_REFERENCE", required = true)
+    protected List<JOBTASKREFERENCE> jobtaskreference;
+    @XmlElement(name = "JOB_WORKCENTER_REFERENCE")
+    protected JOBWORKCENTERREFERENCE jobworkcenterreference;
+    @XmlAttribute(name = "id", required = true)
+    protected String id;
 
-	/**
-	 * Gets the value of the name property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getNAME() {
-		return name;
-	}
+    /**
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNAME() {
+        return name;
+    }
 
-	/**
-	 * Sets the value of the name property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setNAME(String value) {
-		this.name = value;
-	}
+    /**
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNAME(String value) {
+        this.name = value;
+    }
 
-	/**
-	 * Gets the value of the description property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getDESCRIPTION() {
-		return description;
-	}
+    /**
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDESCRIPTION() {
+        return description;
+    }
 
-	/**
-	 * Sets the value of the description property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setDESCRIPTION(String value) {
-		this.description = value;
-	}
+    /**
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDESCRIPTION(String value) {
+        this.description = value;
+    }
 
-	/**
-	 * Gets the value of the arrivaldate property.
-	 * 
-	 * @return possible object is {@link DATE }
-	 * 
-	 */
-	public DATE getARRIVALDATE() {
-		return arrivaldate;
-	}
+    /**
+     * Gets the value of the arrivaldate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DATE }
+     *     
+     */
+    public DATE getARRIVALDATE() {
+        return arrivaldate;
+    }
 
-	/**
-	 * Sets the value of the arrivaldate property.
-	 * 
-	 * @param value allowed object is {@link DATE }
-	 * 
-	 */
-	public void setARRIVALDATE(DATE value) {
-		this.arrivaldate = value;
-	}
+    /**
+     * Sets the value of the arrivaldate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DATE }
+     *     
+     */
+    public void setARRIVALDATE(DATE value) {
+        this.arrivaldate = value;
+    }
 
-	/**
-	 * Gets the value of the duedate property.
-	 * 
-	 * @return possible object is {@link DATE }
-	 * 
-	 */
-	public DATE getDUEDATE() {
-		return duedate;
-	}
+    /**
+     * Gets the value of the duedate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DATE }
+     *     
+     */
+    public DATE getDUEDATE() {
+        return duedate;
+    }
 
-	/**
-	 * Sets the value of the duedate property.
-	 * 
-	 * @param value allowed object is {@link DATE }
-	 * 
-	 */
-	public void setDUEDATE(DATE value) {
-		this.duedate = value;
-	}
+    /**
+     * Sets the value of the duedate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DATE }
+     *     
+     */
+    public void setDUEDATE(DATE value) {
+        this.duedate = value;
+    }
 
-	/**
-	 * Gets the value of the jobtaskreference property.
-	 * 
-	 * <p>
-	 * This accessor method returns a reference to the live list, not a snapshot.
-	 * Therefore any modification you make to the returned list will be present
-	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-	 * for the jobtaskreference property.
-	 * 
-	 * <p>
-	 * For example, to add a new item, do as follows:
-	 * 
-	 * <pre>
-	 * getJOBTASKREFERENCE().add(newItem);
-	 * </pre>
-	 * 
-	 * 
-	 * <p>
-	 * Objects of the following type(s) are allowed in the list
-	 * {@link JOBTASKREFERENCE }
-	 * 
-	 * 
-	 */
-	public List<JOBTASKREFERENCE> getJOBTASKREFERENCE() {
-		if (jobtaskreference == null) {
-			jobtaskreference = new ArrayList<JOBTASKREFERENCE>();
-		}
-		return this.jobtaskreference;
-	}
+    /**
+     * Gets the value of the jobtaskreference property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the jobtaskreference property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getJOBTASKREFERENCE().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link JOBTASKREFERENCE }
+     * 
+     * 
+     */
+    public List<JOBTASKREFERENCE> getJOBTASKREFERENCE() {
+        if (jobtaskreference == null) {
+            jobtaskreference = new ArrayList<JOBTASKREFERENCE>();
+        }
+        return this.jobtaskreference;
+    }
 
-	/**
-	 * Gets the value of the jobworkcenterreference property.
-	 * 
-	 * @return possible object is {@link JOBWORKCENTERREFERENCE }
-	 * 
-	 */
-	public JOBWORKCENTERREFERENCE getJOBWORKCENTERREFERENCE() {
-		return jobworkcenterreference;
-	}
+    /**
+     * Gets the value of the jobworkcenterreference property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JOBWORKCENTERREFERENCE }
+     *     
+     */
+    public JOBWORKCENTERREFERENCE getJOBWORKCENTERREFERENCE() {
+        return jobworkcenterreference;
+    }
 
-	/**
-	 * Sets the value of the jobworkcenterreference property.
-	 * 
-	 * @param value allowed object is {@link JOBWORKCENTERREFERENCE }
-	 * 
-	 */
-	public void setJOBWORKCENTERREFERENCE(JOBWORKCENTERREFERENCE value) {
-		this.jobworkcenterreference = value;
-	}
+    /**
+     * Sets the value of the jobworkcenterreference property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JOBWORKCENTERREFERENCE }
+     *     
+     */
+    public void setJOBWORKCENTERREFERENCE(JOBWORKCENTERREFERENCE value) {
+        this.jobworkcenterreference = value;
+    }
 
-	/**
-	 * Gets the value of the id property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getId() {
-		return id;
-	}
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 * Sets the value of the id property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setId(String value) {
-		this.id = value;
-	}
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setId(String value) {
+        this.id = value;
+    }
 
 }

@@ -11,18 +11,18 @@ import Elements.Parts.Stopper;
 
 public class RightDamperPreAssembly {
 
-	private Cap part2;
+  private Cap part2;
 
-	private AlignmentRod part3;
+  private AlignmentRod part3;
 
-	private DustCover part4;
+  private DustCover part4;
 
-	private Spring part5;
+  private Spring part5;
 
-	private Stopper part6;
+  private Stopper part6;
 
-	private SpringSeat part7;
+  private SpringSeat part7;
 
-	public Vector myRightDamper;
+    public Vector  myRightDamper;
 
 }

@@ -5,6 +5,7 @@
 // Generated on: 2015.10.12 at 02:45:59 PM EEST 
 //
 
+
 package eu.robopartner.ps.planner.planninginputmodel;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,13 +16,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -56,436 +55,523 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "workcenters", "resources", "jobs", "tasks", "tasksuitableresources",
-		"taskprecedenceconstraints", "setupmatrices", "tooltypes", "tools", "mobileresourcetypes", "mobileresources" })
+@XmlType(name = "", propOrder = {
+    "workcenters",
+    "resources",
+    "jobs",
+    "tasks",
+    "tasksuitableresources",
+    "taskprecedenceconstraints",
+    "setupmatrices",
+    "tooltypes",
+    "tools",
+    "mobileresourcetypes",
+    "mobileresources"
+})
 @XmlRootElement(name = "PLANNING_INPUT")
 public class PLANNINGINPUT {
 
-	@XmlElement(name = "WORKCENTERS", required = true)
-	protected WORKCENTERS workcenters;
-	@XmlElement(name = "RESOURCES", required = true)
-	protected RESOURCES resources;
-	@XmlElement(name = "JOBS", required = true)
-	protected JOBS jobs;
-	@XmlElement(name = "TASKS", required = true)
-	protected TASKS tasks;
-	@XmlElement(name = "TASK_SUITABLE_RESOURCES", required = true)
-	protected TASKSUITABLERESOURCES tasksuitableresources;
-	@XmlElement(name = "TASK_PRECEDENCE_CONSTRAINTS")
-	protected TASKPRECEDENCECONSTRAINTS taskprecedenceconstraints;
-	@XmlElement(name = "SET_UP_MATRICES")
-	protected SETUPMATRICES setupmatrices;
-	@XmlElement(name = "TOOL_TYPES")
-	protected TOOLTYPES tooltypes;
-	@XmlElement(name = "TOOLS")
-	protected TOOLS tools;
-	@XmlElement(name = "MOBILE_RESOURCE_TYPES")
-	protected MOBILERESOURCETYPES mobileresourcetypes;
-	@XmlElement(name = "MOBILE_RESOURCES")
-	protected MOBILERESOURCES mobileresources;
-	@XmlAttribute(name = "continueAssignmentsAfterPlanEndDate")
-	@XmlSchemaType(name = "anySimpleType")
-	protected String continueAssignmentsAfterPlanEndDate;
-	@XmlAttribute(name = "id")
-	@XmlSchemaType(name = "anySimpleType")
-	protected String id;
-	@XmlAttribute(name = "planEndDate_day")
-	@XmlSchemaType(name = "anySimpleType")
-	protected String planEndDateDay;
-	@XmlAttribute(name = "planEndDate_month")
-	@XmlSchemaType(name = "anySimpleType")
-	protected String planEndDateMonth;
-	@XmlAttribute(name = "planEndDate_year")
-	@XmlSchemaType(name = "anySimpleType")
-	protected String planEndDateYear;
-	@XmlAttribute(name = "planStartDate_day")
-	@XmlSchemaType(name = "anySimpleType")
-	protected String planStartDateDay;
-	@XmlAttribute(name = "planStartDate_month")
-	@XmlSchemaType(name = "anySimpleType")
-	protected String planStartDateMonth;
-	@XmlAttribute(name = "planStartDate_year")
-	@XmlSchemaType(name = "anySimpleType")
-	protected String planStartDateYear;
+    @XmlElement(name = "WORKCENTERS", required = true)
+    protected WORKCENTERS workcenters;
+    @XmlElement(name = "RESOURCES", required = true)
+    protected RESOURCES resources;
+    @XmlElement(name = "JOBS", required = true)
+    protected JOBS jobs;
+    @XmlElement(name = "TASKS", required = true)
+    protected TASKS tasks;
+    @XmlElement(name = "TASK_SUITABLE_RESOURCES", required = true)
+    protected TASKSUITABLERESOURCES tasksuitableresources;
+    @XmlElement(name = "TASK_PRECEDENCE_CONSTRAINTS")
+    protected TASKPRECEDENCECONSTRAINTS taskprecedenceconstraints;
+    @XmlElement(name = "SET_UP_MATRICES")
+    protected SETUPMATRICES setupmatrices;
+    @XmlElement(name = "TOOL_TYPES")
+    protected TOOLTYPES tooltypes;
+    @XmlElement(name = "TOOLS")
+    protected TOOLS tools;
+    @XmlElement(name = "MOBILE_RESOURCE_TYPES")
+    protected MOBILERESOURCETYPES mobileresourcetypes;
+    @XmlElement(name = "MOBILE_RESOURCES")
+    protected MOBILERESOURCES mobileresources;
+    @XmlAttribute(name = "continueAssignmentsAfterPlanEndDate")
+    @XmlSchemaType(name = "anySimpleType")
+    protected String continueAssignmentsAfterPlanEndDate;
+    @XmlAttribute(name = "id")
+    @XmlSchemaType(name = "anySimpleType")
+    protected String id;
+    @XmlAttribute(name = "planEndDate_day")
+    @XmlSchemaType(name = "anySimpleType")
+    protected String planEndDateDay;
+    @XmlAttribute(name = "planEndDate_month")
+    @XmlSchemaType(name = "anySimpleType")
+    protected String planEndDateMonth;
+    @XmlAttribute(name = "planEndDate_year")
+    @XmlSchemaType(name = "anySimpleType")
+    protected String planEndDateYear;
+    @XmlAttribute(name = "planStartDate_day")
+    @XmlSchemaType(name = "anySimpleType")
+    protected String planStartDateDay;
+    @XmlAttribute(name = "planStartDate_month")
+    @XmlSchemaType(name = "anySimpleType")
+    protected String planStartDateMonth;
+    @XmlAttribute(name = "planStartDate_year")
+    @XmlSchemaType(name = "anySimpleType")
+    protected String planStartDateYear;
 
-	/**
-	 * Gets the value of the workcenters property.
-	 * 
-	 * @return possible object is {@link WORKCENTERS }
-	 * 
-	 */
-	public WORKCENTERS getWORKCENTERS() {
-		return workcenters;
-	}
+    /**
+     * Gets the value of the workcenters property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link WORKCENTERS }
+     *     
+     */
+    public WORKCENTERS getWORKCENTERS() {
+        return workcenters;
+    }
 
-	/**
-	 * Sets the value of the workcenters property.
-	 * 
-	 * @param value allowed object is {@link WORKCENTERS }
-	 * 
-	 */
-	public void setWORKCENTERS(WORKCENTERS value) {
-		this.workcenters = value;
-	}
+    /**
+     * Sets the value of the workcenters property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link WORKCENTERS }
+     *     
+     */
+    public void setWORKCENTERS(WORKCENTERS value) {
+        this.workcenters = value;
+    }
 
-	/**
-	 * Gets the value of the resources property.
-	 * 
-	 * @return possible object is {@link RESOURCES }
-	 * 
-	 */
-	public RESOURCES getRESOURCES() {
-		return resources;
-	}
+    /**
+     * Gets the value of the resources property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RESOURCES }
+     *     
+     */
+    public RESOURCES getRESOURCES() {
+        return resources;
+    }
 
-	/**
-	 * Sets the value of the resources property.
-	 * 
-	 * @param value allowed object is {@link RESOURCES }
-	 * 
-	 */
-	public void setRESOURCES(RESOURCES value) {
-		this.resources = value;
-	}
+    /**
+     * Sets the value of the resources property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RESOURCES }
+     *     
+     */
+    public void setRESOURCES(RESOURCES value) {
+        this.resources = value;
+    }
 
-	/**
-	 * Gets the value of the jobs property.
-	 * 
-	 * @return possible object is {@link JOBS }
-	 * 
-	 */
-	public JOBS getJOBS() {
-		return jobs;
-	}
+    /**
+     * Gets the value of the jobs property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JOBS }
+     *     
+     */
+    public JOBS getJOBS() {
+        return jobs;
+    }
 
-	/**
-	 * Sets the value of the jobs property.
-	 * 
-	 * @param value allowed object is {@link JOBS }
-	 * 
-	 */
-	public void setJOBS(JOBS value) {
-		this.jobs = value;
-	}
+    /**
+     * Sets the value of the jobs property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JOBS }
+     *     
+     */
+    public void setJOBS(JOBS value) {
+        this.jobs = value;
+    }
 
-	/**
-	 * Gets the value of the tasks property.
-	 * 
-	 * @return possible object is {@link TASKS }
-	 * 
-	 */
-	public TASKS getTASKS() {
-		return tasks;
-	}
+    /**
+     * Gets the value of the tasks property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TASKS }
+     *     
+     */
+    public TASKS getTASKS() {
+        return tasks;
+    }
 
-	/**
-	 * Sets the value of the tasks property.
-	 * 
-	 * @param value allowed object is {@link TASKS }
-	 * 
-	 */
-	public void setTASKS(TASKS value) {
-		this.tasks = value;
-	}
+    /**
+     * Sets the value of the tasks property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TASKS }
+     *     
+     */
+    public void setTASKS(TASKS value) {
+        this.tasks = value;
+    }
 
-	/**
-	 * Gets the value of the tasksuitableresources property.
-	 * 
-	 * @return possible object is {@link TASKSUITABLERESOURCES }
-	 * 
-	 */
-	public TASKSUITABLERESOURCES getTASKSUITABLERESOURCES() {
-		return tasksuitableresources;
-	}
+    /**
+     * Gets the value of the tasksuitableresources property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TASKSUITABLERESOURCES }
+     *     
+     */
+    public TASKSUITABLERESOURCES getTASKSUITABLERESOURCES() {
+        return tasksuitableresources;
+    }
 
-	/**
-	 * Sets the value of the tasksuitableresources property.
-	 * 
-	 * @param value allowed object is {@link TASKSUITABLERESOURCES }
-	 * 
-	 */
-	public void setTASKSUITABLERESOURCES(TASKSUITABLERESOURCES value) {
-		this.tasksuitableresources = value;
-	}
+    /**
+     * Sets the value of the tasksuitableresources property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TASKSUITABLERESOURCES }
+     *     
+     */
+    public void setTASKSUITABLERESOURCES(TASKSUITABLERESOURCES value) {
+        this.tasksuitableresources = value;
+    }
 
-	/**
-	 * Gets the value of the taskprecedenceconstraints property.
-	 * 
-	 * @return possible object is {@link TASKPRECEDENCECONSTRAINTS }
-	 * 
-	 */
-	public TASKPRECEDENCECONSTRAINTS getTASKPRECEDENCECONSTRAINTS() {
-		return taskprecedenceconstraints;
-	}
+    /**
+     * Gets the value of the taskprecedenceconstraints property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TASKPRECEDENCECONSTRAINTS }
+     *     
+     */
+    public TASKPRECEDENCECONSTRAINTS getTASKPRECEDENCECONSTRAINTS() {
+        return taskprecedenceconstraints;
+    }
 
-	/**
-	 * Sets the value of the taskprecedenceconstraints property.
-	 * 
-	 * @param value allowed object is {@link TASKPRECEDENCECONSTRAINTS }
-	 * 
-	 */
-	public void setTASKPRECEDENCECONSTRAINTS(TASKPRECEDENCECONSTRAINTS value) {
-		this.taskprecedenceconstraints = value;
-	}
+    /**
+     * Sets the value of the taskprecedenceconstraints property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TASKPRECEDENCECONSTRAINTS }
+     *     
+     */
+    public void setTASKPRECEDENCECONSTRAINTS(TASKPRECEDENCECONSTRAINTS value) {
+        this.taskprecedenceconstraints = value;
+    }
 
-	/**
-	 * Gets the value of the setupmatrices property.
-	 * 
-	 * @return possible object is {@link SETUPMATRICES }
-	 * 
-	 */
-	public SETUPMATRICES getSETUPMATRICES() {
-		return setupmatrices;
-	}
+    /**
+     * Gets the value of the setupmatrices property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SETUPMATRICES }
+     *     
+     */
+    public SETUPMATRICES getSETUPMATRICES() {
+        return setupmatrices;
+    }
 
-	/**
-	 * Sets the value of the setupmatrices property.
-	 * 
-	 * @param value allowed object is {@link SETUPMATRICES }
-	 * 
-	 */
-	public void setSETUPMATRICES(SETUPMATRICES value) {
-		this.setupmatrices = value;
-	}
+    /**
+     * Sets the value of the setupmatrices property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SETUPMATRICES }
+     *     
+     */
+    public void setSETUPMATRICES(SETUPMATRICES value) {
+        this.setupmatrices = value;
+    }
 
-	/**
-	 * Gets the value of the tooltypes property.
-	 * 
-	 * @return possible object is {@link TOOLTYPES }
-	 * 
-	 */
-	public TOOLTYPES getTOOLTYPES() {
-		return tooltypes;
-	}
+    /**
+     * Gets the value of the tooltypes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TOOLTYPES }
+     *     
+     */
+    public TOOLTYPES getTOOLTYPES() {
+        return tooltypes;
+    }
 
-	/**
-	 * Sets the value of the tooltypes property.
-	 * 
-	 * @param value allowed object is {@link TOOLTYPES }
-	 * 
-	 */
-	public void setTOOLTYPES(TOOLTYPES value) {
-		this.tooltypes = value;
-	}
+    /**
+     * Sets the value of the tooltypes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TOOLTYPES }
+     *     
+     */
+    public void setTOOLTYPES(TOOLTYPES value) {
+        this.tooltypes = value;
+    }
 
-	/**
-	 * Gets the value of the tools property.
-	 * 
-	 * @return possible object is {@link TOOLS }
-	 * 
-	 */
-	public TOOLS getTOOLS() {
-		return tools;
-	}
+    /**
+     * Gets the value of the tools property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TOOLS }
+     *     
+     */
+    public TOOLS getTOOLS() {
+        return tools;
+    }
 
-	/**
-	 * Sets the value of the tools property.
-	 * 
-	 * @param value allowed object is {@link TOOLS }
-	 * 
-	 */
-	public void setTOOLS(TOOLS value) {
-		this.tools = value;
-	}
+    /**
+     * Sets the value of the tools property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TOOLS }
+     *     
+     */
+    public void setTOOLS(TOOLS value) {
+        this.tools = value;
+    }
 
-	/**
-	 * Gets the value of the mobileresourcetypes property.
-	 * 
-	 * @return possible object is {@link MOBILERESOURCETYPES }
-	 * 
-	 */
-	public MOBILERESOURCETYPES getMOBILERESOURCETYPES() {
-		return mobileresourcetypes;
-	}
+    /**
+     * Gets the value of the mobileresourcetypes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link MOBILERESOURCETYPES }
+     *     
+     */
+    public MOBILERESOURCETYPES getMOBILERESOURCETYPES() {
+        return mobileresourcetypes;
+    }
 
-	/**
-	 * Sets the value of the mobileresourcetypes property.
-	 * 
-	 * @param value allowed object is {@link MOBILERESOURCETYPES }
-	 * 
-	 */
-	public void setMOBILERESOURCETYPES(MOBILERESOURCETYPES value) {
-		this.mobileresourcetypes = value;
-	}
+    /**
+     * Sets the value of the mobileresourcetypes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MOBILERESOURCETYPES }
+     *     
+     */
+    public void setMOBILERESOURCETYPES(MOBILERESOURCETYPES value) {
+        this.mobileresourcetypes = value;
+    }
 
-	/**
-	 * Gets the value of the mobileresources property.
-	 * 
-	 * @return possible object is {@link MOBILERESOURCES }
-	 * 
-	 */
-	public MOBILERESOURCES getMOBILERESOURCES() {
-		return mobileresources;
-	}
+    /**
+     * Gets the value of the mobileresources property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link MOBILERESOURCES }
+     *     
+     */
+    public MOBILERESOURCES getMOBILERESOURCES() {
+        return mobileresources;
+    }
 
-	/**
-	 * Sets the value of the mobileresources property.
-	 * 
-	 * @param value allowed object is {@link MOBILERESOURCES }
-	 * 
-	 */
-	public void setMOBILERESOURCES(MOBILERESOURCES value) {
-		this.mobileresources = value;
-	}
+    /**
+     * Sets the value of the mobileresources property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MOBILERESOURCES }
+     *     
+     */
+    public void setMOBILERESOURCES(MOBILERESOURCES value) {
+        this.mobileresources = value;
+    }
 
-	/**
-	 * Gets the value of the continueAssignmentsAfterPlanEndDate property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getContinueAssignmentsAfterPlanEndDate() {
-		return continueAssignmentsAfterPlanEndDate;
-	}
+    /**
+     * Gets the value of the continueAssignmentsAfterPlanEndDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getContinueAssignmentsAfterPlanEndDate() {
+        return continueAssignmentsAfterPlanEndDate;
+    }
 
-	/**
-	 * Sets the value of the continueAssignmentsAfterPlanEndDate property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setContinueAssignmentsAfterPlanEndDate(String value) {
-		this.continueAssignmentsAfterPlanEndDate = value;
-	}
+    /**
+     * Sets the value of the continueAssignmentsAfterPlanEndDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setContinueAssignmentsAfterPlanEndDate(String value) {
+        this.continueAssignmentsAfterPlanEndDate = value;
+    }
 
-	/**
-	 * Gets the value of the id property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getId() {
-		return id;
-	}
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 * Sets the value of the id property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setId(String value) {
-		this.id = value;
-	}
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setId(String value) {
+        this.id = value;
+    }
 
-	/**
-	 * Gets the value of the planEndDateDay property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getPlanEndDateDay() {
-		return planEndDateDay;
-	}
+    /**
+     * Gets the value of the planEndDateDay property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPlanEndDateDay() {
+        return planEndDateDay;
+    }
 
-	/**
-	 * Sets the value of the planEndDateDay property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setPlanEndDateDay(String value) {
-		this.planEndDateDay = value;
-	}
+    /**
+     * Sets the value of the planEndDateDay property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPlanEndDateDay(String value) {
+        this.planEndDateDay = value;
+    }
 
-	/**
-	 * Gets the value of the planEndDateMonth property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getPlanEndDateMonth() {
-		return planEndDateMonth;
-	}
+    /**
+     * Gets the value of the planEndDateMonth property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPlanEndDateMonth() {
+        return planEndDateMonth;
+    }
 
-	/**
-	 * Sets the value of the planEndDateMonth property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setPlanEndDateMonth(String value) {
-		this.planEndDateMonth = value;
-	}
+    /**
+     * Sets the value of the planEndDateMonth property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPlanEndDateMonth(String value) {
+        this.planEndDateMonth = value;
+    }
 
-	/**
-	 * Gets the value of the planEndDateYear property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getPlanEndDateYear() {
-		return planEndDateYear;
-	}
+    /**
+     * Gets the value of the planEndDateYear property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPlanEndDateYear() {
+        return planEndDateYear;
+    }
 
-	/**
-	 * Sets the value of the planEndDateYear property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setPlanEndDateYear(String value) {
-		this.planEndDateYear = value;
-	}
+    /**
+     * Sets the value of the planEndDateYear property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPlanEndDateYear(String value) {
+        this.planEndDateYear = value;
+    }
 
-	/**
-	 * Gets the value of the planStartDateDay property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getPlanStartDateDay() {
-		return planStartDateDay;
-	}
+    /**
+     * Gets the value of the planStartDateDay property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPlanStartDateDay() {
+        return planStartDateDay;
+    }
 
-	/**
-	 * Sets the value of the planStartDateDay property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setPlanStartDateDay(String value) {
-		this.planStartDateDay = value;
-	}
+    /**
+     * Sets the value of the planStartDateDay property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPlanStartDateDay(String value) {
+        this.planStartDateDay = value;
+    }
 
-	/**
-	 * Gets the value of the planStartDateMonth property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getPlanStartDateMonth() {
-		return planStartDateMonth;
-	}
+    /**
+     * Gets the value of the planStartDateMonth property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPlanStartDateMonth() {
+        return planStartDateMonth;
+    }
 
-	/**
-	 * Sets the value of the planStartDateMonth property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setPlanStartDateMonth(String value) {
-		this.planStartDateMonth = value;
-	}
+    /**
+     * Sets the value of the planStartDateMonth property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPlanStartDateMonth(String value) {
+        this.planStartDateMonth = value;
+    }
 
-	/**
-	 * Gets the value of the planStartDateYear property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getPlanStartDateYear() {
-		return planStartDateYear;
-	}
+    /**
+     * Gets the value of the planStartDateYear property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPlanStartDateYear() {
+        return planStartDateYear;
+    }
 
-	/**
-	 * Sets the value of the planStartDateYear property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setPlanStartDateYear(String value) {
-		this.planStartDateYear = value;
-	}
+    /**
+     * Sets the value of the planStartDateYear property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPlanStartDateYear(String value) {
+        this.planStartDateYear = value;
+    }
 
 }

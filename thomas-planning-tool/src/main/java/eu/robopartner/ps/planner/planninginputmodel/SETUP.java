@@ -5,6 +5,7 @@
 // Generated on: 2015.10.12 at 02:45:59 PM EEST 
 //
 
+
 package eu.robopartner.ps.planner.planninginputmodel;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,13 +14,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -38,71 +37,83 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "fromcode", "tocode", "timeinseconds" })
+@XmlType(name = "", propOrder = {
+    "fromcode",
+    "tocode",
+    "timeinseconds"
+})
 @XmlRootElement(name = "SET_UP")
 public class SETUP {
 
-	@XmlElement(name = "FROM_CODE", required = true)
-	protected String fromcode;
-	@XmlElement(name = "TO_CODE", required = true)
-	protected String tocode;
-	@XmlElement(name = "TIME_IN_SECONDS")
-	protected int timeinseconds;
+    @XmlElement(name = "FROM_CODE", required = true)
+    protected String fromcode;
+    @XmlElement(name = "TO_CODE", required = true)
+    protected String tocode;
+    @XmlElement(name = "TIME_IN_SECONDS")
+    protected int timeinseconds;
 
-	/**
-	 * Gets the value of the fromcode property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getFROMCODE() {
-		return fromcode;
-	}
+    /**
+     * Gets the value of the fromcode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFROMCODE() {
+        return fromcode;
+    }
 
-	/**
-	 * Sets the value of the fromcode property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setFROMCODE(String value) {
-		this.fromcode = value;
-	}
+    /**
+     * Sets the value of the fromcode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFROMCODE(String value) {
+        this.fromcode = value;
+    }
 
-	/**
-	 * Gets the value of the tocode property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getTOCODE() {
-		return tocode;
-	}
+    /**
+     * Gets the value of the tocode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTOCODE() {
+        return tocode;
+    }
 
-	/**
-	 * Sets the value of the tocode property.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setTOCODE(String value) {
-		this.tocode = value;
-	}
+    /**
+     * Sets the value of the tocode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTOCODE(String value) {
+        this.tocode = value;
+    }
 
-	/**
-	 * Gets the value of the timeinseconds property.
-	 * 
-	 */
-	public int getTIMEINSECONDS() {
-		return timeinseconds;
-	}
+    /**
+     * Gets the value of the timeinseconds property.
+     * 
+     */
+    public int getTIMEINSECONDS() {
+        return timeinseconds;
+    }
 
-	/**
-	 * Sets the value of the timeinseconds property.
-	 * 
-	 */
-	public void setTIMEINSECONDS(int value) {
-		this.timeinseconds = value;
-	}
+    /**
+     * Sets the value of the timeinseconds property.
+     * 
+     */
+    public void setTIMEINSECONDS(int value) {
+        this.timeinseconds = value;
+    }
 
 }

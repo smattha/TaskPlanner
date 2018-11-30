@@ -5,8 +5,8 @@ import Plan.Process.Task.Operations.Tighten;
 
 public class TightenCablesOnDampers {
 
-	private Tighten operation1;
+  private Tighten operation1;
 
-	public Vector myDampersAssemblyOnTheDisks;
+    public Vector  myDampersAssemblyOnTheDisks;
 
 }

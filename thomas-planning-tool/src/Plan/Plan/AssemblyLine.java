@@ -1,19 +1,20 @@
 package Plan;
 
+
 import java.util.Vector;
 
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
 
 public class AssemblyLine {
 
-	private Integer id;
+  private Integer id;
 
-	private String name;
+  private String name;
 
-	private String description;
+  private String description;
 
-	private Position location;
+  private Position location;
 
-	public Vector myShopfloor;
-
+    public Vector  myShopfloor;
+  
 }

@@ -11,10 +11,10 @@ import java.awt.Rectangle;
 @Deprecated
 public class FixedRectangle {
 
-	/**
-	 * Use temporary then delete
-	 */
-	@Deprecated
-	public static final Rectangle RESOURCERECTANGLE = new Rectangle(1, 2, 3, 4);
+    /**
+     * Use temporary then delete
+     */
+    @Deprecated
+    public static final Rectangle RESOURCERECTANGLE = new Rectangle(1, 2, 3, 4);
 
 }

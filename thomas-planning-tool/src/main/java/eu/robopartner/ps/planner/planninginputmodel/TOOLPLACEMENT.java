@@ -5,6 +5,7 @@
 // Generated on: 2015.10.12 at 02:45:59 PM EEST 
 //
 
+
 package eu.robopartner.ps.planner.planninginputmodel;
 
 import java.util.ArrayList;
@@ -14,13 +15,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+
 /**
- * <p>
- * Java class for TOOL_PLACEMENT complex type.
+ * <p>Java class for TOOL_PLACEMENT complex type.
  * 
- * <p>
- * The following schema fragment specifies the expected content contained within
- * this class.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="TOOL_PLACEMENT">
@@ -69,255 +68,269 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TOOL_PLACEMENT", propOrder = { "supportedtooltypes", "currentload" })
+@XmlType(name = "TOOL_PLACEMENT", propOrder = {
+    "supportedtooltypes",
+    "currentload"
+})
 public class TOOLPLACEMENT {
 
-	@XmlElement(name = "SUPPORTED_TOOL_TYPES", required = true)
-	protected TOOLPLACEMENT.SUPPORTEDTOOLTYPES supportedtooltypes;
-	@XmlElement(name = "CURRENT_LOAD")
-	protected List<TOOLPLACEMENT.CURRENTLOAD> currentload;
+    @XmlElement(name = "SUPPORTED_TOOL_TYPES", required = true)
+    protected TOOLPLACEMENT.SUPPORTEDTOOLTYPES supportedtooltypes;
+    @XmlElement(name = "CURRENT_LOAD")
+    protected List<TOOLPLACEMENT.CURRENTLOAD> currentload;
 
-	/**
-	 * Gets the value of the supportedtooltypes property.
-	 * 
-	 * @return possible object is {@link TOOLPLACEMENT.SUPPORTEDTOOLTYPES }
-	 * 
-	 */
-	public TOOLPLACEMENT.SUPPORTEDTOOLTYPES getSUPPORTEDTOOLTYPES() {
-		return supportedtooltypes;
-	}
+    /**
+     * Gets the value of the supportedtooltypes property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TOOLPLACEMENT.SUPPORTEDTOOLTYPES }
+     *     
+     */
+    public TOOLPLACEMENT.SUPPORTEDTOOLTYPES getSUPPORTEDTOOLTYPES() {
+        return supportedtooltypes;
+    }
 
-	/**
-	 * Sets the value of the supportedtooltypes property.
-	 * 
-	 * @param value allowed object is {@link TOOLPLACEMENT.SUPPORTEDTOOLTYPES }
-	 * 
-	 */
-	public void setSUPPORTEDTOOLTYPES(TOOLPLACEMENT.SUPPORTEDTOOLTYPES value) {
-		this.supportedtooltypes = value;
-	}
+    /**
+     * Sets the value of the supportedtooltypes property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TOOLPLACEMENT.SUPPORTEDTOOLTYPES }
+     *     
+     */
+    public void setSUPPORTEDTOOLTYPES(TOOLPLACEMENT.SUPPORTEDTOOLTYPES value) {
+        this.supportedtooltypes = value;
+    }
 
-	/**
-	 * Gets the value of the currentload property.
-	 * 
-	 * <p>
-	 * This accessor method returns a reference to the live list, not a snapshot.
-	 * Therefore any modification you make to the returned list will be present
-	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-	 * for the currentload property.
-	 * 
-	 * <p>
-	 * For example, to add a new item, do as follows:
-	 * 
-	 * <pre>
-	 * getCURRENTLOAD().add(newItem);
-	 * </pre>
-	 * 
-	 * 
-	 * <p>
-	 * Objects of the following type(s) are allowed in the list
-	 * {@link TOOLPLACEMENT.CURRENTLOAD }
-	 * 
-	 * 
-	 */
-	public List<TOOLPLACEMENT.CURRENTLOAD> getCURRENTLOAD() {
-		if (currentload == null) {
-			currentload = new ArrayList<TOOLPLACEMENT.CURRENTLOAD>();
-		}
-		return this.currentload;
-	}
+    /**
+     * Gets the value of the currentload property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the currentload property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getCURRENTLOAD().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TOOLPLACEMENT.CURRENTLOAD }
+     * 
+     * 
+     */
+    public List<TOOLPLACEMENT.CURRENTLOAD> getCURRENTLOAD() {
+        if (currentload == null) {
+            currentload = new ArrayList<TOOLPLACEMENT.CURRENTLOAD>();
+        }
+        return this.currentload;
+    }
 
-	/**
-	 * <p>
-	 * Java class for anonymous complex type.
-	 * 
-	 * <p>
-	 * The following schema fragment specifies the expected content contained within
-	 * this class.
-	 * 
-	 * <pre>
-	 * &lt;complexType>
-	 *   &lt;complexContent>
-	 *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-	 *       &lt;sequence>
-	 *         &lt;element ref="{}TOOL_REFERENCE"/>
-	 *       &lt;/sequence>
-	 *     &lt;/restriction>
-	 *   &lt;/complexContent>
-	 * &lt;/complexType>
-	 * </pre>
-	 * 
-	 * 
-	 */
-	@XmlAccessorType(XmlAccessType.FIELD)
-	@XmlType(name = "", propOrder = { "toolreference" })
-	public static class CURRENTLOAD {
 
-		@XmlElement(name = "TOOL_REFERENCE", required = true)
-		protected TOOLREFERENCE toolreference;
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element ref="{}TOOL_REFERENCE"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "toolreference"
+    })
+    public static class CURRENTLOAD {
 
-		/**
-		 * Gets the value of the toolreference property.
-		 * 
-		 * @return possible object is {@link TOOLREFERENCE }
-		 * 
-		 */
-		public TOOLREFERENCE getTOOLREFERENCE() {
-			return toolreference;
-		}
+        @XmlElement(name = "TOOL_REFERENCE", required = true)
+        protected TOOLREFERENCE toolreference;
 
-		/**
-		 * Sets the value of the toolreference property.
-		 * 
-		 * @param value allowed object is {@link TOOLREFERENCE }
-		 * 
-		 */
-		public void setTOOLREFERENCE(TOOLREFERENCE value) {
-			this.toolreference = value;
-		}
+        /**
+         * Gets the value of the toolreference property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link TOOLREFERENCE }
+         *     
+         */
+        public TOOLREFERENCE getTOOLREFERENCE() {
+            return toolreference;
+        }
 
-	}
+        /**
+         * Sets the value of the toolreference property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link TOOLREFERENCE }
+         *     
+         */
+        public void setTOOLREFERENCE(TOOLREFERENCE value) {
+            this.toolreference = value;
+        }
 
-	/**
-	 * <p>
-	 * Java class for anonymous complex type.
-	 * 
-	 * <p>
-	 * The following schema fragment specifies the expected content contained within
-	 * this class.
-	 * 
-	 * <pre>
-	 * &lt;complexType>
-	 *   &lt;complexContent>
-	 *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-	 *       &lt;sequence>
-	 *         &lt;element name="SUPPORTED_TOOL_TYPE" maxOccurs="unbounded">
-	 *           &lt;complexType>
-	 *             &lt;complexContent>
-	 *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-	 *                 &lt;sequence>
-	 *                   &lt;element ref="{}TOOL_TYPE_REFERENCE"/>
-	 *                   &lt;element name="MAXIMUM_CAPACITY" type="{http://www.w3.org/2001/XMLSchema}int"/>
-	 *                 &lt;/sequence>
-	 *               &lt;/restriction>
-	 *             &lt;/complexContent>
-	 *           &lt;/complexType>
-	 *         &lt;/element>
-	 *       &lt;/sequence>
-	 *     &lt;/restriction>
-	 *   &lt;/complexContent>
-	 * &lt;/complexType>
-	 * </pre>
-	 * 
-	 * 
-	 */
-	@XmlAccessorType(XmlAccessType.FIELD)
-	@XmlType(name = "", propOrder = { "supportedtooltype" })
-	public static class SUPPORTEDTOOLTYPES {
+    }
 
-		@XmlElement(name = "SUPPORTED_TOOL_TYPE", required = true)
-		protected List<TOOLPLACEMENT.SUPPORTEDTOOLTYPES.SUPPORTEDTOOLTYPE> supportedtooltype;
 
-		/**
-		 * Gets the value of the supportedtooltype property.
-		 * 
-		 * <p>
-		 * This accessor method returns a reference to the live list, not a snapshot.
-		 * Therefore any modification you make to the returned list will be present
-		 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-		 * for the supportedtooltype property.
-		 * 
-		 * <p>
-		 * For example, to add a new item, do as follows:
-		 * 
-		 * <pre>
-		 * getSUPPORTEDTOOLTYPE().add(newItem);
-		 * </pre>
-		 * 
-		 * 
-		 * <p>
-		 * Objects of the following type(s) are allowed in the list
-		 * {@link TOOLPLACEMENT.SUPPORTEDTOOLTYPES.SUPPORTEDTOOLTYPE }
-		 * 
-		 * 
-		 */
-		public List<TOOLPLACEMENT.SUPPORTEDTOOLTYPES.SUPPORTEDTOOLTYPE> getSUPPORTEDTOOLTYPE() {
-			if (supportedtooltype == null) {
-				supportedtooltype = new ArrayList<TOOLPLACEMENT.SUPPORTEDTOOLTYPES.SUPPORTEDTOOLTYPE>();
-			}
-			return this.supportedtooltype;
-		}
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="SUPPORTED_TOOL_TYPE" maxOccurs="unbounded">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;sequence>
+     *                   &lt;element ref="{}TOOL_TYPE_REFERENCE"/>
+     *                   &lt;element name="MAXIMUM_CAPACITY" type="{http://www.w3.org/2001/XMLSchema}int"/>
+     *                 &lt;/sequence>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "supportedtooltype"
+    })
+    public static class SUPPORTEDTOOLTYPES {
 
-		/**
-		 * <p>
-		 * Java class for anonymous complex type.
-		 * 
-		 * <p>
-		 * The following schema fragment specifies the expected content contained within
-		 * this class.
-		 * 
-		 * <pre>
-		 * &lt;complexType>
-		 *   &lt;complexContent>
-		 *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-		 *       &lt;sequence>
-		 *         &lt;element ref="{}TOOL_TYPE_REFERENCE"/>
-		 *         &lt;element name="MAXIMUM_CAPACITY" type="{http://www.w3.org/2001/XMLSchema}int"/>
-		 *       &lt;/sequence>
-		 *     &lt;/restriction>
-		 *   &lt;/complexContent>
-		 * &lt;/complexType>
-		 * </pre>
-		 * 
-		 * 
-		 */
-		@XmlAccessorType(XmlAccessType.FIELD)
-		@XmlType(name = "", propOrder = { "tooltypereference", "maximumcapacity" })
-		public static class SUPPORTEDTOOLTYPE {
+        @XmlElement(name = "SUPPORTED_TOOL_TYPE", required = true)
+        protected List<TOOLPLACEMENT.SUPPORTEDTOOLTYPES.SUPPORTEDTOOLTYPE> supportedtooltype;
 
-			@XmlElement(name = "TOOL_TYPE_REFERENCE", required = true)
-			protected TOOLTYPEREFERENCE tooltypereference;
-			@XmlElement(name = "MAXIMUM_CAPACITY")
-			protected int maximumcapacity;
+        /**
+         * Gets the value of the supportedtooltype property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the supportedtooltype property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getSUPPORTEDTOOLTYPE().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link TOOLPLACEMENT.SUPPORTEDTOOLTYPES.SUPPORTEDTOOLTYPE }
+         * 
+         * 
+         */
+        public List<TOOLPLACEMENT.SUPPORTEDTOOLTYPES.SUPPORTEDTOOLTYPE> getSUPPORTEDTOOLTYPE() {
+            if (supportedtooltype == null) {
+                supportedtooltype = new ArrayList<TOOLPLACEMENT.SUPPORTEDTOOLTYPES.SUPPORTEDTOOLTYPE>();
+            }
+            return this.supportedtooltype;
+        }
 
-			/**
-			 * Gets the value of the tooltypereference property.
-			 * 
-			 * @return possible object is {@link TOOLTYPEREFERENCE }
-			 * 
-			 */
-			public TOOLTYPEREFERENCE getTOOLTYPEREFERENCE() {
-				return tooltypereference;
-			}
 
-			/**
-			 * Sets the value of the tooltypereference property.
-			 * 
-			 * @param value allowed object is {@link TOOLTYPEREFERENCE }
-			 * 
-			 */
-			public void setTOOLTYPEREFERENCE(TOOLTYPEREFERENCE value) {
-				this.tooltypereference = value;
-			}
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;sequence>
+         *         &lt;element ref="{}TOOL_TYPE_REFERENCE"/>
+         *         &lt;element name="MAXIMUM_CAPACITY" type="{http://www.w3.org/2001/XMLSchema}int"/>
+         *       &lt;/sequence>
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "tooltypereference",
+            "maximumcapacity"
+        })
+        public static class SUPPORTEDTOOLTYPE {
 
-			/**
-			 * Gets the value of the maximumcapacity property.
-			 * 
-			 */
-			public int getMAXIMUMCAPACITY() {
-				return maximumcapacity;
-			}
+            @XmlElement(name = "TOOL_TYPE_REFERENCE", required = true)
+            protected TOOLTYPEREFERENCE tooltypereference;
+            @XmlElement(name = "MAXIMUM_CAPACITY")
+            protected int maximumcapacity;
 
-			/**
-			 * Sets the value of the maximumcapacity property.
-			 * 
-			 */
-			public void setMAXIMUMCAPACITY(int value) {
-				this.maximumcapacity = value;
-			}
+            /**
+             * Gets the value of the tooltypereference property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link TOOLTYPEREFERENCE }
+             *     
+             */
+            public TOOLTYPEREFERENCE getTOOLTYPEREFERENCE() {
+                return tooltypereference;
+            }
 
-		}
+            /**
+             * Sets the value of the tooltypereference property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link TOOLTYPEREFERENCE }
+             *     
+             */
+            public void setTOOLTYPEREFERENCE(TOOLTYPEREFERENCE value) {
+                this.tooltypereference = value;
+            }
 
-	}
+            /**
+             * Gets the value of the maximumcapacity property.
+             * 
+             */
+            public int getMAXIMUMCAPACITY() {
+                return maximumcapacity;
+            }
+
+            /**
+             * Sets the value of the maximumcapacity property.
+             * 
+             */
+            public void setMAXIMUMCAPACITY(int value) {
+                this.maximumcapacity = value;
+            }
+
+        }
+
+    }
 
 }
