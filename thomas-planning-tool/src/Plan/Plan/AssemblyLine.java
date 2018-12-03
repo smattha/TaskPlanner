@@ -5,7 +5,7 @@ import java.util.Vector;
 
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
 
-public class AssemblyLine {
+public class AssemblyLine extends Shopfloor {
 
   private Integer id;
 

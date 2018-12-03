@@ -165,7 +165,7 @@ public class MainPlanningTool {
 
 	public void simulate(PlanEndRule planEndRule) {
 		this.assignments = simulator.simulate(planEndRule);
-		System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+		//System.err.println("AD HOC IMPLEMENTATION OF KPIS");
 		this.cumulatiCriteriaKpis = simulator.getKpis();
 	}
 
@@ -233,22 +233,16 @@ public class MainPlanningTool {
 		mptIMPACT.setSR(sr);
 
 		tool.simulate();
-		int i = 0;
 
-		// MainDataModelControler mainDataModelControler = new
-		// MainDataModelControler(tool.datamodel.getPlanningInputDataModel(),
-		// tool.datamodel.getPlanningOutputDataModel(), inputsource.getOutputSource());
 		Vector<AssignmentDataModel> assignments = tool.getAssignmentDataModelVector();
-		// int i=0;
-		for (int ii = 0; i < 10; i++) {
-			// mainDataModelControler.addAssignmentDataModel(assignmentDataModel);
 
-			System.out.println(assignments.get(ii).getTaskDataModel().getTaskName() + "   "
-					+ assignments.get(ii++).getResourceDataModel().getResourceName());
+		System.out.println("");System.out.println("");System.out.println("");
+		for (AssignmentDataModel ass:assignments) {
+
+			System.out.println(ass.getTaskDataModel().getTaskName() + "   "
+					+ ass.getResourceDataModel().getResourceName()  +" "+  ass.getTaskDataModel().getProperty("WorkingArea" ));
 
 		}
-		// mainDataModelControler.savePlanningOutputDataModel();
-
-		System.out.println("DONE PROPERLY");
+		
 	}
 }

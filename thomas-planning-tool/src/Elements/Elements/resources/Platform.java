@@ -5,7 +5,7 @@ import java.util.Vector;
 
 import Elements.Sensors.Sensors;
 
-public class Platform extends MRP{
+public class Platform extends ThomasResource{
 
   private Integer basevelocity;
 

@@ -137,18 +137,18 @@ public class MainPlanningTool {
 
         if (planningInputDataModel.continueAssignmentsAfterPlanEndDate()) {
             this.assignments = simulator.simulate(null);
-            System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+            //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
             this.cumulatiCriteriaKpis = simulator.getKpis();
         } else {
             this.assignments = simulator.simulate(new WorkloadAllocationUntilDateEndRule(planningInputDataModel.getPlanEndDate()));
-            System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+            //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
             this.cumulatiCriteriaKpis = simulator.getKpis();
         }
     }
 
     public void simulate(PlanEndRule planEndRule) {
         this.assignments = simulator.simulate(planEndRule);
-        System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+        //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
         this.cumulatiCriteriaKpis = simulator.getKpis();
     }
 

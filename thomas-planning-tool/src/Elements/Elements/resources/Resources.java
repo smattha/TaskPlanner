@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
 
-public class Resources {
+public class Resources extends ThomasResource{
 
   private Integer resourceID;
 

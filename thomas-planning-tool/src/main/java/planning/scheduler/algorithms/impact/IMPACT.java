@@ -185,7 +185,7 @@ public class IMPACT extends AbstractAlgorithm {
     private Vector<DynamicAssignmentsAuthorityInterface> dynamicAssignmentsAuthorityInterfaces = null;
 
     private void addCumulativeCriteriaValues(double[] criteriaValues) {
-        System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+        //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
         if (cumulatiCriteriaKpis == null) {
             // Initialize the criteria cumulative sum kpis
             cumulatiCriteriaKpis = new double[criteria.length];
@@ -204,12 +204,12 @@ public class IMPACT extends AbstractAlgorithm {
     }
 
     public AbstractCriterion[] getCriteria() {
-        System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+       // System.err.println("AD HOC IMPLEMENTATION OF KPIS");
         return criteria;
     }
 
     public double[] getCumulatiCriteriaKpis() {
-        System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+        //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
         if (cumulatiCriteriaKpis == null) {
             // Initialize the criteria cumulative sum kpis
             cumulatiCriteriaKpis = new double[criteria.length];
@@ -412,7 +412,7 @@ public class IMPACT extends AbstractAlgorithm {
     }
 
     public void resetCumulatiCriteriaKpis() {
-        System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+        //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
         for (int i = 0; i < cumulatiCriteriaKpis.length; i++) {
             cumulatiCriteriaKpis[i] = 0d;
         }

@@ -5,7 +5,7 @@ import java.util.Vector;
 
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
 
-public class AssemblyStation {
+public class AssemblyStation extends AssemblyLine {
 
   private Integer id;
 

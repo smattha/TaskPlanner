@@ -17,7 +17,7 @@ public class Screwdriver extends ThomasTool {
 	public Vector myTools;
 
 	public Boolean isCompatible(ThomasTool t1) {
-		if (((Screwdriver) t1).torque == this.torque) {
+		if (((Screwdriver) t1).torque <= this.torque) {
 			return true;
 		} else {
 			return false;

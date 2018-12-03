@@ -66,7 +66,7 @@ public class PlanSimulator implements PlanHelperInterface, ManualPlanHelperInter
     private double[] cumulatiCriteriaKpis = null;
 
     public double[] getKpis() {
-        System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+        //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
         return cumulatiCriteriaKpis;
     }
 
@@ -249,7 +249,7 @@ public class PlanSimulator implements PlanHelperInterface, ManualPlanHelperInter
                 if (currentWorkcenterDataModel.getAlgorithm() != null
                         && AbstractAlgorithm.MULTICRITERIA.equals(currentWorkcenterDataModel.getAlgorithm())) {
 
-                    System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+                    //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
                     if (cumulatiCriteriaKpis == null) {
                         // Initialize the criteria cumulative sum kpis
 

@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.util.Vector;
 
 import Elements.Tools.ThomasTool;
+import Plan.WorkingArea;
 import Plan.Process.Task.Operations.Operations;
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
 import eu.robopartner.ps.planner.planninginputmodel.NONWORKINGPERIODS;
@@ -12,6 +13,7 @@ import eu.robopartner.ps.planner.planninginputmodel.ObjectFactory;
 import eu.robopartner.ps.planner.planninginputmodel.PROPERTIES;
 import eu.robopartner.ps.planner.planninginputmodel.RESOURCE;
 import eu.robopartner.ps.planner.planninginputmodel.RESOURCEAVAILABILITY;
+import eu.robopartner.ps.planner.planninginputmodel.RESOURCES;
 import eu.robopartner.ps.planner.planninginputmodel.TASK;
 import eu.robopartner.ps.planner.planninginputmodel.TASKS;
 import eu.robopartner.ps.planner.planninginputmodel.TASKSUITABLERESOURCE;
@@ -31,36 +33,47 @@ public class ThomasResource extends RESOURCE {
 	public String description;
 	public String name = "Robot";
 	public String type;
-
-	protected Vector<ThomasTool> compatibleToolList = new Vector<ThomasTool>();
+	protected RESOURCES resources;
+    //public BigInteger id;
+	
+    protected Vector<ThomasTool> compatibleToolList = new Vector<ThomasTool>();
 
 	public Boolean addCompatibleTool(ThomasTool t) {
 		compatibleToolList.add(t);
 		return true;
 	}
 
-	public ThomasResource(String name) {
+	protected WorkingArea workingArea;
+	public ThomasResource(BigInteger id,RESOURCES resources,String name) {
 		
 		this.name = name;
 		properties = new PROPERTIES();
-		
+		this.id=id+"";
 		properties.getPROPERTY()
 		.add(MapToResourcesAndTasks.getProperty("Robot Property", "I workedddddddddddddddddddddddd"));
-		
 
-		
+		this.resources=resources;
 		gererateResource();
+		
+		
+		add2Resources();
+		
+		//fillTasksuitableresources(tasksuitableresources,tasks);
 	}
 
 	public ThomasResource() {
 		// this.name=name;
 	}
 
-	public Boolean gererateResource() {
-		BigInteger id = IDGenerator.getNewID();
-		resourceID=id;
+	
 
+	public Boolean gererateResource() {
+
+		properties = new PROPERTIES();
 		
+		properties.getPROPERTY()
+		.add(MapToResourcesAndTasks.getProperty("Robot Property", "I workedddddddddddddddddddddddd"));
+	
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		RESOURCEAVAILABILITY resourceavailability = myObjectFactory.createRESOURCEAVAILABILITY();
 		NONWORKINGPERIODS nonworkingperiods = myObjectFactory.createNONWORKINGPERIODS();
@@ -69,20 +82,22 @@ public class ThomasResource extends RESOURCE {
 		setRESOURCEAVAILABILITY(resourceavailability);
 		setDESCRIPTION(description);
 		setId(id + "");
-		setNAME(name);
+		setNAME(name);	
+		
 		setPROPERTIES(properties);
+		
+
+		
 		myObjectFactory = null;
-
-
 
 		return true;
 	}
 
-	;
+	
+	public Boolean fillTasksuitableresources(TASKSUITABLERESOURCES tasksuitableresources, TASKS tasks) {
 
-	public Boolean fillTasksuitableresources(TASKSUITABLERESOURCES tasksuitableresources, Vector<Operations> ops) {
-
-		for (Operations t : ops) {
+		for (TASK t1 : tasks.getTASK()) {
+			Operations t=(Operations)t1;
 			if (true == suitableForTask(t)) {
 				TASKSUITABLERESOURCE atasksuitableresource = MapToResourcesAndTasks.getTaskSuitableResource(this, t,
 						LayoutPlanningInputGenerator.SETUP_CODE,
@@ -98,14 +113,19 @@ public class ThomasResource extends RESOURCE {
 	public Boolean suitableForTask(Operations t1) {
 		for (ThomasTool t : compatibleToolList) {
 			if (t.ToolType == t1.getTool().ToolType) {
-				boolean flag = t.isCompatible(((Operations) t1).getTool());
+				boolean flag = t.isCompatible(t1.getTool());
 				if (flag == true) {
 					return true;
 				}
 			}
 		}
-
 		return false;
 	}
 
+	
+	protected void add2Resources()
+	{
+		resources.getRESOURCE().add(this);
+		return;
+	}
 }

@@ -15,6 +15,8 @@ import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 
 import Elements.Tools.Screwdriver;
+import Elements.resources.Arm1;
+import Elements.resources.Arm2;
 import Elements.resources.ThomasResource;
 import eu.robopartner.ps.planner.planninginputmodel.DATE;
 import eu.robopartner.ps.planner.planninginputmodel.ObjectFactory;
@@ -24,10 +26,12 @@ import eu.robopartner.ps.planner.planninginputmodel.PROPERTY;
 import eu.robopartner.ps.planner.planninginputmodel.RESOURCE;
 import eu.robopartner.ps.planner.planninginputmodel.RESOURCES;
 import eu.robopartner.ps.planner.planninginputmodel.TASK;
+import eu.robopartner.ps.planner.planninginputmodel.TASKPRECEDENCECONSTRAINTS;
 import eu.robopartner.ps.planner.planninginputmodel.TASKS;
 import eu.robopartner.ps.planner.planninginputmodel.TASKSUITABLERESOURCE;
 import eu.robopartner.ps.planner.planninginputmodel.TASKSUITABLERESOURCES;
 import planning.scheduler.algorithms.AbstractAlgorithm;
+import Plan.WorkingArea;
 import Plan.Process.Task.Operations.Operations;
 import Plan.Process.Task.Operations.Pick;
 import Plan.Process.Task.Operations.Place;
@@ -186,109 +190,85 @@ public class DemoPlanningGenerator3D {
 		LOGGER.trace(msg + "Created aPlanningInput");
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		//////////////////////////////////////// Step 1 CREATE
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// TASKS////////////////////////////////////////////////////////////////
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		TASKS tasks = myObjectFactory.createTASKS();
+		TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints = myObjectFactory.createTASKPRECEDENCECONSTRAINTS();
+		RESOURCES resources = myObjectFactory.createRESOURCES();
 
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		Screwdriver screw5 = new Screwdriver("screw", 5);
 		Screwdriver screw10 = new Screwdriver("screw", 10);
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		WorkingArea w1=new WorkingArea("Station 1");
+		WorkingArea w2=new WorkingArea("Station 2");
+		
 
-		Place aTask = new Place("place 1", screw5);
-		Place bTask = new Place("place 2", screw5);
-		Place cTask = new Place("place 3", screw5);
-		Place dTask = new Place("place 4", screw5);
-		Place eTask = new Place("place 5", screw5);
-		Place fTask = new Place("place 6", screw5);
-		Place gTask = new Place("place 7", screw5);
-		Place hTask = new Place("place 8", screw5);
-		Place iTask = new Place("place 9", screw5);
-		Place t1 = new Place("place 10", screw10);
+		
+		Place aTask = new Place("place 1", screw10,w1,tasks,theTaskprecedenceconstraints,null);
+		Place bTask = new Place("place 2", screw5,w1,tasks,theTaskprecedenceconstraints,aTask);
+		Place cTask = new Place("place 3", screw5,w1,tasks,theTaskprecedenceconstraints,bTask);
+		Place dTask = new Place("place 4", screw5,w1,tasks,theTaskprecedenceconstraints,cTask);
+		Place eTask = new Place("place 5", screw5,w1,tasks,theTaskprecedenceconstraints,dTask);
+		Place fTask = new Place("place 6", screw5,w1,tasks,theTaskprecedenceconstraints,eTask);
+		Place gTask = new Place("place 7", screw5,w2,tasks,theTaskprecedenceconstraints,fTask);
+		Place hTask = new Place("place 8", screw5,w1,tasks,theTaskprecedenceconstraints,gTask);
+		Place t1 = new Place("place 10", screw10,w1,tasks,theTaskprecedenceconstraints,gTask);
+		Place iTask = new Place("place 9", screw5,w1,tasks,theTaskprecedenceconstraints,t1);
+	
 
-		aTask.genImpactTask();
-		bTask.genImpactTask();
-		cTask.genImpactTask();
-		dTask.genImpactTask();
-		eTask.genImpactTask();
-		fTask.genImpactTask();
-		gTask.genImpactTask();
-		hTask.genImpactTask();
-		iTask.genImpactTask();
-		t1.genImpactTask();
-
-		tasks.getTASK().add(aTask);
-		tasks.getTASK().add(bTask);
-		tasks.getTASK().add(cTask);
-		tasks.getTASK().add(dTask);
-		tasks.getTASK().add(eTask);
-		tasks.getTASK().add(fTask);
-		tasks.getTASK().add(gTask);
-		tasks.getTASK().add(hTask);
-		tasks.getTASK().add(iTask);
-		tasks.getTASK().add(t1);
-
-		Vector<Operations> ops = new Vector<Operations>();
-
-		ops.add(aTask);
-		ops.add(aTask);
-		ops.add(bTask);
-		ops.add(cTask);
-		ops.add(dTask);
-		ops.add(eTask);
-		ops.add(fTask);
-		ops.add(gTask);
-		ops.add(hTask);
-		ops.add(iTask);
-		ops.add(t1);
-
-		LayoutPlanningInputGenerator.addTaskPrecedenceConstraints(aPlanninginput, tasks);
-		aPlanninginput.setTASKS(tasks);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/////////////////////////////////////////////// Resources///////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		// ObjectFactory myObjectFactory1 = new ObjectFactory();
-		RESOURCES resources = myObjectFactory.createRESOURCES();
 
-		ThomasResource aResource1 = new ThomasResource("Robot");
-		ThomasResource aResource2 = new ThomasResource("Human");
+		
+		Arm1 aResource1 = new Arm1(IDGenerator.getNewID(),resources,"Robot1");
+		
+		Arm2 aResource3 = new Arm2(IDGenerator.getNewID(),resources,"Robot2");
+		
+		Arm2 aResource4 = new Arm2(IDGenerator.getNewID(),resources,"Robot3");
+		
+	    ThomasResource aResource2 = new ThomasResource(IDGenerator.getNewID(),resources, "Human");
 
 		aResource1.addCompatibleTool(screw5);
+		aResource3.addCompatibleTool(screw10);
+		aResource2.addCompatibleTool(screw5);
+		aResource4.addCompatibleTool(screw10);
 
-		//aResource1.addCompatibleTool(screw5);
-		
-		aResource2.addCompatibleTool(screw10);
-
-		//aResource1.gererateResource();
-		//aResource2.gererateResource();
-
-		resources.getRESOURCE().add(aResource1);
-		resources.getRESOURCE().add(aResource2);
 
 		LOGGER.trace(msg + "Created theResources");
-		aPlanninginput.setRESOURCES(resources);
-
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		/////////////////////////////////////////////// Suitable
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Resources//////////////////////////////////////////////////////////
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
 
 		TASKSUITABLERESOURCES tasksuitableresources = myObjectFactory.createTASKSUITABLERESOURCES();
 
-		aResource1.fillTasksuitableresources(tasksuitableresources, ops);
-		aResource2.fillTasksuitableresources(tasksuitableresources, ops);
+		aResource1.fillTasksuitableresources(tasksuitableresources, tasks);
+		aResource2.fillTasksuitableresources(tasksuitableresources, tasks);
+		aResource3.fillTasksuitableresources(tasksuitableresources, tasks);
 
+		
+		
+		
+		
+		
+		
 		LOGGER.trace(msg + "Created setTASKSUITABLERESOURCES");
-		aPlanninginput.setTASKSUITABLERESOURCES(tasksuitableresources);
-		LayoutPlanningInputGenerator.addWorkcenters(aPlanninginput, resources, AbstractAlgorithm.MULTICRITERIA);
-		LOGGER.trace(msg + "Created Workcenters");
+		
+		aPlanninginput.setTASKPRECEDENCECONSTRAINTS(theTaskprecedenceconstraints);
+		
+		aPlanninginput.setTASKS(tasks);
 
+		aPlanninginput.setRESOURCES(resources);
+		
+		aPlanninginput.setTASKSUITABLERESOURCES(tasksuitableresources);
+
+		
+		
+		LayoutPlanningInputGenerator.addWorkcenters(aPlanninginput, resources, AbstractAlgorithm.MULTICRITERIA);
+		
 		DATE arrivalDate = MapToResourcesAndTasks.getDate(1, 1, 2014, 0, 0, 0);
 		DATE dueDate = MapToResourcesAndTasks.getDate(1, 1, 2018, 0, 0, 0);
 
-		LOGGER.trace(msg + "Created JObs");
 		LayoutPlanningInputGenerator.addJobs(aPlanninginput, tasks,
 				aPlanninginput.getWORKCENTERS().getWORKCENTER().get(0), arrivalDate, dueDate);
 

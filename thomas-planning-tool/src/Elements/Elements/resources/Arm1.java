@@ -2,11 +2,15 @@ package Elements.resources;
 
 
 
+import java.math.BigInteger;
+
 import Elements.Sensors.Sensors;
 import Elements.Tools.Gripper;
 import Elements.Tools.Screwdriver;
+import Plan.WorkingArea;
+import eu.robopartner.ps.planner.planninginputmodel.RESOURCES;
 
-public class Arm1 extends MRP {
+public class Arm1 extends ThomasResource {
 
   private Gripper tool1;
 
@@ -18,6 +22,36 @@ public class Arm1 extends MRP {
 
   private Sensors sensor;
 
-  //public Vector  myMRP;
+  //public BigInteger id;
+  
+  private Arm2 arm2;
+  
+  public Arm1(BigInteger id1, String name, WorkingArea workingArea)
+  {
+	  this.id="Resources"+id1;
+	  this.name=name;
+	  this.workingArea=workingArea;
+	  gererateResource();
+  }
 
+  
+  public Arm1(BigInteger id1,RESOURCES resource, String name)
+  {
+	  this.id="Resource"+id1;
+	  this.name=name;
+	  this.workingArea=null;
+	  this.resources=resource;
+	  
+	  gererateResource();
+	  
+	  
+	  add2Resources();
+	  
+  }
+  
+  public void connectedArm(Arm2 arm2) {
+	  
+	  this.arm2=arm2;
+  }
+  
 }

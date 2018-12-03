@@ -21,7 +21,7 @@ public class cost extends AbstractCriterion {
 	public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
 		// INITIALIZE A NEW PLAN IN ORDER TO MAKE THE ASSIGNMENTS
 		Random rand = new Random();
-		if (1 == 1) {
+		if (2 == 1) {
 			double num = rand.nextDouble();
 			return num;
 		}
