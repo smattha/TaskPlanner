@@ -74,7 +74,7 @@ public class ThomasDemoEvaluation1 {
 		
 		Place aTask = new Place("pick damper", screw10,w1,tasks,theTaskprecedenceconstraints,null);
 		Place bTask = new Place("read barcode", screw5,w1,tasks,theTaskprecedenceconstraints,aTask);
-		Place cTask = new Place("place damper", screw5,w1,tasks,theTaskprecedenceconstraints,bTask);
+		Place cTask = new Place("place damper", screw5,w2,tasks,theTaskprecedenceconstraints,bTask);
 		//Place dTask = new Place("place 4", screw5,w1,tasks,theTaskprecedenceconstraints,cTask);
 		//Place eTask = new Place("place 5", screw5,w1,tasks,theTaskprecedenceconstraints,dTask);
 		//Place fTask = new Place("place 6", screw5,w1,tasks,theTaskprecedenceconstraints,eTask);
@@ -94,7 +94,7 @@ public class ThomasDemoEvaluation1 {
 		
 		Arm2 aResource3 = new Arm2(IDGenerator.getNewID(),resources,"Robot2");
 		
-		Arm2 aResource4 = new Arm2(IDGenerator.getNewID(),resources,"Robot3");
+		//Arm2 aResource4 = new Arm2(IDGenerator.getNewID(),resources,"Robot3");
 		
 	    ThomasResource aResource2 = new ThomasResource(IDGenerator.getNewID(),resources, "Human");
 

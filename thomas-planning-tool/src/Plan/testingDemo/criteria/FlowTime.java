@@ -21,17 +21,27 @@ public class FlowTime extends AbstractCriterion {
 	@Override
 	public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
 		// INITIALIZE A NEW PLAN IN ORDER TO MAKE THE ASSIGNMENTS
-		Random rand = new Random();
-		if (2 == 1) {
-			double num = rand.nextDouble();
 
-		}
 		int sr = paths.size();
 		double value = 0;
-
-
+		
+		double[] a;
+		a=new double[sr];
+		
+		double[] sum;
+		sum=new double[sr];
+		
+		double minValue=0;
+		
+		
+		
+		double timeToCompleteSum = 0;
+		double partialTimeToComplete = 0;
+		
+		
 		ManualPlanHelperInterface manualHelper = helper.getManualPlanningHelperInterface();
-		for (int i = 0; i < sr; i++) {
+		for (int i = 0; i < sr; i++)
+		{
 			// System.out.print("\t\t\tSample "+(i+1)+"/"+sr+" sequence :");
 			TreeNode[] path = paths.get(i);
 			Calendar currentTime = Calendar.getInstance();
@@ -49,20 +59,50 @@ public class FlowTime extends AbstractCriterion {
 					String taskName=taskSimulator.getTaskDataModel().getTaskName();
 					String resourceName=resourceSimulator.getResourceDataModel().getResourceName();
 					
-					System.out.println("taskName "+taskName + "    getResource "+ resourceName);
+				
 					
 					double v1=Simulation.simulationDemo1(resourceName,taskName);
-					//value=.....;
+					
+					System.out.println("taskName "+taskName + "    getResource "+ resourceName + "   ");
+					//minValue=minValue+v1;
 					
 					
-
+					partialTimeToComplete += v1;
+					
+					//value=v1;
+					//a[k]=v1;					
+																    	
+					//System.out.print("The value is:"+a[k]);
+					//System.out.print("\n");
 				}
+				partialTimeToComplete = partialTimeToComplete / path.length;
+				timeToCompleteSum += partialTimeToComplete;
 			}
-			// System.out.print("\n");
+			 
 		}
-
-
-		return value;
+		int i;
+		/*
+		for(i=0;i<a.length;i++) {
+			sum[i]+=a[i];
+			minValue=sum[0];
+			
+			if (sum[i]<minValue) {
+				minValue=sum[i];
+			}
+			
+		}
+		*/
+		
+		
+		timeToCompleteSum = timeToCompleteSum / (double) sr;            
+		
+		return timeToCompleteSum;
+		
+	}
+	
+	private void time(double v1) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -77,7 +117,6 @@ public class FlowTime extends AbstractCriterion {
 
 	@Override
 	public String getCriterionName() {
-		return "OPERATION TIME";
-	}
-
+		return "OPERTION TIME";
+	}	
 }
