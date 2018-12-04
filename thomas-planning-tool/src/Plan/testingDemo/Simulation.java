@@ -63,7 +63,7 @@ if (Task.compareTo("pick damper")==0){
 	   }
 	   
        }else if (res.compareTo("Robot2")==0){
-	    time=400;
+	    time=4;
 	    weight=4;
 	    idleness=3;
 	   
