@@ -33,6 +33,9 @@ public class ThomasResource extends RESOURCE {
 	public String description;
 	public String name = "Robot";
 	public String type;
+	
+	public ThomasResource connectedResource;
+	public Boolean connected=false;
 	protected RESOURCES resources;
     //public BigInteger id;
 	
@@ -49,8 +52,7 @@ public class ThomasResource extends RESOURCE {
 		this.name = name;
 		properties = new PROPERTIES();
 		this.id=id+"";
-		properties.getPROPERTY()
-		.add(MapToResourcesAndTasks.getProperty("Robot Property", "I workedddddddddddddddddddddddd"));
+
 
 		this.resources=resources;
 		gererateResource();
@@ -86,7 +88,22 @@ public class ThomasResource extends RESOURCE {
 		
 		setPROPERTIES(properties);
 		
-
+		String msg="true";
+		if (connected==false)
+		{
+			msg="false";
+			
+		}
+		properties.getPROPERTY()
+		.add(MapToResourcesAndTasks.getProperty("Connected", msg));
+		
+		if (connected==true)
+		{
+			properties.getPROPERTY()
+			.add(MapToResourcesAndTasks.getProperty("ConnectedId", connectedResource.id));
+			
+		}
+		
 		
 		myObjectFactory = null;
 

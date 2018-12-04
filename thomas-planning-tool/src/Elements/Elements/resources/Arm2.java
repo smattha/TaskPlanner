@@ -47,7 +47,11 @@ public class Arm2  extends ThomasResource{
     
     
     public void connectedArm(Arm1 arm1) {
-  	  this.arm1=arm1;
+  	  
+    	connectedResource=arm1;
+    	this.arm1=arm1;
+    connected=true;
+    
     }
     
     

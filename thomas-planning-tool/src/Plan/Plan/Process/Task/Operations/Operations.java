@@ -58,6 +58,9 @@ public class Operations extends TASK {
 	setPROPERTIES(properties);
  		 
  	properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("WorkingArea",  workingArea.name+""));
+ 	
+ 	properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("idpre",  idpre +""));
+	
 
 	return true;
  }         
