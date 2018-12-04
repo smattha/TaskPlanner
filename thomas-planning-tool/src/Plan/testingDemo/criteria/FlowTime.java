@@ -14,6 +14,7 @@ import planning.scheduler.simulation.ResourceSimulator;
 import planning.scheduler.simulation.TaskSimulator;
 import planning.scheduler.simulation.interfaces.ManualPlanHelperInterface;
 import planning.scheduler.simulation.interfaces.PlanHelperInterface;
+import testingDemo.Simulation;
 
 public class FlowTime extends AbstractCriterion {
 
@@ -50,8 +51,8 @@ public class FlowTime extends AbstractCriterion {
 					
 					System.out.println("taskName "+taskName + "    getResource "+ resourceName);
 					
-					
-					
+					double v1=Simulation.simulationDemo1(resourceName,taskName);
+					//value=.....;
 					
 					
 
@@ -61,7 +62,7 @@ public class FlowTime extends AbstractCriterion {
 		}
 
 
-		return value / (double) sr;
+		return value;
 	}
 
 	@Override
