@@ -28,7 +28,7 @@ import planning.scheduler.simulation.PlanEndRule;
 import planning.scheduler.simulation.PlanSimulator;
 import planning.scheduler.simulation.WorkloadAllocationUntilDateEndRule;
 import planning.scheduler.simulation.interfaces.OperationTimeCalculatorInterface;
-import testingDemo.criteria.cost;
+import testingDemo.criteria.FlowTime;
 
 public class MainPlanningTool {
 
@@ -207,7 +207,7 @@ public class MainPlanningTool {
 		Document document = null;
 		if (args.length == 0) {
 
-			DemoPlanningGenerator3D demo = new DemoPlanningGenerator3D();
+			ThomasDemoEvaluation1 demo = new ThomasDemoEvaluation1();
 			PLANNINGINPUT layoutPlanningInput = demo.generatePlanningInput();
 			try {
 				document = LayoutPlanningInputGenerator.getPlanningInputXMLDocumentFromJaxb(layoutPlanningInput);
@@ -222,7 +222,7 @@ public class MainPlanningTool {
 		IMPACT mptIMPACT = (IMPACT) tool.getAlgorithmFactoryforConfiguration()
 				.getAlgorithmInstance(IMPACT.MULTICRITERIA);
 
-		mptIMPACT.setCriteria(new AbstractCriterion[] { new cost() });
+		mptIMPACT.setCriteria(new AbstractCriterion[] { new FlowTime() });
 
 		int dh = 1;
 		int mna = 100;

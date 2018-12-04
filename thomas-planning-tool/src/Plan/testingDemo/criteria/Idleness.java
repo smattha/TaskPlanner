@@ -1,5 +1,7 @@
 package testingDemo.criteria;
 
+
+
 import java.util.Calendar;
 import java.util.Random;
 import java.util.Vector;
@@ -15,7 +17,7 @@ import planning.scheduler.simulation.TaskSimulator;
 import planning.scheduler.simulation.interfaces.ManualPlanHelperInterface;
 import planning.scheduler.simulation.interfaces.PlanHelperInterface;
 
-public class cost extends AbstractCriterion {
+public class Idleness extends AbstractCriterion {
 
 	@Override
 	public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
@@ -23,10 +25,10 @@ public class cost extends AbstractCriterion {
 		Random rand = new Random();
 		if (2 == 1) {
 			double num = rand.nextDouble();
-			return num;
+
 		}
 		int sr = paths.size();
-		double costSum = 0;
+		double value = 0;
 
 
 		ManualPlanHelperInterface manualHelper = helper.getManualPlanningHelperInterface();
@@ -44,30 +46,24 @@ public class cost extends AbstractCriterion {
 					Assignment assignment = assignments.get(k);
 					TaskSimulator taskSimulator = assignment.getTask();
 					ResourceSimulator resourceSimulator = assignment.getResource();
-					double partialCost = manualHelper.getSetUpTimeInMillisecondsForTaskOnResource(taskSimulator,
-							resourceSimulator, currentTime, assignments)
-							+ manualHelper.getOperationTimeInMillisecondsForTaskOnResource(taskSimulator,
-									resourceSimulator, timeNow, assignments)
-							+ manualHelper.getResourceDownTimeInMillisecondsForTaskOnResource(taskSimulator,
-									resourceSimulator, currentTime, assignments);
+					
+					String taskName=taskSimulator.getTaskDataModel().getTaskName();
+					String resourceName=resourceSimulator.getResourceDataModel().getResourceName();
+					
+					System.out.println("taskName "+taskName + "    getResource "+ resourceName);
+					
+					
+					
+					
+					
 
-					Calendar assignmentTime = Calendar.getInstance();
-					assignmentTime.setTimeInMillis(currentTime.getTimeInMillis());
-					manualHelper.addManualAssignment(new AssignmentDataModel(taskSimulator.getTaskDataModel(),
-							resourceSimulator.getResourceDataModel(), assignmentTime, (long) partialCost, false, null));
-
-					currentTime.setTimeInMillis(currentTime.getTimeInMillis() + (long) partialCost);
-					manualHelper.setManualTimeNow(currentTime);
-					costSum += partialCost;
-					// System.out.print(" "+taskSimulator.getTaskDataModel().getTaskId());
 				}
 			}
 			// System.out.print("\n");
 		}
-		// System.out.println("\t\tSR : "+ sr
-		// +" ( IMPACT.SR = "+IMPACT.getSR()+")" );
 
-		return costSum / (double) sr;
+
+		return value / (double) sr;
 	}
 
 	@Override
