@@ -6,6 +6,10 @@ import java.util.Vector;
 
 import javax.swing.tree.TreeNode;
 
+import javafx.geometry.Point3D;
+import lms.robopartner.datamodel.map.controller.MapParameters;
+import lms.robopartner.datamodel.map.controller.MapToResourcesAndTasks;
+import lms.robopartner.mfg_planning_tool.impact.criteria.TimeToComplete;
 import planning.model.AssignmentDataModel;
 import planning.scheduler.algorithms.impact.LayerNode;
 import planning.scheduler.algorithms.impact.LayerNode.Assignment;
@@ -16,87 +20,75 @@ import planning.scheduler.simulation.interfaces.ManualPlanHelperInterface;
 import planning.scheduler.simulation.interfaces.PlanHelperInterface;
 import testingDemo.Simulation;
 
+
 public class FlowTime extends AbstractCriterion {
 
+	static int counter=0;
 	@Override
 	public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
-		// INITIALIZE A NEW PLAN IN ORDER TO MAKE THE ASSIGNMENTS
+		
 
+
+		counter++;
+		
+
+		String msg = ".getValue(): ";
 		int sr = paths.size();
-		double value = 0;
-		
-		double[] a;
-		a=new double[sr];
-		
-		double[] sum;
-		sum=new double[sr];
-		
-		double minValue=0;
 		
 		
+		//System.out.println("                                 Counter        " +counter" sr:"+sr);
 		
-		double timeToCompleteSum = 0;
 		double partialTimeToComplete = 0;
-		
-		
-		ManualPlanHelperInterface manualHelper = helper.getManualPlanningHelperInterface();
-		for (int i = 0; i < sr; i++)
-		{
-			// System.out.print("\t\t\tSample "+(i+1)+"/"+sr+" sequence :");
+		double value=0;
+		String alternative = "[ ";
+		for ( int i = 0; i < sr; i++ ) {
 			TreeNode[] path = paths.get(i);
-			Calendar currentTime = Calendar.getInstance();
-			currentTime.setTimeInMillis(timeNow.getTimeInMillis());
-			for (int j = 0; j < path.length; j++) {
+
+			int oi=path.length;
+			double timeToCompleteSum = 0;
+			//System.out.println("                                 Counter        " +counter+" sr:"+sr);
+			for ( int j = 0; j < path.length; j++ ) {
 				LayerNode node = (LayerNode) path[j];
-				if (node.getUserObject() == null)
-					continue;
-				Vector<Assignment> assignments = node.getNodeAssignments();
-				for (int k = 0; k < assignments.size(); k++) {
-					Assignment assignment = assignments.get(k);
-					TaskSimulator taskSimulator = assignment.getTask();
-					ResourceSimulator resourceSimulator = assignment.getResource();
-					
-					String taskName=taskSimulator.getTaskDataModel().getTaskName();
-					String resourceName=resourceSimulator.getResourceDataModel().getResourceName();
-					
 				
+				int ass=0;
+				for ( Assignment assignment : node.getNodeAssignments() ) {
+					ass++;
 					
-					double v1=Simulation.simulationDemo1(resourceName,taskName);
+					String taskName=assignment.getTask().getTaskDataModel().getTaskName();
+					String resourceName=assignment.getResource().getResourceDataModel().getResourceName();
 					
-					System.out.println("taskName "+taskName + "    getResource "+ resourceName + "   ");
-					//minValue=minValue+v1;
+					System.out.println("                      Counter        " +counter+" sr "+sr+" pathLengh "+path.length+ " assi "+ ass+" res "+ resourceName+" task "+ taskName);
 					
 					
-					partialTimeToComplete += v1;
+					double partialTimeToCompleteTemp = 0;
 					
-					//value=v1;
-					//a[k]=v1;					
-																    	
-					//System.out.print("The value is:"+a[k]);
-					//System.out.print("\n");
+					
+					partialTimeToCompleteTemp=Simulation.simulationDemo1(resourceName, taskName);
+					
+					partialTimeToComplete += partialTimeToCompleteTemp;
+
+					
+
 				}
-				partialTimeToComplete = partialTimeToComplete / path.length;
+				//partialTimeToComplete = partialTimeToComplete;// path.length;
 				timeToCompleteSum += partialTimeToComplete;
+				partialTimeToComplete = 0;
 			}
-			 
+			value =value+timeToCompleteSum;
 		}
-		int i;
-		/*
-		for(i=0;i<a.length;i++) {
-			sum[i]+=a[i];
-			minValue=sum[0];
-			
-			if (sum[i]<minValue) {
-				minValue=sum[i];
-			}
-			
+
+		//timeToCompleteSum = timeToCompleteSum / (double) sr;
+		
+		
+		System.out.println("                                 Counter        " +counter+"                               "+value);
+		
+		
+		if(value==0)
+		{
+			return 100000;
 		}
-		*/
 		
-		
-		timeToCompleteSum = timeToCompleteSum / (double) sr;            
-		
-		return timeToCompleteSum;
+		return value/(sr*paths.get(0).length);
 		
 	}
 	

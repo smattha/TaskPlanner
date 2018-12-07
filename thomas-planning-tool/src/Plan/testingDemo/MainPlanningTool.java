@@ -224,9 +224,10 @@ public class MainPlanningTool {
 
 		mptIMPACT.setCriteria(new AbstractCriterion[] { new FlowTime() });
 
-		int dh = 1;
+		int dh = 2;
 		int mna = 100;
-		int sr = 10;
+			
+		int sr = 2;
 
 		mptIMPACT.setDH(dh);
 		mptIMPACT.setMNA(mna);

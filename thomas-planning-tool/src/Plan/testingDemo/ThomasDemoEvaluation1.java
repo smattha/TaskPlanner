@@ -69,12 +69,22 @@ public class ThomasDemoEvaluation1 {
 		BarcodeScanner scanner  = new BarcodeScanner("scanner");
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		WorkingArea w1=new WorkingArea("Station 1");
-		WorkingArea w2=new WorkingArea("Station 2");
+		//WorkingArea w2=new WorkingArea("Station 2");
 		
 		
-		Place aTask = new Place("pick damper", screw10,w1,tasks,theTaskprecedenceconstraints,null);
-		Place bTask = new Place("read barcode", screw5,w1,tasks,theTaskprecedenceconstraints,aTask);
-		Place cTask = new Place("place damper", screw5,w2,tasks,theTaskprecedenceconstraints,bTask);
+		Place pickDumper = new Place("pickDamper", screw10,w1,tasks,theTaskprecedenceconstraints,null);
+		Place readBarcode = new Place("readBarcode", screw5,w1,tasks,theTaskprecedenceconstraints,pickDumper);
+		Place placeDamper = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,readBarcode);
+		Place placeDamper1 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper);
+		
+		Place placeDamper2 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper1);
+		Place placeDamper3 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper2);
+		Place placeDamper4 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper3);
+		Place placeDamper5 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper4);
+		Place placeDamper6 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper5);
+		Place placeDamper7 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper6);
+		Place placeDamper8 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper7);
+		
 		//Place dTask = new Place("place 4", screw5,w1,tasks,theTaskprecedenceconstraints,cTask);
 		//Place eTask = new Place("place 5", screw5,w1,tasks,theTaskprecedenceconstraints,dTask);
 		//Place fTask = new Place("place 6", screw5,w1,tasks,theTaskprecedenceconstraints,eTask);
@@ -90,27 +100,29 @@ public class ThomasDemoEvaluation1 {
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		
-		Arm1 aResource1 = new Arm1(IDGenerator.getNewID(),resources,"Robot1");
+		Arm1 robot1 = new Arm1(IDGenerator.getNewID(),resources,"Robot1");
 		
-		Arm2 aResource3 = new Arm2(IDGenerator.getNewID(),resources,"Robot2");
+		Arm2 robot2 = new Arm2(IDGenerator.getNewID(),resources,"Robot2");
 		
 		//Arm2 aResource4 = new Arm2(IDGenerator.getNewID(),resources,"Robot3");
 		
-	    ThomasResource aResource2 = new ThomasResource(IDGenerator.getNewID(),resources, "Human");
+	    ThomasResource human = new ThomasResource(IDGenerator.getNewID(),resources, "Human");
 
-		aResource1.addCompatibleTool(screw5);
-		aResource1.addCompatibleTool(scanner);
-		aResource3.addCompatibleTool(screw10);
-		aResource3.addCompatibleTool(scanner);
-		aResource2.addCompatibleTool(screw5);
-		aResource2.addCompatibleTool(scanner);
+		robot1.addCompatibleTool(screw5);
+		robot1.addCompatibleTool(scanner);
+		
+		robot2.addCompatibleTool(screw10);
+		robot2.addCompatibleTool(scanner);
+		
+		human.addCompatibleTool(screw5);
+		human.addCompatibleTool(scanner);
 
 
 		TASKSUITABLERESOURCES tasksuitableresources = myObjectFactory.createTASKSUITABLERESOURCES();
 
-		aResource1.fillTasksuitableresources(tasksuitableresources, tasks);
-		aResource2.fillTasksuitableresources(tasksuitableresources, tasks);
-		aResource3.fillTasksuitableresources(tasksuitableresources, tasks);
+		robot1.fillTasksuitableresources(tasksuitableresources, tasks);
+		human.fillTasksuitableresources(tasksuitableresources, tasks);
+		robot2.fillTasksuitableresources(tasksuitableresources, tasks);
 
 		
 		
