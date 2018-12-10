@@ -3,6 +3,7 @@ package testingDemo.criteria;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Random;
 import java.util.Vector;
 
 import javax.swing.tree.TreeNode;
@@ -15,6 +16,9 @@ import org.slf4j.LoggerFactory;
 import planning.scheduler.algorithms.impact.LayerNode;
 import planning.scheduler.algorithms.impact.LayerNode.Assignment;
 import planning.scheduler.algorithms.impact.criteria.AbstractCriterion;
+import planning.scheduler.simulation.ResourceSimulator;
+import planning.scheduler.simulation.TaskSimulator;
+import planning.scheduler.simulation.interfaces.ManualPlanHelperInterface;
 import planning.scheduler.simulation.interfaces.PlanHelperInterface;
 
 public class Payload extends AbstractCriterion {
@@ -34,60 +38,51 @@ public class Payload extends AbstractCriterion {
 		}
 	}
 
-	@Override
-	public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
-		String msg = ".getValue(): ";
-		int sr = paths.size();
-		double payloadSum = 0;
-		double partialPayload = 0;
-		String alternative = "[ ";
-		for (int i = 0; i < sr; i++) {
-			logger.trace(msg + "Sample " + (i + 1) + " of " + sr + " sequence :");
-			TreeNode[] path = paths.get(i);
-			for (int j = 0; j < path.length; j++) {
-				LayerNode node = (LayerNode) path[j];
-				for (Assignment assignment : node.getNodeAssignments()) {
-					String taskId = assignment.getTask().getTaskId();
-					String resourceId = assignment.getResource().getResourceId();
-					alternative += "taskId: " + taskId + " resourceId: " + resourceId;
-					double partialPayloadTemp = 0;
-					double payloadLimit = Double
-							.parseDouble(assignment.getResource().getResourceDataModel().getProperty("Payload (kg)"));
-					double partWeight = Double
-							.parseDouble(assignment.getTask().getTaskDataModel().getProperty("Weight (Kg)"));
-					if (assignment.getResource().getResourceDataModel()
-							.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME)
-							.equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_HUMAN)) {
-						if (partWeight > payloadLimit)
-							return 0;
-						else
-							partialPayloadTemp = partWeight;
-					} else if (assignment.getResource().getResourceDataModel()
-							.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME)
-							.equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_ROBOT)) {
-						if (partWeight > payloadLimit)
-							return 0;
-						else
-							partialPayloadTemp = partWeight;
-					}
-					partialPayload += partialPayloadTemp;
-					logger.trace(msg + " taskId: {} resourceId: {} {}: {}", taskId, resourceId, Payload.CRITERION_NAME,
-							partialPayload);
-				}
-				payloadSum += partialPayload;
+
+		public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
+			// INITIALIZE A NEW PLAN IN ORDER TO MAKE THE ASSIGNMENTS
+			Random rand = new Random();
+			if (2 == 1) {
+				double num = rand.nextDouble();
+
 			}
+			int sr = paths.size();
+			double value = 0;
+
+
+			ManualPlanHelperInterface manualHelper = helper.getManualPlanningHelperInterface();
+			for (int i = 0; i < sr; i++) {
+				TreeNode[] path = paths.get(i);
+				Calendar currentTime = Calendar.getInstance();
+				currentTime.setTimeInMillis(timeNow.getTimeInMillis());
+				for (int j = 0; j < path.length; j++) {
+					LayerNode node = (LayerNode) path[j];
+					if (node.getUserObject() == null)
+						continue;
+					Vector<Assignment> assignments = node.getNodeAssignments();
+					for (int k = 0; k < assignments.size(); k++) {
+						Assignment assignment = assignments.get(k);
+						TaskSimulator taskSimulator = assignment.getTask();
+						ResourceSimulator resourceSimulator = assignment.getResource();
+						
+						String taskName=taskSimulator.getTaskDataModel().getTaskName();
+						String resourceName=resourceSimulator.getResourceDataModel().getResourceName();
+						
+						System.out.println("taskName "+taskName + "    getResource "+ resourceName);
+						
+						
+						
+						
+						
+
+					}
+				}
+				
+			}
+
+
+			return value / (double) sr;
 		}
-		payloadSum = payloadSum / (double) sr;
-		logger.trace(msg + "{} : {}", Payload.CRITERION_NAME, payloadSum);
-		try {
-			fileWriter.append("Alternative " + alternativeCounter + ":\n\t" + alternative + " ]\n\t\tScore: "
-					+ payloadSum + "\n\n");
-		} catch (IOException e) {
-			// logger.error(ExceptionUtils.getStackTrace(e));
-		}
-		alternativeCounter++;
-		return payloadSum;
-	}
 
 	@Override
 	public double getWeight() {

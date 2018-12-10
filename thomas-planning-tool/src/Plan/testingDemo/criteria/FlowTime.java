@@ -23,13 +23,13 @@ import testingDemo.Simulation;
 
 public class FlowTime extends AbstractCriterion {
 
-	static int counter=0;
+    static int counter=0;
 	@Override
 	public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
 		
 
 
-		counter++;
+	    counter++;
 		
 
 		String msg = ".getValue(): ";
@@ -39,9 +39,12 @@ public class FlowTime extends AbstractCriterion {
 		//System.out.println("                                 Counter        " +counter" sr:"+sr);
 		
 		double partialTimeToComplete = 0;
-		double value=0;
+		double value=0;		
 		String alternative = "[ ";
+		
+		
 		for ( int i = 0; i < sr; i++ ) {
+			
 			TreeNode[] path = paths.get(i);
 
 			int oi=path.length;
@@ -63,7 +66,7 @@ public class FlowTime extends AbstractCriterion {
 					double partialTimeToCompleteTemp = 0;
 					
 					
-					partialTimeToCompleteTemp=Simulation.simulationDemo1(resourceName, taskName);
+				    //partialTimeToCompleteTemp=Simulation.simulationDemo1(resourceName, taskName);
 					
 					partialTimeToComplete += partialTimeToCompleteTemp;
 

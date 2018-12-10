@@ -75,15 +75,15 @@ public class ThomasDemoEvaluation1 {
 		Place pickDumper = new Place("pickDamper", screw10,w1,tasks,theTaskprecedenceconstraints,null);
 		Place readBarcode = new Place("readBarcode", screw5,w1,tasks,theTaskprecedenceconstraints,pickDumper);
 		Place placeDamper = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,readBarcode);
-		Place placeDamper1 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper);
+		//Place placeDamper1 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper);
 		
-		Place placeDamper2 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper1);
-		Place placeDamper3 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper2);
-		Place placeDamper4 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper3);
-		Place placeDamper5 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper4);
-		Place placeDamper6 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper5);
-		Place placeDamper7 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper6);
-		Place placeDamper8 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper7);
+		//Place placeDamper2 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper1);
+		//Place placeDamper3 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper2);
+		//Place placeDamper4 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper3);
+		//Place placeDamper5 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper4);
+		//Place placeDamper6 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper5);
+		//Place placeDamper7 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper6);
+		//Place placeDamper8 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper7);
 		
 		//Place dTask = new Place("place 4", screw5,w1,tasks,theTaskprecedenceconstraints,cTask);
 		//Place eTask = new Place("place 5", screw5,w1,tasks,theTaskprecedenceconstraints,dTask);
