@@ -1,15 +1,8 @@
 package testingDemo.criteria;
 
 import java.util.Calendar;
-//import java.util.Random;
 import java.util.Vector;
-
 import javax.swing.tree.TreeNode;
-
-//import javafx.geometry.Point3D;
-//import lms.robopartner.datamodel.map.controller.MapParameters;
-//import lms.robopartner.datamodel.map.controller.MapToResourcesAndTasks;
-//import lms.robopartner.mfg_planning_tool.impact.criteria.TimeToComplete;
 import planning.model.AssignmentDataModel;
 import planning.scheduler.algorithms.impact.LayerNode;
 import planning.scheduler.algorithms.impact.LayerNode.Assignment;

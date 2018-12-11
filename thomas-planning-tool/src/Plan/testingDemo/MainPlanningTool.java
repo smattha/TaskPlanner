@@ -30,6 +30,7 @@ import planning.scheduler.simulation.WorkloadAllocationUntilDateEndRule;
 import planning.scheduler.simulation.interfaces.OperationTimeCalculatorInterface;
 import testingDemo.criteria.FlowTime;
 import testingDemo.criteria.Idleness;
+import testingDemo.criteria.Utilization;
 
 public class MainPlanningTool {
 
@@ -225,7 +226,12 @@ public class MainPlanningTool {
 
 		//mptIMPACT.setCriteria(new AbstractCriterion[] { new FlowTime() });
 		
-		mptIMPACT.setCriteria(new AbstractCriterion[] { new Idleness() });
+		//mptIMPACT.setCriteria(new AbstractCriterion[] { new Idleness() });
+		
+		mptIMPACT.setCriteria(new AbstractCriterion[] { new Utilization("test") });
+		mptIMPACT.setCriteria(new AbstractCriterion[] { new Utilization("test1") });		
+		
+		//mptIMPACT.setCriteria(new AbstractCriterion[] { new Payload() });
 		
 		
 		int dh = 2;

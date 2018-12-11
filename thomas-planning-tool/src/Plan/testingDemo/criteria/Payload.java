@@ -22,6 +22,8 @@ import planning.scheduler.simulation.interfaces.ManualPlanHelperInterface;
 import planning.scheduler.simulation.interfaces.PlanHelperInterface;
 
 public class Payload extends AbstractCriterion {
+	
+	static int counter=0;
 
 	private static org.slf4j.Logger logger = LoggerFactory.getLogger(Payload.class);
 	private static final String CRITERION_NAME = "PAYLOAD";
@@ -29,60 +31,93 @@ public class Payload extends AbstractCriterion {
 	private FileWriter fileWriter;
 	private int alternativeCounter = 0;
 
-	public Payload() {
-		super();
-		try {
-			fileWriter = new FileWriter("C:\\Payload.doc");
-		} catch (IOException e) {
-			// logger.error(ExceptionUtils.getStackTrace(e));
-		}
-	}
+	//public Payload() {
+	//	super();
+	//	try {
+	//		fileWriter = new FileWriter("C:\\Payload.doc");
+	//	} catch (IOException e) {
+	//		// logger.error(ExceptionUtils.getStackTrace(e));
+	//	}
+	//}
 
 
-		public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
+	public double getValue(Vector<TreeNode[]> paths, PlanHelperInterface helper, Calendar timeNow) {
 			// INITIALIZE A NEW PLAN IN ORDER TO MAKE THE ASSIGNMENTS
-			Random rand = new Random();
-			if (2 == 1) {
-				double num = rand.nextDouble();
+			
+		    counter++;
 
-			}
+			//Random rand = new Random();
+			//if (2 == 1) {
+			// num = rand.nextDouble();
+
+			//}
+		    String msg = ".getValue(): ";
 			int sr = paths.size();
 			double value = 0;
+			double partialHumanWeight = 0;
+			String alternative = "[ ";
 
 
-			ManualPlanHelperInterface manualHelper = helper.getManualPlanningHelperInterface();
+			//ManualPlanHelperInterface manualHelper = helper.getManualPlanningHelperInterface();
 			for (int i = 0; i < sr; i++) {
 				TreeNode[] path = paths.get(i);
-				Calendar currentTime = Calendar.getInstance();
-				currentTime.setTimeInMillis(timeNow.getTimeInMillis());
+				//Calendar currentTime = Calendar.getInstance();
+				//currentTime.setTimeInMillis(timeNow.getTimeInMillis());
+				
+				int oi=path.length;
+				double HumanWeightSum = 0;
+				
 				for (int j = 0; j < path.length; j++) {
 					LayerNode node = (LayerNode) path[j];
-					if (node.getUserObject() == null)
-						continue;
-					Vector<Assignment> assignments = node.getNodeAssignments();
-					for (int k = 0; k < assignments.size(); k++) {
-						Assignment assignment = assignments.get(k);
-						TaskSimulator taskSimulator = assignment.getTask();
-						ResourceSimulator resourceSimulator = assignment.getResource();
+					//if (node.getUserObject() == null)
+						//continue;
+					//Vector<Assignment> assignments = node.getNodeAssignments();
+					//for (int k = 0; k < assignments.size(); k++) {
+						//Assignment assignment = assignments.get(k);
+						//TaskSimulator taskSimulator = assignment.getTask();
+						//ResourceSimulator resourceSimulator = assignment.getResource();
 						
-						String taskName=taskSimulator.getTaskDataModel().getTaskName();
-						String resourceName=resourceSimulator.getResourceDataModel().getResourceName();
+						//String taskName=taskSimulator.getTaskDataModel().getTaskName();
+						//String resourceName=resourceSimulator.getResourceDataModel().getResourceName();
+					int ass=0;
+					for ( Assignment assignment : node.getNodeAssignments() ) {
+						ass++;
 						
-						System.out.println("taskName "+taskName + "    getResource "+ resourceName);
+						String taskName=assignment.getTask().getTaskDataModel().getTaskName();
+						String resourceName=assignment.getResource().getResourceDataModel().getResourceName();
 						
+					 //System.out.println("taskName "+taskName + "    getResource "+ resourceName);
+					 System.out.println("                      Counter        " +counter+" sr "+sr+" pathLengh "+path.length+ " assi "+ ass+" res "+ resourceName+" task "+ taskName);
 						
+					 double partialHumanWeightTemp = 0;
+												
+					 //partialHumanWeightTemp=Simulation.simulationDemo1(resourceName, taskName);
 						
-						
-						
-
-					}
+					 partialHumanWeight += partialHumanWeightTemp;											
 				}
-				
+					
+				HumanWeightSum += partialHumanWeight;
+				partialHumanWeight = 0;
 			}
-
-
-			return value / (double) sr;
+			value =value+HumanWeightSum;
 		}
+			
+		System.out.println("                                 Counter        " +counter+"                               "+value);
+			
+		if(value==0)
+		{
+			return 100000;
+		}
+			
+		return value/(sr*paths.get(0).length);
+
+		//return value / (double) sr;
+	}
+		
+	private void time(double v1) {
+			// TODO Auto-generated method stub
+			
+	}
 
 	@Override
 	public double getWeight() {
@@ -98,5 +133,4 @@ public class Payload extends AbstractCriterion {
 	public String getCriterionName() {
 		return Payload.CRITERION_NAME;
 	}
-
 }

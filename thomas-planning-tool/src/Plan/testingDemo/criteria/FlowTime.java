@@ -112,6 +112,6 @@ public class FlowTime extends AbstractCriterion {
 
 	@Override
 	public String getCriterionName() {
-		return "OPERTION TIME";
+		return "OPERATION TIME";
 	}	
 }
