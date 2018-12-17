@@ -37,12 +37,14 @@ public class Utilization extends AbstractCriterion {
 		//}		 
 		String msg = ".getValue(): ";  
 		int sr = paths.size();
+		double partialTimeToComplete = 0;
 		double partialUtilizationTime1=0;
-		double partialUtilizationTime2=0;
-		double partialUtilizationTime3=0;
+		//double partialUtilizationTime2=0;
+		//double partialUtilizationTime3=0;		
+		double value = 0;
 		double value1 = 0;
-		double value2 = 0;
-		double value3 = 0;
+		//double value2 = 0;
+		//double value3 = 0;
 
 		//ManualPlanHelperInterface manualHelper = helper.getManualPlanningHelperInterface();
 		for (int i = 0; i < sr; i++) {
@@ -51,6 +53,7 @@ public class Utilization extends AbstractCriterion {
 			//currentTime.setTimeInMillis(timeNow.getTimeInMillis());
 			int oi=path.length;
 			double UtilizationTimeSum = 0;
+			double timeToCompleteSum = 0;
 			
 			for (int j = 0; j < path.length; j++) {
 				LayerNode node = (LayerNode) path[j];
@@ -75,54 +78,61 @@ public class Utilization extends AbstractCriterion {
 					
 				         System.out.println("                      Counter        " +counter+" sr "+sr+" pathLengh "+path.length+ " assi "+ ass+" res "+ resourceName+" task "+ taskName);
 					
-				         
-				         double partialUtilizationTimeTemp=0;
-				     				         				         
-				         //partialUtilizationTimeTemp=Simulation.simulationDemo1(resourceName, taskName);
-			        	 //System.out.println(""+partialUtilizationTimeTemp);
-			        	 //System.out.println(""+resourceName);			        	 
+				         //double partialUtilizationTimeTemp=0;
+				         double partialUtilizationTimeTemp[]= {0,0};
+				         				     				         				         
+				         //partialUtilizationTimeTemp=Simulation.simulationDemo1(resourceName, taskName);		        	 	        	 
 
-				         if (resourceName.equals("Human")){				       
+				         //if (resourceName.equals("Human")){				       
 				        	
 				        	 partialUtilizationTimeTemp=Simulation.simulationDemo1(resourceName, taskName);
-				        	 System.out.println(""+partialUtilizationTimeTemp);
-
+				        	 System.out.println(""+partialUtilizationTimeTemp[0]);
+				        	 System.out.println(""+partialUtilizationTimeTemp[1]);
+				        	 partialTimeToComplete += partialUtilizationTimeTemp[0];
+				        	 			        	 
 					         //Calculate flowtime
-						     //UtilizationSum=UtilizationTimeTemp/flowtime
-				        	 partialUtilizationTime1 = partialUtilizationTimeTemp;					        	
-				         }
+				        	 partialUtilizationTime1 += partialUtilizationTimeTemp[1];	  	
+						    
+				        //}
 
-				         else if(resourceName.equals("Robot1")) {
+				        // else if(resourceName.equals("Robot1")) {
 				        	 
-				        	 partialUtilizationTimeTemp=Simulation.simulationDemo1(resourceName, taskName);
-				        	 System.out.println(""+partialUtilizationTimeTemp);
+				        //	 partialUtilizationTimeTemp=Simulation.simulationDemo1(resourceName, taskName);
+				        //	 System.out.println(""+partialUtilizationTimeTemp[0]);
+				        //	 System.out.println(""+partialUtilizationTimeTemp[1]);
+				        //	 partialTimeToComplete += partialUtilizationTimeTemp[0];				        	 		        	 
 				        	 
 					         //Calculate flowtime
-						     //UtilizationSum=UtilizationTimeTemp/flowtime
-				        	 partialUtilizationTime2 = partialUtilizationTimeTemp;
-				         } 
+				        //	 partialUtilizationTime1 = partialUtilizationTimeTemp[1];	
+				       //  } 
 				         
-				         else if(resourceName.equals("Robot2")){
+				       //  else if(resourceName.equals("Robot2")){
 				        	 
-				        	 partialUtilizationTimeTemp=Simulation.simulationDemo1(resourceName, taskName);
-				        	 System.out.println(""+partialUtilizationTimeTemp);
-
-					         //Calculate flowtime
-						     //UtilizationSum=UtilizationTimeTemp/flowtime
-				        	 partialUtilizationTime3 = partialUtilizationTimeTemp;
-				         }      									         
+				       // 	 partialUtilizationTimeTemp=Simulation.simulationDemo1(resourceName, taskName);
+				       // 	 System.out.println(""+partialUtilizationTimeTemp[0]);
+				       // 	 System.out.println(""+partialUtilizationTimeTemp[1]);
+				       // 	 partialTimeToComplete += partialUtilizationTimeTemp[0];	        	 		        	 
+				        	 
+					         //Calculate flowtime						    
+				        //	 partialUtilizationTime1 = partialUtilizationTimeTemp[1];	
+				       //  }      									         
 				         							
 					   	//partialUtilizationTime += partialUtilizationTimeTemp;	
+				         
+							//partialUtilizationTime1 = 0;
 				}
-				     //UtilizationTimeSum += partialUtilizationTime1;
-				     //partialUtilizationTime = 0;			    
-			}				
-			value1 =value1+partialUtilizationTime1;
-			value2 =value2+partialUtilizationTime2;
-			value3 =value3+partialUtilizationTime3;
+				     timeToCompleteSum += partialTimeToComplete;
+			         UtilizationTimeSum += partialUtilizationTime1;
+						partialTimeToComplete = 0;		    
+			}	
+			value =value+timeToCompleteSum;
+			value1 =value1+UtilizationTimeSum;
+			//value2 =value2+partialUtilizationTime2;
+			//value3 =value3+partialUtilizationTime3;
 		}
+		 
 		
-		System.out.println("                                 Counter        " +counter+"                               "+value1);
+		System.out.println("                                 Counter        " +counter+"                               "+value1/value);
 
 
 		if(value1==0)
@@ -130,7 +140,7 @@ public class Utilization extends AbstractCriterion {
 			return 100000;
 		}
 		//System.out.println("hiiiii "+value1);
-		return value1/(sr*paths.get(0).length);
+		return (value1/value)/(sr*paths.get(0).length);
 	}
 	
 	private void time(double v1) {

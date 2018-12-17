@@ -20,6 +20,7 @@ import planning.scheduler.simulation.ResourceSimulator;
 import planning.scheduler.simulation.TaskSimulator;
 import planning.scheduler.simulation.interfaces.ManualPlanHelperInterface;
 import planning.scheduler.simulation.interfaces.PlanHelperInterface;
+import testingDemo.Simulation;
 
 public class Payload extends AbstractCriterion {
 	
@@ -89,11 +90,13 @@ public class Payload extends AbstractCriterion {
 					 //System.out.println("taskName "+taskName + "    getResource "+ resourceName);
 					 System.out.println("                      Counter        " +counter+" sr "+sr+" pathLengh "+path.length+ " assi "+ ass+" res "+ resourceName+" task "+ taskName);
 						
-					 double partialHumanWeightTemp = 0;
+					 //double partialHumanWeightTemp = 0;
+					 double partialHumanWeightTemp[] = {0,0};
+
 												
-					 //partialHumanWeightTemp=Simulation.simulationDemo1(resourceName, taskName);
+					 partialHumanWeightTemp=Simulation.simulationDemo1(resourceName, taskName);
 						
-					 partialHumanWeight += partialHumanWeightTemp;											
+					 partialHumanWeight += partialHumanWeightTemp[0];											
 				}
 					
 				HumanWeightSum += partialHumanWeight;

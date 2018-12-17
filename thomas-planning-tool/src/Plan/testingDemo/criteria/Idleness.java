@@ -69,12 +69,12 @@ public class Idleness extends AbstractCriterion {
 					System.out.println("                      Counter        " +counter+" sr "+sr+" pathLengh "+path.length+ " assi "+ ass+" res "+ resourceName+" task "+ taskName);
 					
 					
-                    double partialIdleTimeTemp=0;
-					
+                    //double partialIdleTimeTemp=0;
+                    double partialIdleTimeTemp[] = {0,0};					
 					
                     partialIdleTimeTemp=Simulation.simulationDemo1(resourceName, taskName);
 					
-					partialIdleTime += partialIdleTimeTemp;
+					partialIdleTime += partialIdleTimeTemp[0];
 
 					
 

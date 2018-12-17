@@ -63,12 +63,14 @@ public class FlowTime extends AbstractCriterion {
 					System.out.println("                      Counter        " +counter+" sr "+sr+" pathLengh "+path.length+ " assi "+ ass+" res "+ resourceName+" task "+ taskName);
 					
 					
-					double partialTimeToCompleteTemp = 0;
+					//double partialTimeToCompleteTemp = 0;
+					double partialTimeToCompleteTemp[] = {0,0};
+
 					
+				    partialTimeToCompleteTemp=Simulation.simulationDemo1(resourceName, taskName);
+				    //System.out.println(""+partialTimeToCompleteTemp);
 					
-				    //partialTimeToCompleteTemp=Simulation.simulationDemo1(resourceName, taskName);
-					
-					partialTimeToComplete += partialTimeToCompleteTemp;
+					partialTimeToComplete += partialTimeToCompleteTemp[0];
 
 					
 
