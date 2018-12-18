@@ -43,7 +43,7 @@ public class DistanceCovered extends AbstractCriterion{
 		double value = 0;
 		//double value2 = 0;
 		//double value3 = 0;
-
+		
 		//ManualPlanHelperInterface manualHelper = helper.getManualPlanningHelperInterface();
 		for (int i = 0; i < sr; i++) {
 			TreeNode[] path = paths.get(i);
@@ -78,48 +78,37 @@ public class DistanceCovered extends AbstractCriterion{
 					 //double partialUtilizationTimeTemp=0;
 					 double partialDistanceCoveredTemp[]= {0,0};
 						         				     				         				         
-				    //if (resourceName.equals("Human")){				       
+				    if (resourceName.equals("Human")){				       
 						        	
 					partialDistanceCoveredTemp=Simulation.simulationDemo1(resourceName, taskName);
 					System.out.println(""+partialDistanceCoveredTemp[0]);						      
 					partialDistanceCovered += partialDistanceCoveredTemp[0];
-						        	 			        	 
-							        							    
-					//}
+					    							    
+					}
 
-				   // else if(resourceName.equals("Robot1")) {
+				    else if(resourceName.equals("Robot1")){
 						        	 
-				  //	 partialUtilizationTimeTemp=Simulation.simulationDemo1(resourceName, taskName);
-				  //	 System.out.println(""+partialUtilizationTimeTemp[0]);
-				  //	 System.out.println(""+partialUtilizationTimeTemp[1]);
-				  //	 partialTimeToComplete += partialUtilizationTimeTemp[0];				        	 		        	 
+				    	partialDistanceCoveredTemp=Simulation.simulationDemo1(resourceName, taskName);
+						System.out.println(""+partialDistanceCoveredTemp[0]);						      
+						partialDistanceCovered += partialDistanceCoveredTemp[0];			        	 		        	 
 						        	 
-						 //Calculate flowtime
-				  //	 partialUtilizationTime1 = partialUtilizationTimeTemp[1];	
-		          //  } 
+		            } 
 						         
-				  //  else if(resourceName.equals("Robot2")){
+				    else if(resourceName.equals("Robot2")){
 						        	 
-			      // 	 partialUtilizationTimeTemp=Simulation.simulationDemo1(resourceName, taskName);
-				  // 	 System.out.println(""+partialUtilizationTimeTemp[0]);
-				  // 	 System.out.println(""+partialUtilizationTimeTemp[1]);
-	 		      // 	 partialTimeToComplete += partialUtilizationTimeTemp[0];	        	 		        	 
-						        	 
-							   //Calculate flowtime						    
-				  //	 partialUtilizationTime1 = partialUtilizationTimeTemp[1];	
-				  //  }      									         
-						         							
-				  //partialUtilizationTime += partialUtilizationTimeTemp;							    
-				  	  						
+				    	partialDistanceCoveredTemp=Simulation.simulationDemo1(resourceName, taskName);
+						System.out.println(""+partialDistanceCoveredTemp[0]);						      
+						partialDistanceCovered += partialDistanceCoveredTemp[0];  	 		        	 
+						    	 
+				    }  							         							
+						  	  						
 		}
-		 DistanceCoveredSum += partialDistanceCovered;
-		 partialDistanceCovered=0;		
-				     		    
+		 DistanceCoveredSum += partialDistanceCovered;		 
+		 //partialDistanceCovered=0;				     		    
 		}	
-		value =value+DistanceCoveredSum;
+		value +=DistanceCoveredSum;
 		}
-				 
-		
+  				
 		System.out.println("                                 Counter        " +counter+"                               "+value);
 
 
@@ -127,8 +116,9 @@ public class DistanceCovered extends AbstractCriterion{
 		{
 			return 100000;
 		}
-		//System.out.println("hiiiii "+value1);
-		return value/(sr*paths.get(0).length);
+		
+		
+	return value/(sr*paths.get(0).length);
 	}
 			
 	private void time(double v1) {

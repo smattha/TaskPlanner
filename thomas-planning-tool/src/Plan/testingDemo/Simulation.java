@@ -137,11 +137,12 @@ if (Task.compareTo("placeDamper")==0){
 //if (time==-1000){
 //if (idleness==-1000){
 //if (weight==-1000){
-if (Utilization==-1000){
-
+//if (Utilization==-1000){
+if (distance==-1000){
 	int i=0;
 	i=i+12;
 }
+
 //Flowtime
 //Return[0]=time+idleness;
 //Return[1]=0;
@@ -150,76 +151,72 @@ if (Utilization==-1000){
 //Return[0]=idleness;
 //Return[1]=0;
 
-//Utilization human
-if (res.equals("Human")){
-Return[0]=time+idleness;
-Return[1]=Utilization;
-}
-else {
-Return[0]=1000;
-Return[1]=1000;
-}
-
-//Utilization Robot1
-//if (res.equals("Robot1")){
-//Return[0]=time+idleness;
-//Return[1]=Utilization;
-//}
-//else {
-	//Return[0]=1000;
-	//Return[1]=1000;
-//}
-
-//Utilization Robot2
-//if (res.equals("Robot2")){
-//Return[0]=time+idleness;
-//Return[1]=Utilization;
-//}
-//else {
-	//Return[0]=1000;
-	//Return[1]=1000;
-//}
-
 //Payload
 //if (res.equals("Human")){
 	//Return[0]= weight;
 	//Return[1]= 0;
 //}
 //else{
-	//Return[0]= 1000;
-	//Return[1]= 0;
+//Return[0]= 1000;
+//Return[1]= 0;
 //}
 
-//DistanceCovered human
+//Utilization Human
 //if (res.equals("Human")){
-//Return[0]=distance;
-//Return[1]=0;
+//  Return[0]=time+idleness;
+//  Return[1]=Utilization;
 //}
 //else {
-//	Return[0]=0.1;
-//	Return[1]=0.1;
+//  Return[0]=10000;
+//  Return[1]=20000;
+//}
+
+//Utilization Robot1
+//if (res.equals("Robot1")){
+//  Return[0]=time+idleness;
+//  Return[1]=Utilization;
+//}
+//else {
+//	Return[0]=10000;
+//	Return[1]=20000;
+//}
+
+//Utilization Robot2
+//if (res.equals("Robot2")){
+//  Return[0]=time+idleness;
+//  Return[1]=Utilization;
+//}
+//else {
+//  Return[0]=10000;
+//  Return[1]=20000;
+//}
+
+//DistanceCovered Human
+//if (res.equals("Human")){
+//    Return[0]=distance;
+//}
+//else {
+//	Return[0]=-0.01;
 //}
 
 //DistanceCovered Robot1
-//if (res.equals("Robot1")){
-//Return[0]=distance;
-//Return[1]=0;
-//}
-//else {
-//	Return[0]=0.1;
-//	Return[1]=0.1;
-//}
+if (res.equals("Robot1")){
+  Return[0]=distance;
+}
+else {
+	Return[0]=-0.01;
+}
 
 //DistanceCovered Robot2
 //if (res.equals("Robot2")){
-//Return[0]=distance;
-//Return[1]=0;
+//  Return[0]=distance;
 //}
 //else {
-//	Return[0]=0.1;
-//	Return[1]=0.1;
+//  Return[0]=-0.01;
 //}
-	
-	return Return;
+//}
+
+System.out.println("efwawefwe"+Return[0]);	
+return Return;
 }
 }
