@@ -225,23 +225,18 @@ public class MainPlanningTool {
 
 		IMPACT mptIMPACT = (IMPACT) tool.getAlgorithmFactoryforConfiguration()
 				.getAlgorithmInstance(IMPACT.MULTICRITERIA);
-		
-		//It needs to change return values on Simulation when the criterion changes
 
 		//mptIMPACT.setCriteria(new AbstractCriterion[] { new FlowTime() });
 		
 		//mptIMPACT.setCriteria(new AbstractCriterion[] { new Idleness() });
 		
+		mptIMPACT.setCriteria(new AbstractCriterion[] { new Utilization("test") });
+		
+		//mptIMPACT.setCriteria(new AbstractCriterion[] { new DistanceCovered("test") });		
+		
 		//mptIMPACT.setCriteria(new AbstractCriterion[] { new Payload() });
 		
-		//mptIMPACT.setCriteria(new AbstractCriterion[] { new Utilization("Human") });  
-		//mptIMPACT.setCriteria(new AbstractCriterion[] { new Utilization("Robot1") }); 
-		//mptIMPACT.setCriteria(new AbstractCriterion[] { new Utilization("Robot2") });
 		
-		//mptIMPACT.setCriteria(new AbstractCriterion[] { new DistanceCovered("Human") });
-		mptIMPACT.setCriteria(new AbstractCriterion[] { new DistanceCovered("Robot1") });	
-		//mptIMPACT.setCriteria(new AbstractCriterion[] { new DistanceCovered("Robot2") });		
-				
 		int dh = 2;
 		int mna = 100;
 			

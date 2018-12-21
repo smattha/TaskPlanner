@@ -68,17 +68,22 @@ public class Idleness extends AbstractCriterion {
 					
 					System.out.println("                      Counter        " +counter+" sr "+sr+" pathLengh "+path.length+ " assi "+ ass+" res "+ resourceName+" task "+ taskName);
 					
+					
+                    //double partialIdleTimeTemp=0;
                     double partialIdleTimeTemp[] = {0,0};					
 					
                     partialIdleTimeTemp=Simulation.simulationDemo1(resourceName, taskName);
 					
 					partialIdleTime += partialIdleTimeTemp[0];
 
+					
+
 				}
+				//partialTimeToComplete = partialTimeToComplete;// path.length;
 				IdleTimeSum += partialIdleTime;
 				partialIdleTime = 0;
 			}
-			value +=IdleTimeSum;
+			value =value+IdleTimeSum;
 		}
 
 		//timeToCompleteSum = timeToCompleteSum / (double) sr;
@@ -100,7 +105,10 @@ public class Idleness extends AbstractCriterion {
 		// TODO Auto-generated method stub
 		
 	}
-		
+					
+					
+
+
 	@Override
 	public double getWeight() {
 		return 1;

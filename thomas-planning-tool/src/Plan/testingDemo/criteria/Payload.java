@@ -89,8 +89,10 @@ public class Payload extends AbstractCriterion {
 						
 					 //System.out.println("taskName "+taskName + "    getResource "+ resourceName);
 					 System.out.println("                      Counter        " +counter+" sr "+sr+" pathLengh "+path.length+ " assi "+ ass+" res "+ resourceName+" task "+ taskName);
-											
+						
+					 //double partialHumanWeightTemp = 0;
 					 double partialHumanWeightTemp[] = {0,0};
+
 												
 					 partialHumanWeightTemp=Simulation.simulationDemo1(resourceName, taskName);
 						
@@ -100,7 +102,7 @@ public class Payload extends AbstractCriterion {
 				HumanWeightSum += partialHumanWeight;
 				partialHumanWeight = 0;
 			}
-			value +=HumanWeightSum;
+			value =value+HumanWeightSum;
 		}
 			
 		System.out.println("                                 Counter        " +counter+"                               "+value);
