@@ -5,7 +5,7 @@ import Plan.Process.Task.Operations.Actions.Parameters.Position;
 public class Move  extends Actions{
 
 	  
-	  Move(Position pose )
+	  public Move(Position pose )
 	  {
 		  this.parameter = pose;
 	  }

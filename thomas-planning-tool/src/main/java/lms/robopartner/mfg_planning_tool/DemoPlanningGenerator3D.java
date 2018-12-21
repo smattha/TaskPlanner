@@ -358,7 +358,7 @@ public class DemoPlanningGenerator3D {
 		   TASK t1 = (TASK) MapToResourcesAndTasks.getTask("THOMAS PICK" + newId, "THOMAS PICK " + newId, newId
 					+ "", (int) Math.ceil(900 / DISCRETIZATION), (int) Math.ceil(1400 / DISCRETIZATION), (int) Math.ceil(1200 / 500), 1.0, false, 1, MapToResourcesAndTasks.SHAPE_REACTANGLE);
 
-		   Pick p1=new Pick(t1);
+		   Pick p1;//=new Pick(t1);
 		   //p1=(TASK)t1;
 			
 		     

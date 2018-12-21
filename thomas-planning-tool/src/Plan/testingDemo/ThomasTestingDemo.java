@@ -35,6 +35,7 @@ import Plan.WorkingArea;
 import Plan.Process.Task.Operations.Operations;
 import Plan.Process.Task.Operations.Pick;
 import Plan.Process.Task.Operations.Place;
+import Plan.Process.Task.Operations.Actions.Parameters.Position;
 
 /**
  * The purpose of this class is to dynamically prepare the input for the use of
@@ -70,16 +71,25 @@ public class ThomasTestingDemo {
 		WorkingArea w2=new WorkingArea("Station 2");
 		
 		
-		Place aTask = new Place("place 1", screw10,w1,tasks,theTaskprecedenceconstraints,null);
-		Place bTask = new Place("place 2", screw5,w1,tasks,theTaskprecedenceconstraints,aTask);
-		Place cTask = new Place("place 3", screw5,w1,tasks,theTaskprecedenceconstraints,bTask);
-		Place dTask = new Place("place 4", screw5,w1,tasks,theTaskprecedenceconstraints,cTask);
-		Place eTask = new Place("place 5", screw5,w1,tasks,theTaskprecedenceconstraints,dTask);
-		Place fTask = new Place("place 6", screw5,w1,tasks,theTaskprecedenceconstraints,eTask);
-		Place gTask = new Place("place 7", screw5,w2,tasks,theTaskprecedenceconstraints,fTask);
-		Place hTask = new Place("place 8", screw5,w1,tasks,theTaskprecedenceconstraints,gTask);
-		Place t1 = new Place("place 10", screw10,w1,tasks,theTaskprecedenceconstraints,gTask);
-		Place iTask = new Place("place 9", screw5,w1,tasks,theTaskprecedenceconstraints,t1);
+		Position data[]=new Position[4];
+	   	
+    	Position pose=new Position(1.0,2.0,3.0,4.0,5.0,6.0,7.0);
+    	
+    	data[Place.navigatePoseId]=pose;
+    	data[Place.movePoseId]=pose;
+    	data[Place.reactPoseId]=pose;
+    	data[Place.releasePoseId]=pose;
+		
+		Place aTask = new Place("place 1", screw10,w1,tasks,theTaskprecedenceconstraints,null,"",data);
+		Place bTask = new Place("place 2", screw5,w1,tasks,theTaskprecedenceconstraints,aTask,"",data);
+		Place cTask = new Place("place 3", screw5,w1,tasks,theTaskprecedenceconstraints,bTask,"",data);
+		Place dTask = new Place("place 4", screw5,w1,tasks,theTaskprecedenceconstraints,cTask,"",data);
+		Place eTask = new Place("place 5", screw5,w1,tasks,theTaskprecedenceconstraints,dTask,"",data);
+		Place fTask = new Place("place 6", screw5,w1,tasks,theTaskprecedenceconstraints,eTask,"",data);
+		Place gTask = new Place("place 7", screw5,w2,tasks,theTaskprecedenceconstraints,fTask,"",data);
+		Place hTask = new Place("place 8", screw5,w1,tasks,theTaskprecedenceconstraints,gTask,"",data);
+		Place t1 = new Place("place 10", screw10,w1,tasks,theTaskprecedenceconstraints,gTask,"",data);
+		Place iTask = new Place("place 9", screw5,w1,tasks,theTaskprecedenceconstraints,t1,"",data);
 	
 
 

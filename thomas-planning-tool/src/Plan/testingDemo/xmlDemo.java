@@ -1,7 +1,5 @@
-/**
- * 
- */
 package testingDemo;
+
 
 import java.math.BigInteger;
 import java.util.List;
@@ -32,6 +30,7 @@ import eu.robopartner.ps.planner.planninginputmodel.TASKS;
 import eu.robopartner.ps.planner.planninginputmodel.TASKSUITABLERESOURCE;
 import eu.robopartner.ps.planner.planninginputmodel.TASKSUITABLERESOURCES;
 import planning.scheduler.algorithms.AbstractAlgorithm;
+import xmlParser.CreateXmlFileDemo;
 import Plan.WorkingArea;
 import Plan.Process.Task.Operations.Operations;
 import Plan.Process.Task.Operations.Pick;
@@ -45,7 +44,7 @@ import Plan.Process.Task.Operations.Actions.Parameters.Position;
  * @author Spyros
  *
  */
-public class ThomasDemoEvaluation1 {
+public class xmlDemo {
 
      /**
 	 * Thomas Testing Demo
@@ -73,7 +72,7 @@ public class ThomasDemoEvaluation1 {
 		//WorkingArea w2=new WorkingArea("Station 2");
 		
 		Position data[]=new Position[4];
-		   	
+	   	
     	Position pose=new Position(1.0,2.0,3.0,4.0,5.0,6.0,7.0);
     	
     	data[Place.navigatePoseId]=pose;
@@ -81,28 +80,20 @@ public class ThomasDemoEvaluation1 {
     	data[Place.reactPoseId]=pose;
     	data[Place.releasePoseId]=pose;
 		
-		Place pickDumper = new Place("pickDamper", screw10,w1,tasks,theTaskprecedenceconstraints,null,"",data);
-		Place readBarcode = new Place("readBarcode", screw5,w1,tasks,theTaskprecedenceconstraints,pickDumper,"",data);
-		Place placeDamper = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,readBarcode,"",data);
-		Place placeDamper1 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper,"",data);
+		Place pickDumper = new Place("pickDamper", screw10,w1,tasks,theTaskprecedenceconstraints,null,"description",data);
 		
-		Place placeDamper2 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper1,"",data);
-		Place placeDamper3 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper2,"",data);
-		Place placeDamper4 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper3,"",data);
-		Place placeDamper5 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper4,"",data);
-		Place placeDamper6 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper5,"",data);
-		Place placeDamper7 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper6,"",data);
-		Place placeDamper8 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper7,"",data);
+		Place readBarcode = new Place("readBarcode", screw5,w1,tasks,theTaskprecedenceconstraints,pickDumper,"description",data);
+		Place placeDamper = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,readBarcode,"description",data);
+		Place placeDamper1 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper,"description",data);
 		
-		//Place dTask = new Place("place 4", screw5,w1,tasks,theTaskprecedenceconstraints,cTask);
-		//Place eTask = new Place("place 5", screw5,w1,tasks,theTaskprecedenceconstraints,dTask);
-		//Place fTask = new Place("place 6", screw5,w1,tasks,theTaskprecedenceconstraints,eTask);
-		//Place gTask = new Place("place 7", screw5,w2,tasks,theTaskprecedenceconstraints,fTask);
-		//Place hTask = new Place("place 8", screw5,w1,tasks,theTaskprecedenceconstraints,gTask);
-		//Place t1 = new Place("place 10", screw10,w1,tasks,theTaskprecedenceconstraints,gTask);
-		//Place iTask = new Place("place 9", screw5,w1,tasks,theTaskprecedenceconstraints,t1);
-	
-
+		Place placeDamper2 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper1,"description",data);
+		Place placeDamper3 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper2,"description",data);
+		Place placeDamper4 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper3,"description",data);
+		Place placeDamper5 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper4,"description",data);
+		Place placeDamper6 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper5,"description",data);
+		Place placeDamper7 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper6,"description",data);
+		Place placeDamper8 = new Place("placeDamper", screw5,w1,tasks,theTaskprecedenceconstraints,placeDamper7,"description",data);
+		
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/////////////////////////////////////////////// Resources///////////////////////////////////////////////////////////////////
@@ -110,7 +101,6 @@ public class ThomasDemoEvaluation1 {
 
 		
 		Arm1 robot1 = new Arm1(IDGenerator.getNewID(),resources,"Robot1");
-		
 		Arm2 robot2 = new Arm2(IDGenerator.getNewID(),resources,"Robot2");
 		
 		//Arm2 aResource4 = new Arm2(IDGenerator.getNewID(),resources,"Robot3");
@@ -150,9 +140,21 @@ public class ThomasDemoEvaluation1 {
 		DATE dueDate = MapToResourcesAndTasks.getDate(1, 1, 2018, 0, 0, 0);
 		LayoutPlanningInputGenerator.addJobs(aPlanninginput, tasks,
 				aPlanninginput.getWORKCENTERS().getWORKCENTER().get(0), arrivalDate, dueDate);
+		
+		
+		CreateXmlFileDemo doc= new CreateXmlFileDemo();
+		
+		pickDumper.convert2XmlElement(doc);
 
+		
+		
+		doc.store("C:\\Users\\smatt\\Desktop\\thomas\\xmlfile1.xml");
 		return aPlanninginput;
 
 	}
 
-}
+	public static void main(String argv[]) {
+		xmlDemo d1=new xmlDemo();
+		d1.generatePlanningInput();	
+		}
+	}

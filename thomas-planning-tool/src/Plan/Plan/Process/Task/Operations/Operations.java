@@ -1,5 +1,8 @@
 package Plan.Process.Task.Operations;
 
+import org.w3c.dom.Attr;
+import org.w3c.dom.Element;
+
 import eu.robopartner.ps.planner.planninginputmodel.ObjectFactory;
 import eu.robopartner.ps.planner.planninginputmodel.POSTCONDITIONTASKREFERENCE;
 import eu.robopartner.ps.planner.planninginputmodel.PRECONDITIONTASKREFERENCE;
@@ -10,6 +13,7 @@ import eu.robopartner.ps.planner.planninginputmodel.TASKPRECEDENCECONSTRAINTS;
 import eu.robopartner.ps.planner.planninginputmodel.TASKS;
 import lms.robopartner.datamodel.map.IDGenerator;
 import lms.robopartner.datamodel.map.controller.MapToResourcesAndTasks;
+import xmlParser.CreateXmlFileDemo;
 import Plan.WorkingArea;
 
 import java.math.BigInteger;
@@ -24,9 +28,9 @@ import Plan.Process.Task.Operations.Actions.*;
 
 public class Operations extends TASK {
 
-	protected TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints ;
+  protected TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints ;
+  
   private Parts basepart;
-
   private Parts matingpart;
   
   protected ThomasTool tool;
@@ -43,9 +47,34 @@ public class Operations extends TASK {
   
   ArrayList<Actions> actions;
   
-  protected Operations idpre;
+  protected Operations idPreviousOperation;
+  
+  
+  public String operationDescription="Description";
+  public String operationType="TASK";
   
   //TASKPRECEDENCECONSTRAINTS constraints; 
+  
+  public Element convert2XmlElement(CreateXmlFileDemo doc)
+  {
+	  Element el=doc.createElement("action");
+		Attr attr=doc.createAttribute("name", name);
+		Attr attr1=doc.createAttribute("description", operationDescription);
+		Attr attr2=doc.createAttribute("type", operationType);
+		
+		el.setAttributeNode(attr);
+		el.setAttributeNode(attr1);
+		el.setAttributeNode(attr2);
+	  
+	  for(Actions actionCurrent:actions )
+	  {
+		  Element newChild=actionCurrent.convert2XmlElement(doc);
+		  el.appendChild(newChild);
+	  }
+	  doc.addElement(el);
+	  return el;
+  
+  }
   
  public Boolean genImpactTask()
  {
@@ -59,7 +88,7 @@ public class Operations extends TASK {
  		 
  	properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("WorkingArea",  workingArea.name+""));
  	
- 	properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("idpre",  idpre +""));
+ 	properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("idpre",  idPreviousOperation +""));
 	
 
 	return true;
@@ -70,13 +99,13 @@ public class Operations extends TASK {
 
 
 		
-			if ( idpre != null ) {
+			if ( idPreviousOperation != null ) {
 				TASKPRECEDENCECONSTRAINT constraint = new TASKPRECEDENCECONSTRAINT();
 
 				PRECONDITIONTASKREFERENCE pre = new PRECONDITIONTASKREFERENCE();
 				POSTCONDITIONTASKREFERENCE post = new POSTCONDITIONTASKREFERENCE();
 
-				pre.setRefid(idpre.getId());
+				pre.setRefid(idPreviousOperation.getId());
 				post.setRefid(this.id);
 				constraint.setPRECONDITIONTASKREFERENCE(pre);
 				constraint.setPOSTCONDITIONTASKREFERENCE(post);

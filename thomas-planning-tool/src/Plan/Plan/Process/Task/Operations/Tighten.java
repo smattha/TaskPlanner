@@ -7,8 +7,13 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import Elements.Tools.Screwdriver;
+import Elements.Tools.ThomasTool;
 import Plan.Process.Task.Operations.Actions.Navigate;
 import Plan.Process.Task.Operations.Actions.Screwing;
+import Plan.Process.Task.Operations.Actions.Parameters.Position;
+import eu.robopartner.ps.planner.planninginputmodel.TASKPRECEDENCECONSTRAINTS;
+import eu.robopartner.ps.planner.planninginputmodel.TASKS;
+import Plan.WorkingArea;
 import Plan.Process.Task.Operations.Actions.Actions;
 import Plan.Process.Task.Operations.Actions.Approach;
 import Plan.Process.Task.Operations.Actions.Detect;
@@ -21,10 +26,27 @@ public class Tighten extends Operations {
   private Screwdriver tool1;
 
 
-  Tighten()
-  {
-	  actions=new ArrayList<Actions>();
-	  
+  
+  
+  public Tighten(String nam,ThomasTool tool, WorkingArea w1,TASKS tasks,TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints , Operations opPre, String Description)
+  { 
+  	this.workingArea=w1;
+  	this.tool=tool;
+  	this.name=nam;
+  	this.idPreviousOperation=opPre;
+  	this.theTaskprecedenceconstraints=theTaskprecedenceconstraints;  
+  	this.tasks=tasks;
+  	this.operationDescription=description;
+  	tasks.getTASK().add(this);
+  	
+  	actions=new ArrayList<Actions>();
+  	
+  	Position pose=new Position(1.0,2.0,3.0,4.0,5.0,6.0,7.0);
+  	
+  	genImpactTask();
+  	getPrecedenceConstraints();
+  	
+  	
 	  actions.add(new Navigate());
 	  actions.add(new Move());
 	  actions.add(new Detect());
@@ -33,6 +55,7 @@ public class Tighten extends Operations {
 	  actions.add(new Screwing());
 	  actions.add(new Detach());
 	  actions.add(new Retract());
+  	 
   }
   
 }

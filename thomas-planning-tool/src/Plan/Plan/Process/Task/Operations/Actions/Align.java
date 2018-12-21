@@ -6,6 +6,9 @@ public class Align extends Actions{
 
 
   Align(Position pose )
+ 
+  
+  
   {
 	  this.parameter = pose;
   }

@@ -4,7 +4,7 @@ import Plan.Process.Task.Operations.Actions.Parameters.Position;
 
 public class Retract extends Actions{
 
- Retract(Position pose )
+ public Retract(Position pose )
  {
 	  this.parameter = pose;
  }

@@ -14,7 +14,7 @@ public class QueryXmlFileDemo {
    public static void main(String argv[]) {
  
       try {
-         File inputFile = new File("input.txt");
+         File inputFile = new File("C:\\Users\\smatt\\Desktop\\thomas\\input.txt");
          DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
          DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
          Document doc = dBuilder.parse(inputFile);
