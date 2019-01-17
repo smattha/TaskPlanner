@@ -6,7 +6,7 @@ import Plan.Process.Task.Operations.Actions.Parameters.Vision;
 public class Detect extends Actions{
 
   
-  Detect(Vision parameter)
+  public Detect(Vision parameter)
   {
  	  this.parameter = parameter;
   }

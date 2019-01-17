@@ -7,9 +7,10 @@ import Plan.Process.Task.Operations.Actions.Move;
 import Plan.Process.Task.Operations.Actions.Retract;
 import Plan.Process.Task.Operations.Actions.Release;
 import Plan.Process.Task.Operations.Actions.Actions;
+import Plan.Process.Task.Operations.Actions.Detect;
 import Plan.Process.Task.Operations.Actions.Navigate;
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
-
+import Plan.Process.Task.Operations.Actions.Parameters.Vision;
 import eu.robopartner.ps.planner.planninginputmodel.TASKS;
 import eu.robopartner.ps.planner.planninginputmodel.TASKPRECEDENCECONSTRAINTS;
 
@@ -37,6 +38,8 @@ public class Place extends Operations{
     	
     	actions=new ArrayList<Actions>();
 
+    	Vision visParam= new Vision(2.7);
+    	actions.add(new Detect(visParam));
     	
     	actions.add(new Navigate(positionData[navigatePoseId]));
     	actions.add(new Move(positionData[movePoseId]));

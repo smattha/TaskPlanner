@@ -17,6 +17,7 @@ import Plan.Process.Task.Operations.Actions.Grasp;
 import Plan.Process.Task.Operations.Actions.Detect;
 import Plan.Process.Task.Operations.Actions.Retract;
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
+import Plan.Process.Task.Operations.Actions.Parameters.Vision;
 import eu.robopartner.ps.planner.planninginputmodel.TASK;
 import eu.robopartner.ps.planner.planninginputmodel.TASKPRECEDENCECONSTRAINTS;
 import eu.robopartner.ps.planner.planninginputmodel.TASKS;
@@ -40,6 +41,7 @@ public class Pick extends Operations{
 	  	actions=new ArrayList<Actions>();
 	  	
 	  	Position pose=new Position(1.0,2.0,3.0,4.0,5.0,6.0,7.0);
+	  	Vision visionParam=new Vision(2.7);
 	  	
 	  	actions.add(new Navigate(pose));
 	  	actions.add(new Move(pose));
@@ -52,7 +54,7 @@ public class Pick extends Operations{
 	    
  	   actions.add(new Navigate());
  	   actions.add(new Move());
- 	   actions.add(new Detect());
+ 	   actions.add(new Detect(visionParam));
  	   actions.add(new Approach());
  	   actions.add(new Align());
  	   actions.add(new Grasp());

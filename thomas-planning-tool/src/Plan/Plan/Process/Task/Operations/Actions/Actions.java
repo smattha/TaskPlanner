@@ -21,7 +21,7 @@ public Element convert2XmlElement(CreateXmlFileDemo doc)
 	
 	//parameter=new Parameters();
 	Element el=doc.createElement("action");
-	
+
 	Attr attr=doc.createAttribute("name", name);
 	Attr attr1=doc.createAttribute("description", descr);
 	Attr attr2=doc.createAttribute("type", type);

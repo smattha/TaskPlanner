@@ -20,12 +20,13 @@ public class Position extends Parameters {
      
 
 
+
 		/**
 		 * @param x
 		 * @param y
 		 * @param z
 		 */
-		public Position(double x, double y, double z,double orientationW,double orientationX,double orientationY, double orientationZ) {
+		public Position(double x, double y, double z,double orientationX,double orientationY,double orientationZ, double orientationW,String target_fame,double vel,double acc) {
 			//super();
 			this.x = x;
 			this.y = y;
@@ -39,7 +40,13 @@ public class Position extends Parameters {
     		//Attr attrY=doc.createAttribute(Constants.POSITION_Y_VALUE_ATTR, y);
     		//Attr attrZ=doc.createAttribute(Constants.POSITION_Z_VALUE_ATTR, z);
     		
-    		
+			ArrayList<String> inputPosition = new ArrayList<String>();
+    		inputs.add(inputPosition);
+			ArrayList<String> inputFrame = new ArrayList<String>();
+			ArrayList<String> inputVel = new ArrayList<String>();
+			ArrayList<String> inputAcc = new ArrayList<String>();
+			
+
     		ArrayList<String> inputX = new ArrayList<String>();
     		ArrayList<String> inputY = new ArrayList<String>();
     		ArrayList<String> inputZ = new ArrayList<String>();
@@ -58,23 +65,44 @@ public class Position extends Parameters {
     		inputY.add(Constants.POSITION_Y_VALUE_ATTR);inputY.add(Double.toString(y));
     		inputZ.add(Constants.POSITION_Z_VALUE_ATTR);inputZ.add(Double.toString(z));
     		
+    		
+    		inputX.add(Constants.POSITION_X_VALUE_ATTR);inputX.add(Double.toString(x));
+    		
     		inputOrientationX.add(Constants.POSITION_ORIENT_X_VALUE_ATTR);inputOrientationX.add(Double.toString(orientationX));
     		inputOrientationY.add(Constants.POSITION_ORIENT_Y_VALUE_ATTR);inputOrientationY.add(Double.toString(orientationY));
     		inputOrientationZ.add(Constants.POSITION_ORIENT_Z_VALUE_ATTR);inputOrientationZ.add(Double.toString(orientationZ));
     		inputOrientationW.add(Constants.POSITION_ORIENT_W_VALUE_ATTR);inputOrientationW.add(Double.toString(orientationW));
     		
+    		String inputPoseString=x+" "+y+" "+z+" "+orientationX+" "+orientationY+" "+orientationZ;
     		
-    		inputs.add(inputX);
-    		inputs.add(inputY);
-    		inputs.add(inputZ);
+    		inputPosition.add(Constants.MOVE_POSE_VALUE_ATTR);inputPosition.add(inputPoseString);	
     		
-    		inputs.add(inputOrientationX);
-    		inputs.add(inputOrientationY);
-    		inputs.add(inputOrientationZ);
-    		inputs.add(inputOrientationW);
+    		inputFrame.add(Constants.MOVE_TARGET_VALUE_ATTR);inputFrame.add(target_fame);	
+			inputVel.add(Constants.MOVE_VEL_VALUE_ATTR);inputVel.add(Double.toString(vel));
+			inputAcc.add(Constants.MOVE_ACC_VALUE_ATTR);inputAcc.add(Double.toString(acc));
+			
+    		
+    		inputs.add(inputPosition);
+    		inputs.add(inputVel);
+    		inputs.add(inputVel);
+    		inputs.add(inputAcc);
+    		
+    		//inputs.add(inputX);
+    		//inputs.add(inputY);
+    		//inputs.add(inputZ);
+    		
+    		//inputs.add(inputOrientationX);
+    		//inputs.add(inputOrientationY);
+    		//inputs.add(inputOrientationZ);
+    		//inputs.add(inputOrientationW);
     		
 		}
-
+		//public Position(double x, double y, double z,double orientationW,double orientationX,double orientationY, double orientationZ,String target_fame,double vel,double acc) {
+			
+		 public Position(double x, double y, double z,double orientationW,double orientationX,double orientationY, double orientationZ) {
+			 this(x, y, z, orientationW, orientationX, orientationY, orientationZ, "a", 0.04,  0.001 );
+ 
+		 }
 
 
 		public Position() {

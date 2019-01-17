@@ -146,9 +146,9 @@ public class xmlDemo {
 		
 		pickDumper.convert2XmlElement(doc);
 
+		pickDumper.convert2XmlElement(doc);
 		
-		
-		doc.store("C:\\Users\\smatt\\Desktop\\thomas\\xmlfile1.xml");
+		doc.store("C:\\Users\\smatt\\Desktop\\xmlfile1.xml");
 		return aPlanninginput;
 
 	}
