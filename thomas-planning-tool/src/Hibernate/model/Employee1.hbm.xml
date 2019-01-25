@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jan 18, 2019 2:05:02 PM by Hibernate Tools 5.3.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="model.Employee1" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="parts">
+        <id access="field" name="id" type="int">
+            <column length="11" name="ID"/>
+            <generator class="assigned">
+                <param name="GENERATOR_NAME"/>
+            </generator>
+        </id>
+        <property access="field" generated="never" lazy="false" name="Operations_id" optimistic-lock="true" type="int" unique="false">
+            <column name="Operations_id"/>
+        </property>
+        <property access="field" generated="never" lazy="false" name="el_id" optimistic-lock="true" type="int" unique="false">
+            <column length="20" name="Elements_id"/>
+        </property>
+        <property access="field" generated="never" lazy="false" name="material" optimistic-lock="true" type="java.lang.String" unique="false">
+            <column length="20" name="material"/>
+        </property>
+        <property access="field" generated="never" lazy="false" name="maxDimension" optimistic-lock="true" type="int" unique="false">
+            <column length="20" name="maxDimension"/>
+        </property>
+        <property access="field" generated="never" lazy="false" name="partscol" optimistic-lock="true" type="java.lang.String" unique="false">
+            <column length="20" name="partscol"/>
+        </property>
+        <property access="field" generated="never" lazy="false" name="stifness" optimistic-lock="true" type="int" unique="false">
+            <column name="stiffness"/>
+        </property>
+        <property access="field" generated="never" lazy="false" name="weight" optimistic-lock="true" type="int" unique="false">
+            <column length="45" name="weight"/>
+        </property>
+    </class>
+</hibernate-mapping>

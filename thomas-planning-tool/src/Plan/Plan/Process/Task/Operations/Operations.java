@@ -33,23 +33,24 @@ public class Operations extends TASK {
   private Parts basepart;
   private Parts matingpart;
   
-  protected ThomasTool tool;
   
+  protected ThomasTool tool;
   public ThomasTool getTool() {return tool;};
-
   public WorkingArea workingplace;
-
   public String  description;
   public String name="Pick";
+ 
+  public double weightPart;
+  
   TASKS tasks;
-  
   public WorkingArea workingArea;
-  
   ArrayList<Actions> actions;
   
   protected Operations idPreviousOperation;
   
-  
+  public void setAction(Actions newAction) {
+	  actions.add(newAction);
+  }
   public String operationDescription="Description";
   public String operationType="TASK";
   
@@ -86,9 +87,9 @@ public class Operations extends TASK {
 	setNAME(name);
 	setPROPERTIES(properties);
  		 
- 	properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("WorkingArea",  workingArea.name+""));
+ 	properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("name",  this.name+""));
  	
- 	properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("idpre",  idPreviousOperation +""));
+ 	//properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("idpre",  idPreviousOperation +""));
 	
 
 	return true;

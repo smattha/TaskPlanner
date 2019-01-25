@@ -41,7 +41,7 @@ public class Pick extends Operations{
 	  	actions=new ArrayList<Actions>();
 	  	
 	  	Position pose=new Position(1.0,2.0,3.0,4.0,5.0,6.0,7.0);
-	  	Vision visionParam=new Vision(2.7);
+	  	//Vision visionParam=new Vision(2.7);
 	  	
 	  	actions.add(new Navigate(pose));
 	  	actions.add(new Move(pose));
@@ -54,7 +54,7 @@ public class Pick extends Operations{
 	    
  	   actions.add(new Navigate());
  	   actions.add(new Move());
- 	   actions.add(new Detect(visionParam));
+ 	   //actions.add(new Detect(visionParam));
  	   actions.add(new Approach());
  	   actions.add(new Align());
  	   actions.add(new Grasp());

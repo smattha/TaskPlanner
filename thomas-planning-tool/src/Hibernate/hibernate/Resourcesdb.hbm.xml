@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 25, 2019 4:02:58 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="hibernate.Resourcesdb" table="resourcesdb" catalog="mydb">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="elements" class="hibernate.Elements" fetch="select">
+            <column name="Elements_id" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="45" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="45" />
+        </property>
+        <property name="maxWeight" type="java.lang.Double">
+            <column name="maxWeight" precision="22" scale="0" />
+        </property>
+        <property name="stationControllerId" type="string">
+            <column name="stationControllerId" length="45" />
+        </property>
+        <set name="workingareadbs" table="resourecs_has_workingareadb" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Resourecs_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Workingareadb">
+                <column name="WorkingAreadb_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="toolsdbs" table="resourcesdb_has_toolsdb" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="resourcesdb_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Toolsdb">
+                <column name="toolsdb_id" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

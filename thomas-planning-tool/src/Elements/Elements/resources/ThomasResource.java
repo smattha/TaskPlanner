@@ -31,15 +31,18 @@ public class ThomasResource extends RESOURCE {
 	public Vector myElements;
 
 	public String description;
-	public String name = "Robot";
+	public String name;// = "Robot";
 	public String type;
 	
 	public ThomasResource connectedResource;
 	public Boolean connected=false;
 	protected RESOURCES resources;
+	public Double maxWeight;
+	public String stationID;
+	
     //public BigInteger id;
 	
-    protected Vector<ThomasTool> compatibleToolList = new Vector<ThomasTool>();
+    public  Vector<ThomasTool> compatibleToolList = new Vector<ThomasTool>();
 
 	public Boolean addCompatibleTool(ThomasTool t) {
 		compatibleToolList.add(t);
@@ -74,7 +77,7 @@ public class ThomasResource extends RESOURCE {
 		properties = new PROPERTIES();
 		
 		properties.getPROPERTY()
-		.add(MapToResourcesAndTasks.getProperty("Robot Property", "I workedddddddddddddddddddddddd"));
+		.add(MapToResourcesAndTasks.getProperty("name",this.name));
 	
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		RESOURCEAVAILABILITY resourceavailability = myObjectFactory.createRESOURCEAVAILABILITY();
@@ -88,6 +91,8 @@ public class ThomasResource extends RESOURCE {
 		
 		setPROPERTIES(properties);
 		
+		
+		/*
 		String msg="true";
 		if (connected==false)
 		{
@@ -104,6 +109,8 @@ public class ThomasResource extends RESOURCE {
 			
 		}
 		
+		 * */
+
 		
 		myObjectFactory = null;
 
@@ -114,14 +121,29 @@ public class ThomasResource extends RESOURCE {
 	public Boolean fillTasksuitableresources(TASKSUITABLERESOURCES tasksuitableresources, TASKS tasks) {
 
 		for (TASK t1 : tasks.getTASK()) {
-			Operations t=(Operations)t1;
-			if (true == suitableForTask(t)) {
-				TASKSUITABLERESOURCE atasksuitableresource = MapToResourcesAndTasks.getTaskSuitableResource(this, t,
+			Operations op2Test=(Operations)t1;
+			if (this.maxWeight>op2Test.weightPart) {
+				
+			
+				
+			if (true == suitableForTask(op2Test)) {
+				TASKSUITABLERESOURCE atasksuitableresource = MapToResourcesAndTasks.getTaskSuitableResource(this, op2Test,
 						LayoutPlanningInputGenerator.SETUP_CODE,
 						LayoutPlanningInputGenerator.OPERATION_TIME_PER_BATCH_SECONDS);
-				atasksuitableresource.setPROPERTIES(t.getPROPERTIES());
+				
+				PROPERTIES p1=new PROPERTIES();//this.getPROPERTIES();
+				
+				p1.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty("name",this.name));
+				
+				p1.getPROPERTY().add(op2Test.getPROPERTIES().getPROPERTY().listIterator().next());
+
+				atasksuitableresource.setPROPERTIES(p1);
+				//atasksuitableresource.setPROPERTIES(op2Test.getPROPERTIES());
 				tasksuitableresources.getTASKSUITABLERESOURCE().add(atasksuitableresource);
 			}
+			}
+			
 		}
 		;
 		return true;

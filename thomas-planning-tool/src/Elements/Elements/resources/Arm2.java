@@ -46,6 +46,22 @@ public class Arm2  extends ThomasResource{
     }
     
     
+    public Arm2(BigInteger id1,RESOURCES resource, String name, Double maxWeight,String stationID)
+  {
+	  this.id="Resource"+id1;
+	  this.name=name;
+	  this.workingArea=null;
+	  this.resources=resource;
+	  this.maxWeight=maxWeight;
+	  this.stationID=stationID;
+	  
+	  gererateResource();
+	  
+	  
+	  add2Resources();
+	  
+  }
+    
     public void connectedArm(Arm1 arm1) {
   	  
     	connectedResource=arm1;

@@ -38,8 +38,8 @@ public class Place extends Operations{
     	
     	actions=new ArrayList<Actions>();
 
-    	Vision visParam= new Vision(2.7);
-    	actions.add(new Detect(visParam));
+    	//Vision visParam= new Vision(2.7);
+    	//actions.add(new Detect(visParam));
     	
     	actions.add(new Navigate(positionData[navigatePoseId]));
     	actions.add(new Move(positionData[movePoseId]));
@@ -51,4 +51,25 @@ public class Place extends Operations{
     	
     }
 
+    public Place(String nam,ThomasTool tool, WorkingArea w1,TASKS tasks,TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints , Operations opPre, String Description)
+    {
+    	this( nam, tool,  w1, tasks, theTaskprecedenceconstraints ,  opPre,  Description, 0);
+    }
+    public Place(String nam,ThomasTool tool, WorkingArea w1,TASKS tasks,TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints , Operations opPre, String Description, double weightPart)
+    {  
+    	this.weightPart=weightPart;
+     	this.workingArea=w1;
+    	this.tool=tool;
+    	this.name=nam;
+    	this.idPreviousOperation=opPre;
+    	this.theTaskprecedenceconstraints=theTaskprecedenceconstraints;  
+    	this.tasks=tasks;
+    	this.operationDescription=description;
+    	tasks.getTASK().add(this);
+    	
+    	actions=new ArrayList<Actions>();
+    	genImpactTask();
+     	getPrecedenceConstraints();
+    	
+    }
 }

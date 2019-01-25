@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 25, 2019 4:02:58 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="hibernate.Operationsdb" table="operationsdb" catalog="mydb">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="toolsdb" class="hibernate.Toolsdb" fetch="select">
+            <column name="Tools_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="workingareadb" class="hibernate.Workingareadb" fetch="select">
+            <column name="WorkingArea_id" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="45" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="45" />
+        </property>
+        <set name="actionsdbs" table="operationsdb_has_actionsdb" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Operationsdb_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Actionsdb">
+                <column name="actionsdb_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="parts" table="operationsdb_has_part" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="operationsdb_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Part">
+                <column name="Part_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="tasksdbs" table="tasksdb_has_operationsdb" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Operationsdb_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Tasksdb">
+                <column name="tasksdb_id" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

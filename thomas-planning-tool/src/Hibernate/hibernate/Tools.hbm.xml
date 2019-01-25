@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 24, 2019 3:45:47 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="hibernate.Tools" table="tools" catalog="mydb">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="elements" class="hibernate.Elements" fetch="select">
+            <column name="Elements_id" />
+        </many-to-one>
+        <set name="toolparameterses" table="tools_has_toolparameters" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Tools_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Toolparameters">
+                <column name="toolParameters_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="operationsdbs" table="operationsdb" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Tools_id" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.Operationsdb" />
+        </set>
+    </class>
+</hibernate-mapping>

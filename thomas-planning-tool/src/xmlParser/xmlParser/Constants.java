@@ -12,7 +12,7 @@ public class Constants {
 	public static String  MOVE_POSE_VALUE_ATTR="pose";
 	public static String  MOVE_TARGET_VALUE_ATTR="target_fame";
 	public static String  MOVE_VEL_VALUE_ATTR="velocity";
-	public static String  MOVE_ACC_VALUE_ATTR="velocity";
+	public static String  MOVE_ACC_VALUE_ATTR="acceleration";
 	
 	public static String  POSITION_X_VALUE_ATTR="pos.x";
 	public static String  POSITION_Y_VALUE_ATTR="pos.Y";
@@ -27,5 +27,47 @@ public class Constants {
 	
 	
 	////////////////////Vision/////////////////////////////
-	public static String  VISION_DISTANCE_VALUE_ATTR="distance";	
+	public static String  VISION_DISTANCE_VALUE_ATTR="distance";
+	
+	public static String  VISION_TARGET_FRAME="target_frame";
+	public static String  VISION_SOURCE_FRAME="source_frame";
+	public static String  VISION_DETECTED_PART="detected_part";
+	public static String  VISION_TYPE="DETECT_PART";
+	
+	
+	
+	
+	/////////////////////toolTypes///////////////////////////////
+	public static String TOOL_SCREWDRIVER="screw";
+	public static String TOOL_GRIPPER="gripper";
+	
+	
+	
+	/////////////////////////REsources//////////////////////////////
+	public static String RESOURCE_ARM1="arm1";
+	public static String RESOURCE_ARM2="arm2";
+	public static String RESOURCE_MRP="mrp";
+
+	////////////////////Operations////////////////////////
+	public static String OPERATIONS_PLACE="place";
+	public static String OPERATIONS_PICK="pick";
+	
+	/////////////////Actions/////////////////////////
+	public static String ACTIONS_LOCALIZE="localize";
+	public static String ACTIONS_NAVIGATE="navigate";
+	public static String ACTIONS_APPROACH="approach";
+	public static String ACTIONS_DETECT="detectPart";
+	public static String ACTIONS_ALIGN="approach";
+    public static String ACTIONS_ATTACH="detectPart";			
+    public static String ACTIONS_GRASP="localize";
+    public static String ACTIONS_PRE_REACT="navigate";
+    public static String ACTIONS_RETRACT="approach";
+    public static String ACTIONS_MOVE="move";
+    public static String ACTIONS_POST_ATTACH="approach";
+    public static String ACTIONS_RELEASE="approach";    
+    public static String ACTIONS_DETECT_BARCODE="approach";    
+    public static String ACTIONS_DETECT_SCREWING_POSE="";   
+    public static String ACTIONS_SCREW="approach";  
+    public static String ACTIONS_READ_BARCODE="approach";
+    
 }

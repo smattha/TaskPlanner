@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 25, 2019 4:02:58 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="hibernate.Sensors" table="sensors" catalog="mydb">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="elements" class="hibernate.Elements" fetch="select">
+            <column name="Elements_id" />
+        </many-to-one>
+        <property name="sensorId" type="java.lang.Integer">
+            <column name="sensorID" />
+        </property>
+        <property name="category" type="string">
+            <column name="category" length="45" />
+        </property>
+        <property name="weight" type="java.lang.Integer">
+            <column name="weight" />
+        </property>
+        <property name="arm1Id" type="java.lang.Integer">
+            <column name="Arm1_id" />
+        </property>
+        <property name="arm1MrpId" type="java.lang.Integer">
+            <column name="Arm1_MRP_id" />
+        </property>
+        <property name="arm1MrpMobileId" type="java.lang.Integer">
+            <column name="Arm1_MRP_Mobile_id" />
+        </property>
+        <property name="arm1MrpMobileResourecsId" type="java.lang.Integer">
+            <column name="Arm1_MRP_Mobile_Resourecs_id" />
+        </property>
+        <property name="platformId" type="java.lang.Integer">
+            <column name="Platform_id" />
+        </property>
+        <property name="platformMrpId" type="java.lang.Integer">
+            <column name="Platform_MRP_id" />
+        </property>
+        <property name="platformMrpMobileId" type="java.lang.Integer">
+            <column name="Platform_MRP_Mobile_id" />
+        </property>
+        <property name="platformMrpMobileResourecsId" type="java.lang.Integer">
+            <column name="Platform_MRP_Mobile_Resourecs_id" />
+        </property>
+        <property name="arm2Id" type="java.lang.Integer">
+            <column name="Arm2_id" />
+        </property>
+        <property name="arm2MrpId" type="java.lang.Integer">
+            <column name="Arm2_MRP_id" />
+        </property>
+        <property name="arm2MrpMobileId" type="java.lang.Integer">
+            <column name="Arm2_MRP_Mobile_id" />
+        </property>
+        <property name="arm2MrpMobileResourecsId" type="java.lang.Integer">
+            <column name="Arm2_MRP_Mobile_Resourecs_id" />
+        </property>
+    </class>
+</hibernate-mapping>

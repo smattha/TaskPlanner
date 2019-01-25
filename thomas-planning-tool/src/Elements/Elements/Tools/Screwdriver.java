@@ -2,6 +2,8 @@ package Elements.Tools;
 
 import java.util.Vector;
 
+import xmlParser.Constants;
+
 public class Screwdriver extends ThomasTool {
 
 	private Integer weight;
@@ -10,7 +12,7 @@ public class Screwdriver extends ThomasTool {
 
 	private String material;
 
-	private int torque;
+	public int torque;
 
 	private String headType;
 
@@ -18,7 +20,7 @@ public class Screwdriver extends ThomasTool {
 
 	public Boolean isCompatible(ThomasTool t1) {
 		
-		if(ToolType=="ScrewDriver")
+		if(t1.ToolType==Constants.TOOL_SCREWDRIVER)
 		  {
 			  
 		if (((Screwdriver) t1).torque <= this.torque) {
@@ -36,7 +38,7 @@ public class Screwdriver extends ThomasTool {
 
 		this.headType = type;
 		this.torque = torque;
-		ToolType="ScrewDriver";
+		ToolType=Constants.TOOL_SCREWDRIVER;
 
 	}
 }

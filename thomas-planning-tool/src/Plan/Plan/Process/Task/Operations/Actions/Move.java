@@ -10,6 +10,10 @@ public class Move  extends Actions{
 		  this.parameter = pose;
 	  }
 	  
+	  public Move(String pose )
+	  {
+		  this.parameter =new Position(pose);
+	  }
 	  public Move() {
 		// TODO Auto-generated constructor stub
 	}

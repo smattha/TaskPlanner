@@ -7,14 +7,22 @@ import xmlParser.Constants;
 public class Vision extends Parameters {
 
 	
-	public Vision(double distance)
+	public Vision(String sourceF,String targetF,String detected_part)
 	{
-		ArrayList<String> inputDistance = new ArrayList<String>();
+		ArrayList<String> VISION_DETECTED_PART = new ArrayList<String>();
+		ArrayList<String> VISION_SOURCE_FRAME = new ArrayList<String>();
+		ArrayList<String> VISION_TARGET_FRAME = new ArrayList<String>();
 		
-		inputDistance.add(Constants.VISION_DISTANCE_VALUE_ATTR);inputDistance.add(Double.toString(distance));
+		VISION_DETECTED_PART.add(Constants.VISION_DETECTED_PART);VISION_DETECTED_PART.add(detected_part);
 		
 		
-		inputs.add(inputDistance);
+		VISION_SOURCE_FRAME.add(Constants.VISION_SOURCE_FRAME);VISION_SOURCE_FRAME.add(sourceF);
+		VISION_TARGET_FRAME.add(Constants.VISION_TARGET_FRAME);VISION_TARGET_FRAME.add(targetF);
+		
+		
+		inputs.add(VISION_DETECTED_PART);
+		inputs.add(VISION_SOURCE_FRAME);
+		inputs.add(VISION_TARGET_FRAME);
 
 	}
 }

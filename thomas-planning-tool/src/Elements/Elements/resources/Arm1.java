@@ -45,7 +45,20 @@ public class Arm1 extends ThomasResource {
 	  this.id="Resource"+id1;
 	  this.name=name;
 	  this.workingArea=null;
+	  this.resources=resource; 
+	  gererateResource();	  
+	  add2Resources();
+	  
+  }
+  
+    public Arm1(BigInteger id1,RESOURCES resource, String name, Double maxWeight,String stationID)
+  {
+	  this.id="Resource"+id1;
+	  this.name=name;
+	  this.workingArea=null;
 	  this.resources=resource;
+	  this.maxWeight=maxWeight;
+	  this.stationID=stationID;
 	  
 	  gererateResource();
 	  
@@ -53,6 +66,7 @@ public class Arm1 extends ThomasResource {
 	  add2Resources();
 	  
   }
+  
   
   public void connectedArm(Arm2 arm2) {
 	  

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 25, 2019 4:02:58 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="hibernate.Elements" table="elements" catalog="mydb">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <set name="resourcesdbs" table="resourcesdb" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Elements_id" />
+            </key>
+            <one-to-many class="hibernate.Resourcesdb" />
+        </set>
+        <set name="sensorses" table="sensors" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Elements_id" />
+            </key>
+            <one-to-many class="hibernate.Sensors" />
+        </set>
+        <set name="toolsdbs" table="toolsdb" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Elements_id" />
+            </key>
+            <one-to-many class="hibernate.Toolsdb" />
+        </set>
+    </class>
+</hibernate-mapping>

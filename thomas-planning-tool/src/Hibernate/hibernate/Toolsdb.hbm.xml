@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 25, 2019 4:02:58 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="hibernate.Toolsdb" table="toolsdb" catalog="mydb">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="elements" class="hibernate.Elements" fetch="select">
+            <column name="Elements_id" />
+        </many-to-one>
+        <many-to-one name="tooltype" class="hibernate.Tooltype" fetch="select">
+            <column name="toolType_id" />
+        </many-to-one>
+        <set name="toolparameterses" table="tools_has_toolparameters" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Tools_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Toolparameters">
+                <column name="toolParameters_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="operationsdbs" table="operationsdb" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Tools_id" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.Operationsdb" />
+        </set>
+        <set name="resourcesdbs" table="resourcesdb_has_toolsdb" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="toolsdb_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Resourcesdb">
+                <column name="resourcesdb_id" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

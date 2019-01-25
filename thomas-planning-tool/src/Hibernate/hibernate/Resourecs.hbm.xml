@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 24, 2019 3:42:02 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="hibernate.Resourecs" table="resourecs" catalog="mydb">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="elements" class="hibernate.Elements" fetch="select">
+            <column name="Elements_id" />
+        </many-to-one>
+        <property name="resourceId" type="java.lang.Integer">
+            <column name="resourceID" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="45" />
+        </property>
+        <set name="workingareadbs" table="resourecs_has_workingareadb" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Resourecs_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Workingareadb">
+                <column name="WorkingAreadb_id" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

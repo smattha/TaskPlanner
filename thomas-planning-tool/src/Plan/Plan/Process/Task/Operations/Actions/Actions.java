@@ -13,7 +13,7 @@ public String name="ActionName";
 public String descr="Description";
 public String type="type";
 
-Actions(){}
+public Actions(){}
 
 
 public Element convert2XmlElement(CreateXmlFileDemo doc)

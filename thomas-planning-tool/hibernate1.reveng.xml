@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="mydb" match-name="actionsdb"/>
+  <table-filter match-catalog="mydb" match-name="actionsdb_has_parameters"/>
+  <table-filter match-catalog="mydb" match-name="assemblyline"/>
+  <table-filter match-catalog="mydb" match-name="assemblyline_has_assemblystation"/>
+  <table-filter match-catalog="mydb" match-name="assemblystation"/>
+  <table-filter match-catalog="mydb" match-name="assemblystation_has_workingareadb"/>
+  <table-filter match-catalog="mydb" match-name="elements"/>
+  <table-filter match-catalog="mydb" match-name="operationsdb"/>
+  <table-filter match-catalog="mydb" match-name="operationsdb_has_actionsdb"/>
+  <table-filter match-catalog="mydb" match-name="operationsdb_has_part"/>
+  <table-filter match-catalog="mydb" match-name="parametersdb"/>
+  <table-filter match-catalog="mydb" match-name="part"/>
+  <table-filter match-catalog="mydb" match-name="processdb"/>
+  <table-filter match-catalog="mydb" match-name="processsdb_has_tasksdb"/>
+  <table-filter match-catalog="mydb" match-name="resourcesdb"/>
+  <table-filter match-catalog="mydb" match-name="resourcesdb_has_toolsdb"/>
+  <table-filter match-catalog="mydb" match-name="resourecs_has_workingareadb"/>
+  <table-filter match-catalog="mydb" match-name="sensors"/>
+  <table-filter match-catalog="mydb" match-name="shopfloor"/>
+  <table-filter match-catalog="mydb" match-name="shopfloor_has_assemblyline"/>
+  <table-filter match-catalog="mydb" match-name="tasksdb"/>
+  <table-filter match-catalog="mydb" match-name="tasksdb_has_operationsdb"/>
+  <table-filter match-catalog="mydb" match-name="toolparameters"/>
+  <table-filter match-catalog="mydb" match-name="tools_has_toolparameters"/>
+  <table-filter match-catalog="mydb" match-name="toolsdb"/>
+  <table-filter match-catalog="mydb" match-name="tooltype"/>
+  <table-filter match-catalog="mydb" match-name="workingareadb"/>
+</hibernate-reverse-engineering>

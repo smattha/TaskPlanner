@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 25, 2019 4:02:58 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="hibernate.Assemblyline" table="assemblyline" catalog="mydb">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="idAssemblyLine" type="java.lang.Integer">
+            <column name="idAssemblyLine" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="45" />
+        </property>
+        <property name="location" type="string">
+            <column name="location" length="45" />
+        </property>
+        <set name="shopfloors" table="shopfloor_has_assemblyline" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="AssemblyLine_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Shopfloor">
+                <column name="Shopfloor_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="assemblystations" table="assemblyline_has_assemblystation" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="AssemblyLine_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="hibernate.Assemblystation">
+                <column name="AssemblyStation_id" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -2,6 +2,7 @@ package Plan.Process.Task.Operations.Actions;
 
 
 import Plan.Process.Task.Operations.Actions.Parameters.Vision;
+import xmlParser.Constants;
 
 public class Detect extends Actions{
 
@@ -11,6 +12,17 @@ public class Detect extends Actions{
  	  this.parameter = parameter;
   }
   
+  
+  public Detect(String name,String description, String sourceframe, String targetF,String detected_part)
+  {
+	  Vision parameter=new Vision(sourceframe, targetF, detected_part);
+	  
+ 	  this.parameter = parameter;
+ 	  this.name=name;
+ 	  this.descr=description;
+ 	  this.type=Constants.VISION_TYPE;
+ 	  
+  }
 public Detect() {
 	// TODO Auto-generated constructor stub
 }
