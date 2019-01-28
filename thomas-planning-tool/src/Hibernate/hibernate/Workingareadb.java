@@ -1,5 +1,5 @@
 package hibernate;
-// Generated Jan 25, 2019 4:02:57 PM by Hibernate Tools 3.5.0.Final
+// Generated Jan 25, 2019 5:59:11 PM by Hibernate Tools 3.5.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +14,7 @@ public class Workingareadb implements java.io.Serializable {
 	private String description;
 	private String location;
 	private Set operationsdbs = new HashSet(0);
+	private Set parts = new HashSet(0);
 	private Set assemblystations = new HashSet(0);
 	private Set resourcesdbs = new HashSet(0);
 
@@ -24,13 +25,14 @@ public class Workingareadb implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Workingareadb(int id, String name, String description, String location, Set operationsdbs,
+	public Workingareadb(int id, String name, String description, String location, Set operationsdbs, Set parts,
 			Set assemblystations, Set resourcesdbs) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.location = location;
 		this.operationsdbs = operationsdbs;
+		this.parts = parts;
 		this.assemblystations = assemblystations;
 		this.resourcesdbs = resourcesdbs;
 	}
@@ -73,6 +75,14 @@ public class Workingareadb implements java.io.Serializable {
 
 	public void setOperationsdbs(Set operationsdbs) {
 		this.operationsdbs = operationsdbs;
+	}
+
+	public Set getParts() {
+		return this.parts;
+	}
+
+	public void setParts(Set parts) {
+		this.parts = parts;
 	}
 
 	public Set getAssemblystations() {

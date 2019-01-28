@@ -1,5 +1,5 @@
 package hibernate;
-// Generated Jan 25, 2019 4:02:57 PM by Hibernate Tools 3.5.0.Final
+// Generated Jan 25, 2019 5:59:11 PM by Hibernate Tools 3.5.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,9 +10,11 @@ import java.util.Set;
 public class Part implements java.io.Serializable {
 
 	private int id;
+	private Workingareadb workingareadb;
 	private Double weight;
 	private String type;
 	private String name;
+	private String workingArea;
 	private Set operationsdbs = new HashSet(0);
 
 	public Part() {
@@ -22,11 +24,14 @@ public class Part implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Part(int id, Double weight, String type, String name, Set operationsdbs) {
+	public Part(int id, Workingareadb workingareadb, Double weight, String type, String name, String workingArea,
+			Set operationsdbs) {
 		this.id = id;
+		this.workingareadb = workingareadb;
 		this.weight = weight;
 		this.type = type;
 		this.name = name;
+		this.workingArea = workingArea;
 		this.operationsdbs = operationsdbs;
 	}
 
@@ -36,6 +41,14 @@ public class Part implements java.io.Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Workingareadb getWorkingareadb() {
+		return this.workingareadb;
+	}
+
+	public void setWorkingareadb(Workingareadb workingareadb) {
+		this.workingareadb = workingareadb;
 	}
 
 	public Double getWeight() {
@@ -60,6 +73,14 @@ public class Part implements java.io.Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getWorkingArea() {
+		return this.workingArea;
+	}
+
+	public void setWorkingArea(String workingArea) {
+		this.workingArea = workingArea;
 	}
 
 	public Set getOperationsdbs() {

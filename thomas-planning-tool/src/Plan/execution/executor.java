@@ -26,6 +26,7 @@ import Plan.Process.Task.Operations.Actions.Actions;
 import Plan.Process.Task.Operations.Actions.Detect;
 import Plan.Process.Task.Operations.Actions.Move;
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
+import actionsGenerations.actionsGenerator;
 import eu.robopartner.ps.planner.planninginputmodel.DATE;
 import eu.robopartner.ps.planner.planninginputmodel.ObjectFactory;
 import eu.robopartner.ps.planner.planninginputmodel.PLANNINGINPUT;
@@ -390,7 +391,7 @@ else {
           
     	 System.out.println("It worked");
     	 
-    	 storeXML(operation);
+    	 //storeXML(operation);
     	 
     	 return true;
      }
@@ -511,7 +512,7 @@ else {
 
  
  
- boolean storeXML()
+ boolean generateTemplates()
  {
 	 Iterator iterdb=ops.iterator();
 	 for (Iterator iter=op.iterator();iter.hasNext();)
@@ -519,10 +520,11 @@ else {
 		 Operationsdb opdbC=(Operationsdb)iterdb.next();
 		 Operations op=(Operations)iter.next();
 		 
-		 this.templateFill(opdbC, op);
 		 
-		 CreateXmlFileDemo doc= new CreateXmlFileDemo();
-		 op.convert2XmlElement(doc);
+		 actionsGenerator.templateFill(opdbC, op);
+		 
+		 actionsGenerator.storeXML(op, "C:\\Users\\smatt\\Desktop\\");
+		 
 		 
 	 }
 		
@@ -570,7 +572,8 @@ return true;
 
 			
 			PLANNINGINPUT layoutPlanningInput = d1.loadPlanningInput();
-			d1.storeXML();
+			d1.generateTemplates();
+			//d1.storeXML();
 			if (1==1)
 			{
 				return ;

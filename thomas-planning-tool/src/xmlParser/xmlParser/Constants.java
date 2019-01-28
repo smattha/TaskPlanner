@@ -34,6 +34,8 @@ public class Constants {
 	public static String  VISION_DETECTED_PART="detected_part";
 	public static String  VISION_TYPE="DETECT_PART";
 	
+	////////////////////navigationGoal/////////////////////////////
+	public static String  NAVIGATION_ID="target_frame";
 	
 	
 	

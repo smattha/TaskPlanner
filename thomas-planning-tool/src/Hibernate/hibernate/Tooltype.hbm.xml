@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Jan 25, 2019 4:02:58 PM by Hibernate Tools 3.5.0.Final -->
+<!-- Generated Jan 25, 2019 5:59:12 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="hibernate.Tooltype" table="tooltype" catalog="mydb">
         <id name="id" type="int">
