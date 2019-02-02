@@ -41,7 +41,7 @@ public class Place extends Operations{
     	//Vision visParam= new Vision(2.7);
     	//actions.add(new Detect(visParam));
     	
-    	actions.add(new Navigate(positionData[navigatePoseId]));
+    	//4actions.add(new Navigate(positionData[navigatePoseId]));
     	actions.add(new Move(positionData[movePoseId]));
     	actions.add(new Release());
     	actions.add(new Retract(positionData[reactPoseId]));

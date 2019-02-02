@@ -34,7 +34,7 @@ public Insert(String nam,ThomasTool tool, WorkingArea w1,TASKS tasks,TASKPRECEDE
 	
 	Position pose=new Position(1.0,2.0,3.0,4.0,5.0,6.0,7.0);
 	
-	actions.add(new Navigate(pose));
+	//actions.add(new Navigate(pose));
 	actions.add(new Move(pose));
 	actions.add(new Release());
 	actions.add(new Retract(pose));

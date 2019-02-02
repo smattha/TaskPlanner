@@ -9,7 +9,9 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.hibernate.Session;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import Elements.Tools.BarcodeScanner;
 import Elements.Tools.Gripper;
@@ -256,6 +258,9 @@ public class executor {
 			
 		System.out.println("\n\n");
 		System.out.println("RESOURCE TASK COMP");
+		CreateXmlFileDemo doc=new CreateXmlFileDemo();
+			
+		  
 		for (Iterator iter=tasksuitableresources.getTASKSUITABLERESOURCE().iterator();iter.hasNext();)
 		{
 			TASKSUITABLERESOURCE tr=(TASKSUITABLERESOURCE)iter.next();
@@ -263,7 +268,19 @@ public class executor {
 			PROPERTY p1=(PROPERTY)iter1.next();	
 			PROPERTY p2=(PROPERTY)iter1.next();	
 		    System.out.println("Resource "+p1.getVALUE()+"   TASK "+p2.getVALUE());
+		    
+		    String msg="Resource "+p1.getVALUE()+"   TASK "+p2.getVALUE();
+		    
+		    Element el=doc.createElement("action");
+			
+		    Attr attr=doc.createAttribute("COM",msg );
+		    el.setAttributeNode(attr);
+		    doc.addElement(el);
 		}
+		
+		
+		
+		doc.store("C:\\Users\\smatt\\Desktop\\xml\\resource.xml");
 	}
 	
 	
@@ -435,11 +452,10 @@ else {
     	 */
     	//templateFill(opdb,operation);
     	
-    	ops.add(opdb);
-    	op.add(operation);
     	
     	 }
-    	 else if (opdb.getType().equals(Constants.OPERATIONS_PICK)){
+    	 //else if (opdb.getType().equals(Constants.OPERATIONS_PICK))
+    	 else{
         	 
         	 operation= new Place(opdb.getName(), getTool(tool),w1,tasks,theTaskprecedenceconstraints,null,opdb.getDescription());
         	 
@@ -451,6 +467,9 @@ else {
     	      }
         	 
         	 }
+    	ops.add(opdb);
+     	op.add(operation);
+     	
     	 //System.out.println("It worked");
     	 return operation;
      }
@@ -506,7 +525,7 @@ else {
 
 		t1.convert2XmlElement(doc);
 		
-		doc.store("C:\\Users\\smatt\\Desktop\\xmlfile1.xml");
+		doc.store("C:\\Users\\smatt\\Desktop\\xml\\xmlfile1.xml");
 		return true;
  }
 
@@ -523,7 +542,7 @@ else {
 		 
 		 actionsGenerator.templateFill(opdbC, op);
 		 
-		 actionsGenerator.storeXML(op, "C:\\Users\\smatt\\Desktop\\");
+		 actionsGenerator.storeXML(op, "C:\\Users\\smatt\\Desktop\\xml\\templates\\");
 		 
 		 
 	 }
@@ -576,7 +595,7 @@ return true;
 			//d1.storeXML();
 			if (1==1)
 			{
-				return ;
+			//	return ;
 			}
 			
 			//return ;
@@ -617,17 +636,29 @@ return true;
 		tool.simulate();
 
 		Vector<AssignmentDataModel> assignments = tool.getAssignmentDataModelVector();
-
+ 		 CreateXmlFileDemo doc= new CreateXmlFileDemo();
+   		 
 		System.out.println("");System.out.println("");System.out.println("");
 		for (AssignmentDataModel ass:assignments) {
 
-			d1.storeXML(d1.planningInput);
+			//d1.storeXML(d1.planningInput);
+			
+			String taskID=ass.getTaskDataModel().getTaskId();
+			Operations op1=Operations.mapOperationsThomas2Id.get(taskID);
 			
 			System.out.println(ass.getTaskDataModel().getTaskName() + "   "
-					+ ass.getResourceDataModel().getResourceName()  +" "+  ass.getTaskDataModel().getProperty("WorkingArea" ));
+					+ ass.getResourceDataModel().getResourceName()  +" "+op1.name  );//.getProperty("WorkingArea" ));
+			op1.assigned=ass.getResourceDataModel().getResourceName();
+			
+			op1.convert2XmlElement(doc);
+		    
 
+			
+		
 		}
 		
+		doc.store("C:\\Users\\smatt\\Desktop\\xml\\program.xml");
+
 		System.out.println("Finished");
 		
 		System.exit(0);

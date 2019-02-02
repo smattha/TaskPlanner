@@ -18,6 +18,8 @@ import Plan.WorkingArea;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.tools.Tool;
 
@@ -27,6 +29,9 @@ import Elements.Tools.ThomasTool;
 import Plan.Process.Task.Operations.Actions.*;
 
 public class Operations extends TASK {
+
+	
+  static  public HashMap<String, Operations> mapOperationsThomas2Id= new HashMap< String ,Operations>();
 
   protected TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints ;
   
@@ -39,7 +44,7 @@ public class Operations extends TASK {
   public WorkingArea workingplace;
   public String  description;
   public String name="Pick";
- 
+   public String assigned="";
   public double weightPart;
   
   TASKS tasks;
@@ -53,22 +58,38 @@ public class Operations extends TASK {
   }
   public String operationDescription="Description";
   public String operationType="TASK";
-  
   //TASKPRECEDENCECONSTRAINTS constraints; 
   
   public Element convert2XmlElement(CreateXmlFileDemo doc)
   {
 	  Element el=doc.createElement("action");
-		Attr attr=doc.createAttribute("name", name);
-		Attr attr1=doc.createAttribute("description", operationDescription);
-		Attr attr2=doc.createAttribute("type", operationType);
-		
+	
+	 Attr attr=doc.createAttribute("name", name);
+	 Attr attr1=doc.createAttribute("description", operationDescription);
+	 Attr attr2=doc.createAttribute("type", operationType);
+	 Attr attr3=doc.createAttribute("assigned", assigned);
+			
 		el.setAttributeNode(attr);
 		el.setAttributeNode(attr1);
 		el.setAttributeNode(attr2);
-	  
+		el.setAttributeNode(attr3);
+	  System.out.println("......................................... "+name+" "+actions.size());
 	  for(Actions actionCurrent:actions )
 	  {
+		  System.out.println("\\......................................... "+name+" "+actions.size());
+
+		  try {
+		  System.out.println("                    "+actionCurrent.type);
+		  
+		  }
+		  catch (Exception   e1)
+		  {
+			  System.out.println(e1.getMessage());
+			  continue;
+			  
+		  }
+		  
+		  
 		  Element newChild=actionCurrent.convert2XmlElement(doc);
 		  el.appendChild(newChild);
 	  }
@@ -88,9 +109,7 @@ public class Operations extends TASK {
 	setPROPERTIES(properties);
  		 
  	properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("name",  this.name+""));
- 	
- 	//properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("idpre",  idPreviousOperation +""));
-	
+ 	Operations.mapOperationsThomas2Id.put(newId,this);
 
 	return true;
  }         
@@ -105,12 +124,13 @@ public class Operations extends TASK {
 
 				PRECONDITIONTASKREFERENCE pre = new PRECONDITIONTASKREFERENCE();
 				POSTCONDITIONTASKREFERENCE post = new POSTCONDITIONTASKREFERENCE();
-
+				
 				pre.setRefid(idPreviousOperation.getId());
 				post.setRefid(this.id);
 				constraint.setPRECONDITIONTASKREFERENCE(pre);
 				constraint.setPOSTCONDITIONTASKREFERENCE(post);
 				theTaskprecedenceconstraints.getTASKPRECEDENCECONSTRAINT().add(constraint);
+
 			}
 		
 		return theTaskprecedenceconstraints;
