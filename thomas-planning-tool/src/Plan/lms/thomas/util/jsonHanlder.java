@@ -1,4 +1,4 @@
-package execution;
+package lms.thomas.util;
 
 
 import java.io.FileWriter;
@@ -11,7 +11,7 @@ import org.json.simple.JSONObject;
  * @author Crunchify.com
  */
  
-public class jsonUtil {
+public class jsonHanlder {
  
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws IOException {

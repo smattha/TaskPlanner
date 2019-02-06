@@ -1,4 +1,4 @@
-package actionsGenerations;
+package lms.thomas.actionsGenerations;
 
 import java.util.Iterator;
 

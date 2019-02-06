@@ -28,7 +28,9 @@ import Plan.Process.Task.Operations.Actions.Actions;
 import Plan.Process.Task.Operations.Actions.Detect;
 import Plan.Process.Task.Operations.Actions.Move;
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
-import actionsGenerations.actionsGenerator;
+import lms.thomas.*;//ctionsGenerator;
+import lms.thomas.actionsGenerations.actionsGenerator;
+import lms.thomas.planning.criteria.Utilization;
 import eu.robopartner.ps.planner.planninginputmodel.DATE;
 import eu.robopartner.ps.planner.planninginputmodel.ObjectFactory;
 import eu.robopartner.ps.planner.planninginputmodel.PLANNINGINPUT;
@@ -60,9 +62,6 @@ import planning.model.io.HttpInputSource;
 import planning.scheduler.algorithms.AbstractAlgorithm;
 import planning.scheduler.algorithms.impact.IMPACT;
 import planning.scheduler.algorithms.impact.criteria.AbstractCriterion;
-import testingDemo.MainPlanningTool;
-import testingDemo.ThomasDemoEvaluation1;
-import testingDemo.criteria.Utilization;
 import xmlParser.Constants;
 import xmlParser.CreateXmlFileDemo;
 
@@ -474,7 +473,7 @@ else {
     	 return operation;
      }
 
-	PLANNINGINPUT loadPlanningInput()
+	PLANNINGINPUT loadPlanningInput(String processId)
 	{
 		String id =  IDGenerator.getNewID() + "";
 		PLANNINGINPUT aPlanninginput = MapToResourcesAndTasks.getPlanningInput(id, 1, 1, 2015, 1, 2, 2018, true);
@@ -486,7 +485,7 @@ else {
 		RESOURCES resources = myObjectFactory.createRESOURCES();
 		TASKSUITABLERESOURCES tasksuitableresources = myObjectFactory.createTASKSUITABLERESOURCES();
 		
-		Processdb processData=this.loadProcess(1);
+		Processdb processData=this.loadProcess(Convert.getInteger(processId));
 		getTasksdb(processData,tasks, theTaskprecedenceconstraints);
 		
 		//loadTask(1);
@@ -590,7 +589,7 @@ return true;
 		if (args.length == 0) {
 
 			
-			PLANNINGINPUT layoutPlanningInput = d1.loadPlanningInput();
+			PLANNINGINPUT layoutPlanningInput = d1.loadPlanningInput("1");
 			d1.generateTemplates();
 			//d1.storeXML();
 			if (1==1)
@@ -607,7 +606,7 @@ return true;
 			}
 		}
 
-		MainPlanningTool tool = new MainPlanningTool(document);
+		lms.thomas.planning.MainPlanningTool tool = new lms.thomas.planning.MainPlanningTool(document);
 		tool.initializeSimulator();
 
 		IMPACT mptIMPACT = (IMPACT) tool.getAlgorithmFactoryforConfiguration()

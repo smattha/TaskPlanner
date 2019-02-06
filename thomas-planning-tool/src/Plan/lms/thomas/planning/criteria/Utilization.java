@@ -1,4 +1,4 @@
-package testingDemo.criteria;
+package lms.thomas.planning.criteria;
 
 import java.util.Calendar;
 import java.util.Random;
@@ -14,7 +14,8 @@ import planning.scheduler.simulation.ResourceSimulator;
 import planning.scheduler.simulation.TaskSimulator;
 import planning.scheduler.simulation.interfaces.ManualPlanHelperInterface;
 import planning.scheduler.simulation.interfaces.PlanHelperInterface;
-import testingDemo.Simulation;
+import lms.thomas.*;//.Simulation;
+import lms.thomas.planning.Simulation;
 
 public class Utilization extends AbstractCriterion {
 	private String resourceName;

@@ -1,4 +1,4 @@
-package testingDemo;
+package lms.thomas.planning;
 
 public class Simulation{
 

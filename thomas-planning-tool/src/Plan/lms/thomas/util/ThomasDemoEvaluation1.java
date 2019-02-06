@@ -1,7 +1,7 @@
 /**
  * 
  */
-package testingDemo;
+package lms.thomas.util;
 
 import java.math.BigInteger;
 import java.util.List;

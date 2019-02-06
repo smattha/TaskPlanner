@@ -1,4 +1,4 @@
-package testingDemo;
+package lms.thomas.planning;
 
 import java.util.Locale;
 import java.util.TimeZone;
@@ -9,6 +9,7 @@ import org.w3c.dom.Document;
 import eu.robopartner.ps.planner.planninginputmodel.PLANNINGINPUT;
 //rt testingDemo.DemoPlanningGenerator3D;
 import lms.robopartner.task_planner.LayoutPlanningInputGenerator;
+import lms.thomas.util.ThomasDemoEvaluation1;
 import planning.model.AssignmentDataModel;
 import planning.model.JobDataModel;
 import planning.model.MainDataModel;
@@ -28,11 +29,8 @@ import planning.scheduler.simulation.PlanEndRule;
 import planning.scheduler.simulation.PlanSimulator;
 import planning.scheduler.simulation.WorkloadAllocationUntilDateEndRule;
 import planning.scheduler.simulation.interfaces.OperationTimeCalculatorInterface;
-import testingDemo.criteria.DistanceCovered;
-import testingDemo.criteria.FlowTime;
-import testingDemo.criteria.Idleness;
-import testingDemo.criteria.Payload;
-import testingDemo.criteria.Utilization;
+import lms.thomas.*;//.criteria.DistanceCovered;
+import lms.thomas.planning.criteria.Utilization;
 
 public class MainPlanningTool {
 

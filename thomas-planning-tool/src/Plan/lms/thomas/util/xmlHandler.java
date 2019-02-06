@@ -1,4 +1,4 @@
-package testingDemo;
+package lms.thomas.util;
 
 
 import java.math.BigInteger;
@@ -44,7 +44,7 @@ import Plan.Process.Task.Operations.Actions.Parameters.Position;
  * @author Spyros
  *
  */
-public class xmlDemo {
+public class xmlHandler {
 
      /**
 	 * Thomas Testing Demo
@@ -154,7 +154,7 @@ public class xmlDemo {
 	}
 
 	public static void main(String argv[]) {
-		xmlDemo d1=new xmlDemo();
+		xmlHandler d1=new xmlHandler();
 		d1.generatePlanningInput();	
 		}
 	}
