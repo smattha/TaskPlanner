@@ -23,34 +23,34 @@ import planning.model.TaskDataModel;
  */
 
 public class TaskSimulator {
-    public static final String PENDING = "PENDING";
-    public static final String ONGOING = "ONGOING";
-    public static final String FINISHED = "FINISHED";
+	public static final String PENDING = "PENDING";
+	public static final String ONGOING = "ONGOING";
+	public static final String FINISHED = "FINISHED";
 
-    // The task
-    private TaskDataModel task = null;
+	// The task
+	private TaskDataModel task = null;
 
-    // The state of the task. It will continues change as simulation goes on
-    // private String taskState = null;
+	// The state of the task. It will continues change as simulation goes on
+	// private String taskState = null;
 
-    public TaskSimulator(TaskDataModel task) {
-        this.task = task;
-        // this.taskState = TaskSimulator.PENDING;
-    }
+	public TaskSimulator(TaskDataModel task) {
+		this.task = task;
+		// this.taskState = TaskSimulator.PENDING;
+	}
 
-    public Calendar getArrivalDate() {
-        return this.task.getTaskArrivalDate();
-    }
+	public Calendar getArrivalDate() {
+		return this.task.getTaskArrivalDate();
+	}
 
-    public Calendar getDueDate() {
-        return this.task.getTaskDueDate();
-    }
+	public Calendar getDueDate() {
+		return this.task.getTaskDueDate();
+	}
 
-    public TaskDataModel getTaskDataModel() {
-        return this.task;
-    }
+	public TaskDataModel getTaskDataModel() {
+		return this.task;
+	}
 
-    public String getTaskId() {
-        return this.task.getTaskId();
-    }
+	public String getTaskId() {
+		return this.task.getTaskId();
+	}
 }

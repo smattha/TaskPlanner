@@ -11,6 +11,7 @@ import org.hibernate.criterion.Example;
 
 /**
  * Home object for domain model class Part.
+ * 
  * @see hibernate.Part
  * @author Hibernate Tools
  */

@@ -1,7 +1,5 @@
 package Elements.resources;
 
-
-
 import java.math.BigInteger;
 
 import Elements.Sensors.Sensors;
@@ -17,65 +15,57 @@ import lms.robopartner.datamodel.map.controller.MapToResourcesAndTasks;
 
 public class Arm1 extends ThomasResource {
 
-  private Gripper tool1;
+	private Gripper tool1;
 
-  private Screwdriver tool2;
+	private Screwdriver tool2;
 
-  private Integer armpayload;
+	private Integer armpayload;
 
-  private Integer armvelocity;
+	private Integer armvelocity;
 
-  private Sensors sensor;
+	private Sensors sensor;
 
-  //public BigInteger id;
-  
-  private Arm2 arm2=null;
-  
-  public Arm1(BigInteger id1, String name, WorkingArea workingArea)
-  {
-	  this.id="Resources"+id1;
-	  this.name=name;
-	  this.workingArea=workingArea;
-	  gererateResource();
-  }
+	// public BigInteger id;
 
-  
-  public Arm1(BigInteger id1,RESOURCES resource, String name)
-  {
-	  this.id="Resource"+id1;
-	  this.name=name;
-	  this.workingArea=null;
-	  this.resources=resource; 
-	  gererateResource();	  
-	  add2Resources();
-	  
-  }
-  
-    public Arm1(BigInteger id1,RESOURCES resource, String name, Double maxWeight,String stationID)
-  {
-	  this.id="Resource"+id1;
-	  this.name=name;
-	  this.workingArea=null;
-	  this.resources=resource;
-	  this.maxWeight=maxWeight;
-	  this.stationID=stationID;
-	  
-	  gererateResource();
-	  
-	  
-	  add2Resources();
-	  
-  }
-  
-  
-  public void connectedArm(Arm2 arm2) {
-	  
-	  connectedResource=arm2;
-	  
-	  this.arm2=arm2;
-	  connected=true;
-  }
-  
+	private Arm2 arm2 = null;
 
-  
+	public Arm1(BigInteger id1, String name, WorkingArea workingArea) {
+		this.id = "Resources" + id1;
+		this.name = name;
+		this.workingArea = workingArea;
+		gererateResource();
+	}
+
+	public Arm1(BigInteger id1, RESOURCES resource, String name) {
+		this.id = "Resource" + id1;
+		this.name = name;
+		this.workingArea = null;
+		this.resources = resource;
+		gererateResource();
+		add2Resources();
+
+	}
+
+	public Arm1(BigInteger id1, RESOURCES resource, String name, Double maxWeight, String stationID) {
+		this.id = "Resource" + id1;
+		this.name = name;
+		this.workingArea = null;
+		this.resources = resource;
+		this.maxWeight = maxWeight;
+		this.stationID = stationID;
+
+		gererateResource();
+
+		add2Resources();
+
+	}
+
+	public void connectedArm(Arm2 arm2) {
+
+		connectedResource = arm2;
+
+		this.arm2 = arm2;
+		connected = true;
+	}
+
 }

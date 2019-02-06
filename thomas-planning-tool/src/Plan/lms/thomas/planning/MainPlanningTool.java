@@ -9,7 +9,6 @@ import org.w3c.dom.Document;
 import eu.robopartner.ps.planner.planninginputmodel.PLANNINGINPUT;
 //rt testingDemo.DemoPlanningGenerator3D;
 import lms.robopartner.task_planner.LayoutPlanningInputGenerator;
-import lms.thomas.util.ThomasDemoEvaluation1;
 import planning.model.AssignmentDataModel;
 import planning.model.JobDataModel;
 import planning.model.MainDataModel;
@@ -30,6 +29,7 @@ import planning.scheduler.simulation.PlanSimulator;
 import planning.scheduler.simulation.WorkloadAllocationUntilDateEndRule;
 import planning.scheduler.simulation.interfaces.OperationTimeCalculatorInterface;
 import lms.thomas.*;//.criteria.DistanceCovered;
+import lms.thomas.demo.ThomasDemoEvaluation1;
 import lms.thomas.planning.criteria.Utilization;
 
 public class MainPlanningTool {
@@ -167,7 +167,7 @@ public class MainPlanningTool {
 
 	public void simulate(PlanEndRule planEndRule) {
 		this.assignments = simulator.simulate(planEndRule);
-		//System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+		// System.err.println("AD HOC IMPLEMENTATION OF KPIS");
 		this.cumulatiCriteriaKpis = simulator.getKpis();
 	}
 
@@ -224,20 +224,20 @@ public class MainPlanningTool {
 		IMPACT mptIMPACT = (IMPACT) tool.getAlgorithmFactoryforConfiguration()
 				.getAlgorithmInstance(IMPACT.MULTICRITERIA);
 
-		//mptIMPACT.setCriteria(new AbstractCriterion[] { new FlowTime() });
-		
-		//mptIMPACT.setCriteria(new AbstractCriterion[] { new Idleness() });
-		
+		// mptIMPACT.setCriteria(new AbstractCriterion[] { new FlowTime() });
+
+		// mptIMPACT.setCriteria(new AbstractCriterion[] { new Idleness() });
+
 		mptIMPACT.setCriteria(new AbstractCriterion[] { new Utilization("test") });
-		
-		//mptIMPACT.setCriteria(new AbstractCriterion[] { new DistanceCovered("test") });		
-		
-		//mptIMPACT.setCriteria(new AbstractCriterion[] { new Payload() });
-		
-		
+
+		// mptIMPACT.setCriteria(new AbstractCriterion[] { new DistanceCovered("test")
+		// });
+
+		// mptIMPACT.setCriteria(new AbstractCriterion[] { new Payload() });
+
 		int dh = 2;
 		int mna = 100;
-			
+
 		int sr = 2;
 
 		mptIMPACT.setDH(dh);
@@ -248,13 +248,16 @@ public class MainPlanningTool {
 
 		Vector<AssignmentDataModel> assignments = tool.getAssignmentDataModelVector();
 
-		System.out.println("");System.out.println("");System.out.println("");
-		for (AssignmentDataModel ass:assignments) {
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		for (AssignmentDataModel ass : assignments) {
 
-			System.out.println(ass.getTaskDataModel().getTaskName() + "   "
-					+ ass.getResourceDataModel().getResourceName()  +" "+  ass.getTaskDataModel().getProperty("WorkingArea" ));
+			System.out
+					.println(ass.getTaskDataModel().getTaskName() + "   " + ass.getResourceDataModel().getResourceName()
+							+ " " + ass.getTaskDataModel().getProperty("WorkingArea"));
 
 		}
-		
+
 	}
 }

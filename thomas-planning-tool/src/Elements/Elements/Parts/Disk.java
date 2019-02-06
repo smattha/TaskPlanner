@@ -4,6 +4,6 @@ import java.util.Vector;
 
 public class Disk extends Parts {
 
-    public Vector  myParts;
+	public Vector myParts;
 
 }

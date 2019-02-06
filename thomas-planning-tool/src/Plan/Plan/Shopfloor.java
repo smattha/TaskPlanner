@@ -1,13 +1,11 @@
 package Plan;
 
-
 public class Shopfloor {
 
-  private Integer id;
+	private Integer id;
 
-  private String name;
+	private String name;
 
-  private String description;
+	private String description;
 
-  
 }

@@ -33,16 +33,16 @@ public class ThomasResource extends RESOURCE {
 	public String description;
 	public String name;// = "Robot";
 	public String type;
-	
+
 	public ThomasResource connectedResource;
-	public Boolean connected=false;
+	public Boolean connected = false;
 	protected RESOURCES resources;
 	public Double maxWeight;
 	public String stationID;
-	
-    //public BigInteger id;
-	
-    public  Vector<ThomasTool> compatibleToolList = new Vector<ThomasTool>();
+
+	// public BigInteger id;
+
+	public Vector<ThomasTool> compatibleToolList = new Vector<ThomasTool>();
 
 	public Boolean addCompatibleTool(ThomasTool t) {
 		compatibleToolList.add(t);
@@ -50,35 +50,31 @@ public class ThomasResource extends RESOURCE {
 	}
 
 	protected WorkingArea workingArea;
-	public ThomasResource(BigInteger id,RESOURCES resources,String name) {
-		
+
+	public ThomasResource(BigInteger id, RESOURCES resources, String name) {
+
 		this.name = name;
 		properties = new PROPERTIES();
-		this.id=id+"";
+		this.id = id + "";
 
-
-		this.resources=resources;
+		this.resources = resources;
 		gererateResource();
-		
-		
+
 		add2Resources();
-		
-		//fillTasksuitableresources(tasksuitableresources,tasks);
+
+		// fillTasksuitableresources(tasksuitableresources,tasks);
 	}
 
 	public ThomasResource() {
 		// this.name=name;
 	}
 
-	
-
 	public Boolean gererateResource() {
 
 		properties = new PROPERTIES();
-		
-		properties.getPROPERTY()
-		.add(MapToResourcesAndTasks.getProperty("name",this.name));
-	
+
+		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty("name", this.name));
+
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		RESOURCEAVAILABILITY resourceavailability = myObjectFactory.createRESOURCEAVAILABILITY();
 		NONWORKINGPERIODS nonworkingperiods = myObjectFactory.createNONWORKINGPERIODS();
@@ -87,63 +83,52 @@ public class ThomasResource extends RESOURCE {
 		setRESOURCEAVAILABILITY(resourceavailability);
 		setDESCRIPTION(description);
 		setId(id + "");
-		setNAME(name);	
-		
-		setPROPERTIES(properties);
-		
-		
-		/*
-		String msg="true";
-		if (connected==false)
-		{
-			msg="false";
-			
-		}
-		properties.getPROPERTY()
-		.add(MapToResourcesAndTasks.getProperty("Connected", msg));
-		
-		if (connected==true)
-		{
-			properties.getPROPERTY()
-			.add(MapToResourcesAndTasks.getProperty("ConnectedId", connectedResource.id));
-			
-		}
-		
-		 * */
+		setNAME(name);
 
-		
+		setPROPERTIES(properties);
+
+		/*
+		 * String msg="true"; if (connected==false) { msg="false";
+		 * 
+		 * } properties.getPROPERTY()
+		 * .add(MapToResourcesAndTasks.getProperty("Connected", msg));
+		 * 
+		 * if (connected==true) { properties.getPROPERTY()
+		 * .add(MapToResourcesAndTasks.getProperty("ConnectedId",
+		 * connectedResource.id));
+		 * 
+		 * }
+		 * 
+		 */
+
 		myObjectFactory = null;
 
 		return true;
 	}
 
-	
 	public Boolean fillTasksuitableresources(TASKSUITABLERESOURCES tasksuitableresources, TASKS tasks) {
 
 		for (TASK t1 : tasks.getTASK()) {
-			Operations op2Test=(Operations)t1;
-			if (this.maxWeight>op2Test.weightPart) {
-				
-			
-				
-			if (true == suitableForTask(op2Test)) {
-				TASKSUITABLERESOURCE atasksuitableresource = MapToResourcesAndTasks.getTaskSuitableResource(this, op2Test,
-						LayoutPlanningInputGenerator.SETUP_CODE,
-						LayoutPlanningInputGenerator.OPERATION_TIME_PER_BATCH_SECONDS);
-				
-				PROPERTIES p1=new PROPERTIES();//this.getPROPERTIES();
-				
-				p1.getPROPERTY()
-				.add(MapToResourcesAndTasks.getProperty("name",this.name));
-				
-				p1.getPROPERTY().add(op2Test.getPROPERTIES().getPROPERTY().listIterator().next());
+			Operations op2Test = (Operations) t1;
+			if (this.maxWeight > op2Test.weightPart) {
 
-				atasksuitableresource.setPROPERTIES(p1);
-				//atasksuitableresource.setPROPERTIES(op2Test.getPROPERTIES());
-				tasksuitableresources.getTASKSUITABLERESOURCE().add(atasksuitableresource);
+				if (true == suitableForTask(op2Test)) {
+					TASKSUITABLERESOURCE atasksuitableresource = MapToResourcesAndTasks.getTaskSuitableResource(this,
+							op2Test, LayoutPlanningInputGenerator.SETUP_CODE,
+							LayoutPlanningInputGenerator.OPERATION_TIME_PER_BATCH_SECONDS);
+
+					PROPERTIES p1 = new PROPERTIES();// this.getPROPERTIES();
+
+					p1.getPROPERTY().add(MapToResourcesAndTasks.getProperty("name", this.name));
+
+					p1.getPROPERTY().add(op2Test.getPROPERTIES().getPROPERTY().listIterator().next());
+
+					atasksuitableresource.setPROPERTIES(p1);
+					// atasksuitableresource.setPROPERTIES(op2Test.getPROPERTIES());
+					tasksuitableresources.getTASKSUITABLERESOURCE().add(atasksuitableresource);
+				}
 			}
-			}
-			
+
 		}
 		;
 		return true;
@@ -161,9 +146,7 @@ public class ThomasResource extends RESOURCE {
 		return false;
 	}
 
-	
-	protected void add2Resources()
-	{
+	protected void add2Resources() {
 		resources.getRESOURCE().add(this);
 		return;
 	}

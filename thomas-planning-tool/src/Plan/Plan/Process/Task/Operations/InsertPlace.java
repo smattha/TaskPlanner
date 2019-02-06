@@ -15,48 +15,37 @@ import Plan.Process.Task.Operations.Actions.Parameters.Position;
 import eu.robopartner.ps.planner.planninginputmodel.TASKS;
 import eu.robopartner.ps.planner.planninginputmodel.TASKPRECEDENCECONSTRAINTS;
 
-
 public class InsertPlace extends Operations {
 
-  
+	public InsertPlace(String nam, ThomasTool tool, WorkingArea w1, TASKS tasks,
+			TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints, Operations opPre, String Description) {
+		this.workingArea = w1;
+		this.tool = tool;
+		this.name = nam;
+		this.idPreviousOperation = opPre;
+		this.theTaskprecedenceconstraints = theTaskprecedenceconstraints;
+		this.tasks = tasks;
+		this.operationDescription = description;
+		tasks.getTASK().add(this);
 
-  
-  
-  
-  public InsertPlace(String nam,ThomasTool tool, WorkingArea w1,TASKS tasks,TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints , Operations opPre, String Description)
-  { 
-  	this.workingArea=w1;
-  	this.tool=tool;
-  	this.name=nam;
-  	this.idPreviousOperation=opPre;
-  	this.theTaskprecedenceconstraints=theTaskprecedenceconstraints;  
-  	this.tasks=tasks;
-  	this.operationDescription=description;
-  	tasks.getTASK().add(this);
-  	
-  	actions=new ArrayList<Actions>();
-  	
-  	Position pose=new Position(1.0,2.0,3.0,4.0,5.0,6.0,7.0);
-  	
-  	//actions.add(new Navigate(pose));
-  	actions.add(new Move(pose));
-  	actions.add(new Release());
-  	actions.add(new Retract(pose));
-  	genImpactTask();
-  	getPrecedenceConstraints();
-  	
-  	
-    
-    actions.add(new Navigate());
-    actions.add(new Move());
-    actions.add(new Detect());
-    actions.add(new Move());
-    actions.add(new Release());
-    actions.add(new Retract());
-    
-  	 
-  }
-  
-  
-  
+		actions = new ArrayList<Actions>();
+
+		Position pose = new Position(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0);
+
+		// actions.add(new Navigate(pose));
+		actions.add(new Move(pose));
+		actions.add(new Release());
+		actions.add(new Retract(pose));
+		genImpactTask();
+		getPrecedenceConstraints();
+
+		actions.add(new Navigate());
+		actions.add(new Move());
+		actions.add(new Detect());
+		actions.add(new Move());
+		actions.add(new Release());
+		actions.add(new Retract());
+
+	}
+
 }

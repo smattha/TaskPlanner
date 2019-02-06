@@ -1,22 +1,17 @@
 
-
-
 package Plan.Process.Task.Operations.Actions.Parameters;
 
 import java.util.ArrayList;
 
-import xmlParser.Constants;
+import lms.thomas.*;
 
 public class navigationGoal extends Parameters {
 
-	
-	public navigationGoal(String workingArea)
-	{
+	public navigationGoal(String workingArea) {
 		ArrayList<String> NAvIGATION_ID = new ArrayList<String>();
-		
-		NAvIGATION_ID.add(Constants.NAVIGATION_ID);NAvIGATION_ID.add(workingArea);
 
-
+		NAvIGATION_ID.add(Constants.NAVIGATION_ID);
+		NAvIGATION_ID.add(workingArea);
 
 		inputs.add(NAvIGATION_ID);
 

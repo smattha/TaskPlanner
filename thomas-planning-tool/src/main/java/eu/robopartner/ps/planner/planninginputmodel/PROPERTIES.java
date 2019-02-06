@@ -5,7 +5,6 @@
 // Generated on: 2015.10.12 at 02:45:59 PM EEST 
 //
 
-
 package eu.robopartner.ps.planner.planninginputmodel;
 
 import java.util.ArrayList;
@@ -16,11 +15,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -37,42 +38,40 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "property"
-})
+@XmlType(name = "", propOrder = { "property" })
 @XmlRootElement(name = "PROPERTIES")
 public class PROPERTIES {
 
-    @XmlElement(name = "PROPERTY", required = true)
-    protected List<PROPERTY> property;
+	@XmlElement(name = "PROPERTY", required = true)
+	protected List<PROPERTY> property;
 
-    /**
-     * Gets the value of the property property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the property property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPROPERTY().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link PROPERTY }
-     * 
-     * 
-     */
-    public List<PROPERTY> getPROPERTY() {
-        if (property == null) {
-            property = new ArrayList<PROPERTY>();
-        }
-        return this.property;
-    }
+	/**
+	 * Gets the value of the property property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the property property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getPROPERTY().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link PROPERTY }
+	 * 
+	 * 
+	 */
+	public List<PROPERTY> getPROPERTY() {
+		if (property == null) {
+			property = new ArrayList<PROPERTY>();
+		}
+		return this.property;
+	}
 
 }

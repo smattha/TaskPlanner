@@ -4,10 +4,10 @@ import java.util.Vector;
 
 import Elements.Sensors.Sensors;
 
-public class PressMachine  extends Stationary{
+public class PressMachine extends Stationary {
 
-  private Sensors sensor;
+	private Sensors sensor;
 
-    public Vector  myStationary;
+	public Vector myStationary;
 
 }

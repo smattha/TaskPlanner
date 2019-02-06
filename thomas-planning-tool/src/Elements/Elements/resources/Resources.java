@@ -4,14 +4,14 @@ import java.util.Vector;
 
 import Plan.Process.Task.Operations.Actions.Parameters.Position;
 
-public class Resources extends ThomasResource{
+public class Resources extends ThomasResource {
 
-  private Integer resourceID;
+	private Integer resourceID;
 
-  private String status;
+	private String status;
 
-  private Position location;
+	private Position location;
 
-    public Vector  myElements;
-      
+	public Vector myElements;
+
 }

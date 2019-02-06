@@ -8,5 +8,7 @@ import planning.scheduler.simulation.ResourceSimulator;
 import planning.scheduler.simulation.TaskSimulator;
 
 public interface OperationTimeCalculatorInterface {
-    public long getOperationTimeInMillisecondsForTaskOnResource(TaskSimulator taskSimulator, ResourceSimulator resourceSimulator, Calendar timeNow, PlanHelperInterface helperInterface, Vector<Assignment> assignments);
+	public long getOperationTimeInMillisecondsForTaskOnResource(TaskSimulator taskSimulator,
+			ResourceSimulator resourceSimulator, Calendar timeNow, PlanHelperInterface helperInterface,
+			Vector<Assignment> assignments);
 }

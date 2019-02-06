@@ -16,7 +16,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry excluding="util/" kind="src" path="src/Hibernate"/>
-	<classpathentry excluding="resources/" kind="src" path="src/test"/>
 	<classpathentry kind="src" path="src/xmlParser"/>
 	<classpathentry kind="src" path="src/Plan"/>
 	<classpathentry kind="src" path="src/Elements"/>

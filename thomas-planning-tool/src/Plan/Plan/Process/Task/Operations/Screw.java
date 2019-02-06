@@ -23,52 +23,43 @@ import Plan.Process.Task.Operations.Actions.Grasp;
 import Plan.Process.Task.Operations.Actions.Detach;
 import Plan.Process.Task.Operations.Actions.Retract;
 
-public class Screw extends Operations{
+public class Screw extends Operations {
 
+	private Screwdriver tool1;
 
-  private Screwdriver tool1;
+	public Vector myOperations;
 
-  public Vector  myOperations;
-    
-    
-  Screw()
-  {
-   actions =new ArrayList<Actions>();
-   
-   
+	Screw() {
+		actions = new ArrayList<Actions>();
 
-   
-  }
+	}
 
-  
-  
-  public Screw(String nam,ThomasTool tool, WorkingArea w1,TASKS tasks,TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints , Operations opPre, String Description)
-  { 
-  	this.workingArea=w1;
-  	this.tool=tool;
-  	this.name=nam;
-  	this.idPreviousOperation=opPre;
-  	this.theTaskprecedenceconstraints=theTaskprecedenceconstraints;  
-  	this.tasks=tasks;
-  	this.operationDescription=description;
-  	tasks.getTASK().add(this);
-  	
-  	actions=new ArrayList<Actions>();
-  	
-  	Position pose=new Position(1.0,2.0,3.0,4.0,5.0,6.0,7.0);
-  	
-  	genImpactTask();
-  	getPrecedenceConstraints();
-  	
-  	
-    actions.add(new Move());
-    actions.add(new Detect());
-    actions.add(new Approach());
-    actions.add(new Attach());
-    actions.add(new Screwing());
-    actions.add(new Detach());
-    actions.add(new Retract());
-  	 
-  }
-  
+	public Screw(String nam, ThomasTool tool, WorkingArea w1, TASKS tasks,
+			TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints, Operations opPre, String Description) {
+		this.workingArea = w1;
+		this.tool = tool;
+		this.name = nam;
+		this.idPreviousOperation = opPre;
+		this.theTaskprecedenceconstraints = theTaskprecedenceconstraints;
+		this.tasks = tasks;
+		this.operationDescription = description;
+		tasks.getTASK().add(this);
+
+		actions = new ArrayList<Actions>();
+
+		Position pose = new Position(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0);
+
+		genImpactTask();
+		getPrecedenceConstraints();
+
+		actions.add(new Move());
+		actions.add(new Detect());
+		actions.add(new Approach());
+		actions.add(new Attach());
+		actions.add(new Screwing());
+		actions.add(new Detach());
+		actions.add(new Retract());
+
+	}
+
 }

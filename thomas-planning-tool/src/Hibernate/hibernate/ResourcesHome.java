@@ -11,6 +11,7 @@ import org.hibernate.criterion.Example;
 
 /**
  * Home object for domain model class Resources.
+ * 
  * @see hibernate.Resources
  * @author Hibernate Tools
  */

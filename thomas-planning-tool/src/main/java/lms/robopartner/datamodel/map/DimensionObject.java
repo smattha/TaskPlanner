@@ -3,7 +3,6 @@
  */
 package lms.robopartner.datamodel.map;
 
-
 import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +13,7 @@ import java.util.Map;
  */
 public class DimensionObject implements DimensionObjectInterface {
 
-	private Map<String, String>	propertyMap	= new HashMap<String, String>();
+	private Map<String, String> propertyMap = new HashMap<String, String>();
 
 	/**
 	 * @param dimension
@@ -86,21 +85,19 @@ public class DimensionObject implements DimensionObjectInterface {
 	/**
 	 * Generated
 	 */
-	private static final long	serialVersionUID	= 1024009830999690241L;
-	private Dimension			dimension			= new Dimension();
-	private String				id					= null;
-	private Double				reachability		= 0d;
-	private Double				weight				= 0d;
-	private Double				height				= 0d;
-	private int					virtualIMAU;
-	private String				shape				= "";
+	private static final long serialVersionUID = 1024009830999690241L;
+	private Dimension dimension = new Dimension();
+	private String id = null;
+	private Double reachability = 0d;
+	private Double weight = 0d;
+	private Double height = 0d;
+	private int virtualIMAU;
+	private String shape = "";
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * lms.robopartner.datamodel.map.DimensionObjectInterface#getDimension
-	 * ()
+	 * @see lms.robopartner.datamodel.map.DimensionObjectInterface#getDimension ()
 	 */
 	public Dimension getDimension() {
 		return this.dimension;
@@ -109,8 +106,7 @@ public class DimensionObject implements DimensionObjectInterface {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * lms.robopartner.datamodel.map.DimensionObjectInterface#setDimension
+	 * @see lms.robopartner.datamodel.map.DimensionObjectInterface#setDimension
 	 * (java.awt.Dimension)
 	 */
 	public DimensionObjectInterface setDimension(Dimension aDimension) {
@@ -130,8 +126,7 @@ public class DimensionObject implements DimensionObjectInterface {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * lms.robopartner.datamodel.map.DimensionObjectInterface#setID(java
+	 * @see lms.robopartner.datamodel.map.DimensionObjectInterface#setID(java
 	 * .lang.String)
 	 */
 	public DimensionObjectInterface setVirtualIMAU(int virtualIMAU) {
@@ -151,8 +146,7 @@ public class DimensionObject implements DimensionObjectInterface {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * lms.robopartner.datamodel.map.DimensionObjectInterface#setID(java
+	 * @see lms.robopartner.datamodel.map.DimensionObjectInterface#setID(java
 	 * .lang.String)
 	 */
 	public DimensionObjectInterface setID(String id) {
@@ -163,8 +157,7 @@ public class DimensionObject implements DimensionObjectInterface {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * lms.robopartner.datamodel.map.DimensionObjectInterface#setReachability
+	 * @see lms.robopartner.datamodel.map.DimensionObjectInterface#setReachability
 	 * (java.lang.Double)
 	 */
 	public DimensionObjectInterface setReachability(Double reachability) {
@@ -175,37 +168,48 @@ public class DimensionObject implements DimensionObjectInterface {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * lms.robopartner.datamodel.map.DimensionObjectInterface#getReachability
+	 * @see lms.robopartner.datamodel.map.DimensionObjectInterface#getReachability
 	 * ()
 	 */
 	public double getReachability() {
 		return this.reachability;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see lms.robopartner.datamodel.map.DimensionObjectInterface#getWeight()
 	 */
 	public double getWeight() {
 		return this.weight;
 	}
 
-	/* (non-Javadoc)
-	 * @see lms.robopartner.datamodel.map.DimensionObjectInterface#setProperty(java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * lms.robopartner.datamodel.map.DimensionObjectInterface#setProperty(java.lang.
+	 * String, java.lang.String)
 	 */
 	public void setProperty(String key, String value) {
 		this.propertyMap.put(key, value);
 
 	}
 
-	/* (non-Javadoc)
-	 * @see lms.robopartner.datamodel.map.DimensionObjectInterface#getProperty(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * lms.robopartner.datamodel.map.DimensionObjectInterface#getProperty(java.lang.
+	 * String)
 	 */
 	public String getProperty(String key) {
 		return this.propertyMap.get(key);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see lms.robopartner.datamodel.map.DimensionObjectInterface#setHeight(double)
 	 */
 	public void setHeight(double height) {
@@ -213,7 +217,9 @@ public class DimensionObject implements DimensionObjectInterface {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see lms.robopartner.datamodel.map.DimensionObjectInterface#getHeight()
 	 */
 	public double getHeight() {

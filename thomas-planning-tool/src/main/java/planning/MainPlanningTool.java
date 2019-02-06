@@ -32,213 +32,223 @@ import planning.scheduler.simulation.interfaces.OperationTimeCalculatorInterface
 
 public class MainPlanningTool {
 
-    private double[] cumulatiCriteriaKpis = null;
+	private double[] cumulatiCriteriaKpis = null;
 
-    public double[] getKpis() {
-        //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
-        return cumulatiCriteriaKpis;
-    }
+	public double[] getKpis() {
+		// System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+		return cumulatiCriteriaKpis;
+	}
 
-    // The input/output data model
-    MainDataModel datamodel = null;
-    // The simulator
-    PlanSimulator simulator = null;
-    // The results
-    private Vector<AssignmentDataModel> assignments = null;
+	// The input/output data model
+	MainDataModel datamodel = null;
+	// The simulator
+	PlanSimulator simulator = null;
+	// The results
+	private Vector<AssignmentDataModel> assignments = null;
 
-    // public MainPlanningTool(String webserverurl, String port, String uriPlanningInputLocation, Calendar startDate)
-    public MainPlanningTool(String webserverurl, String port, String uriPlanningInputLocation, String protocol) {
-        // SETTING THE DEFAULT LOCALES AND TIME ZONES
-        java.util.Locale.setDefault(java.util.Locale.ENGLISH);
-        java.util.TimeZone.setDefault(new java.util.SimpleTimeZone(java.util.TimeZone.getDefault().getRawOffset(), "DEFAULT APPLICATION TIME ZONE"));
+	// public MainPlanningTool(String webserverurl, String port, String
+	// uriPlanningInputLocation, Calendar startDate)
+	public MainPlanningTool(String webserverurl, String port, String uriPlanningInputLocation, String protocol) {
+		// SETTING THE DEFAULT LOCALES AND TIME ZONES
+		java.util.Locale.setDefault(java.util.Locale.ENGLISH);
+		java.util.TimeZone.setDefault(new java.util.SimpleTimeZone(java.util.TimeZone.getDefault().getRawOffset(),
+				"DEFAULT APPLICATION TIME ZONE"));
 
-        String parametersForInputXML = "";
+		String parametersForInputXML = "";
 
-        /* Building and initializing the data model */
-        // Creating the input sources that must be translated into data model
-        HttpInputSource inputsource = new HttpInputSource(webserverurl, port, uriPlanningInputLocation, parametersForInputXML, null, null, protocol);
-        // Creating and attaching to a data model the input source
-        this.datamodel = new MainDataModel(inputsource);
-    }
+		/* Building and initializing the data model */
+		// Creating the input sources that must be translated into data model
+		HttpInputSource inputsource = new HttpInputSource(webserverurl, port, uriPlanningInputLocation,
+				parametersForInputXML, null, null, protocol);
+		// Creating and attaching to a data model the input source
+		this.datamodel = new MainDataModel(inputsource);
+	}
 
-    public MainPlanningTool(Document xmlPlanningInputDocument) {
-        // SETTING THE DEFAULT LOCALES AND TIME ZONES
-        Locale.setDefault(java.util.Locale.ENGLISH);
-        TimeZone.setDefault(new java.util.SimpleTimeZone(java.util.TimeZone.getDefault().getRawOffset(), "DEFAULT APPLICATION TIME ZONE"));
+	public MainPlanningTool(Document xmlPlanningInputDocument) {
+		// SETTING THE DEFAULT LOCALES AND TIME ZONES
+		Locale.setDefault(java.util.Locale.ENGLISH);
+		TimeZone.setDefault(new java.util.SimpleTimeZone(java.util.TimeZone.getDefault().getRawOffset(),
+				"DEFAULT APPLICATION TIME ZONE"));
 
-        XMLToPlanningInputModel xmlToPlanningInputModel = new XMLToPlanningInputModel(xmlPlanningInputDocument);
-        this.datamodel = new MainDataModel(xmlToPlanningInputModel.getPlanningInputDataModel(), null);
-    }
+		XMLToPlanningInputModel xmlToPlanningInputModel = new XMLToPlanningInputModel(xmlPlanningInputDocument);
+		this.datamodel = new MainDataModel(xmlToPlanningInputModel.getPlanningInputDataModel(), null);
+	}
 
-    public MainPlanningTool(AbstractInputSource inputSource) {
-        // SETTING THE DEFAULT LOCALES AND TIME ZONES
-        Locale.setDefault(java.util.Locale.ENGLISH);
-        TimeZone.setDefault(new java.util.SimpleTimeZone(java.util.TimeZone.getDefault().getRawOffset(), "DEFAULT APPLICATION TIME ZONE"));
+	public MainPlanningTool(AbstractInputSource inputSource) {
+		// SETTING THE DEFAULT LOCALES AND TIME ZONES
+		Locale.setDefault(java.util.Locale.ENGLISH);
+		TimeZone.setDefault(new java.util.SimpleTimeZone(java.util.TimeZone.getDefault().getRawOffset(),
+				"DEFAULT APPLICATION TIME ZONE"));
 
-        this.datamodel = new MainDataModel(inputSource);
-    }
+		this.datamodel = new MainDataModel(inputSource);
+	}
 
-    public MainPlanningTool(MainDataModel mainDataModel) {
-        // SETTING THE DEFAULT LOCALES AND TIME ZONES
-        Locale.setDefault(java.util.Locale.ENGLISH);
-        TimeZone.setDefault(new java.util.SimpleTimeZone(java.util.TimeZone.getDefault().getRawOffset(), "DEFAULT APPLICATION TIME ZONE"));
+	public MainPlanningTool(MainDataModel mainDataModel) {
+		// SETTING THE DEFAULT LOCALES AND TIME ZONES
+		Locale.setDefault(java.util.Locale.ENGLISH);
+		TimeZone.setDefault(new java.util.SimpleTimeZone(java.util.TimeZone.getDefault().getRawOffset(),
+				"DEFAULT APPLICATION TIME ZONE"));
 
-        this.datamodel = mainDataModel;
-    }
+		this.datamodel = mainDataModel;
+	}
 
-    public void initializeSimulator() {
-        // Get the input planning parameters
-        PlanningInputDataModel planningInputDataModel = datamodel.getPlanningInputDataModel();
+	public void initializeSimulator() {
+		// Get the input planning parameters
+		PlanningInputDataModel planningInputDataModel = datamodel.getPlanningInputDataModel();
 
-        Vector<WorkcenterDataModel> workcenters = planningInputDataModel.getWorkcenterDataModelVector();
-        Vector<JobDataModel> jobs = planningInputDataModel.getJobDataModelVector();
-        Vector<TaskPrecedenceConstraintDataModel> constraints = planningInputDataModel.getTaskPrecedenceConstraintDataModelVector();
-        Vector<TaskSuitableResourceDataModel> suitableResources = planningInputDataModel.getTaskSuitableResourceDataModelVector();
+		Vector<WorkcenterDataModel> workcenters = planningInputDataModel.getWorkcenterDataModelVector();
+		Vector<JobDataModel> jobs = planningInputDataModel.getJobDataModelVector();
+		Vector<TaskPrecedenceConstraintDataModel> constraints = planningInputDataModel
+				.getTaskPrecedenceConstraintDataModelVector();
+		Vector<TaskSuitableResourceDataModel> suitableResources = planningInputDataModel
+				.getTaskSuitableResourceDataModelVector();
 
-        // Construct the planning problem with the input parameters
-        this.simulator = new PlanSimulator(workcenters, jobs, constraints, suitableResources, planningInputDataModel.getPlanStartDate());
-    }
+		// Construct the planning problem with the input parameters
+		this.simulator = new PlanSimulator(workcenters, jobs, constraints, suitableResources,
+				planningInputDataModel.getPlanStartDate());
+	}
 
-    public void initializeSimulator(Vector<AssignmentDataModel> lockedAssignments) {
-        // Get the input planning parameters
-        PlanningInputDataModel planningInputDataModel = datamodel.getPlanningInputDataModel();
+	public void initializeSimulator(Vector<AssignmentDataModel> lockedAssignments) {
+		// Get the input planning parameters
+		PlanningInputDataModel planningInputDataModel = datamodel.getPlanningInputDataModel();
 
-        Vector<WorkcenterDataModel> workcenters = planningInputDataModel.getWorkcenterDataModelVector();
-        Vector<JobDataModel> jobs = planningInputDataModel.getJobDataModelVector();
-        Vector<TaskPrecedenceConstraintDataModel> constraints = planningInputDataModel.getTaskPrecedenceConstraintDataModelVector();
-        Vector<TaskSuitableResourceDataModel> suitableResources = planningInputDataModel.getTaskSuitableResourceDataModelVector();
+		Vector<WorkcenterDataModel> workcenters = planningInputDataModel.getWorkcenterDataModelVector();
+		Vector<JobDataModel> jobs = planningInputDataModel.getJobDataModelVector();
+		Vector<TaskPrecedenceConstraintDataModel> constraints = planningInputDataModel
+				.getTaskPrecedenceConstraintDataModelVector();
+		Vector<TaskSuitableResourceDataModel> suitableResources = planningInputDataModel
+				.getTaskSuitableResourceDataModelVector();
 
-        // Construct the planning problem with the input parameters
-        this.simulator = new PlanSimulator(workcenters, jobs, lockedAssignments, constraints, suitableResources, planningInputDataModel.getPlanStartDate());
-    }
+		// Construct the planning problem with the input parameters
+		this.simulator = new PlanSimulator(workcenters, jobs, lockedAssignments, constraints, suitableResources,
+				planningInputDataModel.getPlanStartDate());
+	}
 
-    public void initializeSimulator(OperationTimeCalculatorInterface operationTimeCalculator) {
-        initializeSimulator();
-        this.simulator.setOperationTimeCalculator(operationTimeCalculator);
-    }
+	public void initializeSimulator(OperationTimeCalculatorInterface operationTimeCalculator) {
+		initializeSimulator();
+		this.simulator.setOperationTimeCalculator(operationTimeCalculator);
+	}
 
-    public void initializeSimulator(OperationTimeCalculatorInterface operationTimeCalculator, Vector<AssignmentDataModel> lockedAssignments) {
-        initializeSimulator(lockedAssignments);
-        this.simulator.setOperationTimeCalculator(operationTimeCalculator);
-    }
+	public void initializeSimulator(OperationTimeCalculatorInterface operationTimeCalculator,
+			Vector<AssignmentDataModel> lockedAssignments) {
+		initializeSimulator(lockedAssignments);
+		this.simulator.setOperationTimeCalculator(operationTimeCalculator);
+	}
 
-    /**
-     * The references are as follows {@link MainPlanningTool} has a {@link PlanSimulator} which has a {@link AlgorithmFactory} which provides a single {@link IMPACT} instance every time.
-     * 
-     * @return the instance of {@link AlgorithmFactory} that will be used so that it can be configured.
-     * 
-     */
-    public AlgorithmFactory getAlgorithmFactoryforConfiguration() {
-        return this.simulator.getAlgorithmFactoryInstance();
-    }
+	/**
+	 * The references are as follows {@link MainPlanningTool} has a
+	 * {@link PlanSimulator} which has a {@link AlgorithmFactory} which provides a
+	 * single {@link IMPACT} instance every time.
+	 * 
+	 * @return the instance of {@link AlgorithmFactory} that will be used so that it
+	 *         can be configured.
+	 * 
+	 */
+	public AlgorithmFactory getAlgorithmFactoryforConfiguration() {
+		return this.simulator.getAlgorithmFactoryInstance();
+	}
 
-    public void simulate() {
-        PlanningInputDataModel planningInputDataModel = datamodel.getPlanningInputDataModel();
+	public void simulate() {
+		PlanningInputDataModel planningInputDataModel = datamodel.getPlanningInputDataModel();
 
-        if (planningInputDataModel.continueAssignmentsAfterPlanEndDate()) {
-            this.assignments = simulator.simulate(null);
-            //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
-            this.cumulatiCriteriaKpis = simulator.getKpis();
-        } else {
-            this.assignments = simulator.simulate(new WorkloadAllocationUntilDateEndRule(planningInputDataModel.getPlanEndDate()));
-            //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
-            this.cumulatiCriteriaKpis = simulator.getKpis();
-        }
-    }
+		if (planningInputDataModel.continueAssignmentsAfterPlanEndDate()) {
+			this.assignments = simulator.simulate(null);
+			// System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+			this.cumulatiCriteriaKpis = simulator.getKpis();
+		} else {
+			this.assignments = simulator
+					.simulate(new WorkloadAllocationUntilDateEndRule(planningInputDataModel.getPlanEndDate()));
+			// System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+			this.cumulatiCriteriaKpis = simulator.getKpis();
+		}
+	}
 
-    public void simulate(PlanEndRule planEndRule) {
-        this.assignments = simulator.simulate(planEndRule);
-        //System.err.println("AD HOC IMPLEMENTATION OF KPIS");
-        this.cumulatiCriteriaKpis = simulator.getKpis();
-    }
+	public void simulate(PlanEndRule planEndRule) {
+		this.assignments = simulator.simulate(planEndRule);
+		// System.err.println("AD HOC IMPLEMENTATION OF KPIS");
+		this.cumulatiCriteriaKpis = simulator.getKpis();
+	}
 
-    @SuppressWarnings("unchecked")
-    public Vector<AssignmentDataModel> getAssignmentDataModelVector() {
-        return (Vector<AssignmentDataModel>) this.assignments.clone();
-    }
+	@SuppressWarnings("unchecked")
+	public Vector<AssignmentDataModel> getAssignmentDataModelVector() {
+		return (Vector<AssignmentDataModel>) this.assignments.clone();
+	}
 
-    public static void main(String[] args) {
-        boolean autosaveOutput = false;
-        // Parameters used for identifying the input source
-        if (args.length != 7 && args.length != 2) {
-            System.out.println("Usage:");
-            System.out.println("java.exe planning.MainPlanningTool <webserverurl> <port> <uriPlanningInputLocation> <planStartDate> <planStartMonth> <planStartYear> <protocol>");
-            System.out.println("java.exe planning.MainPlanningTool <planningInputFilePath> <planningOutputFilePath> ");
-            //return;
-        }
+	public static void main(String[] args) {
+		boolean autosaveOutput = false;
+		// Parameters used for identifying the input source
+		if (args.length != 7 && args.length != 2) {
+			System.out.println("Usage:");
+			System.out.println(
+					"java.exe planning.MainPlanningTool <webserverurl> <port> <uriPlanningInputLocation> <planStartDate> <planStartMonth> <planStartYear> <protocol>");
+			System.out.println("java.exe planning.MainPlanningTool <planningInputFilePath> <planningOutputFilePath> ");
+			// return;
+		}
 
-        /* Building and initializing the data model */
-        // Creating the input sources that must be translated into data model
-        AbstractInputSource inputsource = null;
-        if (args.length == 7) {
-            String webserverurl = args[0];
-            String port = args[1];
-            String uriPlanningInputLocation = args[2];
-            String protocol = args[6];
-            String parametersForInputXML = "";
-            inputsource = new HttpInputSource(webserverurl, port, uriPlanningInputLocation, parametersForInputXML, null, null, protocol);
-        }
-        if (args.length == 2) {
-            String planningInputFilePath = args[0];
-            String planningOutputFilePath = args[1];
-            inputsource = new FileInputSource(planningInputFilePath, planningOutputFilePath);
-            // Auto save output
-            autosaveOutput = true;
-        }
-        Document document = null;
-        if(args.length==0)
-        {
-        	
-        	DemoPlanningGenerator3D demo=new DemoPlanningGenerator3D();
-        	PLANNINGINPUT layoutPlanningInput=demo.getResourcesAndTasksOriginalDemoPlanninginput("tofas");
-        	try
-        	{
-        	document = LayoutPlanningInputGenerator.getPlanningInputXMLDocumentFromJaxb(layoutPlanningInput);
-        	}
-        	catch(Exception e) 
-        	{
-        	
-        	}
-        }
+		/* Building and initializing the data model */
+		// Creating the input sources that must be translated into data model
+		AbstractInputSource inputsource = null;
+		if (args.length == 7) {
+			String webserverurl = args[0];
+			String port = args[1];
+			String uriPlanningInputLocation = args[2];
+			String protocol = args[6];
+			String parametersForInputXML = "";
+			inputsource = new HttpInputSource(webserverurl, port, uriPlanningInputLocation, parametersForInputXML, null,
+					null, protocol);
+		}
+		if (args.length == 2) {
+			String planningInputFilePath = args[0];
+			String planningOutputFilePath = args[1];
+			inputsource = new FileInputSource(planningInputFilePath, planningOutputFilePath);
+			// Auto save output
+			autosaveOutput = true;
+		}
+		Document document = null;
+		if (args.length == 0) {
 
-        MainPlanningTool tool = new MainPlanningTool(document);
-        tool.initializeSimulator();
-        
-        
-        
-        
-        
-        IMPACT mptIMPACT = (IMPACT) tool.getAlgorithmFactoryforConfiguration().getAlgorithmInstance(IMPACT.MULTICRITERIA);
+			DemoPlanningGenerator3D demo = new DemoPlanningGenerator3D();
+			PLANNINGINPUT layoutPlanningInput = demo.getResourcesAndTasksOriginalDemoPlanninginput("tofas");
+			try {
+				document = LayoutPlanningInputGenerator.getPlanningInputXMLDocumentFromJaxb(layoutPlanningInput);
+			} catch (Exception e) {
 
-        mptIMPACT.setCriteria(new AbstractCriterion[] { new Cost() });
+			}
+		}
 
-        
-        int dh = 1;
-        int mna = 100;
-        int sr = 10;
-        
-        mptIMPACT.setDH(dh);
-        mptIMPACT.setMNA(mna);
-        mptIMPACT.setSR(sr);
-        
-        
-        
-        
-        
-        tool.simulate();
-        int i=0;
+		MainPlanningTool tool = new MainPlanningTool(document);
+		tool.initializeSimulator();
 
-            //MainDataModelControler mainDataModelControler = new MainDataModelControler(tool.datamodel.getPlanningInputDataModel(), tool.datamodel.getPlanningOutputDataModel(), inputsource.getOutputSource());
-            Vector<AssignmentDataModel> assignments = tool.getAssignmentDataModelVector();
-            //int i=0;
-            for (int ii=0;i<10;i++) {
-                //mainDataModelControler.addAssignmentDataModel(assignmentDataModel);
-            	
-            	System.out.println(assignments.get(ii).getTaskDataModel().getTaskName()+ "   "+assignments.get(ii++).getResourceDataModel().getResourceName());
-           
-            }
-            //mainDataModelControler.savePlanningOutputDataModel();
- 
-        System.out.println("DONE PROPERLY");
-    }
+		IMPACT mptIMPACT = (IMPACT) tool.getAlgorithmFactoryforConfiguration()
+				.getAlgorithmInstance(IMPACT.MULTICRITERIA);
+
+		mptIMPACT.setCriteria(new AbstractCriterion[] { new Cost() });
+
+		int dh = 1;
+		int mna = 100;
+		int sr = 10;
+
+		mptIMPACT.setDH(dh);
+		mptIMPACT.setMNA(mna);
+		mptIMPACT.setSR(sr);
+
+		tool.simulate();
+		int i = 0;
+
+		// MainDataModelControler mainDataModelControler = new
+		// MainDataModelControler(tool.datamodel.getPlanningInputDataModel(),
+		// tool.datamodel.getPlanningOutputDataModel(), inputsource.getOutputSource());
+		Vector<AssignmentDataModel> assignments = tool.getAssignmentDataModelVector();
+		// int i=0;
+		for (int ii = 0; i < 10; i++) {
+			// mainDataModelControler.addAssignmentDataModel(assignmentDataModel);
+
+			System.out.println(assignments.get(ii).getTaskDataModel().getTaskName() + "   "
+					+ assignments.get(ii++).getResourceDataModel().getResourceName());
+
+		}
+		// mainDataModelControler.savePlanningOutputDataModel();
+
+		System.out.println("DONE PROPERLY");
+	}
 }

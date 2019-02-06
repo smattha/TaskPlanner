@@ -5,7 +5,6 @@
 // Generated on: 2015.10.12 at 02:45:59 PM EEST 
 //
 
-
 package eu.robopartner.ps.planner.planninginputmodel;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,11 +13,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -43,199 +44,163 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "years",
-    "months",
-    "weeks",
-    "days",
-    "hours",
-    "minutes",
-    "seconds"
-})
+@XmlType(name = "", propOrder = { "years", "months", "weeks", "days", "hours", "minutes", "seconds" })
 @XmlRootElement(name = "REOCCURANCE")
 public class REOCCURANCE {
 
-    @XmlElement(name = "YEARS")
-    protected Integer years;
-    @XmlElement(name = "MONTHS")
-    protected Integer months;
-    @XmlElement(name = "WEEKS")
-    protected Integer weeks;
-    @XmlElement(name = "DAYS")
-    protected Integer days;
-    @XmlElement(name = "HOURS")
-    protected Integer hours;
-    @XmlElement(name = "MINUTES")
-    protected Integer minutes;
-    @XmlElement(name = "SECONDS")
-    protected Integer seconds;
+	@XmlElement(name = "YEARS")
+	protected Integer years;
+	@XmlElement(name = "MONTHS")
+	protected Integer months;
+	@XmlElement(name = "WEEKS")
+	protected Integer weeks;
+	@XmlElement(name = "DAYS")
+	protected Integer days;
+	@XmlElement(name = "HOURS")
+	protected Integer hours;
+	@XmlElement(name = "MINUTES")
+	protected Integer minutes;
+	@XmlElement(name = "SECONDS")
+	protected Integer seconds;
 
-    /**
-     * Gets the value of the years property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getYEARS() {
-        return years;
-    }
+	/**
+	 * Gets the value of the years property.
+	 * 
+	 * @return possible object is {@link Integer }
+	 * 
+	 */
+	public Integer getYEARS() {
+		return years;
+	}
 
-    /**
-     * Sets the value of the years property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setYEARS(Integer value) {
-        this.years = value;
-    }
+	/**
+	 * Sets the value of the years property.
+	 * 
+	 * @param value allowed object is {@link Integer }
+	 * 
+	 */
+	public void setYEARS(Integer value) {
+		this.years = value;
+	}
 
-    /**
-     * Gets the value of the months property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getMONTHS() {
-        return months;
-    }
+	/**
+	 * Gets the value of the months property.
+	 * 
+	 * @return possible object is {@link Integer }
+	 * 
+	 */
+	public Integer getMONTHS() {
+		return months;
+	}
 
-    /**
-     * Sets the value of the months property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setMONTHS(Integer value) {
-        this.months = value;
-    }
+	/**
+	 * Sets the value of the months property.
+	 * 
+	 * @param value allowed object is {@link Integer }
+	 * 
+	 */
+	public void setMONTHS(Integer value) {
+		this.months = value;
+	}
 
-    /**
-     * Gets the value of the weeks property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getWEEKS() {
-        return weeks;
-    }
+	/**
+	 * Gets the value of the weeks property.
+	 * 
+	 * @return possible object is {@link Integer }
+	 * 
+	 */
+	public Integer getWEEKS() {
+		return weeks;
+	}
 
-    /**
-     * Sets the value of the weeks property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setWEEKS(Integer value) {
-        this.weeks = value;
-    }
+	/**
+	 * Sets the value of the weeks property.
+	 * 
+	 * @param value allowed object is {@link Integer }
+	 * 
+	 */
+	public void setWEEKS(Integer value) {
+		this.weeks = value;
+	}
 
-    /**
-     * Gets the value of the days property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getDAYS() {
-        return days;
-    }
+	/**
+	 * Gets the value of the days property.
+	 * 
+	 * @return possible object is {@link Integer }
+	 * 
+	 */
+	public Integer getDAYS() {
+		return days;
+	}
 
-    /**
-     * Sets the value of the days property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setDAYS(Integer value) {
-        this.days = value;
-    }
+	/**
+	 * Sets the value of the days property.
+	 * 
+	 * @param value allowed object is {@link Integer }
+	 * 
+	 */
+	public void setDAYS(Integer value) {
+		this.days = value;
+	}
 
-    /**
-     * Gets the value of the hours property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getHOURS() {
-        return hours;
-    }
+	/**
+	 * Gets the value of the hours property.
+	 * 
+	 * @return possible object is {@link Integer }
+	 * 
+	 */
+	public Integer getHOURS() {
+		return hours;
+	}
 
-    /**
-     * Sets the value of the hours property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setHOURS(Integer value) {
-        this.hours = value;
-    }
+	/**
+	 * Sets the value of the hours property.
+	 * 
+	 * @param value allowed object is {@link Integer }
+	 * 
+	 */
+	public void setHOURS(Integer value) {
+		this.hours = value;
+	}
 
-    /**
-     * Gets the value of the minutes property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getMINUTES() {
-        return minutes;
-    }
+	/**
+	 * Gets the value of the minutes property.
+	 * 
+	 * @return possible object is {@link Integer }
+	 * 
+	 */
+	public Integer getMINUTES() {
+		return minutes;
+	}
 
-    /**
-     * Sets the value of the minutes property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setMINUTES(Integer value) {
-        this.minutes = value;
-    }
+	/**
+	 * Sets the value of the minutes property.
+	 * 
+	 * @param value allowed object is {@link Integer }
+	 * 
+	 */
+	public void setMINUTES(Integer value) {
+		this.minutes = value;
+	}
 
-    /**
-     * Gets the value of the seconds property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getSECONDS() {
-        return seconds;
-    }
+	/**
+	 * Gets the value of the seconds property.
+	 * 
+	 * @return possible object is {@link Integer }
+	 * 
+	 */
+	public Integer getSECONDS() {
+		return seconds;
+	}
 
-    /**
-     * Sets the value of the seconds property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setSECONDS(Integer value) {
-        this.seconds = value;
-    }
+	/**
+	 * Sets the value of the seconds property.
+	 * 
+	 * @param value allowed object is {@link Integer }
+	 * 
+	 */
+	public void setSECONDS(Integer value) {
+		this.seconds = value;
+	}
 
 }

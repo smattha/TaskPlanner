@@ -11,21 +11,19 @@ import Plan.Process.Task.Operations.Actions.ScanBarcode;
 import Plan.Process.Task.Operations.Actions.Actions;
 import Plan.Process.Task.Operations.Actions.Detect;
 
-public class ReadBarcode extends Operations{
+public class ReadBarcode extends Operations {
 
+	private Gripper tool2;
 
-  private Gripper tool2;
+	public Vector myOperations;
 
-  public Vector  myOperations;
-    
-    ReadBarcode()
-    {
-    	actions=new ArrayList<Actions>();
-   	
-    	actions.add(new Move());
-    	actions.add(new Detect());
-    	actions.add(new ScanBarcode());
-    	
-    }
+	ReadBarcode() {
+		actions = new ArrayList<Actions>();
+
+		actions.add(new Move());
+		actions.add(new Detect());
+		actions.add(new ScanBarcode());
+
+	}
 
 }

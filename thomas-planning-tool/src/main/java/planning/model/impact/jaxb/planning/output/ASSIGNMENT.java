@@ -5,7 +5,6 @@
 // Generated on: 2017.05.11 at 11:06:49 AM EEST 
 //
 
-
 package planning.model.impact.jaxb.planning.output;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,11 +14,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -41,163 +42,137 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "task",
-    "resource",
-    "timeofdispatch",
-    "durationinmilliseconds",
-    "properties"
-})
+@XmlType(name = "", propOrder = { "task", "resource", "timeofdispatch", "durationinmilliseconds", "properties" })
 @XmlRootElement(name = "ASSIGNMENT")
 public class ASSIGNMENT {
 
-    @XmlElement(name = "TASK", required = true)
-    protected TASK task;
-    @XmlElement(name = "RESOURCE", required = true)
-    protected RESOURCE resource;
-    @XmlElement(name = "TIME_OF_DISPATCH", required = true)
-    protected TIMEOFDISPATCH timeofdispatch;
-    @XmlElement(name = "DURATION_IN_MILLISECONDS")
-    protected long durationinmilliseconds;
-    @XmlElement(name = "PROPERTIES")
-    protected PROPERTIES properties;
-    @XmlAttribute(name = "locked")
-    protected Boolean locked;
+	@XmlElement(name = "TASK", required = true)
+	protected TASK task;
+	@XmlElement(name = "RESOURCE", required = true)
+	protected RESOURCE resource;
+	@XmlElement(name = "TIME_OF_DISPATCH", required = true)
+	protected TIMEOFDISPATCH timeofdispatch;
+	@XmlElement(name = "DURATION_IN_MILLISECONDS")
+	protected long durationinmilliseconds;
+	@XmlElement(name = "PROPERTIES")
+	protected PROPERTIES properties;
+	@XmlAttribute(name = "locked")
+	protected Boolean locked;
 
-    /**
-     * Gets the value of the task property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TASK }
-     *     
-     */
-    public TASK getTASK() {
-        return task;
-    }
+	/**
+	 * Gets the value of the task property.
+	 * 
+	 * @return possible object is {@link TASK }
+	 * 
+	 */
+	public TASK getTASK() {
+		return task;
+	}
 
-    /**
-     * Sets the value of the task property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TASK }
-     *     
-     */
-    public void setTASK(TASK value) {
-        this.task = value;
-    }
+	/**
+	 * Sets the value of the task property.
+	 * 
+	 * @param value allowed object is {@link TASK }
+	 * 
+	 */
+	public void setTASK(TASK value) {
+		this.task = value;
+	}
 
-    /**
-     * Gets the value of the resource property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RESOURCE }
-     *     
-     */
-    public RESOURCE getRESOURCE() {
-        return resource;
-    }
+	/**
+	 * Gets the value of the resource property.
+	 * 
+	 * @return possible object is {@link RESOURCE }
+	 * 
+	 */
+	public RESOURCE getRESOURCE() {
+		return resource;
+	}
 
-    /**
-     * Sets the value of the resource property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RESOURCE }
-     *     
-     */
-    public void setRESOURCE(RESOURCE value) {
-        this.resource = value;
-    }
+	/**
+	 * Sets the value of the resource property.
+	 * 
+	 * @param value allowed object is {@link RESOURCE }
+	 * 
+	 */
+	public void setRESOURCE(RESOURCE value) {
+		this.resource = value;
+	}
 
-    /**
-     * Gets the value of the timeofdispatch property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TIMEOFDISPATCH }
-     *     
-     */
-    public TIMEOFDISPATCH getTIMEOFDISPATCH() {
-        return timeofdispatch;
-    }
+	/**
+	 * Gets the value of the timeofdispatch property.
+	 * 
+	 * @return possible object is {@link TIMEOFDISPATCH }
+	 * 
+	 */
+	public TIMEOFDISPATCH getTIMEOFDISPATCH() {
+		return timeofdispatch;
+	}
 
-    /**
-     * Sets the value of the timeofdispatch property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TIMEOFDISPATCH }
-     *     
-     */
-    public void setTIMEOFDISPATCH(TIMEOFDISPATCH value) {
-        this.timeofdispatch = value;
-    }
+	/**
+	 * Sets the value of the timeofdispatch property.
+	 * 
+	 * @param value allowed object is {@link TIMEOFDISPATCH }
+	 * 
+	 */
+	public void setTIMEOFDISPATCH(TIMEOFDISPATCH value) {
+		this.timeofdispatch = value;
+	}
 
-    /**
-     * Gets the value of the durationinmilliseconds property.
-     * 
-     */
-    public long getDURATIONINMILLISECONDS() {
-        return durationinmilliseconds;
-    }
+	/**
+	 * Gets the value of the durationinmilliseconds property.
+	 * 
+	 */
+	public long getDURATIONINMILLISECONDS() {
+		return durationinmilliseconds;
+	}
 
-    /**
-     * Sets the value of the durationinmilliseconds property.
-     * 
-     */
-    public void setDURATIONINMILLISECONDS(long value) {
-        this.durationinmilliseconds = value;
-    }
+	/**
+	 * Sets the value of the durationinmilliseconds property.
+	 * 
+	 */
+	public void setDURATIONINMILLISECONDS(long value) {
+		this.durationinmilliseconds = value;
+	}
 
-    /**
-     * Gets the value of the properties property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link PROPERTIES }
-     *     
-     */
-    public PROPERTIES getPROPERTIES() {
-        return properties;
-    }
+	/**
+	 * Gets the value of the properties property.
+	 * 
+	 * @return possible object is {@link PROPERTIES }
+	 * 
+	 */
+	public PROPERTIES getPROPERTIES() {
+		return properties;
+	}
 
-    /**
-     * Sets the value of the properties property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link PROPERTIES }
-     *     
-     */
-    public void setPROPERTIES(PROPERTIES value) {
-        this.properties = value;
-    }
+	/**
+	 * Sets the value of the properties property.
+	 * 
+	 * @param value allowed object is {@link PROPERTIES }
+	 * 
+	 */
+	public void setPROPERTIES(PROPERTIES value) {
+		this.properties = value;
+	}
 
-    /**
-     * Gets the value of the locked property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isLocked() {
-        return locked;
-    }
+	/**
+	 * Gets the value of the locked property.
+	 * 
+	 * @return possible object is {@link Boolean }
+	 * 
+	 */
+	public Boolean isLocked() {
+		return locked;
+	}
 
-    /**
-     * Sets the value of the locked property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setLocked(Boolean value) {
-        this.locked = value;
-    }
+	/**
+	 * Sets the value of the locked property.
+	 * 
+	 * @param value allowed object is {@link Boolean }
+	 * 
+	 */
+	public void setLocked(Boolean value) {
+		this.locked = value;
+	}
 
 }

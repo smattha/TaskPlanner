@@ -1,6 +1,5 @@
 package Elements.resources;
 
-
 import java.util.Vector;
 
 import Elements.Tools.Gripper;
@@ -8,12 +7,12 @@ import Elements.Tools.Screwdriver;
 
 public class Human extends Resources {
 
-  private Gripper tool1;
+	private Gripper tool1;
 
-  private Screwdriver tool2;
+	private Screwdriver tool2;
 
-  private Integer maxpayload;
+	private Integer maxpayload;
 
-    public Vector  myResources;
+	public Vector myResources;
 
 }

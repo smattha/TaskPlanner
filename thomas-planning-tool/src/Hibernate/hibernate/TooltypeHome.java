@@ -11,6 +11,7 @@ import org.hibernate.criterion.Example;
 
 /**
  * Home object for domain model class Tooltype.
+ * 
  * @see hibernate.Tooltype
  * @author Hibernate Tools
  */

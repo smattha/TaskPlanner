@@ -17,59 +17,61 @@ import eu.robopartner.ps.planner.planninginputmodel.TASKPRECEDENCECONSTRAINTS;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+public class Place extends Operations {
 
-public class Place extends Operations{
+	public static int navigatePoseId = 0;
+	public static int movePoseId = 0;
+	public static int releasePoseId = 0;
+	public static int reactPoseId = 0;
 
-   public static int navigatePoseId=0;
-   public static int movePoseId=0;
-   public static int releasePoseId=0;
-   public static int reactPoseId=0;
-   
-    public Place(String nam,ThomasTool tool, WorkingArea w1,TASKS tasks,TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints , Operations opPre, String Description,Position positionData[])
-    { 
-    	this.workingArea=w1;
-    	this.tool=tool;
-    	this.name=nam;
-    	this.idPreviousOperation=opPre;
-    	this.theTaskprecedenceconstraints=theTaskprecedenceconstraints;  
-    	this.tasks=tasks;
-    	this.operationDescription=description;
-    	tasks.getTASK().add(this);
-    	
-    	actions=new ArrayList<Actions>();
+	public Place(String nam, ThomasTool tool, WorkingArea w1, TASKS tasks,
+			TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints, Operations opPre, String Description,
+			Position positionData[]) {
+		this.workingArea = w1;
+		this.tool = tool;
+		this.name = nam;
+		this.idPreviousOperation = opPre;
+		this.theTaskprecedenceconstraints = theTaskprecedenceconstraints;
+		this.tasks = tasks;
+		this.operationDescription = description;
+		tasks.getTASK().add(this);
 
-    	//Vision visParam= new Vision(2.7);
-    	//actions.add(new Detect(visParam));
-    	
-    	//4actions.add(new Navigate(positionData[navigatePoseId]));
-    	actions.add(new Move(positionData[movePoseId]));
-    	actions.add(new Release());
-    	actions.add(new Retract(positionData[reactPoseId]));
-    	
-    	genImpactTask();
-     	getPrecedenceConstraints();
-    	
-    }
+		actions = new ArrayList<Actions>();
 
-    public Place(String nam,ThomasTool tool, WorkingArea w1,TASKS tasks,TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints , Operations opPre, String Description)
-    {
-    	this( nam, tool,  w1, tasks, theTaskprecedenceconstraints ,  opPre,  Description, 0);
-    }
-    public Place(String nam,ThomasTool tool, WorkingArea w1,TASKS tasks,TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints , Operations opPre, String Description, double weightPart)
-    {  
-    	this.weightPart=weightPart;
-     	this.workingArea=w1;
-    	this.tool=tool;
-    	this.name=nam;
-    	this.idPreviousOperation=opPre;
-    	this.theTaskprecedenceconstraints=theTaskprecedenceconstraints;  
-    	this.tasks=tasks;
-    	this.operationDescription=description;
-    	tasks.getTASK().add(this);
-    	
-    	actions=new ArrayList<Actions>();
-    	genImpactTask();
-     	getPrecedenceConstraints();
-    	
-    }
+		// Vision visParam= new Vision(2.7);
+		// actions.add(new Detect(visParam));
+
+		// 4actions.add(new Navigate(positionData[navigatePoseId]));
+		actions.add(new Move(positionData[movePoseId]));
+		actions.add(new Release());
+		actions.add(new Retract(positionData[reactPoseId]));
+
+		genImpactTask();
+		getPrecedenceConstraints();
+
+	}
+
+	public Place(String nam, ThomasTool tool, WorkingArea w1, TASKS tasks,
+			TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints, Operations opPre, String Description) {
+		this(nam, tool, w1, tasks, theTaskprecedenceconstraints, opPre, Description, 0);
+	}
+
+	public Place(String nam, ThomasTool tool, WorkingArea w1, TASKS tasks,
+			TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints, Operations opPre, String Description,
+			double weightPart) {
+		this.weightPart = weightPart;
+		this.workingArea = w1;
+		this.tool = tool;
+		this.name = nam;
+		this.idPreviousOperation = opPre;
+		this.theTaskprecedenceconstraints = theTaskprecedenceconstraints;
+		this.tasks = tasks;
+		this.operationDescription = description;
+		tasks.getTASK().add(this);
+
+		actions = new ArrayList<Actions>();
+		genImpactTask();
+		getPrecedenceConstraints();
+
+	}
 }

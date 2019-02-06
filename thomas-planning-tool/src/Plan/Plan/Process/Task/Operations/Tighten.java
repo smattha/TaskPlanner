@@ -22,40 +22,35 @@ import Plan.Process.Task.Operations.Actions.Retract;
 
 public class Tighten extends Operations {
 
+	private Screwdriver tool1;
 
-  private Screwdriver tool1;
+	public Tighten(String nam, ThomasTool tool, WorkingArea w1, TASKS tasks,
+			TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints, Operations opPre, String Description) {
+		this.workingArea = w1;
+		this.tool = tool;
+		this.name = nam;
+		this.idPreviousOperation = opPre;
+		this.theTaskprecedenceconstraints = theTaskprecedenceconstraints;
+		this.tasks = tasks;
+		this.operationDescription = description;
+		tasks.getTASK().add(this);
 
+		actions = new ArrayList<Actions>();
 
-  
-  
-  public Tighten(String nam,ThomasTool tool, WorkingArea w1,TASKS tasks,TASKPRECEDENCECONSTRAINTS theTaskprecedenceconstraints , Operations opPre, String Description)
-  { 
-  	this.workingArea=w1;
-  	this.tool=tool;
-  	this.name=nam;
-  	this.idPreviousOperation=opPre;
-  	this.theTaskprecedenceconstraints=theTaskprecedenceconstraints;  
-  	this.tasks=tasks;
-  	this.operationDescription=description;
-  	tasks.getTASK().add(this);
-  	
-  	actions=new ArrayList<Actions>();
-  	
-  	Position pose=new Position(1.0,2.0,3.0,4.0,5.0,6.0,7.0);
-  	
-  	genImpactTask();
-  	getPrecedenceConstraints();
-  	
-  	
-	  actions.add(new Navigate());
-	  actions.add(new Move());
-	  actions.add(new Detect());
-	  actions.add(new Approach());
-	  actions.add(new Attach());
-	  actions.add(new Screwing());
-	  actions.add(new Detach());
-	  actions.add(new Retract());
-  	 
-  }
-  
+		Position pose = new Position(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0);
+
+		genImpactTask();
+		getPrecedenceConstraints();
+
+		actions.add(new Navigate());
+		actions.add(new Move());
+		actions.add(new Detect());
+		actions.add(new Approach());
+		actions.add(new Attach());
+		actions.add(new Screwing());
+		actions.add(new Detach());
+		actions.add(new Retract());
+
+	}
+
 }

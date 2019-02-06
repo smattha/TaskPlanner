@@ -39,113 +39,112 @@ import eu.robopartner.ps.planner.planninginputmodel.TASKSUITABLERESOURCES;
 import eu.robopartner.ps.planner.planninginputmodel.WORKCENTER;
 import eu.robopartner.ps.planner.planninginputmodel.WORKCENTERRESOURCEREFERENCE;
 
-
 /**
- * Class responsible for translating a map to resources and
- * classes. It is abstract to prevent creating objects.
+ * Class responsible for translating a map to resources and classes. It is
+ * abstract to prevent creating objects.
  * 
  * @author Spyros Koukas
  *
  */
 public abstract class MapToResourcesAndTasks {
 
-	public static final String		SUITABLE_RESOURCE_PROPERTY_NAME				= "Suitable resource";
+	public static final String SUITABLE_RESOURCE_PROPERTY_NAME = "Suitable resource";
 	/**
 	 * constants for coordinates and rotation
 	 */
-	public static final String		LOCATION_X_PROPERTY_NAME					= "Position X";
-	public static final String		LOCATION_Y_PROPERTY_NAME					= "Position Y";
-	public static final String		LOCATION_Z_PROPERTY_NAME					= "Position Z";
-	public static final String		ROTATION_Z_PROPERTY_NAME					= "Rotation Z";
+	public static final String LOCATION_X_PROPERTY_NAME = "Position X";
+	public static final String LOCATION_Y_PROPERTY_NAME = "Position Y";
+	public static final String LOCATION_Z_PROPERTY_NAME = "Position Z";
+	public static final String ROTATION_Z_PROPERTY_NAME = "Rotation Z";
 
 	/**
 	 * constants for the shape of the parts/tables
 	 */
-	public static final String		SHAPE_TYPE_NAME								= "Shape";
-	public static final String		SHAPE_CIRCLE								= "CIRCLE";
-	public static final String		SHAPE_REACTANGLE							= "RECTANGLE";
-	public static final String		SHAPE_OVAL									= "OVAL";
-	public static final String		SHAPE_LINE									= "LINE";
-	public static final String		SHAPE_ROUND_RECTANGLE						= "ROUND RECTANGLE";
-	public static final String		SHAPE_POLYGON								= "POLYGON";
+	public static final String SHAPE_TYPE_NAME = "Shape";
+	public static final String SHAPE_CIRCLE = "CIRCLE";
+	public static final String SHAPE_REACTANGLE = "RECTANGLE";
+	public static final String SHAPE_OVAL = "OVAL";
+	public static final String SHAPE_LINE = "LINE";
+	public static final String SHAPE_ROUND_RECTANGLE = "ROUND RECTANGLE";
+	public static final String SHAPE_POLYGON = "POLYGON";
 	/**
 	 * TODO Write the unit of measurement for this property here
 	 */
-	public static final String		WIDTH_PROPERTY_NAME							= "WIDTH";
+	public static final String WIDTH_PROPERTY_NAME = "WIDTH";
 
 	// TODO check value for INTRALOGISTICS
-	public static final String		VIRTUAL_IMAU_PROPERTY_NAME					= "VirtualIMAU";
+	public static final String VIRTUAL_IMAU_PROPERTY_NAME = "VirtualIMAU";
 	/**
 	 * TODO Write the unit of measurement for this property here
 	 */
-	public static final String		LENGTH_PROPERTY_NAME						= "LENGTH";
+	public static final String LENGTH_PROPERTY_NAME = "LENGTH";
 	/**
 	 * TODO Write the unit of measurement for this property here
 	 */
-	public static final String		HEIGHT_PROPERTY_NAME						= "HEIGHT";
-	public static final String		BASE_PART_PROPERTY_NAME						= "Base";
-	public static final String		TABLE_PART_PROPERTY_NAME					= "Table/part";
-	public static final String		SPEED_PROPERTY_NAME							= "Speed";
-	public static final String		TYPE_PROPERTY_NAME							= "Type";
-	public static final String		TYPE_PROPERTY_VALUE_IMAU					= "IMAU";
-	public static final String		TYPE_PROPERTY_VALUE_STATION					= "Station";
-	public static final String		TYPE_PROPERTY_VALUE_MARKET					= "Market";
-	public static final String		TYPE_PROPERTY_VALUE_ROBOT					= "Robot";
-	public static final String		TYPE_PROPERTY_VALUE_HUMAN					= "Human";
-	public static final String		TYPE_PROPERTY_VALUE_TASK					= "Task";
-	public static final String		TYPE_PROPERTY_VALUE_MOVEMENT				= "Movement";
-	public static final String		TABLE_PART_PROPERTY_VALUE_PART				= "Part";
-	public static final String		TABLE_PART_PROPERTY_VALUE_TABLE				= "Table";
+	public static final String HEIGHT_PROPERTY_NAME = "HEIGHT";
+	public static final String BASE_PART_PROPERTY_NAME = "Base";
+	public static final String TABLE_PART_PROPERTY_NAME = "Table/part";
+	public static final String SPEED_PROPERTY_NAME = "Speed";
+	public static final String TYPE_PROPERTY_NAME = "Type";
+	public static final String TYPE_PROPERTY_VALUE_IMAU = "IMAU";
+	public static final String TYPE_PROPERTY_VALUE_STATION = "Station";
+	public static final String TYPE_PROPERTY_VALUE_MARKET = "Market";
+	public static final String TYPE_PROPERTY_VALUE_ROBOT = "Robot";
+	public static final String TYPE_PROPERTY_VALUE_HUMAN = "Human";
+	public static final String TYPE_PROPERTY_VALUE_TASK = "Task";
+	public static final String TYPE_PROPERTY_VALUE_MOVEMENT = "Movement";
+	public static final String TABLE_PART_PROPERTY_VALUE_PART = "Part";
+	public static final String TABLE_PART_PROPERTY_VALUE_TABLE = "Table";
 
-	private static final String		MOVEMENT_LOGISTIC_TASK_NAME_PREFIX			= "GO TO";
-	private static final String		MOVEMENT_LOGISTIC_TASK_NAME_POSTFIX			= "";
-	private static final String		LOADING_LOGISTIC_TASK_NAME_PREFIX			= "LOADING FROM";
-	private static final String		LOADING_LOGISTIC_TASK_NAME_POSTFIX			= "";
-	private static final String		UNLOADING_LOGISTIC_TASK_NAME_PREFIX			= "UNLOADING TO";
-	private static final String		UNLOADING_LOGISTIC_TASK_NAME_POSTFIX		= "";
-	private static final String		LOADINGUNLOADING_LOGISTIC_TASK_NAME_PREFIX	= "LOADING AND UNLOADING";
-	private static final String		LOADINGUNLOADING_LOGISTIC_TASK_NAME_POSTFIX	= "";
-	private static final String		LOCK_LOGISTIC_TASK_NAME_PREFIX				= "LOCK";
-	private static final String		LOCK_LOGISTIC_TASK_NAME_POSTFIX				= "";
-	private static final String		UNLOCK_LOGISTIC_TASK_NAME_PREFIX			= "UNLOCK";
-	private static final String		UNLOCK_LOGISTIC_TASK_NAME_POSTFIX			= "";
-	private static final String		MOVEMENT_LOGISTIC_TASK_TYPE					= "Movement";
-	private static final String		LOADING_LOGISTIC_TASK_TYPE					= "Loading";
-	private static final String		LOADINGUNLOADING_LOGISTIC_TASK_TYPE			= "Loading/Unloading";
-	private static final String		UNLOADING_LOGISTIC_TASK_TYPE				= "Unloading";
-	private static final String		DUMMY_LOGISTIC_TASK_TYPE					= "Dummy";
-	public static final int			OPERATION_TIME_PER_BATCH_SECONDS			= 1;
-	public static final String		SETUP_CODE									= "1";
+	private static final String MOVEMENT_LOGISTIC_TASK_NAME_PREFIX = "GO TO";
+	private static final String MOVEMENT_LOGISTIC_TASK_NAME_POSTFIX = "";
+	private static final String LOADING_LOGISTIC_TASK_NAME_PREFIX = "LOADING FROM";
+	private static final String LOADING_LOGISTIC_TASK_NAME_POSTFIX = "";
+	private static final String UNLOADING_LOGISTIC_TASK_NAME_PREFIX = "UNLOADING TO";
+	private static final String UNLOADING_LOGISTIC_TASK_NAME_POSTFIX = "";
+	private static final String LOADINGUNLOADING_LOGISTIC_TASK_NAME_PREFIX = "LOADING AND UNLOADING";
+	private static final String LOADINGUNLOADING_LOGISTIC_TASK_NAME_POSTFIX = "";
+	private static final String LOCK_LOGISTIC_TASK_NAME_PREFIX = "LOCK";
+	private static final String LOCK_LOGISTIC_TASK_NAME_POSTFIX = "";
+	private static final String UNLOCK_LOGISTIC_TASK_NAME_PREFIX = "UNLOCK";
+	private static final String UNLOCK_LOGISTIC_TASK_NAME_POSTFIX = "";
+	private static final String MOVEMENT_LOGISTIC_TASK_TYPE = "Movement";
+	private static final String LOADING_LOGISTIC_TASK_TYPE = "Loading";
+	private static final String LOADINGUNLOADING_LOGISTIC_TASK_TYPE = "Loading/Unloading";
+	private static final String UNLOADING_LOGISTIC_TASK_TYPE = "Unloading";
+	private static final String DUMMY_LOGISTIC_TASK_TYPE = "Dummy";
+	public static final int OPERATION_TIME_PER_BATCH_SECONDS = 1;
+	public static final String SETUP_CODE = "1";
 
 	/**
 	 * Load a Box TO IMAU
 	 */
 
-	public static final String		TYPE_PROPERTY_VALUE_LOADING					= "Loading";
-	public static final String		TYPE_PROPERTY_VALUE_LOADINGUNLOADING		= "Loading/Unloading";
+	public static final String TYPE_PROPERTY_VALUE_LOADING = "Loading";
+	public static final String TYPE_PROPERTY_VALUE_LOADINGUNLOADING = "Loading/Unloading";
 
 	/**
 	 * Unload a Box FROM IMAU
 	 */
 
-	public static final String		TYPE_PROPERTY_VALUE_UNLOADING				= "Unloading";
-	public static final String		TYPE_PROPERTY_VALUE_DUMMY					= "Dummy";
-	public static final String		IMAU_MAX_NUMBER_OF_BOXES					= "IMAU max number of boxes";
-	public static final String		IMAU_INITIAL_NUMBER_OF_BOXES				= "IMAU initial number of boxes";
-	public static final String		ORIENTATION_PROPERTY_NAME					= "ORIENTATION";
-	public static final String		REACHABILTY_PROPERTY_NAME					= "REACHABILITY";
-	public static final String		WEIGHT_PROPERTY_NAME						= "Weight (Kg)";
+	public static final String TYPE_PROPERTY_VALUE_UNLOADING = "Unloading";
+	public static final String TYPE_PROPERTY_VALUE_DUMMY = "Dummy";
+	public static final String IMAU_MAX_NUMBER_OF_BOXES = "IMAU max number of boxes";
+	public static final String IMAU_INITIAL_NUMBER_OF_BOXES = "IMAU initial number of boxes";
+	public static final String ORIENTATION_PROPERTY_NAME = "ORIENTATION";
+	public static final String REACHABILTY_PROPERTY_NAME = "REACHABILITY";
+	public static final String WEIGHT_PROPERTY_NAME = "Weight (Kg)";
 
 	/**
 	 * Unload a Box FROM IMAU
 	 */
 
-	public static final String		ORIENTATION_ZERO_DEGREES_VALUE				= "0";
-	public static final String		ORIENTATION_NINETY_DEGREES_VALUE			= "90";
-	public static final int			DEFAULT_REACHABILITY						= 4;
+	public static final String ORIENTATION_ZERO_DEGREES_VALUE = "0";
+	public static final String ORIENTATION_NINETY_DEGREES_VALUE = "90";
+	public static final int DEFAULT_REACHABILITY = 4;
 
-	public static double			MAX_WEIGHT									= 0;
-	private static org.slf4j.Logger	logger										= LoggerFactory.getLogger(MapToResourcesAndTasks.class);
+	public static double MAX_WEIGHT = 0;
+	private static org.slf4j.Logger logger = LoggerFactory.getLogger(MapToResourcesAndTasks.class);
 
 	/**
 	 * @param name
@@ -156,8 +155,10 @@ public abstract class MapToResourcesAndTasks {
 	public static PROPERTIES getLocationProperties(int locationX, int locationY) {
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		PROPERTIES properties = myObjectFactory.createPROPERTIES();
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_X_PROPERTY_NAME, locationX + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_Y_PROPERTY_NAME, locationY + ""));
+		properties.getPROPERTY().add(
+				MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_X_PROPERTY_NAME, locationX + ""));
+		properties.getPROPERTY().add(
+				MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_Y_PROPERTY_NAME, locationY + ""));
 
 		myObjectFactory = null;
 		return properties;
@@ -166,7 +167,8 @@ public abstract class MapToResourcesAndTasks {
 	public static PROPERTIES getVirtualIMAUProperties(int virtualIMAU) {
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		PROPERTIES properties = myObjectFactory.createPROPERTIES();
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.VIRTUAL_IMAU_PROPERTY_NAME, virtualIMAU + ""));
+		properties.getPROPERTY().add(MapToResourcesAndTasks
+				.getProperty(MapToResourcesAndTasks.VIRTUAL_IMAU_PROPERTY_NAME, virtualIMAU + ""));
 
 		myObjectFactory = null;
 		return properties;
@@ -175,7 +177,8 @@ public abstract class MapToResourcesAndTasks {
 	public static PROPERTIES getSpeedIMAUProperties(double speed) {
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		PROPERTIES properties = myObjectFactory.createPROPERTIES();
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.SPEED_PROPERTY_NAME, speed + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.SPEED_PROPERTY_NAME, speed + ""));
 
 		myObjectFactory = null;
 		return properties;
@@ -190,9 +193,12 @@ public abstract class MapToResourcesAndTasks {
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		PROPERTIES properties = myObjectFactory.createPROPERTIES();
 
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_X_PROPERTY_NAME, locationX + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_Y_PROPERTY_NAME, locationY + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.ROTATION_Z_PROPERTY_NAME, rotationZ + ""));
+		properties.getPROPERTY().add(
+				MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_X_PROPERTY_NAME, locationX + ""));
+		properties.getPROPERTY().add(
+				MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_Y_PROPERTY_NAME, locationY + ""));
+		properties.getPROPERTY().add(
+				MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.ROTATION_Z_PROPERTY_NAME, rotationZ + ""));
 
 		myObjectFactory = null;
 		return properties;
@@ -209,9 +215,12 @@ public abstract class MapToResourcesAndTasks {
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		PROPERTIES properties = myObjectFactory.createPROPERTIES();
 
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_X_PROPERTY_NAME, locationX + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_Y_PROPERTY_NAME, locationY + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_Z_PROPERTY_NAME, locationZ + ""));
+		properties.getPROPERTY().add(
+				MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_X_PROPERTY_NAME, locationX + ""));
+		properties.getPROPERTY().add(
+				MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_Y_PROPERTY_NAME, locationY + ""));
+		properties.getPROPERTY().add(
+				MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_Z_PROPERTY_NAME, locationZ + ""));
 
 		myObjectFactory = null;
 		return properties;
@@ -225,7 +234,8 @@ public abstract class MapToResourcesAndTasks {
 	public static PROPERTIES getLocationProperties(double locationZ) {
 		ObjectFactory objectFactory = new ObjectFactory();
 		PROPERTIES properties = objectFactory.createPROPERTIES();
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_Z_PROPERTY_NAME, locationZ + ""));
+		properties.getPROPERTY().add(
+				MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LOCATION_Z_PROPERTY_NAME, locationZ + ""));
 		objectFactory = null;
 		return properties;
 	}
@@ -238,10 +248,11 @@ public abstract class MapToResourcesAndTasks {
 	 * @param theResources
 	 * @return
 	 */
-	public static WORKCENTER getWorkcenter(String id, String name, String description, String algorithmName, RESOURCES theResources) {
+	public static WORKCENTER getWorkcenter(String id, String name, String description, String algorithmName,
+			RESOURCES theResources) {
 		WORKCENTER aWORKCENTER = MapToResourcesAndTasks.getWorkcenter(id, name, description, algorithmName);
 		ObjectFactory myObjectFactory = new ObjectFactory();
-		for ( RESOURCE aResource : theResources.getRESOURCE() ) {
+		for (RESOURCE aResource : theResources.getRESOURCE()) {
 			WORKCENTERRESOURCEREFERENCE ref = myObjectFactory.createWORKCENTERRESOURCEREFERENCE();
 			ref.setRefid(aResource.getId());
 			aWORKCENTER.getWORKCENTERRESOURCEREFERENCE().add(ref);
@@ -259,9 +270,12 @@ public abstract class MapToResourcesAndTasks {
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		PROPERTIES properties = myObjectFactory.createPROPERTIES();
 
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME, width + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME, length + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.HEIGHT_PROPERTY_NAME, height + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.WIDTH_PROPERTY_NAME, width + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.LENGTH_PROPERTY_NAME, length + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.HEIGHT_PROPERTY_NAME, height + ""));
 		myObjectFactory = null;
 		return properties;
 	}
@@ -289,16 +303,20 @@ public abstract class MapToResourcesAndTasks {
 	 * @param properties
 	 * @return
 	 */
-	public static TASK getTask(String description, String name, String id, int width, int length, int reachability, double weight, boolean isBasePart, int zheight) {
+	public static TASK getTask(String description, String name, String id, int width, int length, int reachability,
+			double weight, boolean isBasePart, int zheight) {
 
-		if ( weight > MAX_WEIGHT ) {
+		if (weight > MAX_WEIGHT) {
 			MAX_WEIGHT = weight;
 		}
 		PROPERTIES properties = MapToResourcesAndTasks.getSizeProperties(width, length, zheight);
 
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.REACHABILTY_PROPERTY_NAME, reachability + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.WEIGHT_PROPERTY_NAME, weight + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.BASE_PART_PROPERTY_NAME, isBasePart + ""));
+		properties.getPROPERTY().add(MapToResourcesAndTasks
+				.getProperty(MapToResourcesAndTasks.REACHABILTY_PROPERTY_NAME, reachability + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.WEIGHT_PROPERTY_NAME, weight + ""));
+		properties.getPROPERTY().add(
+				MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.BASE_PART_PROPERTY_NAME, isBasePart + ""));
 		TASK task = MapToResourcesAndTasks.getTask(description, name, id, properties);
 		return task;
 	}
@@ -317,16 +335,20 @@ public abstract class MapToResourcesAndTasks {
 	 * @param shape
 	 * @return
 	 */
-	public static TASK getTask(String description, String name, String id, int width, int length, int reachability, double weight, boolean isBasePart, int zheight, String shape) {
+	public static TASK getTask(String description, String name, String id, int width, int length, int reachability,
+			double weight, boolean isBasePart, int zheight, String shape) {
 
-		if ( weight > MAX_WEIGHT ) {
+		if (weight > MAX_WEIGHT) {
 			MAX_WEIGHT = weight;
 		}
 		PROPERTIES properties = MapToResourcesAndTasks.getSizeProperties(width, length, zheight);
 
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.REACHABILTY_PROPERTY_NAME, reachability + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.WEIGHT_PROPERTY_NAME, weight + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.BASE_PART_PROPERTY_NAME, isBasePart + ""));
+		properties.getPROPERTY().add(MapToResourcesAndTasks
+				.getProperty(MapToResourcesAndTasks.REACHABILTY_PROPERTY_NAME, reachability + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.WEIGHT_PROPERTY_NAME, weight + ""));
+		properties.getPROPERTY().add(
+				MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.BASE_PART_PROPERTY_NAME, isBasePart + ""));
 		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(SHAPE_TYPE_NAME, shape));
 
 		TASK task = MapToResourcesAndTasks.getTask(description, name, id, properties);
@@ -348,16 +370,20 @@ public abstract class MapToResourcesAndTasks {
 	 * @param shape
 	 * @return
 	 */
-	public static TASK getTask(String description, String name, String id, int width, int length, int reachability, double weight, String type, boolean isBasePart, int zheight, String shape) {
+	public static TASK getTask(String description, String name, String id, int width, int length, int reachability,
+			double weight, String type, boolean isBasePart, int zheight, String shape) {
 
-		if ( weight > MAX_WEIGHT ) {
+		if (weight > MAX_WEIGHT) {
 			MAX_WEIGHT = weight;
 		}
 		PROPERTIES properties = MapToResourcesAndTasks.getSizeProperties(width, length, zheight);
 
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.REACHABILTY_PROPERTY_NAME, reachability + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.WEIGHT_PROPERTY_NAME, weight + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME, type + ""));
+		properties.getPROPERTY().add(MapToResourcesAndTasks
+				.getProperty(MapToResourcesAndTasks.REACHABILTY_PROPERTY_NAME, reachability + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.WEIGHT_PROPERTY_NAME, weight + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME, type + ""));
 		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME, shape));
 
 		TASK task = MapToResourcesAndTasks.getTask(description, name, id, properties);
@@ -380,18 +406,23 @@ public abstract class MapToResourcesAndTasks {
 	 * @param tableOrPartProperty
 	 * @return
 	 */
-	public static TASK getTask(String description, String name, String id, int width, int length, int reachability, double weight, String type, boolean isBasePart, int zheight, String shape, String tableOrPartProperty) {
+	public static TASK getTask(String description, String name, String id, int width, int length, int reachability,
+			double weight, String type, boolean isBasePart, int zheight, String shape, String tableOrPartProperty) {
 
-		if ( weight > MAX_WEIGHT ) {
+		if (weight > MAX_WEIGHT) {
 			MAX_WEIGHT = weight;
 		}
 		PROPERTIES properties = MapToResourcesAndTasks.getSizeProperties(width, length, zheight);
 
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.REACHABILTY_PROPERTY_NAME, reachability + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.WEIGHT_PROPERTY_NAME, weight + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME, type + ""));
+		properties.getPROPERTY().add(MapToResourcesAndTasks
+				.getProperty(MapToResourcesAndTasks.REACHABILTY_PROPERTY_NAME, reachability + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.WEIGHT_PROPERTY_NAME, weight + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME, type + ""));
 		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.SHAPE_TYPE_NAME, shape));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.TABLE_PART_PROPERTY_NAME, tableOrPartProperty));
+		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.TABLE_PART_PROPERTY_NAME,
+				tableOrPartProperty));
 
 		TASK task = MapToResourcesAndTasks.getTask(description, name, id, properties);
 		return task;
@@ -410,7 +441,8 @@ public abstract class MapToResourcesAndTasks {
 
 		PROPERTIES properties = MapToResourcesAndTasks.getVirtualIMAUProperties(virtualIMAU);
 
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME, type + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME, type + ""));
 
 		TASK task = MapToResourcesAndTasks.getTask(description, name, id, properties);
 		return task;
@@ -447,9 +479,12 @@ public abstract class MapToResourcesAndTasks {
 	 * @param continueAssignmentsAfterPlanEndDate
 	 * @return
 	 */
-	public static PLANNINGINPUT getPlanningInput(String id, int planStartDateDay, int planStartDateMonth, int planStartDateYear, int planEndDateDay, int planEndDateMonth, int planEndDateYear, boolean continueAssignmentsAfterPlanEndDate) {
-		return MapToResourcesAndTasks.getPlanningInput(id, "" + planStartDateDay, "" + planStartDateMonth, "" + planStartDateYear, ""
-				+ planEndDateDay, "" + planEndDateMonth, "" + planEndDateYear, continueAssignmentsAfterPlanEndDate);
+	public static PLANNINGINPUT getPlanningInput(String id, int planStartDateDay, int planStartDateMonth,
+			int planStartDateYear, int planEndDateDay, int planEndDateMonth, int planEndDateYear,
+			boolean continueAssignmentsAfterPlanEndDate) {
+		return MapToResourcesAndTasks.getPlanningInput(id, "" + planStartDateDay, "" + planStartDateMonth,
+				"" + planStartDateYear, "" + planEndDateDay, "" + planEndDateMonth, "" + planEndDateYear,
+				continueAssignmentsAfterPlanEndDate);
 	}
 
 	/**
@@ -463,7 +498,9 @@ public abstract class MapToResourcesAndTasks {
 	 * @param continueAssignmentsAfterPlanEndDate
 	 * @return
 	 */
-	public static PLANNINGINPUT getPlanningInput(String id, String planStartDateDay, String planStartDateMonth, String planStartDateYear, String planEndDateDay, String planEndDateMonth, String planEndDateYear, boolean continueAssignmentsAfterPlanEndDate) {
+	public static PLANNINGINPUT getPlanningInput(String id, String planStartDateDay, String planStartDateMonth,
+			String planStartDateYear, String planEndDateDay, String planEndDateMonth, String planEndDateYear,
+			boolean continueAssignmentsAfterPlanEndDate) {
 
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		PLANNINGINPUT planningInput = myObjectFactory.createPLANNINGINPUT();
@@ -516,8 +553,10 @@ public abstract class MapToResourcesAndTasks {
 	 * @return
 	 */
 
-	public static RESOURCE getResourceWithRotation(String description, String name, String id, int locationX, int locationY, int rotationZ) {
-		PROPERTIES properties = MapToResourcesAndTasks.getLocationPropertiesWithRotation(locationX, locationY, rotationZ);
+	public static RESOURCE getResourceWithRotation(String description, String name, String id, int locationX,
+			int locationY, int rotationZ) {
+		PROPERTIES properties = MapToResourcesAndTasks.getLocationPropertiesWithRotation(locationX, locationY,
+				rotationZ);
 		RESOURCE resource = MapToResourcesAndTasks.getResource(description, name, id, properties);
 
 		return resource;
@@ -545,7 +584,8 @@ public abstract class MapToResourcesAndTasks {
 	 * @param properties
 	 * @return
 	 */
-	public static RESOURCE getResource3D(String description, String name, String id, int locationX, int locationY, int locationZ) {
+	public static RESOURCE getResource3D(String description, String name, String id, int locationX, int locationY,
+			int locationZ) {
 
 		PROPERTIES properties = MapToResourcesAndTasks.getLocationProperties3D(locationX, locationY, locationZ);
 		RESOURCE resource = MapToResourcesAndTasks.getResource(description, name, id, properties);
@@ -556,8 +596,10 @@ public abstract class MapToResourcesAndTasks {
 	public static RESOURCE getResource(String description, String name, String id, double speed, String type) {
 
 		PROPERTIES properties = MapToResourcesAndTasks.getSpeedIMAUProperties(speed);
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.SPEED_PROPERTY_NAME, speed + ""));
-		properties.getPROPERTY().add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME, type + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.SPEED_PROPERTY_NAME, speed + ""));
+		properties.getPROPERTY()
+				.add(MapToResourcesAndTasks.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME, type + ""));
 		RESOURCE resource = MapToResourcesAndTasks.getResource(description, name, id, properties);
 
 		return resource;
@@ -590,12 +632,14 @@ public abstract class MapToResourcesAndTasks {
 
 	}
 
-	public static TASKSUITABLERESOURCES getTaskSuitableResources(RESOURCES theResources, TASKS theTasks, String setupcode, int operationTimePerBatchSeconds) {
+	public static TASKSUITABLERESOURCES getTaskSuitableResources(RESOURCES theResources, TASKS theTasks,
+			String setupcode, int operationTimePerBatchSeconds) {
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		TASKSUITABLERESOURCES tasksuitableresources = myObjectFactory.createTASKSUITABLERESOURCES();
-		for ( RESOURCE aResource : theResources.getRESOURCE() ) {
-			for ( TASK aTask : theTasks.getTASK() ) {
-				TASKSUITABLERESOURCE tasksuitableresource = MapToResourcesAndTasks.getTaskSuitableResource(aResource, aTask, setupcode, operationTimePerBatchSeconds);
+		for (RESOURCE aResource : theResources.getRESOURCE()) {
+			for (TASK aTask : theTasks.getTASK()) {
+				TASKSUITABLERESOURCE tasksuitableresource = MapToResourcesAndTasks.getTaskSuitableResource(aResource,
+						aTask, setupcode, operationTimePerBatchSeconds);
 				tasksuitableresources.getTASKSUITABLERESOURCE().add(tasksuitableresource);
 			}
 		}
@@ -605,7 +649,8 @@ public abstract class MapToResourcesAndTasks {
 		return tasksuitableresources;
 	}
 
-	public static TASKSUITABLERESOURCE getTaskSuitableResource(RESOURCE aResource, TASK aTask, String setupcode, int operationTimePerBatchSecondssource) {
+	public static TASKSUITABLERESOURCE getTaskSuitableResource(RESOURCE aResource, TASK aTask, String setupcode,
+			int operationTimePerBatchSecondssource) {
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		TASKSUITABLERESOURCE tasksuitableresource = myObjectFactory.createTASKSUITABLERESOURCE();
 		TASKREFERENCE aTaskReference = MapToResourcesAndTasks.getTaskReference(aTask);
@@ -645,7 +690,8 @@ public abstract class MapToResourcesAndTasks {
 	 * @param aWorkcenter
 	 * @return
 	 */
-	public static JOB getJob(String id, String name, String description, DATE arrivalDate, DATE dueDate, TASKS jobTasks, WORKCENTER aWorkcenter) {
+	public static JOB getJob(String id, String name, String description, DATE arrivalDate, DATE dueDate, TASKS jobTasks,
+			WORKCENTER aWorkcenter) {
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		JOB job = myObjectFactory.createJOB();
 		job.setId(id);
@@ -661,7 +707,7 @@ public abstract class MapToResourcesAndTasks {
 		job.setJOBWORKCENTERREFERENCE(jwref);
 		// Tasks
 
-		for ( TASK aTask : jobTasks.getTASK() ) {
+		for (TASK aTask : jobTasks.getTASK()) {
 			JOBTASKREFERENCE jtref = myObjectFactory.createJOBTASKREFERENCE();
 			jtref.setRefid(aTask.getId());
 			job.getJOBTASKREFERENCE().add(jtref);
@@ -702,8 +748,8 @@ public abstract class MapToResourcesAndTasks {
 		TASKPRECEDENCECONSTRAINTS constraints = myObjectFactory.createTASKPRECEDENCECONSTRAINTS();
 
 		String previousTaskId = null;
-		for ( TASK aTask : theTasks.getTASK() ) {
-			if ( previousTaskId != null ) {
+		for (TASK aTask : theTasks.getTASK()) {
+			if (previousTaskId != null) {
 				TASKPRECEDENCECONSTRAINT constraint = new TASKPRECEDENCECONSTRAINT();
 
 				PRECONDITIONTASKREFERENCE pre = new PRECONDITIONTASKREFERENCE();
@@ -721,18 +767,23 @@ public abstract class MapToResourcesAndTasks {
 		return constraints;
 	}
 
-	public static TASKPRECEDENCECONSTRAINTS getTaskPrecedenceconstraints(Map<String, String> taskName, Map<String, String> resourceName, Vector<DimensionObjectInterface> tasksWithIDs) {
+	public static TASKPRECEDENCECONSTRAINTS getTaskPrecedenceconstraints(Map<String, String> taskName,
+			Map<String, String> resourceName, Vector<DimensionObjectInterface> tasksWithIDs) {
 		ObjectFactory myObjectFactory = new ObjectFactory();
 		TASKPRECEDENCECONSTRAINTS taskConstraints = myObjectFactory.createTASKPRECEDENCECONSTRAINTS();
 		String previousTaskId = "";
 		String humanId = "";
-		for ( DimensionObjectInterface aTask : tasksWithIDs ) {
-			if ( resourceName.containsKey(aTask.getID()) ) {
-				if ( aTask.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME).equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_ROBOT) ) previousTaskId = aTask.getID();
-				else if ( aTask.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME).equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_HUMAN) )
+		for (DimensionObjectInterface aTask : tasksWithIDs) {
+			if (resourceName.containsKey(aTask.getID())) {
+				if (aTask.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME)
+						.equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_ROBOT))
+					previousTaskId = aTask.getID();
+				else if (aTask.getProperty(MapToResourcesAndTasks.TYPE_PROPERTY_NAME)
+						.equals(MapToResourcesAndTasks.TYPE_PROPERTY_VALUE_HUMAN))
 					humanId = aTask.getID();
 
-				if ( !previousTaskId.isEmpty() && !humanId.isEmpty() ) break;
+				if (!previousTaskId.isEmpty() && !humanId.isEmpty())
+					break;
 			}
 		}
 
@@ -741,17 +792,20 @@ public abstract class MapToResourcesAndTasks {
 		int mapKey = 0;
 		String minId = "";
 		double minArea = 0d;
-		for ( DimensionObjectInterface aTask : tasksWithIDs ) {
-			if ( !maxToMinTaskIds.containsValue(aTask.getID()) && taskName.containsKey(aTask.getID()) ) {
+		for (DimensionObjectInterface aTask : tasksWithIDs) {
+			if (!maxToMinTaskIds.containsValue(aTask.getID()) && taskName.containsKey(aTask.getID())) {
 				String maxId = aTask.getID();
-				double maxArea = MapToResourcesAndTasks.findArea(aTask.getShape(), aTask.getDimension().width, aTask.getDimension().height);
+				double maxArea = MapToResourcesAndTasks.findArea(aTask.getShape(), aTask.getDimension().width,
+						aTask.getDimension().height);
 				minId = aTask.getID();
-				minArea = MapToResourcesAndTasks.findArea(aTask.getShape(), aTask.getDimension().width, aTask.getDimension().height);
-				for ( int i = tasksWithIDs.size() - 1; i >= 0; i-- ) {
+				minArea = MapToResourcesAndTasks.findArea(aTask.getShape(), aTask.getDimension().width,
+						aTask.getDimension().height);
+				for (int i = tasksWithIDs.size() - 1; i >= 0; i--) {
 					DimensionObjectInterface bTask = tasksWithIDs.get(i);
-					if ( !maxToMinTaskIds.containsValue(aTask.getID()) && taskName.containsKey(bTask.getID()) && !maxId.equals(bTask.getID())
-							&& !maxToMinTaskIds.containsValue(bTask.getID()) ) {
-						double bArea = MapToResourcesAndTasks.findArea(bTask.getShape(), bTask.getDimension().width, bTask.getDimension().height);
+					if (!maxToMinTaskIds.containsValue(aTask.getID()) && taskName.containsKey(bTask.getID())
+							&& !maxId.equals(bTask.getID()) && !maxToMinTaskIds.containsValue(bTask.getID())) {
+						double bArea = MapToResourcesAndTasks.findArea(bTask.getShape(), bTask.getDimension().width,
+								bTask.getDimension().height);
 						maxId = (maxArea < bArea) ? bTask.getID() : maxId;
 
 						maxArea = (maxArea < bArea) ? bArea : maxArea;
@@ -764,12 +818,12 @@ public abstract class MapToResourcesAndTasks {
 			}
 		}
 
-		if ( !maxToMinTaskIds.containsValue(minId) ) {
+		if (!maxToMinTaskIds.containsValue(minId)) {
 			maxToMinTaskIds.put(mapKey, minId);
 			mapKey++;
 		}
 
-		for ( int i = 0; i < mapKey; i++ ) {
+		for (int i = 0; i < mapKey; i++) {
 			TASKPRECEDENCECONSTRAINT constraint = new TASKPRECEDENCECONSTRAINT();
 
 			PRECONDITIONTASKREFERENCE pre = new PRECONDITIONTASKREFERENCE();
@@ -783,7 +837,7 @@ public abstract class MapToResourcesAndTasks {
 			previousTaskId = maxToMinTaskIds.get(i);
 		}
 
-		if ( !humanId.equals("") ) {
+		if (!humanId.equals("")) {
 			TASKPRECEDENCECONSTRAINT constraint = new TASKPRECEDENCECONSTRAINT();
 
 			PRECONDITIONTASKREFERENCE pre = new PRECONDITIONTASKREFERENCE();
@@ -801,29 +855,30 @@ public abstract class MapToResourcesAndTasks {
 
 	private static double findArea(String shape, int width, int length) {
 		double area = 0d;
-		switch ( shape ) {
-			case MapToResourcesAndTasks.SHAPE_REACTANGLE:
-				area = width * length;
-				break;
-			case MapToResourcesAndTasks.SHAPE_CIRCLE:
-				area = Math.PI * Math.pow(width, 2);
-				break;
-			case MapToResourcesAndTasks.SHAPE_OVAL:
-				area = Math.PI * width * length;
-				break;
+		switch (shape) {
+		case MapToResourcesAndTasks.SHAPE_REACTANGLE:
+			area = width * length;
+			break;
+		case MapToResourcesAndTasks.SHAPE_CIRCLE:
+			area = Math.PI * Math.pow(width, 2);
+			break;
+		case MapToResourcesAndTasks.SHAPE_OVAL:
+			area = Math.PI * width * length;
+			break;
 		}
-		if ( area == 0d ) {
+		if (area == 0d) {
 			RuntimeException e = new RuntimeException("not correct shape as an input");
 			throw e;
 		}
 		return area;
 	}
 
-
-	public static TASKPRECEDENCECONSTRAINTS getAllPrecedenceContraints(TASKPRECEDENCECONSTRAINTS constraints, TASKPRECEDENCECONSTRAINTS allContraints) {
+	public static TASKPRECEDENCECONSTRAINTS getAllPrecedenceContraints(TASKPRECEDENCECONSTRAINTS constraints,
+			TASKPRECEDENCECONSTRAINTS allContraints) {
 		// ObjectFactory myObjectFactory = new ObjectFactory();
-		// TASKPRECEDENCECONSTRAINTS allContraints = myObjectFactory.createTASKPRECEDENCECONSTRAINTS();
-		for ( TASKPRECEDENCECONSTRAINT aConstrain : constraints.getTASKPRECEDENCECONSTRAINT() ) {
+		// TASKPRECEDENCECONSTRAINTS allContraints =
+		// myObjectFactory.createTASKPRECEDENCECONSTRAINTS();
+		for (TASKPRECEDENCECONSTRAINT aConstrain : constraints.getTASKPRECEDENCECONSTRAINT()) {
 			allContraints.getTASKPRECEDENCECONSTRAINT().add(aConstrain);
 
 		}
@@ -834,7 +889,6 @@ public abstract class MapToResourcesAndTasks {
 
 	// Create MarketProperties
 
-	
 	public static PROPERTIES getPartProperties(double height) {
 		ObjectFactory objectFactory = new ObjectFactory();
 		PROPERTIES partProperties = objectFactory.createPROPERTIES();
@@ -849,14 +903,13 @@ public abstract class MapToResourcesAndTasks {
 	}
 
 	// Create TaskProperties
-	
+
 	// get Station Resource
 	/**
 	 * 
 	 * @param aNewStation
 	 * @return
 	 */
-	
 
 	public static RESOURCES getLogisticResources(RESOURCE aResource) {
 		ObjectFactory myObjectFactory = new ObjectFactory();
@@ -883,11 +936,12 @@ public abstract class MapToResourcesAndTasks {
 
 	public static boolean isTaskDummy(TASK task) {
 
-		if ( (task.getNAME().startsWith(LOCK_LOGISTIC_TASK_NAME_PREFIX)) && (task.getNAME().endsWith(LOCK_LOGISTIC_TASK_NAME_POSTFIX))
-				|| ((task.getNAME().startsWith(UNLOCK_LOGISTIC_TASK_NAME_PREFIX)) && (task.getNAME().endsWith(UNLOCK_LOGISTIC_TASK_NAME_POSTFIX))) ) {
+		if ((task.getNAME().startsWith(LOCK_LOGISTIC_TASK_NAME_PREFIX))
+				&& (task.getNAME().endsWith(LOCK_LOGISTIC_TASK_NAME_POSTFIX))
+				|| ((task.getNAME().startsWith(UNLOCK_LOGISTIC_TASK_NAME_PREFIX))
+						&& (task.getNAME().endsWith(UNLOCK_LOGISTIC_TASK_NAME_POSTFIX)))) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}

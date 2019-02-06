@@ -4,6 +4,6 @@ import java.util.Vector;
 
 public class Mobile extends Resources {
 
-    public Vector  myResources;
-    
+	public Vector myResources;
+
 }
