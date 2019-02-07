@@ -60,11 +60,20 @@ public class serverHttpThomas {
 		server.createContext("/test3", new MyHandler2());
 		server.setExecutor(null);
 		server.createContext("/test4", new MyHandler3());
-		server.setExecutor(null); //
+		server.setExecutor(null); 
 
 		server.createContext(Constants.HTTP_REQUEST_GET_PROCESS_PATH, new processHandler());
 		server.setExecutor(null);
-
+		
+		server.createContext(Constants.HTTP_REQUEST_GET_TASK_PATH, new tasksHandler());
+		server.setExecutor(null);
+		
+		server.createContext(Constants.HTTP_REQUEST_GET_TASK_PATH, new tasksHandler());
+		server.setExecutor(null);
+		
+		
+		server.createContext(Constants.HTTP_REQUEST_GET_OPERATION_PATH, new operationHandler());
+		server.setExecutor(null);
 		server.start();
 	}
 

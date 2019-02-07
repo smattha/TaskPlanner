@@ -73,4 +73,6 @@ public class Constants {
 	/////////////////// Http Server/////////////////////
 	public static int HTTP_SERVER_PORT = 8013;
 	public static String HTTP_REQUEST_GET_PROCESS_PATH = "/Process";
+	public static String HTTP_REQUEST_GET_TASK_PATH = "/Task";
+	public static String HTTP_REQUEST_GET_OPERATION_PATH = "/Operation";
 }
