@@ -1,0 +1,140 @@
+package xmlParser;
+
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Text;
+
+public class CreateXmlFileDemo {
+
+	
+	private DocumentBuilderFactory documentFactory;
+	
+	private Document document ;
+	
+	Element root; 
+	
+	public CreateXmlFileDemo()
+	{
+		try {
+		
+		documentFactory = DocumentBuilderFactory.newInstance();
+
+		DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+
+		document = documentBuilder.newDocument();
+		createRoot();
+		
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		}
+		
+
+	}
+	
+	private void createRoot()
+	{
+		root = document.createElement("program");
+		document.appendChild(root);
+		//return root;
+	}
+	
+public boolean  addElement(Element newElement)
+{
+
+	root.appendChild(newElement);
+return true;
+}
+	
+	
+ public Attr createAttribute(String id, String value)
+{
+		Attr attr = document.createAttribute(id);
+		attr.setValue(value);
+		return attr;
+	}
+
+ 
+ public Element  createElement(String name) {
+	 
+	 return document.createElement(name);
+	 
+ }
+ 
+ public boolean store(String xmlFilePath)
+ {
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		Transformer transformer;
+		try {
+			transformer = transformerFactory.newTransformer();
+
+		DOMSource domSource = new DOMSource(document);
+		StreamResult streamResult = new StreamResult(new File(xmlFilePath));
+
+		// If you use
+		// StreamResult result = new StreamResult(System.out);
+		// the output will be pushed to the standard output ...
+		// You can use that for debugging 
+
+		try {
+			transformer.transform(domSource, streamResult);
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		System.out.println("Done creating XML File");
+	 
+		} catch (TransformerConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return true;
+ }
+
+ 
+ public Text createTextNode(String value)
+ {
+	 return document.createTextNode(value);
+ }
+
+public static final String xmlFilePath = "C:\\Users\\smatt\\Desktop\\thomas\\xmlfile.xml";
+
+public static void main(String argv[]) {
+	
+    CreateXmlFileDemo doc=new CreateXmlFileDemo();
+    
+    
+	Element employee=doc.createElement("employer");
+	Attr attr=doc.createAttribute("Attr", "10");
+	employee.setAttributeNode(attr);
+	//doc.addElement(employee);
+	
+
+	Element employeeInside=doc.createElement("employerInside");
+	Attr attr2=doc.createAttribute("Attr", "10");
+	employeeInside.setAttributeNode(attr2);
+	employeeInside.appendChild(doc.createTextNode("It works"));
+	employee.appendChild(employeeInside);
+	
+	
+	doc.addElement(employee);
+
+	doc.store(xmlFilePath);
+    
+	 
+
+}
+ 
+}
